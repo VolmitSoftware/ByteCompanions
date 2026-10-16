@@ -1,0 +1,18 @@
+# Optional stationary decoration. Uncomment the table to enable it.
+# [decorations.test]
+# enabled = true # Optional; defaults to true.
+# companion = "bee"
+# world = "world"
+# x = 100.5
+# y = 64.0
+# z = -200.5
+# yaw = 90.0
+# pitch = 0.0
+# body-yaw = 90.0
+# eye-height = 1.4
+# height = 1.8
+
+[settings]
+update-interval = 3
+view-distance = 32
+view-refresh-delay = 3

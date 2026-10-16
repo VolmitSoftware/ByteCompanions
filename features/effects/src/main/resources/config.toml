@@ -1,0 +1,23 @@
+[[companions.bee]]
+effect = "SPEED"
+amplifier = 0
+priority = 10
+stack-mode = "HIGHEST"
+
+[[companions.myself]]
+effect = "SPEED"
+amplifier = 0
+priority = 20
+stack-mode = "HIGHEST"
+
+[[companions.rainbow]]
+effect = "SPEED"
+amplifier = 0
+priority = 30
+stack-mode = "HIGHEST"
+
+[[companions.mushroom]]
+effect = "NIGHT_VISION"
+amplifier = 0
+priority = 10
+stack-mode = "HIGHEST"

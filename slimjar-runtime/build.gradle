@@ -1,0 +1,52 @@
+plugins {
+    id 'java-library'
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(25)
+    withSourcesJar()
+}
+
+sourceSets {
+    loaderAgent {
+        java.setSrcDirs(['src/loaderAgent/java'])
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release.set(25)
+    options.compilerArgs.add('-parameters')
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    compileOnly('org.jetbrains:annotations:24.0.0')
+    testImplementation('junit:junit:4.13.2')
+}
+
+def loaderAgentJar = tasks.register('loaderAgentJar', Jar) {
+    from(sourceSets.loaderAgent.output)
+    archiveFileName.set('loader-agent.isolated-jar')
+    destinationDirectory.set(layout.buildDirectory.dir('generated/loader-agent'))
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+
+tasks.named('processResources') {
+    from(loaderAgentJar) { into('modules') }
+    from('LICENSE') { into('META-INF/licenses/slimjar') }
+}
+
+tasks.named('sourcesJar', Jar) {
+    from(sourceSets.loaderAgent.allJava) { into('loader-agent') }
+    from('UPSTREAM.md', 'upstream-sources.json', 'upstream-changes.txt', 'LICENSE')
+}
+
+tasks.named('test') {
+    dependsOn(tasks.named('sourcesJar'))
+    systemProperty('slimjar.sourceDirectory', file('src/main/java').absolutePath)
+    systemProperty('slimjar.upstreamManifest', file('upstream-sources.json').absolutePath)
+    systemProperty('slimjar.changedSources', file('upstream-changes.txt').absolutePath)
+    systemProperty('slimjar.sourcesArchive', tasks.named('sourcesJar', Jar).get().archiveFile.get().asFile.absolutePath)
+}
+

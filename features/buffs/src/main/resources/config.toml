@@ -1,0 +1,89 @@
+[companions.copper]
+default-priority = 10
+
+[companions.copper.vanilla.experience]
+enabled = false
+
+[companions.copper.vanilla.experience-mob]
+enabled = false
+
+[companions.copper.vanilla.experience-block]
+enabled = true
+operation = "ADD_PERCENT"
+value = 10
+cooldown = 0
+
+[companions.copper.vanilla.experience-furnace]
+enabled = false
+
+[companions.copper.vanilla.experience-fishing]
+enabled = false
+
+[companions.copper.vanilla.mob-loot]
+enabled = false
+
+[companions.copper.vanilla.block-drops]
+enabled = false
+
+[companions.copper.vanilla.fishing-loot]
+enabled = false
+
+[companions.warrior]
+default-priority = 10
+
+[companions.warrior.vanilla.experience]
+enabled = false
+
+[companions.warrior.vanilla.experience-mob]
+enabled = true
+operation = "ADD_PERCENT"
+value = 10
+cooldown = 0
+
+[companions.warrior.vanilla.experience-block]
+enabled = false
+
+[companions.warrior.vanilla.experience-furnace]
+enabled = false
+
+[companions.warrior.vanilla.experience-fishing]
+enabled = false
+
+[companions.warrior.vanilla.mob-loot]
+enabled = false
+
+[companions.warrior.vanilla.block-drops]
+enabled = false
+
+[companions.warrior.vanilla.fishing-loot]
+enabled = false
+
+[companions.scout]
+default-priority = 10
+
+[companions.scout.vanilla.experience]
+enabled = false
+
+[companions.scout.vanilla.experience-mob]
+enabled = false
+
+[companions.scout.vanilla.experience-block]
+enabled = false
+
+[companions.scout.vanilla.experience-furnace]
+enabled = false
+
+[companions.scout.vanilla.experience-fishing]
+enabled = true
+operation = "ADD_PERCENT"
+value = 10
+cooldown = 0
+
+[companions.scout.vanilla.mob-loot]
+enabled = false
+
+[companions.scout.vanilla.block-drops]
+enabled = false
+
+[companions.scout.vanilla.fishing-loot]
+enabled = false

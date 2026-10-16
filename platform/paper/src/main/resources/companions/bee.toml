@@ -1,0 +1,44 @@
+model = "HEAD"
+exclusive = false
+
+[display]
+category = "nature"
+
+[display.item]
+material = "BEE_NEST"
+name = "<gradient:#FFE082:#FFB74D>🐝 Honey Nest</gradient>"
+lore = ["<#FFF3CD>A little bee nest that floats beside you.", "<#FFF3CD>Circles gently as you travel.", "", "<#FFCC80>Vanilla blocks • No resource pack"]
+
+[appearance]
+small = true
+visible = false
+show-arms = false
+show-base-plate = false
+marker = false
+custom-name = "<#FFE082>Honey Nest"
+custom-name-visible = false
+scale = 0.85
+
+[equipment.HEAD]
+material = "BEE_NEST"
+
+[[animations.movement]]
+id = "follow_formation"
+base-interpolation = 0.12
+
+[animations.movement.formation]
+type = "orbit"
+
+[animations.movement.formation.orbit]
+radius = 1.5
+angular-speed = 0.35
+
+[[animations.movement]]
+id = "hover"
+height = 0.2
+speed = 0.08
+interpolation = 0.2
+
+[[animations.rotation]]
+id = "look_at_owner"
+head-height = 1.0

@@ -1,0 +1,11 @@
+* text=auto
+*.java text eol=lf
+*.gradle text eol=lf
+*.gradle.kts text eol=lf
+*.yml text eol=lf
+*.toml text eol=lf
+*.md text eol=lf
+gradlew text eol=lf
+gradlew.bat text eol=crlf
+*.jar binary
+platform/paper/src/main/java/com/volmit/bytecompanions/platform/paper/metrics/Metrics.java text eol=lf

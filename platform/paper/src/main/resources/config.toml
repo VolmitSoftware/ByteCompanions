@@ -1,0 +1,80 @@
+[general]
+enabled = true
+language = "en_US"
+updateNotifications = true
+autoLoadCompanions = true
+
+[general.companionLimits]
+maxTotalPerPlayer = 2
+
+[general.companionLimits.perModel]
+fullBody = 1
+headOnly = 1
+
+[metrics]
+enabled = true
+
+[presentation]
+splashScreen = true
+alternateSplashes = true
+commandSounds = true
+serializer = "MINI_MESSAGE"
+
+[hotReload]
+enabled = true
+pollIntervalMillis = 1000
+cooldownMillis = 1500
+notifyOperators = true
+
+[debug]
+uploadEnabled = true
+
+[storage]
+backend = "h2"
+
+[storage.pool]
+connectionTimeoutMillis = 5000
+maxLifetimeMillis = 1800000
+maxPoolSize = 10
+minIdle = 1
+
+[storage.h2]
+directory = "storage"
+
+[storage.mysql]
+host = "127.0.0.1"
+port = 3306
+database = "bytecompanions"
+username = ""
+password = ""
+useSsl = false
+
+[performance]
+maximumParticleIntensity = "FULL"
+dispatchInteractEvent = false
+updateInterval = 3
+viewerRefreshDelay = 3
+viewDistance = 8
+
+[serverRules]
+hiddenWorlds = []
+bonusDisabledWorlds = []
+worldguard = true
+
+[menus]
+rightClickDashboard = true
+
+[collections]
+maximumOutfits = 8
+trialSeconds = 30
+personalityEnabled = true
+idleReactions = true
+
+[features]
+attributes = false
+buffs = false
+decorations = true
+effects = false
+particles = true
+progression = false
+boosters = false

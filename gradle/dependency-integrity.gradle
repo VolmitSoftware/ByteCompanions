@@ -1,0 +1,127 @@
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+import org.gradle.api.artifacts.Configuration
+import org.gradle.api.artifacts.component.ModuleComponentIdentifier
+import org.gradle.api.artifacts.result.ResolvedArtifactResult
+
+import java.security.MessageDigest
+import java.util.concurrent.ConcurrentHashMap
+
+if (gradle.startParameter.configurationCacheRequested) {
+    throw new GradleException('Dependency integrity verification requires configuration cache to be disabled; use --no-configuration-cache.')
+}
+
+boolean captureIntegrity = providers.gradleProperty('updateDependencyIntegrity').orElse('false').get().toBoolean()
+boolean requestedCapture = gradle.startParameter.taskNames.any { String name -> name.tokenize(':').last() == 'writeDependencyIntegrity' }
+if (captureIntegrity != requestedCapture) {
+    throw new GradleException('Candidate capture requires both writeDependencyIntegrity and -PupdateDependencyIntegrity=true; ordinary builds only verify reviewed pins.')
+}
+
+File integrityFile = rootProject.file('gradle/dependency-integrity.json')
+Map<String, String> expectedIntegrity = new TreeMap<>()
+if (!captureIntegrity) {
+    if (!integrityFile.isFile()) {
+        throw new GradleException('Missing gradle/dependency-integrity.json; capture and review dependency inputs explicitly before building.')
+    }
+    Object document = new JsonSlurper().parse(integrityFile, 'UTF-8')
+    if (!(document instanceof Map) || document.schema != 1 || !(document.artifacts instanceof Map)) {
+        throw new GradleException('Invalid dependency integrity manifest schema')
+    }
+    document.artifacts.each { Object identity, Object checksum ->
+        if (!(identity instanceof String) || !(checksum instanceof String) || !(checksum ==~ /[a-f0-9]{64}/)) {
+            throw new GradleException("Invalid dependency integrity entry: ${identity}")
+        }
+        expectedIntegrity.put((String) identity, (String) checksum)
+    }
+}
+
+Map<String, String> observedIntegrity = new ConcurrentHashMap<>()
+Map<File, String> fileIntegrity = new ConcurrentHashMap<>()
+Closure<String> checksum = { File artifact ->
+    fileIntegrity.computeIfAbsent(artifact.canonicalFile) { File input ->
+        MessageDigest digest = MessageDigest.getInstance('SHA-256')
+        input.withInputStream { InputStream stream ->
+            byte[] buffer = new byte[65536]
+            int count
+            while ((count = stream.read(buffer)) != -1) {
+                digest.update(buffer, 0, count)
+            }
+        }
+        return HexFormat.of().formatHex(digest.digest())
+    }
+}
+
+Closure<Void> inspectConfiguration = { Configuration configuration ->
+    configuration.incoming.artifacts.artifacts.each { ResolvedArtifactResult artifact ->
+        if (artifact.id.componentIdentifier instanceof ModuleComponentIdentifier) {
+            ModuleComponentIdentifier module = (ModuleComponentIdentifier) artifact.id.componentIdentifier
+            String identity = "${module.group}:${module.module}:${module.version}|${artifact.file.name}"
+            String actual = checksum.call(artifact.file)
+            String previous = observedIntegrity.putIfAbsent(identity, actual)
+            if (previous != null && previous != actual) {
+                throw new GradleException("Dependency integrity conflict: ${identity}; multiple artifacts have different bytes")
+            }
+            if (!captureIntegrity) {
+                String expected = expectedIntegrity.get(identity)
+                if (expected == null) {
+                    throw new GradleException("Unreviewed dependency artifact: ${identity}; capture and review a candidate manifest")
+                }
+                if (expected != actual) {
+                    throw new GradleException("Dependency integrity mismatch: ${identity}; expected ${expected}, actual ${actual}")
+                }
+            }
+        }
+    }
+}
+
+allprojects { Project target ->
+    [target.configurations, target.buildscript.configurations].each { configurations ->
+        configurations.configureEach { Configuration configuration ->
+            if (configuration.state == Configuration.State.UNRESOLVED) {
+                configuration.incoming.afterResolve { inspectConfiguration.call(configuration) }
+            } else if (configuration.canBeResolved) {
+                inspectConfiguration.call(configuration)
+            }
+        }
+    }
+}
+
+tasks.register('writeDependencyIntegrity') {
+    group = 'verification'
+    description = 'Builds all release and QA inputs, then writes an untrusted candidate checksum manifest for explicit review.'
+    dependsOn(allprojects.collect { Project target -> target.path == ':' ? ':build' : "${target.path}:build" })
+    dependsOn(':qa-fixture:jar', ':qa-fixture:boosterEconomyJar')
+    doLast {
+        File candidate = layout.buildDirectory.file('dependency-integrity-candidate.json').get().asFile
+        candidate.parentFile.mkdirs()
+        candidate.setText(JsonOutput.prettyPrint(JsonOutput.toJson([
+                schema: 1,
+                artifacts: new TreeMap<String, String>(observedIntegrity)
+        ])) + '\n', 'UTF-8')
+        logger.lifecycle("Captured ${observedIntegrity.size()} external artifact checksums in ${candidate}; reviewed pins were not changed.")
+    }
+}
+
+tasks.register('verifyDependencyIntegrity') {
+    group = 'verification'
+    description = 'Verifies consumed external artifact bytes against reviewed pins during the complete build.'
+    dependsOn(allprojects.collect { Project target -> target.path == ':' ? ':build' : "${target.path}:build" })
+    dependsOn(':qa-fixture:jar', ':qa-fixture:boosterEconomyJar')
+    doLast {
+        if (captureIntegrity) {
+            throw new GradleException('Verification cannot run in candidate capture mode')
+        }
+        File observed = layout.buildDirectory.file('dependency-integrity-observed.json').get().asFile
+        observed.parentFile.mkdirs()
+        observed.setText(JsonOutput.prettyPrint(JsonOutput.toJson([
+                schema: 1,
+                artifacts: new TreeMap<String, String>(observedIntegrity)
+        ])) + '\n', 'UTF-8')
+        Set<String> missing = new TreeSet<>(expectedIntegrity.keySet())
+        missing.removeAll(observedIntegrity.keySet())
+        if (!missing.isEmpty()) {
+            throw new GradleException("Full dependency verification did not consume reviewed artifacts: ${missing.join(', ')}; inspect ${observed} before explicitly reviewing a changed dependency set")
+        }
+        logger.lifecycle("Verified ${observedIntegrity.size()} consumed external artifacts against reviewed dependency pins.")
+    }
+}

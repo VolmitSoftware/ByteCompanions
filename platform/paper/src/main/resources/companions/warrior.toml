@@ -1,0 +1,63 @@
+model = "FULL_BODY"
+exclusive = false
+
+[display]
+category = "miniatures"
+
+[display.item]
+material = "IRON_HELMET"
+name = "<gradient:#DDE3EC:#95A8CA>⚔ Pocket Knight</gradient>"
+lore = ["<#DDE3EC>A tiny iron knight with a sword and shield.", "<#DDE3EC>Floats with you; does not fight mobs.", "", "<#95A8CA>Vanilla equipment • No resource pack"]
+
+[appearance]
+small = true
+visible = true
+show-arms = true
+show-base-plate = false
+marker = false
+custom-name = "<#DDE3EC>Pocket Knight"
+custom-name-visible = false
+scale = 0.85
+
+[equipment.HEAD]
+material = "IRON_HELMET"
+
+[equipment.CHEST]
+material = "IRON_CHESTPLATE"
+
+[equipment.LEGS]
+material = "CHAINMAIL_LEGGINGS"
+
+[equipment.FEET]
+material = "IRON_BOOTS"
+
+[equipment.HAND]
+material = "IRON_SWORD"
+
+[equipment.OFF_HAND]
+material = "SHIELD"
+
+[[animations.movement]]
+id = "follow_formation"
+base-interpolation = 0.15
+
+[animations.movement.formation]
+type = "grid"
+
+[animations.movement.formation.grid]
+spacing = 1.5
+columns = 3
+
+[[animations.movement]]
+id = "hover"
+height = 0.1
+speed = 0.05
+interpolation = 0.25
+
+[[animations.pose]]
+id = "walk_swing_pro"
+base-swing-amplitude = 16.0
+speed-swing-boost = 5.0
+
+[[animations.rotation]]
+id = "look_at_owner_pro"

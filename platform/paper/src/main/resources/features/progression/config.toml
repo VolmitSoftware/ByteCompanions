@@ -1,0 +1,137 @@
+# Enable progression and boosters separately in the root config.toml.
+# local creates a persistent, installation-specific scope for this database.
+
+server-id = "local"
+pause-personal-offline = true
+maximum-booster-percent = 300
+maximum-reward-multiplier = 10
+source-cooldown-millis = 1000
+allowed-worlds = []
+level-thresholds = [0, 100, 300, 600]
+
+[xp-sources]
+block_break = 1
+mob_kill = 5
+fishing = 3
+
+[companions.bee.tracks.agility]
+name = "<gold>★ Bee Agility"
+
+[[companions.bee.tracks.agility.tiers]]
+required-level = 2
+
+[companions.bee.tracks.agility.tiers.cost.items]
+EMERALD = 4
+
+[companions.bee.tracks.agility.tiers.additions]
+"effect:minecraft:speed" = 1
+
+[[companions.bee.tracks.agility.tiers]]
+required-level = 3
+
+[companions.bee.tracks.agility.tiers.cost.items]
+EMERALD = 8
+
+[companions.bee.tracks.agility.tiers.additions]
+"effect:minecraft:speed" = 1
+
+[companions.bee.level-rewards.4]
+"effect:minecraft:speed" = 1
+
+[companions.myself.tracks.agility]
+name = "<aqua>★ Personal Pace"
+
+[[companions.myself.tracks.agility.tiers]]
+required-level = 2
+
+[companions.myself.tracks.agility.tiers.cost.items]
+EMERALD = 4
+
+[companions.myself.tracks.agility.tiers.additions]
+"effect:minecraft:speed" = 1
+
+[[companions.myself.tracks.agility.tiers]]
+required-level = 3
+
+[companions.myself.tracks.agility.tiers.cost.items]
+EMERALD = 8
+
+[companions.myself.tracks.agility.tiers.additions]
+"effect:minecraft:speed" = 1
+
+[companions.myself.level-rewards.4]
+"effect:minecraft:speed" = 1
+
+[companions.rainbow.tracks.agility]
+name = "<light_purple>★ Rainbow Stride"
+
+[[companions.rainbow.tracks.agility.tiers]]
+required-level = 2
+
+[companions.rainbow.tracks.agility.tiers.cost.items]
+EMERALD = 4
+
+[companions.rainbow.tracks.agility.tiers.additions]
+"effect:minecraft:speed" = 1
+
+[[companions.rainbow.tracks.agility.tiers]]
+required-level = 3
+
+[companions.rainbow.tracks.agility.tiers.cost.items]
+EMERALD = 8
+
+[companions.rainbow.tracks.agility.tiers.additions]
+"effect:minecraft:speed" = 1
+
+[companions.rainbow.level-rewards.4]
+"effect:minecraft:speed" = 1
+
+[boosters.personal_xp]
+name = "<aqua>⌛ Personal Companion XP"
+scope = "PERSONAL"
+duration-seconds = 300
+stacking = "QUEUE"
+
+[boosters.personal_xp.percentages]
+companion_xp = 50
+
+[boosters.personal_xp.cost.items]
+EMERALD = 2
+
+[boosters.server_xp]
+name = "<gold>⌛ Server Companion XP"
+scope = "SERVER"
+duration-seconds = 180
+stacking = "QUEUE"
+
+[boosters.server_xp.percentages]
+companion_xp = 25
+
+[boosters.server_xp.cost.items]
+DIAMOND = 2
+
+[boosters.personal_mining]
+name = "<aqua>⌛ Personal Mining Rewards"
+scope = "PERSONAL"
+duration-seconds = 120
+stacking = "QUEUE"
+
+[boosters.personal_mining.percentages]
+experience_block = 25
+block_drops = 25
+
+[boosters.personal_mining.cost.items]
+EMERALD = 3
+
+[boosters.server_mining]
+name = "<gold>⌛ Server Mining Rewards"
+scope = "SERVER"
+duration-seconds = 120
+stacking = "QUEUE"
+
+[boosters.server_mining.percentages]
+experience_block = 25
+block_drops = 25
+
+[boosters.server_mining.cost.items]
+DIAMOND = 3

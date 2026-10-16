@@ -1,0 +1,14 @@
+package com.volmit.bytecompanions.api.companion.animation.types;
+
+import org.jetbrains.annotations.NotNull;
+import com.volmit.bytecompanions.api.companion.animation.AnimationChannel;
+import com.volmit.bytecompanions.api.companion.animation.output.PoseOutput;
+
+public interface PoseAnimation extends Animation<PoseOutput> {
+
+    @Override
+    default @NotNull AnimationChannel channel() {
+        return AnimationChannel.POSE;
+    }
+
+}

@@ -1,0 +1,10 @@
+# Optional attribute bonuses. Uncomment a table to enable it.
+# [[companions.bee]]
+# attribute = "armor"
+# amount = 10
+# operation = "ADD_NUMBER" # ADD_NUMBER, ADD_SCALAR, MULTIPLY_SCALAR_1
+#
+# [[companions.bee]]
+# attribute = "scale"
+# amount = 1.0
+# operation = "ADD_NUMBER"

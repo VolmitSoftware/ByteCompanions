@@ -1,0 +1,102 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2021 Vaishnav Anil
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+package io.github.slimjar.util;
+
+import io.github.slimjar.exceptions.ModuleExtractorException;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.*;
+
+public final class Connections {
+    private Connections() { }
+
+    @NotNull private static final String SLIMJAR_USER_AGENT = "SlimjarApplication/* URLDependencyDownloader";
+    private static final int CONNECT_TIMEOUT_MILLIS = 10_000;
+    private static final int READ_TIMEOUT_MILLIS = 30_000;
+
+    public static @NotNull URL newURL(@NotNull final String url) throws MalformedURLException {
+        return URI.create(url).toURL();
+    }
+
+    public static @NotNull URLConnection createDownloadConnection(@NotNull final URL url) throws IOException {
+        URLConnection connection = openConnection(url);
+
+        if (!(connection instanceof HttpURLConnection httpConnection)) {
+            return connection;
+        }
+
+        try {
+            connection.addRequestProperty("User-Agent", SLIMJAR_USER_AGENT);
+            int responseCode = httpConnection.getResponseCode();
+            if (responseCode != HttpURLConnection.HTTP_OK) {
+                throw new IOException("Could not download from " + url + " (" + httpConnection.getResponseMessage() + ")");
+            }
+            return connection;
+        } catch (IOException | RuntimeException failure) {
+            httpConnection.disconnect();
+            throw failure;
+        }
+    }
+
+    public static @NotNull URLConnection openConnection(@NotNull URL url) throws IOException {
+        URLConnection connection = url.openConnection();
+        connection.setConnectTimeout(CONNECT_TIMEOUT_MILLIS);
+        connection.setReadTimeout(READ_TIMEOUT_MILLIS);
+        return connection;
+    }
+
+    public static void tryDisconnect(@NotNull final URLConnection urlConnection) {
+        if (!(urlConnection instanceof HttpURLConnection httpURLConnection)) return;
+        httpURLConnection.disconnect();
+    }
+
+    @Contract(value = "_ -> new", pure = true)
+    public static @NotNull JarURLConnection openJarConnection(@NotNull final URL url) throws ModuleExtractorException {
+        try {
+            URLConnection connection = openConnection(url);
+            return (JarURLConnection) connection;
+        } catch (final IOException err) {
+            throw new ModuleExtractorException("Failed to open a connection to url (%s).".formatted(url), err);
+        } catch (final ClassCastException err) {
+            throw new ModuleExtractorException("Provided Non-Jar URL (%s).".formatted(url), err);
+        }
+    }
+
+    @Contract(value = "_ -> new", pure = true)
+    public static @NotNull File createTempFile(@NotNull final String name) throws ModuleExtractorException {
+        try {
+            File tempFile = File.createTempFile(name, ".jar");
+            tempFile.deleteOnExit();
+            return tempFile;
+        } catch (final IOException | SecurityException err) {
+            throw new ModuleExtractorException("Failed to create temporary file", err);
+        } catch (final IllegalArgumentException err) {
+            throw new ModuleExtractorException("Module name must be at least 3 characters long", err);
+        }
+    }
+}

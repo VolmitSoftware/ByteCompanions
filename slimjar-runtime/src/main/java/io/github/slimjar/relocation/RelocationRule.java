@@ -1,0 +1,93 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2021 Vaishnav Anil
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+package io.github.slimjar.relocation;
+
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.io.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Objects;
+
+import static io.github.slimjar.util.Serialization.readList;
+import static io.github.slimjar.util.Serialization.writeList;
+
+public record RelocationRule(
+    @NotNull String originalPackagePattern,
+    @NotNull String relocatedPackagePattern,
+    @NotNull Collection<String> exclusions,
+    @NotNull Collection<String> inclusions
+) implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
+    public RelocationRule(
+        @NotNull final String original,
+        @NotNull final String relocated
+    ) {
+        this(original, relocated, Collections.emptyList(), Collections.emptyList());
+    }
+
+    @NotNull
+    @Contract(pure = true)
+    public static RelocationRule read(@NotNull final DataInput in) throws IOException {
+        return new RelocationRule(
+                in.readUTF(),
+                in.readUTF(),
+                readList(in, DataInput::readUTF),
+                readList(in, DataInput::readUTF)
+        );
+    }
+
+    public void write(@NotNull final DataOutput out) throws IOException {
+        out.writeUTF(originalPackagePattern);
+        out.writeUTF(relocatedPackagePattern);
+        writeList(exclusions, out, (pattern, o) -> o.writeUTF(pattern));
+        writeList(inclusions, out, (pattern, o) -> o.writeUTF(pattern));
+    }
+
+    @Override
+    public boolean equals(@Nullable final Object o) {
+        if (this == o) return true;
+        if (!(o instanceof RelocationRule that)) return false;
+        return originalPackagePattern.equals(that.originalPackagePattern) &&
+            relocatedPackagePattern.equals(that.relocatedPackagePattern);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(originalPackagePattern, relocatedPackagePattern);
+    }
+
+    @Override
+    public @NotNull String toString() {
+        return "RelocationRule{" +
+            "originalPackagePattern='" + originalPackagePattern + '\'' +
+            ", relocatedPackagePattern='" + relocatedPackagePattern + '\'' +
+            '}';
+    }
+}

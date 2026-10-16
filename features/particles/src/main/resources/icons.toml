@@ -1,0 +1,125 @@
+[items.angel_ring_effect]
+material = "FEATHER"
+name = "<gradient:#ffffff:#ffe9a8>👼 Angel Ring</gradient>"
+amount = 1
+lore = ["<#f2f2f2>A ring of celestial feathers", "<#f2f2f2>circling gracefully around you.</#f2f2f2>", "", "<gradient:#ffffff:#ffe9a8>★ Effect Trait</gradient>", "<#ffe9a8>Feathers orbit in a slow, calm ring.", "<#ffe9a8>A soft, angelic presence.", ""]
+custom-model-data = 0
+
+[items.aura_effect]
+material = "GLOWSTONE_DUST"
+name = "<gradient:#ffeb3b:#ff9800>✨ Aura</gradient>"
+amount = 1
+lore = ["<#fff3b0>A radiant aura shimmering", "<#fff3b0>around your presence.</#fff3b0>", "", "<gradient:#ffeb3b:#ff9800>★ Effect Trait</gradient>", "<#ffe066>Golden sparkles pulse outward", "<#ffe066>in a steady glowing shell.", ""]
+custom-model-data = 0
+
+[items.batman_effect]
+material = "BLACK_DYE"
+name = "<gradient:#616161:#1a1a1a>🦇 Batman</gradient>"
+amount = 1
+lore = ["<#bdbdbd>Wrapped in the shadows", "<#bdbdbd>of the night.</#bdbdbd>", "", "<gradient:#616161:#1a1a1a>★ Effect Trait</gradient>", "<#9e9e9e>Dark wisps trail behind you", "<#9e9e9e>like a caped silhouette.", ""]
+custom-model-data = 0
+
+[items.cloud_effect]
+material = "WHITE_WOOL"
+name = "<gradient:#ffffff:#bbdefb>☁ Cloud</gradient>"
+amount = 1
+lore = ["<#eceff1>A soft cloud that follows", "<#eceff1>you wherever you go.</#eceff1>", "", "<gradient:#ffffff:#bbdefb>★ Effect Trait</gradient>", "<#e1f5fe>Puffy and light, drifting gently", "<#e1f5fe>just above your head.", ""]
+custom-model-data = 0
+
+[items.double_helix_effect]
+material = "STRING"
+name = "<gradient:#00e5ff:#2979ff>🧬 Double Helix</gradient>"
+amount = 1
+lore = ["<#80deea>Two strands spiraling", "<#80deea>endlessly around you.</#80deea>", "", "<gradient:#00e5ff:#2979ff>★ Effect Trait</gradient>", "<#4dd0e1>Twin helixes rotate in sync,", "<#4dd0e1>weaving a DNA-like pattern.", ""]
+custom-model-data = 0
+
+[items.dragon_wing_effect]
+material = "PHANTOM_MEMBRANE"
+name = "<gradient:#ff9800:#d84315>🐉 Dragon Wing</gradient>"
+amount = 1
+lore = ["<#ffcc80>Draconic wings that", "<#ffcc80>accompany your every move.</#ffcc80>", "", "<gradient:#ff9800:#d84315>★ Effect Trait</gradient>", "<#ffab40>Wings unfurl and flap slowly,", "<#ffab40>trailing embers as you walk.", ""]
+custom-model-data = 0
+
+[items.love_particle_effect]
+material = "POPPY"
+name = "<gradient:#ff80ab:#e91e63>💕 Love</gradient>"
+amount = 1
+lore = ["<#f8bbd0>Hearts floating gently", "<#f8bbd0>around you.</#f8bbd0>", "", "<gradient:#ff80ab:#e91e63>★ Effect Trait</gradient>", "<#f48fb1>Small hearts rise and fade,", "<#f48fb1>drifting up from your side.", ""]
+custom-model-data = 0
+
+[items.magic_aura_effect]
+material = "END_ROD"
+name = "<gradient:#ce93d8:#6a1b9a>🔮 Magic Aura</gradient>"
+amount = 1
+lore = ["<#e1bee7>A magical aura wraps", "<#e1bee7>around your presence.</#e1bee7>", "", "<gradient:#ce93d8:#6a1b9a>★ Effect Trait</gradient>", "<#ba68c8>A dense violet shroud pulses", "<#ba68c8>softly with arcane energy.", ""]
+custom-model-data = 0
+
+[items.magic_effect]
+material = "BLAZE_POWDER"
+name = "<gradient:#b388ff:#7c4dff>✨ Magic</gradient>"
+amount = 1
+lore = ["<#d1c4e9>Sparks of arcane", "<#d1c4e9>magic.</#d1c4e9>", "", "<gradient:#b388ff:#7c4dff>★ Effect Trait</gradient>", "<#9575cd>Quick violet sparks flicker", "<#9575cd>and scatter around you.", ""]
+custom-model-data = 0
+
+[items.orb_effect]
+material = "SHULKER_SHELL"
+name = "<gradient:#40c4ff:#0091ea>🔵 Orb</gradient>"
+amount = 1
+lore = ["<#b3e5fc>A mysterious orb", "<#b3e5fc>floating beside you.</#b3e5fc>", "", "<gradient:#40c4ff:#0091ea>★ Effect Trait</gradient>", "<#4fc3f7>A single orb hovers calmly,", "<#4fc3f7>bobbing gently in place.", ""]
+custom-model-data = 0
+
+[items.pendulum_effect]
+material = "CHAIN_COMMAND_BLOCK"
+name = "<gradient:#cfd8dc:#78909c>⏱ Pendulum</gradient>"
+amount = 1
+lore = ["<#eceff1>Swings back and forth", "<#eceff1>without ever stopping.</#eceff1>", "", "<gradient:#cfd8dc:#78909c>★ Effect Trait</gradient>", "<#b0bec5>A steady back-and-forth swing,", "<#b0bec5>like a metronome in motion.", ""]
+custom-model-data = 0
+
+[items.pulse_effect]
+material = "REDSTONE"
+name = "<gradient:#ff5252:#b71c1c>💓 Pulse</gradient>"
+amount = 1
+lore = ["<#ffcdd2>A rhythmic pulse", "<#ffcdd2>of energy.</#ffcdd2>", "", "<gradient:#ff5252:#b71c1c>★ Effect Trait</gradient>", "<#ef9a9a>Bursts of red energy expand", "<#ef9a9a>and contract in rhythm.", ""]
+custom-model-data = 0
+
+[items.rainbow_effect]
+material = "NETHER_STAR"
+name = "<gradient:#ff0000:#ff9800:#ffeb3b:#4caf50:#2196f3:#9c27b0>🌈 Rainbow</gradient>"
+amount = 1
+lore = ["<#f5f5f5>Every color of the", "<#f5f5f5>rainbow at once.</#f5f5f5>", "", "<gradient:#ff0000:#ff9800:#ffeb3b:#4caf50:#2196f3:#9c27b0>★ Effect Trait</gradient>", "<#e0e0e0>A full spectrum cycles smoothly", "<#e0e0e0>through every hue.", ""]
+custom-model-data = 0
+
+[items.rainbow_umbrella_effect]
+material = "RED_DYE"
+name = "<gradient:#ff5252:#ff9800:#ffeb3b>☂ Rainbow Umbrella</gradient>"
+amount = 1
+lore = ["<#ffe0b2>A colorful umbrella", "<#ffe0b2>shielding you in style.</#ffe0b2>", "", "<gradient:#ff5252:#ff9800:#ffeb3b>★ Effect Trait</gradient>", "<#ffcc80>An open umbrella shifts through", "<#ffcc80>warm colors as it spins.", ""]
+custom-model-data = 0
+
+[items.rotating_ring_effect]
+material = "GOLD_NUGGET"
+name = "<gradient:#ffd54f:#ff8f00>💍 Rotating Ring</gradient>"
+amount = 1
+lore = ["<#ffecb3>A golden ring in", "<#ffecb3>constant rotation.</#ffecb3>", "", "<gradient:#ffd54f:#ff8f00>★ Effect Trait</gradient>", "<#ffca28>A gilded ring spins evenly", "<#ffca28>around your body.", ""]
+custom-model-data = 0
+
+[items.scanner_effect]
+material = "SPYGLASS"
+name = "<gradient:#18ffff:#00acc1>🔍 Scanner</gradient>"
+amount = 1
+lore = ["<#b2ebf2>A beam that scans", "<#b2ebf2>the area around you.</#b2ebf2>", "", "<gradient:#18ffff:#00acc1>★ Effect Trait</gradient>", "<#4dd0e1>A cyan beam sweeps outward,", "<#4dd0e1>scanning your surroundings.", ""]
+custom-model-data = 0
+
+[items.umbrella_effect]
+material = "RED_DYE"
+name = "<gradient:#ff5252:#c62828>☂ Umbrella</gradient>"
+amount = 1
+lore = ["<#ffcdd2>An umbrella that", "<#ffcdd2>protects you in style.</#ffcdd2>", "", "<gradient:#ff5252:#c62828>★ Effect Trait</gradient>", "<#ef9a9a>A sturdy red umbrella hovers", "<#ef9a9a>steadily above you.", ""]
+custom-model-data = 0
+
+[items.music_effect]
+material = "NOTE_BLOCK"
+name = "<gradient:#42a5f5:#ab47bc>🎵 Music</gradient>"
+amount = 1
+lore = ["<#bbdefb>Musical notes dancing", "<#bbdefb>around your companion.</#bbdefb>", "", "<gradient:#42a5f5:#ab47bc>★ Effect Trait</gradient>", "<#90caf9>Colorful notes float upward", "<#90caf9>in a lively melody.", ""]
+custom-model-data = 0

@@ -1,0 +1,65 @@
+model = "FULL_BODY"
+exclusive = false
+
+[display]
+category = "miniatures"
+
+[display.item]
+material = "CUT_COPPER"
+name = "<gradient:#EAA16C:#78B9A1>⚒ Copper Tinker</gradient>"
+lore = ["<#E8D6C6>A copper-headed miniature with a pickaxe.", "<#E8D6C6>Hovers behind you in a tidy formation.", "", "<#78B9A1>Vanilla equipment • No resource pack"]
+
+[appearance]
+small = true
+visible = true
+show-arms = true
+show-base-plate = false
+marker = false
+custom-name = "<#EAA16C>Copper Tinker"
+custom-name-visible = false
+scale = 0.85
+
+[equipment.HEAD]
+material = "CUT_COPPER"
+
+[equipment.CHEST]
+material = "LEATHER_CHESTPLATE"
+rgb-color = "155,91,58"
+
+[equipment.LEGS]
+material = "LEATHER_LEGGINGS"
+rgb-color = "77,113,94"
+
+[equipment.FEET]
+material = "IRON_BOOTS"
+
+[equipment.HAND]
+material = "IRON_PICKAXE"
+
+[equipment.OFF_HAND]
+material = "COPPER_INGOT"
+
+[[animations.movement]]
+id = "follow_formation"
+base-interpolation = 0.15
+
+[animations.movement.formation]
+type = "grid"
+
+[animations.movement.formation.grid]
+spacing = 1.5
+columns = 3
+
+[[animations.movement]]
+id = "hover"
+height = 0.12
+speed = 0.06
+interpolation = 0.25
+
+[[animations.pose]]
+id = "walk_swing_pro"
+base-swing-amplitude = 18.0
+speed-swing-boost = 6.0
+
+[[animations.rotation]]
+id = "look_at_owner_pro"

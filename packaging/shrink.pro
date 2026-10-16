@@ -1,0 +1,26 @@
+-keep public class com.volmit.bytecompanions.api.** { public protected *; }
+-keep public interface com.volmit.bytecompanions.api.** { *; }
+-keep public class com.volmit.bytecompanions.spi.** { public protected *; }
+-keep public interface com.volmit.bytecompanions.spi.** { *; }
+-keep @com.volmit.bytecompanions.libs.configurate.objectmapping.ConfigSerializable class * { *; }
+-keepclassmembers class * { @com.volmit.bytecompanions.libs.configurate.objectmapping.meta.Setting <fields>; }
+-keep class com.volmit.bytecompanions.platform.paper.integration.placeholderapi.CompanionPlaceholderExpansion { *; }
+-keep class com.volmit.bytecompanions.libs.volmlib.util.bukkit.papi.** { *; }
+-keep class com.volmit.bytecompanions.platform.paper.metrics.Metrics { *; }
+-keep class com.volmit.bytecompanions.platform.paper.metrics.Metrics$* { *; }
+-keep class com.volmit.bytecompanions.platform.paper.progression.ProgressionService$PlayerState { *; }
+-keep class com.volmit.bytecompanions.platform.paper.progression.ProgressionService$Progress { *; }
+-keep class com.volmit.bytecompanions.platform.paper.progression.ProgressionService$Booster { *; }
+-keep class com.volmit.bytecompanions.platform.paper.progression.ProgressionService$GlobalState { *; }
+-keep class com.volmit.bytecompanions.platform.paper.progression.ProgressionService$PurchaseJournal { *; }
+-keep class com.volmit.bytecompanions.platform.paper.progression.ProgressionDefinitions$Cost { *; }
+-keep class com.volmit.bytecompanions.platform.paper.collection.CollectionProfile { *; }
+-keep class com.volmit.bytecompanions.platform.paper.collection.CompanionStyle { *; }
+-keep class com.volmit.bytecompanions.platform.paper.collection.Outfit { *; }
+-keep class com.volmit.bytecompanions.libs.volmlib.integration.ReloadAware { *; }
+-keep class com.volmit.bytecompanions.libs.volmlib.integration.ReloadAware$PreUnloadReason { *; }
+-keep class com.volmit.bytecompanions.libs.volmlib.integration.ReloadPreparation { *; }
+-keep class com.volmit.bytecompanions.libs.volmlib.integration.** { *; }
+-keep class * implements com.volmit.bytecompanions.libs.volmlib.integration.IntegrationServiceContract { *; }
+-keep class com.volmit.bytecompanions.platform.paper.configuration.Configuration { *; }
+-keep class com.volmit.bytecompanions.platform.paper.configuration.Configuration$* { *; }

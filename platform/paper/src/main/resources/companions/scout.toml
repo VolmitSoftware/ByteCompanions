@@ -1,0 +1,67 @@
+model = "FULL_BODY"
+exclusive = false
+
+[display]
+category = "miniatures"
+
+[display.item]
+material = "SPYGLASS"
+name = "<gradient:#BDD694:#8DB6A0>⌖ Trail Scout</gradient>"
+lore = ["<#DFE8D1>A green-clad miniature with a spyglass.", "<#DFE8D1>Floats behind you with a map in hand.", "", "<#BDD694>Vanilla equipment • No resource pack"]
+
+[appearance]
+small = true
+visible = true
+show-arms = true
+show-base-plate = false
+marker = false
+custom-name = "<#BDD694>Trail Scout"
+custom-name-visible = false
+scale = 0.8
+
+[equipment.HEAD]
+material = "LEATHER_HELMET"
+rgb-color = "87,114,64"
+
+[equipment.CHEST]
+material = "LEATHER_CHESTPLATE"
+rgb-color = "67,103,70"
+
+[equipment.LEGS]
+material = "LEATHER_LEGGINGS"
+rgb-color = "114,91,59"
+
+[equipment.FEET]
+material = "LEATHER_BOOTS"
+rgb-color = "68,52,40"
+
+[equipment.HAND]
+material = "SPYGLASS"
+
+[equipment.OFF_HAND]
+material = "MAP"
+
+[[animations.movement]]
+id = "follow_formation"
+base-interpolation = 0.16
+
+[animations.movement.formation]
+type = "grid"
+
+[animations.movement.formation.grid]
+spacing = 1.5
+columns = 3
+
+[[animations.movement]]
+id = "hover"
+height = 0.15
+speed = 0.07
+interpolation = 0.25
+
+[[animations.pose]]
+id = "walk_swing_pro"
+base-swing-amplitude = 20.0
+speed-swing-boost = 6.0
+
+[[animations.rotation]]
+id = "look_at_owner_pro"

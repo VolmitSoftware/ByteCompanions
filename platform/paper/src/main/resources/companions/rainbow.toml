@@ -1,0 +1,145 @@
+model = "FULL_BODY"
+exclusive = false
+
+[display]
+category = "miniatures"
+
+[display.item]
+material = "LEATHER_CHESTPLATE"
+name = "<rainbow>🌈 Color Runner</rainbow>"
+lore = ["<#E5E5E5>A floating miniature in color-changing armor.", "<#E5E5E5>Its outfit cycles through six colors.", "", "<#B8E0ED>Vanilla armor dyes • No resource pack"]
+
+[appearance]
+small = true
+visible = true
+show-arms = true
+show-base-plate = false
+marker = false
+custom-name = "<rainbow>Color Runner</rainbow>"
+custom-name-visible = false
+scale = 0.8
+
+[equipment.HEAD]
+material = "LEATHER_HELMET"
+rgb-color = "230,90,90"
+
+[equipment.HEAD.cycle]
+interval-ticks = 20
+
+[[equipment.HEAD.cycle.frames]]
+rgb-color = "230,90,90"
+
+[[equipment.HEAD.cycle.frames]]
+rgb-color = "235,156,72"
+
+[[equipment.HEAD.cycle.frames]]
+rgb-color = "230,210,90"
+
+[[equipment.HEAD.cycle.frames]]
+rgb-color = "91,183,122"
+
+[[equipment.HEAD.cycle.frames]]
+rgb-color = "90,147,216"
+
+[[equipment.HEAD.cycle.frames]]
+rgb-color = "174,111,205"
+
+[equipment.CHEST]
+material = "LEATHER_CHESTPLATE"
+rgb-color = "235,156,72"
+
+[equipment.CHEST.cycle]
+interval-ticks = 20
+
+[[equipment.CHEST.cycle.frames]]
+rgb-color = "235,156,72"
+
+[[equipment.CHEST.cycle.frames]]
+rgb-color = "230,210,90"
+
+[[equipment.CHEST.cycle.frames]]
+rgb-color = "91,183,122"
+
+[[equipment.CHEST.cycle.frames]]
+rgb-color = "90,147,216"
+
+[[equipment.CHEST.cycle.frames]]
+rgb-color = "174,111,205"
+
+[[equipment.CHEST.cycle.frames]]
+rgb-color = "230,90,90"
+
+[equipment.LEGS]
+material = "LEATHER_LEGGINGS"
+rgb-color = "91,183,122"
+
+[equipment.LEGS.cycle]
+interval-ticks = 20
+
+[[equipment.LEGS.cycle.frames]]
+rgb-color = "91,183,122"
+
+[[equipment.LEGS.cycle.frames]]
+rgb-color = "90,147,216"
+
+[[equipment.LEGS.cycle.frames]]
+rgb-color = "174,111,205"
+
+[[equipment.LEGS.cycle.frames]]
+rgb-color = "230,90,90"
+
+[[equipment.LEGS.cycle.frames]]
+rgb-color = "235,156,72"
+
+[[equipment.LEGS.cycle.frames]]
+rgb-color = "230,210,90"
+
+[equipment.FEET]
+material = "LEATHER_BOOTS"
+rgb-color = "90,147,216"
+
+[equipment.FEET.cycle]
+interval-ticks = 20
+
+[[equipment.FEET.cycle.frames]]
+rgb-color = "90,147,216"
+
+[[equipment.FEET.cycle.frames]]
+rgb-color = "174,111,205"
+
+[[equipment.FEET.cycle.frames]]
+rgb-color = "230,90,90"
+
+[[equipment.FEET.cycle.frames]]
+rgb-color = "235,156,72"
+
+[[equipment.FEET.cycle.frames]]
+rgb-color = "230,210,90"
+
+[[equipment.FEET.cycle.frames]]
+rgb-color = "91,183,122"
+
+[[animations.movement]]
+id = "follow_formation"
+base-interpolation = 0.15
+
+[animations.movement.formation]
+type = "grid"
+
+[animations.movement.formation.grid]
+spacing = 1.5
+columns = 3
+
+[[animations.movement]]
+id = "hover"
+height = 0.25
+speed = 0.08
+interpolation = 0.25
+
+[[animations.pose]]
+id = "walk_swing_pro"
+base-swing-amplitude = 22.0
+speed-swing-boost = 6.0
+
+[[animations.rotation]]
+id = "look_at_owner_pro"

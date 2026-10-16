@@ -1,0 +1,13 @@
+name: Vault
+version: 0.0.0-QA
+description: Isolated ByteCompanions QA economy fixture; not a Vault distribution
+main: com.volmit.bytecompanions.qa.QaVaultPlugin
+api-version: '26.1'
+folia-supported: true
+load: STARTUP
+commands:
+  bcqaeconomy:
+    permission: bytecompanions.qa.economy
+permissions:
+  bytecompanions.qa.economy:
+    default: op

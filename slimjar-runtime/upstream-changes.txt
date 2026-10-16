@@ -1,0 +1,8 @@
+io/github/slimjar/util/Connections.java
+io/github/slimjar/resolver/pinger/HttpURLPinger.java
+io/github/slimjar/resolver/reader/dependency/URLDependencyDataProvider.java
+io/github/slimjar/resolver/reader/resolution/WrappingPreResolutionDataProvider.java
+io/github/slimjar/downloader/URLDependencyDownloader.java
+io/github/slimjar/downloader/verify/ChecksumDependencyVerifier.java
+io/github/slimjar/downloader/output/ChanneledFileOutputWriter.java
+io/github/slimjar/exceptions/SlimJarException.java

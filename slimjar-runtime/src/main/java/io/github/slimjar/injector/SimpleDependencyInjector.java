@@ -1,0 +1,80 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2021 Vaishnav Anil
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+package io.github.slimjar.injector;
+
+import io.github.slimjar.exceptions.InjectorException;
+import io.github.slimjar.injector.helper.DownloadHelper;
+import io.github.slimjar.injector.helper.DownloadHelperFactory;
+import io.github.slimjar.injector.loader.Injectable;
+import io.github.slimjar.logging.LogDispatcher;
+import io.github.slimjar.logging.ProcessLogger;
+import io.github.slimjar.resolver.ResolutionResult;
+import io.github.slimjar.resolver.data.Dependency;
+import io.github.slimjar.resolver.data.DependencyData;
+import org.jetbrains.annotations.NotNull;
+
+import java.io.File;
+import java.net.MalformedURLException;
+import java.util.Collection;
+import java.util.Map;
+import java.util.function.Consumer;
+
+public final class SimpleDependencyInjector implements DependencyInjector {
+    private static final ProcessLogger LOGGER = LogDispatcher.getMediatingLogger();
+    private final DownloadHelperFactory downloadHelperFactory;
+
+    public SimpleDependencyInjector(final DownloadHelperFactory downloadHelperFactory) {
+        this.downloadHelperFactory = downloadHelperFactory;
+    }
+
+    @Override
+    public void inject(
+        @NotNull final Injectable injectable,
+        @NotNull final DependencyData data,
+        @NotNull final Map<String, ResolutionResult> preResolvedResults
+    ) {
+        final var helper = downloadHelperFactory.create(data, preResolvedResults);
+        injectDependencies(injectable, helper, data.dependencies());
+    }
+
+    // TODO -> Download dependencies in parallel then check the checksums after instead of during the download
+    private void injectDependencies(
+        @NotNull final Injectable injectable,
+        @NotNull final DownloadHelper downloadHelper,
+        @NotNull final Collection<Dependency> dependencies
+    ) throws InjectorException {
+        Consumer<File> action = file -> {
+            try {
+                injectable.inject(file.toURI().toURL());
+                LOGGER.info("Loaded library %s", file.toPath().normalize());
+            } catch (final MalformedURLException err) { /* Should never happen */ }
+        };
+
+        var stream = downloadHelper.fetch(dependencies);
+        if (injectable.isThreadSafe()) stream.forEach(action);
+        else stream.toList().forEach(action);
+    }
+
+}

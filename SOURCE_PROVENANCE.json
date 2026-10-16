@@ -1,0 +1,88 @@
+{
+  "recordedOn": "2026-10-08",
+  "algorithm": "SHA-256",
+  "sourceSetDigest": {
+    "include": [
+      "**/*.java",
+      "**/*.yml",
+      "**/*.yaml"
+    ],
+    "excludeDirectories": [
+      "build",
+      ".gradle",
+      ".git",
+      ".codegraph",
+      "test-addon",
+      "test-extension"
+    ],
+    "encoding": "UTF-8 without BOM",
+    "recordFormat": "relative/path<TAB>lowercase-file-sha256<LF>",
+    "ordering": "Ordinal sort of records; forward-slash paths; trailing LF",
+    "scope": "Extracted acquisition reference files before consolidation, not the modified merged sources"
+  },
+  "components": [
+    {
+      "archive": "byte-companions.zip",
+      "archiveBytes": 398803,
+      "archiveSha256": "b48cb58c57775c7a6ac3841d0970cce41b48a47b5c78d17f795ecf7d5fd398df",
+      "extractedRoot": "byte-companions",
+      "sourceFileCount": 242,
+      "sourceSetSha256": "4dccea348ad87817940122e984277a858718b2c237005fb79357dfd9544926ce",
+      "gitMetadataPresent": false
+    },
+    {
+      "archive": "byte-companions-animations.zip",
+      "archiveBytes": 13208,
+      "archiveSha256": "d0e6f5edfaf52d53ee64241d344304a151a059f57616993bea4ec3a5a402e720",
+      "extractedRoot": "byte-companions-animations",
+      "sourceFileCount": 6,
+      "sourceSetSha256": "450d50976ad9416b88bb4db7066f05c46e74cb9436433a7e4379fed30a9ff2cc",
+      "gitMetadataPresent": false
+    },
+    {
+      "archive": "byte-companions-attributes-main.zip",
+      "archiveBytes": 72563,
+      "archiveSha256": "b9ac72d171d888021ea9771baceec0d564d7753ebd09e4d6b57c20928b51e435",
+      "extractedRoot": "byte-companions-attributes-main/byte-companions-attributes-main",
+      "sourceFileCount": 6,
+      "sourceSetSha256": "5b8dbaf513820da1dec1bc188b56e669186352e7ecf3f5994bbf7c4ba6d642a4",
+      "gitMetadataPresent": false
+    },
+    {
+      "archive": "byte-companions-buffs-main.zip",
+      "archiveBytes": 82397,
+      "archiveSha256": "e1f85bbb52276ca3be7b59caf55fdc7b99f34c7bba021054eb6698093db5e511",
+      "extractedRoot": "byte-companions-buffs-main/byte-companions-buffs-main",
+      "sourceFileCount": 31,
+      "sourceSetSha256": "5bfe84b1d37f31b3edaeba9271981cc05d3ae419d844e8e716e26bd18153e47c",
+      "gitMetadataPresent": false
+    },
+    {
+      "archive": "byte-companions-decorations.zip",
+      "archiveBytes": 358773,
+      "archiveSha256": "1ca17970199e058b099d61cbc66305b61ea4ddc2cdc3ba409a8eb5e5a95e89d0",
+      "extractedRoot": "byte-companions-decorations",
+      "sourceFileCount": 7,
+      "sourceSetSha256": "5e6ce20af474f5a14b616e42ef1d29967a3607b9bc312258920a1d118999b23d",
+      "gitMetadataPresent": false
+    },
+    {
+      "archive": "byte-companions-effects-main.zip",
+      "archiveBytes": 14734,
+      "archiveSha256": "7a520a6a47c953eb11e33312c4cedf8a92004050f086059eaa03494a628b0a7e",
+      "extractedRoot": "byte-companions-effects-main/byte-companions-effects-main",
+      "sourceFileCount": 8,
+      "sourceSetSha256": "51b5a2f3c7a1c9493ce7cf0a0325f0c1df13e386b2b0ef36df2df4dae67ab3d9",
+      "gitMetadataPresent": false
+    },
+    {
+      "archive": "byte-companions-particles.zip",
+      "archiveBytes": 154756,
+      "archiveSha256": "d7cd6cb470864ffd36904a68bb03ec0dbea6f4b8d28b2a90ba72c0628d419ec7",
+      "extractedRoot": "byte-companions-particles",
+      "sourceFileCount": 92,
+      "sourceSetSha256": "21a8c03d341d47f1179f94125b4fb23194cb1d74ccdb5bee71a24cfdb323d110",
+      "gitMetadataPresent": false
+    }
+  ]
+}

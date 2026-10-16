@@ -1,0 +1,66 @@
+model = "FULL_BODY"
+exclusive = false
+
+[display]
+category = "miniatures"
+
+[display.item]
+type = "skull"
+source = "player"
+value = "{player}"
+name = "<gradient:#8DDBEA:#71A7E3>👤 Mini Me</gradient>"
+lore = ["<#D1E8F5>A floating miniature wearing your head.", "<#D1E8F5>Blue travel clothes and a small compass.", "", "<#8DDBEA>Your player skin • No resource pack"]
+
+[appearance]
+small = true
+visible = true
+show-arms = true
+show-base-plate = false
+marker = false
+custom-name = "<#8DDBEA>{player}'s Mini Me"
+custom-name-visible = false
+scale = 0.8
+
+[equipment.HEAD]
+material = "PLAYER_HEAD"
+texture = "owner_head"
+
+[equipment.CHEST]
+material = "LEATHER_CHESTPLATE"
+rgb-color = "58,124,157"
+
+[equipment.LEGS]
+material = "LEATHER_LEGGINGS"
+rgb-color = "49,68,94"
+
+[equipment.FEET]
+material = "LEATHER_BOOTS"
+rgb-color = "86,66,49"
+
+[equipment.HAND]
+material = "COMPASS"
+
+[[animations.movement]]
+id = "follow_formation"
+base-interpolation = 0.15
+
+[animations.movement.formation]
+type = "grid"
+
+[animations.movement.formation.grid]
+spacing = 1.5
+columns = 3
+
+[[animations.movement]]
+id = "hover"
+height = 0.15
+speed = 0.06
+interpolation = 0.25
+
+[[animations.pose]]
+id = "walk_swing_pro"
+base-swing-amplitude = 20.0
+speed-swing-boost = 6.0
+
+[[animations.rotation]]
+id = "look_at_owner_pro"

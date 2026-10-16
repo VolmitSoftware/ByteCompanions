@@ -1,0 +1,98 @@
+name: ${name}
+version: ${version}
+main: ${main}
+api-version: '${apiVersion}'
+folia-supported: true
+load: POSTWORLD
+authors:
+  - VolmitSoftware
+  - Arcane Arts
+  - SwiftSwamp
+  - NextdoorPsycho
+website: https://volmitsoftware.com
+description: Animated companions with animations, attributes, buffs, decorations, effects, and particles.
+softdepend: [Nexo, ItemsAdder, PlaceholderAPI, Vault, WorldGuard, WorldEdit]
+commands:
+  bytecompanions:
+    aliases: [companions, bc]
+    description: ByteCompanions help and administration
+    usage: /bytecompanions
+permissions:
+  bytecompanions.command:
+    description: Allows viewing ByteCompanions help and status
+    default: true
+  bytecompanions.config:
+    description: Allows editing ByteCompanions configuration in game
+    default: op
+  bytecompanions.language.self:
+    description: Allows choosing a personal ByteCompanions language
+    default: true
+  bytecompanions.debug:
+    description: Allows creating and optionally uploading ByteCompanions diagnostic reports
+    default: op
+  bytecompanions.update:
+    description: Includes ByteCompanions in shared update notices and permits its update report
+    default: op
+  bytecompanions.command.menu:
+    description: Allows opening the companion collection and dashboards
+    default: true
+  bytecompanions.command.spawn:
+    description: Allows equipping companions the player has access to
+    default: true
+  bytecompanions.command.despawn:
+    description: Allows removing equipped companions
+    default: true
+  bytecompanions.command.settings:
+    description: Allows choosing which companions and particles the player sees
+    default: true
+  bytecompanions.command.outfits:
+    description: Allows saving and wearing personal companion outfits
+    default: true
+  bytecompanions.command.personalize:
+    description: Allows setting personal companion names and approved cosmetic options
+    default: true
+  bytecompanions.command.interact:
+    description: Allows asking equipped companions to sit, stay, follow, or wave
+    default: true
+  bytecompanions.command.trial:
+    description: Allows privately previewing companions without equipping them
+    default: true
+  bytecompanions.command.particles.menu:
+    description: Allows opening the particle selection menu
+    default: true
+  bytecompanions.command.particles.equip:
+    description: Allows equipping particle effects the player has access to
+    default: true
+  bytecompanions.command.particles.unequip:
+    description: Allows removing equipped particle effects
+    default: true
+  bytecompanions.command.upgrades:
+    description: Allows browsing and buying companion upgrades
+    default: true
+  bytecompanions.command.boosts:
+    description: Allows browsing personal boosters
+    default: true
+  bytecompanions.command.booster.start:
+    description: Allows starting an owned booster activation
+    default: true
+  bytecompanions.command.booster.cancel:
+    description: Allows cancelling an owned booster activation
+    default: true
+  bytecompanions.command.edit:
+    description: Allows editing companion definitions and private previews
+    default: op
+  bytecompanions.command.setup:
+    description: Allows installing missing starter companions and applying a server profile
+    default: op
+  bytecompanions.command.progression.give:
+    description: Allows granting companion XP to a player
+    default: op
+  bytecompanions.command.booster.give:
+    description: Allows granting booster credits to a player
+    default: op
+  bytecompanions.command.transactions.list:
+    description: Allows listing unresolved purchases
+    default: op
+  bytecompanions.command.transactions.resolve:
+    description: Allows reconciling unresolved purchases
+    default: op

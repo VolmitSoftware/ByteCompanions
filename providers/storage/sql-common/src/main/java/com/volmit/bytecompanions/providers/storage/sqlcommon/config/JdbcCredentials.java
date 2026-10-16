@@ -1,0 +1,55 @@
+package com.volmit.bytecompanions.providers.storage.sqlcommon.config;
+
+/**
+ * Represents immutable database credentials and connection metadata
+ * for any SQL storage adapter (MySQL, MariaDB, PostgreSQL, etc.).
+ */
+public final class JdbcCredentials {
+
+    private final String hostname;
+    private final int port;
+    private final String database;
+    private final String username;
+    private final String password;
+    private final boolean useSSL;
+
+    public JdbcCredentials(
+            String hostname,
+            int port,
+            String database,
+            String username,
+            String password,
+            boolean useSSL
+    ) {
+        this.hostname = hostname;
+        this.port = port;
+        this.database = database;
+        this.username = username;
+        this.password = password;
+        this.useSSL = useSSL;
+    }
+
+    public String hostname() {
+        return hostname;
+    }
+
+    public int port() {
+        return port;
+    }
+
+    public String database() {
+        return database;
+    }
+
+    public String username() {
+        return username;
+    }
+
+    public String password() {
+        return password;
+    }
+
+    public boolean useSSL() {
+        return this.useSSL;
+    }
+}
