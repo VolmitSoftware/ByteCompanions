@@ -26,7 +26,7 @@ public final class SplashScreen {
     public static void print(Plugin plugin, boolean alternatesEnabled) {
         try {
             String splash = render(SplashArt.pick(ThreadLocalRandom.current(), alternatesEnabled),
-                    details(plugin.getDescription().getVersion(), SplashScreenSupport.serverVersionWithoutMcSuffix(),
+                    details(plugin.getDescription().getVersion(), SplashScreenSupport.serverVersionWithoutMcSuffix(plugin.getServer().getVersion()),
                             Integer.toString(SplashScreenSupport.javaMajorVersion()), SplashScreenSupport.startupDate()));
             ComponentLog.logLegacy(plugin, plugin.getLogger(), "", Level.INFO, splash, null);
         } catch (RuntimeException exception) {

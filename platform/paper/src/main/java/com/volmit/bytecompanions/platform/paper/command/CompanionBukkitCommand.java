@@ -254,8 +254,6 @@ public final class CompanionBukkitCommand implements CommandExecutor, TabComplet
                 .filter(node -> !node.getDescriptor().isHidden())
                 .filter(node -> visible.contains(node.getDescriptor().getName()))
                 .sorted(Comparator.comparing(node -> node.getDescriptor().getName())).toList();
-        int pageSize = DirectorMiniMenu.MAX_ENTRIES_PER_PAGE;
-        int totalPages = Math.max(1, (entries.size() + pageSize - 1) / pageSize);
         int requested = 0;
         if (arguments.length > 1 || arguments.length == 1 && arguments[0].contains("=")) {
             try {
@@ -264,9 +262,8 @@ public final class CompanionBukkitCommand implements CommandExecutor, TabComplet
                 requested = 0;
             }
         }
-        int page = Math.max(0, Math.min(requested, totalPages - 1));
-        DirectorMiniMenu.DirectorHelpPage helpPage = new DirectorMiniMenu.DirectorHelpPage(director.getRoot(),
-                entries.subList(Math.min(page * pageSize, entries.size()), Math.min((page + 1) * pageSize, entries.size())), page, totalPages);
+        DirectorMiniMenu.DirectorHelpPage helpPage = new DirectorMiniMenu.DirectorHelpPage(director.getRoot(), entries,
+                requested, DirectorMiniMenu.MAX_ENTRIES_PER_PAGE);
         if (sender instanceof Player) {
             DirectorMiniMenu.deliver(sender, helpPage, ChatMenuStyle.theme(), paperPlugin.languageService().directorResolver());
         } else {
