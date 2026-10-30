@@ -42,7 +42,6 @@ public final class CompanionMessages {
                 .addAll(BukkitDebugMessages.keys())
                 .addAll(BukkitConfigMessages.keys())
                 .addAll(BukkitConfigMessages.configuredLayoutKeys());
-        builder.addAll(com.volmit.bytecompanions.platform.paper.configuration.ConfigEditorLayout.keys());
         try {
             TomlLanguageParser.parseText(resource("en_US.toml")).forEach((id, value) -> builder.add(TextKey.of(id, value)));
         } catch (IOException exception) {

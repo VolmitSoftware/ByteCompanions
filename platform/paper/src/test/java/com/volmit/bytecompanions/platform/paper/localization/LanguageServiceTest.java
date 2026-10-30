@@ -89,9 +89,7 @@ class LanguageServiceTest {
                     assertTrue(source.startsWith("# ByteCompanions \u2014 " + locale + "\n"), locale);
                     assertTrue(source.contains("plugins/ByteCompanions/languages/" + locale + ".toml"), locale);
                     Map<String, String> translated = new HashMap<>(TomlLanguageParser.parseText(source));
-                    java.util.Set<String> fileBacked = new java.util.HashSet<>(CompanionMessages.catalog().ids());
-                    com.volmit.bytecompanions.platform.paper.configuration.ConfigEditorLayout.keys().forEach(key -> fileBacked.remove(key.id()));
-                    assertEquals(fileBacked, translated.keySet(), locale);
+                    assertEquals(CompanionMessages.catalog().ids(), translated.keySet(), locale);
                     translated.forEach((key, value) -> assertEquals(CompanionMessages.catalog().require(key).placeholders(),
                             new TextValue(value).placeholders(), locale + ": " + key));
                 }

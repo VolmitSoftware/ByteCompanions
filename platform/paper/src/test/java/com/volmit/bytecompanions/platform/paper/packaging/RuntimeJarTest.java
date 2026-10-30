@@ -477,7 +477,7 @@ final class RuntimeJarTest {
         assertEquals(String.join(",", nonEnglish.stream().map(Object::toString).toList()), manifest.getProperty("locales"));
         assertFalse(manifest.getProperty("revision").isBlank());
         Map<?, ?> english = parseLanguage(resource("languages/en_US.toml"));
-        assertEquals(427, english.size());
+        assertEquals(560, english.size());
     }
 
     private static Map<?, ?> parseLanguage(String source) throws Exception {
