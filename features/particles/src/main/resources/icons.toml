@@ -123,3 +123,115 @@ name = "<gradient:#42a5f5:#ab47bc>🎵 Music</gradient>"
 amount = 1
 lore = ["<#bbdefb>Musical notes dancing", "<#bbdefb>around your companion.</#bbdefb>", "", "<gradient:#42a5f5:#ab47bc>★ Effect Trait</gradient>", "<#90caf9>Colorful notes float upward", "<#90caf9>in a lively melody.", ""]
 custom-model-data = 0
+
+[items.halo_sparks_effect]
+material = "END_ROD"
+name = "<gradient:#fff8e1:#ffd54f>✦ Halo Sparks</gradient>"
+amount = 1
+lore = ["<#fff8e1>A tilted ring of bright sparks", "<#fff8e1>turning slowly above your head.</#fff8e1>", "", "<gradient:#fff8e1:#ffd54f>★ Effect Trait</gradient>", "<#ffe082>Eight end rod sparks orbit", "<#ffe082>on a gently tilted halo.", ""]
+custom-model-data = 0
+
+[items.ember_trail_effect]
+material = "BLAZE_POWDER"
+name = "<gradient:#ff7043:#ffab40>🔥 Ember Trail</gradient>"
+amount = 1
+lore = ["<#ffccbc>Flames and glowing embers", "<#ffccbc>rising from your footsteps.</#ffccbc>", "", "<gradient:#ff7043:#ffab40>★ Effect Trait</gradient>", "<#ffab91>Small flames flicker low and", "<#ffab91>orange embers drift upward.", ""]
+custom-model-data = 0
+
+[items.snowfall_effect]
+material = "SNOWBALL"
+name = "<gradient:#e3f2fd:#90caf9>❄ Snowfall</gradient>"
+amount = 1
+lore = ["<#e3f2fd>A private flurry drifting", "<#e3f2fd>down around you.</#e3f2fd>", "", "<gradient:#e3f2fd:#90caf9>★ Effect Trait</gradient>", "<#bbdefb>Snowflakes fall from a soft", "<#bbdefb>cloud just above your head.", ""]
+custom-model-data = 0
+
+[items.cherry_blossom_effect]
+material = "PINK_PETALS"
+name = "<gradient:#f8bbd0:#f06292>🌸 Cherry Blossom</gradient>"
+amount = 1
+lore = ["<#fce4ec>Petals tumbling gently", "<#fce4ec>through the air beside you.</#fce4ec>", "", "<gradient:#f8bbd0:#f06292>★ Effect Trait</gradient>", "<#f8bbd0>Pink cherry petals drift", "<#f8bbd0>down in a slow shower.", ""]
+custom-model-data = 0
+
+[items.lightning_crackle_effect]
+material = "LIGHTNING_ROD"
+name = "<gradient:#e1f5fe:#4fc3f7>⚡ Lightning Crackle</gradient>"
+amount = 1
+lore = ["<#e1f5fe>Static bursts snapping", "<#e1f5fe>around your companion.</#e1f5fe>", "", "<gradient:#e1f5fe:#4fc3f7>★ Effect Trait</gradient>", "<#b3e5fc>Electric sparks crackle at", "<#b3e5fc>a new point every few ticks.", ""]
+custom-model-data = 0
+
+[items.soul_flame_spiral_effect]
+material = "SOUL_TORCH"
+name = "<gradient:#80deea:#26c6da>🌀 Soul Spiral</gradient>"
+amount = 1
+lore = ["<#e0f7fa>Two soul flames climbing", "<#e0f7fa>in a steady spiral.</#e0f7fa>", "", "<gradient:#80deea:#26c6da>★ Effect Trait</gradient>", "<#b2ebf2>Blue flames rise, fade,", "<#b2ebf2>and start over from the ground.", ""]
+custom-model-data = 0
+
+[items.emerald_charm_effect]
+material = "EMERALD"
+name = "<gradient:#a5d6a7:#43a047>💎 Emerald Charm</gradient>"
+amount = 1
+lore = ["<#e8f5e9>Lucky green sparkles", "<#e8f5e9>popping all around you.</#e8f5e9>", "", "<gradient:#a5d6a7:#43a047>★ Effect Trait</gradient>", "<#c8e6c9>Villager sparkles appear in a", "<#c8e6c9>loose shell around your companion.", ""]
+custom-model-data = 0
+
+[items.star_crown_effect]
+material = "NETHER_STAR"
+name = "<gradient:#fff59d:#ffb300>👑 Star Crown</gradient>"
+amount = 1
+lore = ["<#fffde7>A golden five-point star", "<#fffde7>turning above your head.</#fffde7>", "", "<gradient:#fff59d:#ffb300>★ Effect Trait</gradient>", "<#fff176>Gold dust traces a slowly", "<#fff176>rotating star outline.", ""]
+custom-model-data = 0
+
+[items.jack_o_lantern_effect]
+material = "JACK_O_LANTERN"
+name = "<gradient:#ff9800:#e65100>🎃 Jack-o'-Lantern</gradient>"
+amount = 1
+lore = ["<#ffe0b2>A carved pumpkin face grinning", "<#ffe0b2>above your companion.</#ffe0b2>", "", "<gradient:#ff9800:#e65100>★ Halloween</gradient>", "<#ffcc80>Orange dust traces the face while", "<#ffcc80>its eyes flicker with flame.", ""]
+custom-model-data = 0
+
+[items.haunted_wisps_effect]
+material = "SOUL_LANTERN"
+name = "<gradient:#80cbc4:#37474f>👻 Haunted Wisps</gradient>"
+amount = 1
+lore = ["<#e0f2f1>Restless souls circling", "<#e0f2f1>through low graveyard smoke.</#e0f2f1>", "", "<gradient:#80cbc4:#37474f>★ Halloween</gradient>", "<#b2dfdb>Three wisps bob around you while", "<#b2dfdb>smoke curls at your feet.", ""]
+custom-model-data = 0
+
+[items.autumn_leaves_effect]
+material = "OAK_LEAVES"
+name = "<gradient:#ff8f00:#bf360c>🍂 Autumn Leaves</gradient>"
+amount = 1
+lore = ["<#ffe0b2>Orange, red, and gold leaves", "<#ffe0b2>tumbling down around you.</#ffe0b2>", "", "<gradient:#ff8f00:#bf360c>★ Thanksgiving</gradient>", "<#ffcc80>Leaves sway as they fall and", "<#ffcc80>a new one drops every few ticks.", ""]
+custom-model-data = 0
+
+[items.harvest_glow_effect]
+material = "LANTERN"
+name = "<gradient:#ffb300:#6d4c41>🌾 Harvest Glow</gradient>"
+amount = 1
+lore = ["<#fff8e1>Warm lantern light over", "<#fff8e1>a table set for the feast.</#fff8e1>", "", "<gradient:#ffb300:#6d4c41>★ Thanksgiving</gradient>", "<#ffe082>An amber and brown ring turns", "<#ffe082>while golden glow drifts upward.", ""]
+custom-model-data = 0
+
+[items.christmas_lights_effect]
+material = "REDSTONE_LAMP"
+name = "<gradient:#e53935:#43a047>🎄 Christmas Lights</gradient>"
+amount = 1
+lore = ["<#ffebee>A string of blinking bulbs", "<#ffebee>wrapped around your companion.</#ffebee>", "", "<gradient:#e53935:#43a047>★ Christmas</gradient>", "<#c8e6c9>Red, green, blue, and gold bulbs", "<#c8e6c9>take turns lighting up the spiral.", ""]
+custom-model-data = 0
+
+[items.candy_cane_swirl_effect]
+material = "RED_CANDLE"
+name = "<gradient:#ffffff:#d32f2f>🍬 Candy Cane Swirl</gradient>"
+amount = 1
+lore = ["<#ffebee>Red and white stripes climbing", "<#ffebee>under a light snow.</#ffebee>", "", "<gradient:#ffffff:#d32f2f>★ Christmas</gradient>", "<#ffcdd2>A striped spiral rises around you", "<#ffcdd2>while snowflakes settle on top.", ""]
+custom-model-data = 0
+
+[items.fireworks_burst_effect]
+material = "FIREWORK_ROCKET"
+name = "<gradient:#ffd54f:#ef5350>🎆 Fireworks Burst</gradient>"
+amount = 1
+lore = ["<#fff9c4>A burst overhead, then", "<#fff9c4>sparkles raining down.</#fff9c4>", "", "<gradient:#ffd54f:#ef5350>★ New Year</gradient>", "<#fff59d>Ten rays expand above your head", "<#fff59d>and colored sparkles drift down.", ""]
+custom-model-data = 0
+
+[items.midnight_confetti_effect]
+material = "FIREWORK_STAR"
+name = "<gradient:#f06292:#4fc3f7>🎉 Midnight Confetti</gradient>"
+amount = 1
+lore = ["<#fce4ec>Confetti and streamers", "<#fce4ec>with a countdown crackle.</#fce4ec>", "", "<gradient:#f06292:#4fc3f7>★ New Year</gradient>", "<#f8bbd0>Party colors rain down and sparks", "<#f8bbd0>pop every two seconds.", ""]
+custom-model-data = 0

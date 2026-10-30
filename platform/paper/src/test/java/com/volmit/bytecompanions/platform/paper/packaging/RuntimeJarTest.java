@@ -504,7 +504,7 @@ final class RuntimeJarTest {
         try {
             Class<?> catalog = loader.loadClass(PLUGIN_PACKAGE + ".features.particles.effect.ParticleEffectCatalog");
             Map<?, ?> factories = (Map<?, ?>) catalog.getMethod("factories").invoke(null);
-            assertEquals(18, factories.size());
+            assertEquals(34, factories.size());
             for (Map.Entry<?, ?> entry : factories.entrySet()) {
                 Supplier<?> factory = (Supplier<?>) entry.getValue();
                 Object first = factory.get();

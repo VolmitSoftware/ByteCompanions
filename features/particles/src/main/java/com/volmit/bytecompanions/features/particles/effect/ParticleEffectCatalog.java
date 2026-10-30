@@ -18,6 +18,22 @@ import com.volmit.bytecompanions.features.particles.effect.types.RainbowUmbrella
 import com.volmit.bytecompanions.features.particles.effect.types.RotatingRingParticleEffect;
 import com.volmit.bytecompanions.features.particles.effect.types.ScannerParticleEffect;
 import com.volmit.bytecompanions.features.particles.effect.types.UmbrellaParticleEffect;
+import com.volmit.bytecompanions.features.particles.effect.types.HaloSparksParticleEffect;
+import com.volmit.bytecompanions.features.particles.effect.types.EmberTrailParticleEffect;
+import com.volmit.bytecompanions.features.particles.effect.types.SnowfallParticleEffect;
+import com.volmit.bytecompanions.features.particles.effect.types.CherryBlossomParticleEffect;
+import com.volmit.bytecompanions.features.particles.effect.types.LightningCrackleParticleEffect;
+import com.volmit.bytecompanions.features.particles.effect.types.SoulFlameSpiralParticleEffect;
+import com.volmit.bytecompanions.features.particles.effect.types.EmeraldCharmParticleEffect;
+import com.volmit.bytecompanions.features.particles.effect.types.StarCrownParticleEffect;
+import com.volmit.bytecompanions.features.particles.effect.types.JackOLanternParticleEffect;
+import com.volmit.bytecompanions.features.particles.effect.types.HauntedWispsParticleEffect;
+import com.volmit.bytecompanions.features.particles.effect.types.AutumnLeavesParticleEffect;
+import com.volmit.bytecompanions.features.particles.effect.types.HarvestGlowParticleEffect;
+import com.volmit.bytecompanions.features.particles.effect.types.ChristmasLightsParticleEffect;
+import com.volmit.bytecompanions.features.particles.effect.types.CandyCaneSwirlParticleEffect;
+import com.volmit.bytecompanions.features.particles.effect.types.FireworksBurstParticleEffect;
+import com.volmit.bytecompanions.features.particles.effect.types.MidnightConfettiParticleEffect;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -59,6 +75,22 @@ public final class ParticleEffectCatalog {
         factories.put("rotating_ring_effect", RotatingRingParticleEffect::new);
         factories.put("scanner_effect", ScannerParticleEffect::new);
         factories.put("umbrella_effect", UmbrellaParticleEffect::new);
+        factories.put("halo_sparks_effect", HaloSparksParticleEffect::new);
+        factories.put("ember_trail_effect", EmberTrailParticleEffect::new);
+        factories.put("snowfall_effect", SnowfallParticleEffect::new);
+        factories.put("cherry_blossom_effect", CherryBlossomParticleEffect::new);
+        factories.put("lightning_crackle_effect", LightningCrackleParticleEffect::new);
+        factories.put("soul_flame_spiral_effect", SoulFlameSpiralParticleEffect::new);
+        factories.put("emerald_charm_effect", EmeraldCharmParticleEffect::new);
+        factories.put("star_crown_effect", StarCrownParticleEffect::new);
+        factories.put("jack_o_lantern_effect", JackOLanternParticleEffect::new);
+        factories.put("haunted_wisps_effect", HauntedWispsParticleEffect::new);
+        factories.put("autumn_leaves_effect", AutumnLeavesParticleEffect::new);
+        factories.put("harvest_glow_effect", HarvestGlowParticleEffect::new);
+        factories.put("christmas_lights_effect", ChristmasLightsParticleEffect::new);
+        factories.put("candy_cane_swirl_effect", CandyCaneSwirlParticleEffect::new);
+        factories.put("fireworks_burst_effect", FireworksBurstParticleEffect::new);
+        factories.put("midnight_confetti_effect", MidnightConfettiParticleEffect::new);
         return Collections.unmodifiableMap(factories);
     }
 }

@@ -241,7 +241,11 @@ class ParticleOwnerDeliveryTest {
     @ParameterizedTest
     @ValueSource(strings = {"batman_effect", "double_helix_effect", "love_particle_effect", "magic_aura_effect",
             "magic_effect", "music_effect", "orb_effect", "pulse_effect", "rainbow_effect",
-            "rotating_ring_effect", "scanner_effect"})
+            "rotating_ring_effect", "scanner_effect", "halo_sparks_effect", "ember_trail_effect", "snowfall_effect",
+            "cherry_blossom_effect", "lightning_crackle_effect", "soul_flame_spiral_effect", "emerald_charm_effect",
+            "star_crown_effect", "jack_o_lantern_effect", "haunted_wisps_effect", "autumn_leaves_effect",
+            "harvest_glow_effect", "christmas_lights_effect", "candy_cane_swirl_effect", "fireworks_burst_effect",
+            "midnight_confetti_effect"})
     void animatedAndAnchoredEffectsKeepTheirOwnFrameLifecycle(String id) throws Exception {
         Fixture fixture = new Fixture();
         Field adapter = ParticlesFeature.class.getDeclaredField("nmsAdapter");

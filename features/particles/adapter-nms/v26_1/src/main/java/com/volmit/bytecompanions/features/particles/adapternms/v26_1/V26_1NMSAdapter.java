@@ -70,6 +70,18 @@ public final class V26_1NMSAdapter implements NMSAdapter {
                 case HEART -> ParticleTypes.HEART;
                 case WITCH -> ParticleTypes.WITCH;
                 case NOTE -> ParticleTypes.NOTE;
+                case FLAME -> ParticleTypes.FLAME;
+                case SOUL_FIRE_FLAME -> ParticleTypes.SOUL_FIRE_FLAME;
+                case END_ROD -> ParticleTypes.END_ROD;
+                case SNOWFLAKE -> ParticleTypes.SNOWFLAKE;
+                case ELECTRIC_SPARK -> ParticleTypes.ELECTRIC_SPARK;
+                case HAPPY_VILLAGER -> ParticleTypes.HAPPY_VILLAGER;
+                case CHERRY_LEAVES -> ParticleTypes.CHERRY_LEAVES;
+                case SMOKE -> ParticleTypes.SMOKE;
+                case SOUL -> ParticleTypes.SOUL;
+                case GLOW -> ParticleTypes.GLOW;
+                case FIREWORK -> ParticleTypes.FIREWORK;
+                case TOTEM_OF_UNDYING -> ParticleTypes.TOTEM_OF_UNDYING;
             };
             setPacket(index, particle, x, y, z, offsetX, offsetY, offsetZ, speed, count);
         }

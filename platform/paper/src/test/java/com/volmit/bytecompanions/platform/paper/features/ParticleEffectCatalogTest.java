@@ -30,7 +30,7 @@ class ParticleEffectCatalogTest {
             icons = ContentSnapshot.parse(new String(input.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8), ConfigurationOptions.defaults());
         }
 
-        assertEquals(18, ParticleEffectCatalog.factories().size());
+        assertEquals(34, ParticleEffectCatalog.factories().size());
         assertEquals(ParticleEffectCatalog.factories().keySet(), icons.node("items").childrenMap().keySet());
     }
 
