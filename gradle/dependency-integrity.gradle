@@ -90,7 +90,9 @@ tasks.register('writeDependencyIntegrity') {
     group = 'verification'
     description = 'Builds all release and QA inputs, then writes an untrusted candidate checksum manifest for explicit review.'
     dependsOn(allprojects.collect { Project target -> target.path == ':' ? ':build' : "${target.path}:build" })
-    dependsOn(':qa-fixture:jar', ':qa-fixture:boosterEconomyJar')
+    if (findProject(':qa-fixture') != null) {
+        dependsOn(':qa-fixture:jar', ':qa-fixture:boosterEconomyJar')
+    }
     doLast {
         File candidate = layout.buildDirectory.file('dependency-integrity-candidate.json').get().asFile
         candidate.parentFile.mkdirs()
@@ -106,7 +108,9 @@ tasks.register('verifyDependencyIntegrity') {
     group = 'verification'
     description = 'Verifies consumed external artifact bytes against reviewed pins during the complete build.'
     dependsOn(allprojects.collect { Project target -> target.path == ':' ? ':build' : "${target.path}:build" })
-    dependsOn(':qa-fixture:jar', ':qa-fixture:boosterEconomyJar')
+    if (findProject(':qa-fixture') != null) {
+        dependsOn(':qa-fixture:jar', ':qa-fixture:boosterEconomyJar')
+    }
     doLast {
         if (captureIntegrity) {
             throw new GradleException('Verification cannot run in candidate capture mode')

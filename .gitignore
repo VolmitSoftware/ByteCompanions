@@ -9,8 +9,7 @@ build/
 .agents/
 .vscode/
 logs/
-qa/reports/
-qa/viewer-*.json
+/qa/
 AGENTS.md
 *.log
 *.hprof

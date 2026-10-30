@@ -35,14 +35,17 @@ rootProject.name = "ByteCompanions"
 
 include(
     "api", "spi", "core", "adapter-common", "adapter-v26_1", "adapter-v26_3", "adapter-spigot26_1", "adapter-spigot26_3",
-    "library-item-blueprint", "slimjar-runtime", "qa-fixture",
+    "library-item-blueprint", "slimjar-runtime",
     "providers:storage", "providers:storage:sql-common", "providers:storage:h2",
     "providers:storage:mysql", "platform:paper", "particle-adapter",
     "particle-adapter:v26_1"
 )
 
 project(":particle-adapter").projectDir = file("features/particles/adapter-nms")
-project(":qa-fixture").projectDir = file("qa/fixture")
+if (file("qa/fixture").isDirectory) {
+    include("qa-fixture")
+    project(":qa-fixture").projectDir = file("qa/fixture")
+}
 listOf("v26_1").forEach {
     project(":particle-adapter:$it").projectDir = file("features/particles/adapter-nms/$it")
 }

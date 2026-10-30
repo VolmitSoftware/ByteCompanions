@@ -1,6 +1,6 @@
 # ByteCompanions
 
-Animated companions with animations, attributes, buffs, decorations, effects, and particles in one plugin.
+Cosmetic companions that follow players, built from vanilla blocks and heads with no resource pack, with outfits, particles, buffs, decorations, and progression.
 
 ## Requirements
 
@@ -18,7 +18,7 @@ See the [wiki](https://docs.volmitsoftware.com/bytecompanions), [configuration r
 
 ## Build
 
-Use Java 25. Install the Spigot server artifacts for 26.1.2, 26.2, and 26.3 into the local Maven repository with BuildTools; the Spigot native adapters compile against them. From the ByteCompanions repository:
+Use Java 25. The Spigot adapters need the 26.1.2, 26.2, and 26.3 Spigot artifacts in the local Maven repository, installed with BuildTools. From the ByteCompanions repository:
 
 ```powershell
 .\gradlew.bat build buildSwiftSwamp
