@@ -207,6 +207,25 @@ class CompanionViewerServiceTest {
     }
 
     @Test
+    void anEarlierFailedDeliveryDoesNotFailLaterShutdown() {
+        Owner owner = new Owner();
+        CompanionViewerService service = owner.service();
+        service.start(owner.player);
+        owner.runImmediate();
+        ViewerSnapshot snapshot = service.snapshot(owner.player);
+        assertTrue(service.deliver(snapshot, snapshot.worldId(), () -> true, () -> {
+            throw new IllegalStateException("native send failed");
+        }));
+        owner.runImmediate();
+        List<String> packets = new ArrayList<>();
+        assertTrue(service.deliver(snapshot, snapshot.worldId(), () -> true, () -> packets.add("remove")));
+        CompletableFuture<Void> closed = service.closeAsync().toCompletableFuture();
+        owner.runImmediate();
+        closed.join();
+        assertEquals(List.of("remove"), packets);
+    }
+
+    @Test
     void worldRefreshAndValidityRejectStaleWorkBeforeConnectionAccess() {
         Owner owner = new Owner();
         CompanionViewerService service = owner.service();
@@ -312,7 +331,7 @@ class CompanionViewerServiceTest {
                             target.immediate.addLast(guarded);
                         }
                         return true;
-                    }, (player, owner) -> {
+                    }, 1, (player, owner) -> {
                         Owner target = owners.get(player);
                         assertTrue(target.owned);
                         return target.audience;

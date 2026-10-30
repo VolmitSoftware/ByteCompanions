@@ -370,7 +370,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
         this.serverPolicy = new ServerPolicy(Set.copyOf(configuration.serverRules().hiddenWorlds()),
                 Set.copyOf(configuration.serverRules().bonusDisabledWorlds()), regionDecision);
         AtomicReference<RuntimeServerRules> audienceRules = new AtomicReference<>();
-        this.viewerService = new CompanionViewerService(this, (viewer, owner) -> {
+        this.viewerService = new CompanionViewerService(this, configuration.performance().viewerRefreshDelay(), (viewer, owner) -> {
             RuntimeServerRules rules = audienceRules.get();
             return rules == null ? new CompanionViewerService.Audience(false, 0) : rules.audience(viewer, owner);
         });

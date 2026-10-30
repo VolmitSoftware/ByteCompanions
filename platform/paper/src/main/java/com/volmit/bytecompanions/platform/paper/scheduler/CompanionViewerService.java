@@ -21,12 +21,12 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.BooleanSupplier;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
@@ -37,23 +37,26 @@ public final class CompanionViewerService implements CompanionViewerEnvironment,
     private final Plugin plugin;
     private final Predicate<Player> ownerThread;
     private final Scheduling scheduling;
+    private final int publishInterval;
     private final BiFunction<Player, UUID, Audience> audience;
     private volatile Consumer<Player> ownerRefresh = player -> {};
     private final Map<Player, Session> sessions = new ConcurrentHashMap<>();
-    private final AtomicReference<Throwable> failure = new AtomicReference<>();
     private volatile boolean closing;
     private CompletableFuture<Void> closure;
 
-    public CompanionViewerService(Plugin plugin, BiFunction<Player, UUID, Audience> audience) {
+    public CompanionViewerService(Plugin plugin, int publishInterval, BiFunction<Player, UUID, Audience> audience) {
         this(plugin, FoliaScheduler::isOwnedByCurrentRegion,
-                (player, action, delay, retired) -> FoliaScheduler.runEntity(plugin, player, action, delay, retired), audience);
+                (player, action, delay, retired) -> FoliaScheduler.runEntity(plugin, player, action, delay, retired),
+                publishInterval, audience);
     }
 
-    CompanionViewerService(Plugin plugin, Predicate<Player> ownerThread, Scheduling scheduling,
+    CompanionViewerService(Plugin plugin, Predicate<Player> ownerThread, Scheduling scheduling, int publishInterval,
                            BiFunction<Player, UUID, Audience> audience) {
+        if (publishInterval < 1) throw new IllegalArgumentException("Viewer publish interval must be positive");
         this.plugin = plugin;
         this.ownerThread = ownerThread;
         this.scheduling = scheduling;
+        this.publishInterval = publishInterval;
         this.audience = audience;
     }
 
@@ -64,7 +67,7 @@ public final class CompanionViewerService implements CompanionViewerEnvironment,
     }
 
     public void ownerRefresh(Consumer<Player> refresh) {
-        this.ownerRefresh = java.util.Objects.requireNonNull(refresh, "refresh");
+        this.ownerRefresh = Objects.requireNonNull(refresh, "refresh");
     }
 
     @FunctionalInterface
@@ -193,14 +196,14 @@ public final class CompanionViewerService implements CompanionViewerEnvironment,
         if (this.closing || session == null || !session.current(viewer)) {
             return false;
         }
-        session.queue.submit(() -> {
+        boolean queued = session.queue.submit(() -> {
             if (session.current(viewer) && session.player.isOnline()
                     && session.player.getWorld().getUID().equals(expectedWorld) && stillValid.getAsBoolean()) {
                 ownerDelivery.run();
             }
         });
         session.drainSoon();
-        return true;
+        return queued;
     }
 
     @Override
@@ -210,7 +213,7 @@ public final class CompanionViewerService implements CompanionViewerEnvironment,
             barriers.add(session.queue.flush());
             session.drainSoon();
         }
-        return this.completeBarriers(barriers);
+        return CompletableFuture.allOf(barriers.toArray(CompletableFuture[]::new));
     }
 
     @Override
@@ -222,19 +225,14 @@ public final class CompanionViewerService implements CompanionViewerEnvironment,
         List<CompletableFuture<Void>> barriers = new ArrayList<>();
         for (Session session : this.sessions.values()) {
             CompletableFuture<Void> barrier = session.queue.close();
-            barriers.add(barrier);
-            barrier.whenComplete((ignored, failure) -> session.retire());
+            barriers.add(barrier.handle((ignored, failure) -> {
+                session.retire();
+                return null;
+            }));
             session.drainSoon();
         }
-        this.closure = this.completeBarriers(barriers);
+        this.closure = CompletableFuture.allOf(barriers.toArray(CompletableFuture[]::new));
         return this.closure;
-    }
-
-    private CompletableFuture<Void> completeBarriers(List<CompletableFuture<Void>> barriers) {
-        return CompletableFuture.allOf(barriers.toArray(CompletableFuture[]::new)).thenCompose(ignored -> {
-            Throwable exception = this.failure.get();
-            return exception == null ? CompletableFuture.completedFuture(null) : CompletableFuture.failedFuture(exception);
-        });
     }
 
     private final class Session {
@@ -252,10 +250,8 @@ public final class CompanionViewerService implements CompanionViewerEnvironment,
 
         private Session(Player player) {
             this.player = player;
-            this.queue = new ViewerDeliveryQueue(16_384, exception -> {
-                failure.compareAndSet(null, exception);
-                plugin.getLogger().log(Level.SEVERE, "Viewer delivery failed", exception);
-            });
+            this.queue = new ViewerDeliveryQueue(16_384, exception ->
+                    plugin.getLogger().log(Level.SEVERE, "Viewer delivery failed", exception));
         }
 
         private boolean current(ViewerSnapshot viewer) {
@@ -302,7 +298,7 @@ public final class CompanionViewerService implements CompanionViewerEnvironment,
                 this.publish();
                 this.queue.drain();
                 if (!this.retired && !closing
-                        && !scheduling.run(this.player, this::pulse, 1, this::retire)) {
+                        && !scheduling.run(this.player, this::pulse, publishInterval, this::retire)) {
                     this.failed(new IllegalStateException("Viewer snapshot publisher was rejected"));
                 }
             } catch (RuntimeException | LinkageError failure) {

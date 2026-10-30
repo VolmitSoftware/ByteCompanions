@@ -1,8 +1,9 @@
 package com.volmit.bytecompanions.core.companion;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.function.Consumer;
@@ -11,11 +12,11 @@ public final class ViewerDeliveryQueue {
     private final int capacity;
     private final Consumer<Throwable> failures;
     private final ArrayDeque<Runnable> pending = new ArrayDeque<>();
-    private final List<CompletableFuture<Void>> barriers = new ArrayList<>();
+    private final Map<CompletableFuture<Void>, Throwable> barriers = new HashMap<>();
     private boolean accepting = true;
     private boolean draining;
     private boolean retired;
-    private Throwable failure;
+    private boolean overflowReported;
 
     public ViewerDeliveryQueue(int capacity, Consumer<Throwable> failures) {
         if (capacity < 1) {
@@ -25,21 +26,29 @@ public final class ViewerDeliveryQueue {
         this.failures = failures;
     }
 
-    public synchronized void submit(Runnable delivery) {
-        if (!this.accepting) {
-            throw new RejectedExecutionException("Viewer delivery queue is closed");
+    public boolean submit(Runnable delivery) {
+        RejectedExecutionException overflow;
+        synchronized (this) {
+            if (!this.accepting) {
+                return false;
+            }
+            if (this.pending.size() < this.capacity) {
+                this.pending.addLast(delivery);
+                return true;
+            }
+            if (this.overflowReported) {
+                return false;
+            }
+            this.overflowReported = true;
+            overflow = new RejectedExecutionException("Viewer delivery queue exceeded " + this.capacity + " pending deliveries; dropping deliveries until it drains");
         }
-        if (this.pending.size() >= this.capacity) {
-            RejectedExecutionException rejected = new RejectedExecutionException("Viewer delivery queue exceeded " + this.capacity + " pending deliveries");
-            this.recordFailure(rejected);
-            throw rejected;
-        }
-        this.pending.addLast(delivery);
+        this.failures.accept(overflow);
+        return false;
     }
 
     public synchronized CompletableFuture<Void> flush() {
         CompletableFuture<Void> barrier = new CompletableFuture<>();
-        this.barriers.add(barrier);
+        this.barriers.put(barrier, null);
         if (this.retired) {
             this.complete(barrier);
             return barrier;
@@ -66,6 +75,7 @@ public final class ViewerDeliveryQueue {
                 synchronized (this) {
                     delivery = this.pending.pollFirst();
                     if (delivery == null) {
+                        this.overflowReported = false;
                         return;
                     }
                 }
@@ -86,7 +96,7 @@ public final class ViewerDeliveryQueue {
         this.accepting = false;
         this.retired = true;
         this.pending.clear();
-        for (CompletableFuture<Void> barrier : List.copyOf(this.barriers)) {
+        for (CompletableFuture<Void> barrier : List.copyOf(this.barriers.keySet())) {
             this.complete(barrier);
         }
     }
@@ -97,17 +107,20 @@ public final class ViewerDeliveryQueue {
     }
 
     private synchronized void complete(CompletableFuture<Void> barrier) {
-        this.barriers.remove(barrier);
-        if (this.failure == null) {
+        if (!this.barriers.containsKey(barrier)) {
+            return;
+        }
+        Throwable failure = this.barriers.remove(barrier);
+        if (failure == null) {
             barrier.complete(null);
         } else {
-            barrier.completeExceptionally(this.failure);
+            barrier.completeExceptionally(failure);
         }
     }
 
-    private synchronized void recordFailure(Throwable exception) {
-        if (this.failure == null) {
-            this.failure = exception;
+    private void recordFailure(Throwable exception) {
+        synchronized (this) {
+            this.barriers.replaceAll((barrier, existing) -> existing == null ? exception : existing);
         }
         this.failures.accept(exception);
     }

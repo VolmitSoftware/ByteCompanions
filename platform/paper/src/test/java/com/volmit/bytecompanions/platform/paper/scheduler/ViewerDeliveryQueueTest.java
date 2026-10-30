@@ -33,22 +33,37 @@ class ViewerDeliveryQueueTest {
         queue.drain();
         closed.join();
         assertEquals(List.of("remove"), packets);
-        assertThrows(RejectedExecutionException.class, () -> queue.submit(() -> packets.add("late")));
+        assertFalse(queue.submit(() -> packets.add("late")));
     }
 
     @Test
-    void overflowFailsExplicitlyAndAcceptedPacketsStillDrainInOrder() {
+    void overflowRejectsWithOneReportAndAcceptedPacketsStillDrainInOrder() {
         List<Throwable> failures = new ArrayList<>();
         List<Integer> packets = new ArrayList<>();
         ViewerDeliveryQueue queue = new ViewerDeliveryQueue(2, failures::add);
-        queue.submit(() -> packets.add(1));
-        queue.submit(() -> packets.add(2));
-        assertThrows(RejectedExecutionException.class, () -> queue.submit(() -> packets.add(3)));
-        CompletableFuture<Void> barrier = queue.flush();
+        assertTrue(queue.submit(() -> packets.add(1)));
+        assertTrue(queue.submit(() -> packets.add(2)));
+        assertFalse(queue.submit(() -> packets.add(3)));
+        assertFalse(queue.submit(() -> packets.add(4)));
+        assertEquals(1, failures.size());
+        assertTrue(failures.getFirst() instanceof RejectedExecutionException);
         queue.drain();
         assertEquals(List.of(1, 2), packets);
+        assertTrue(queue.submit(() -> packets.add(5)));
+        queue.drain();
+        assertEquals(List.of(1, 2, 5), packets);
+    }
+
+    @Test
+    void anEarlierDeliveryFailureDoesNotFailLaterBarriers() {
+        List<Throwable> failures = new ArrayList<>();
+        ViewerDeliveryQueue queue = new ViewerDeliveryQueue(4, failures::add);
+        queue.submit(() -> { throw new IllegalStateException("native send failed"); });
+        queue.drain();
         assertEquals(1, failures.size());
-        assertThrows(CompletionException.class, barrier::join);
+        CompletableFuture<Void> closed = queue.close();
+        queue.drain();
+        closed.join();
     }
 
     @Test
