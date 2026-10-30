@@ -128,6 +128,10 @@ public final class CompanionPlayerManager {
             this.messageDispatcher.send(player, MessageKey.ERROR_PLAYER_NOT_LOADED);
             return;
         }
+        if (companionPlayer.hasCompanion(companionTypeId)) {
+            this.messageDispatcher.send(player, MessageKey.ERROR_COMPANION_ALREADY_EQUIPPED);
+            return;
+        }
         if (companionPlayer.hasAnyExclusive()) {
             this.messageDispatcher.send(player, MessageKey.ERROR_PLAYER_HAS_A_EXCLUSIVE_COMPANION);
             return;

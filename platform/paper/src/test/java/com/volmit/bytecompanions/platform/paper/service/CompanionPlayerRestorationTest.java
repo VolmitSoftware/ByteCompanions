@@ -1,7 +1,10 @@
 package com.volmit.bytecompanions.platform.paper.service;
 
 import art.arcane.volmlib.util.scheduling.FoliaScheduler;
+import com.volmit.bytecompanions.api.companion.Companion;
 import com.volmit.bytecompanions.api.companion.CompanionManager;
+import com.volmit.bytecompanions.api.companion.CompanionType;
+import com.volmit.bytecompanions.core.cache.CompanionEntityCache;
 import com.volmit.bytecompanions.core.cache.CompanionPlayerCache;
 import com.volmit.bytecompanions.core.loader.DefaultUserLoader;
 import com.volmit.bytecompanions.core.user.DefaultCompanionPlayer;
@@ -87,11 +90,31 @@ class CompanionPlayerRestorationTest {
         }
     }
 
+    @Test
+    void quittingReleasesTheCompanionEntityLookups() {
+        try (Fixture fixture = new Fixture()) {
+            CompanionType type = mock(CompanionType.class);
+            when(type.id()).thenReturn("bee");
+            Companion companion = mock(Companion.class);
+            when(companion.type()).thenReturn(type);
+            when(companion.entityId()).thenReturn(42);
+            fixture.state.equip(companion);
+            fixture.entities.put(companion);
+            when(fixture.loader.unload(fixture.player)).thenReturn(fixture.state);
+
+            assertSame(fixture.state, fixture.lifecycle.onQuit(fixture.player));
+
+            assertNull(fixture.entities.get(42));
+            verify(companion).destroy();
+        }
+    }
+
     private static final class Fixture implements AutoCloseable {
         final UUID id = UUID.randomUUID();
         final PaperPlugin plugin = mock(PaperPlugin.class);
         final Player player = mock(Player.class);
         final CompanionPlayerCache cache = new CompanionPlayerCache();
+        final CompanionEntityCache entities = new CompanionEntityCache();
         final DefaultUserLoader loader = mock(DefaultUserLoader.class);
         final CompanionManager companions = mock(CompanionManager.class);
         final CompanionEventBus events = mock(CompanionEventBus.class);
@@ -119,7 +142,7 @@ class CompanionPlayerRestorationTest {
             when(loader.create(player, view)).thenReturn(state);
             scheduler.when(() -> FoliaScheduler.runEntity(eq(plugin), eq(player), any(Runnable.class), eq(0L), any(Runnable.class)))
                     .thenAnswer(invocation -> { ownerTasks.add(invocation.getArgument(2)); return true; });
-            lifecycle = new CompanionPlayerLifecyclePlatformService(plugin, cache, events, loader, companions, ticks);
+            lifecycle = new CompanionPlayerLifecyclePlatformService(plugin, cache, entities, events, loader, companions, ticks);
         }
 
         void completeStores() {

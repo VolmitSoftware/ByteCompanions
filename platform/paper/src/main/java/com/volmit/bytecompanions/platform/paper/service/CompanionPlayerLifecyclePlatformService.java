@@ -2,7 +2,9 @@ package com.volmit.bytecompanions.platform.paper.service;
 
 import art.arcane.volmlib.util.scheduling.FoliaScheduler;
 import org.bukkit.entity.Player;
+import com.volmit.bytecompanions.api.companion.Companion;
 import com.volmit.bytecompanions.api.companion.CompanionManager;
+import com.volmit.bytecompanions.core.cache.CompanionEntityCache;
 import com.volmit.bytecompanions.core.cache.CompanionPlayerCache;
 import com.volmit.bytecompanions.core.loader.DefaultUserLoader;
 import com.volmit.bytecompanions.core.user.DefaultCompanionPlayer;
@@ -25,6 +27,7 @@ import java.util.logging.Level;
 public final class CompanionPlayerLifecyclePlatformService implements AutoCloseable {
     private final PaperPlugin plugin;
     private final CompanionPlayerCache cache;
+    private final CompanionEntityCache entities;
     private final CompanionEventBus events;
     private final DefaultUserLoader loader;
     private final CompanionManager companions;
@@ -33,11 +36,12 @@ public final class CompanionPlayerLifecyclePlatformService implements AutoClosea
     private final LongAdder loadFailures = new LongAdder();
     private boolean closed;
 
-    public CompanionPlayerLifecyclePlatformService(PaperPlugin plugin, CompanionPlayerCache cache,
+    public CompanionPlayerLifecyclePlatformService(PaperPlugin plugin, CompanionPlayerCache cache, CompanionEntityCache entities,
                                                    CompanionEventBus events, DefaultUserLoader loader,
                                                    CompanionManager companions, CompanionsTickScheduler ticks) {
         this.plugin = plugin;
         this.cache = cache;
+        this.entities = entities;
         this.events = events;
         this.loader = loader;
         this.companions = companions;
@@ -113,6 +117,9 @@ public final class CompanionPlayerLifecyclePlatformService implements AutoClosea
         DefaultCompanionPlayer state = loader.unload(player);
         if (state != null) {
             events.callPlayerUnload(player, state);
+            for (Companion companion : state.companions().values()) {
+                entities.remove(companion);
+            }
             state.unequip();
         }
         return state;

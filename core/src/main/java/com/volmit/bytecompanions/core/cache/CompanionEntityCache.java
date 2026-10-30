@@ -22,4 +22,8 @@ public final class CompanionEntityCache {
         return this.entities.remove(entityId);
     }
 
+    public boolean remove(final @NotNull Companion companion) {
+        return this.entities.remove(companion.entityId(), companion);
+    }
+
 }

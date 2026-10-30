@@ -561,6 +561,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
         this.lifecyclePlatformService = new CompanionPlayerLifecyclePlatformService(
                 this,
                 this.playerCache,
+                this.companionEntityCache,
                 this.companionEventBus,
                 this.userLoader,
                 this.companionManager,
