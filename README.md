@@ -5,7 +5,7 @@ Cosmetic companions that follow players, built from vanilla blocks and heads wit
 ## Requirements
 
 - Minecraft 26.1 through 26.3 on Spigot, Paper, Purpur, Leaf, Folia, or Canvas.
-- Java 25.
+- Java 25 or newer.
 - Network access for dependency downloads on the first start.
 
 ## Install

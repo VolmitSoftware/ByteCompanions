@@ -37,11 +37,15 @@ class RuntimeCompatibilityTest {
     }
 
     @Test
-    void requiresJava25Exactly() {
-        for (int javaVersion : List.of(17, 21, 24, 26)) {
+    void requiresJava25OrNewer() {
+        for (int javaVersion : List.of(17, 21, 24)) {
             IllegalStateException failure = assertThrows(IllegalStateException.class,
                     () -> RuntimeCompatibility.requireSupported("26.3.build.190-stable", javaVersion));
             assertTrue(failure.getMessage().contains("Java " + javaVersion));
+            assertTrue(failure.getMessage().contains("Java 25 or newer"));
+        }
+        for (int javaVersion : List.of(25, 26, 27)) {
+            assertDoesNotThrow(() -> RuntimeCompatibility.requireSupported("26.3.build.190-stable", javaVersion));
         }
     }
 

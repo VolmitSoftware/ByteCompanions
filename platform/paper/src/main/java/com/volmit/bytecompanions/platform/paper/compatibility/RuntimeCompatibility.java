@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class RuntimeCompatibility {
-    private static final int REQUIRED_JAVA = 25;
+    private static final int MINIMUM_JAVA = 25;
     private static final int SUPPORTED_MAJOR = 26;
     private static final int MINIMUM_MINOR = 1;
     private static final int MAXIMUM_MINOR = 3;
@@ -19,9 +19,9 @@ public final class RuntimeCompatibility {
     }
 
     public static void requireSupported(String bukkitVersion, int javaVersion) {
-        if (javaVersion != REQUIRED_JAVA || !isSupported(bukkitVersion)) {
+        if (javaVersion < MINIMUM_JAVA || !isSupported(bukkitVersion)) {
             throw new IllegalStateException("ByteCompanions requires Minecraft " + BuildInfo.minecraftRange()
-                    + " (including patch releases) on Java " + REQUIRED_JAVA + "; found Minecraft "
+                    + " (including patch releases) on Java " + MINIMUM_JAVA + " or newer; found Minecraft "
                     + bukkitVersion + " on Java " + javaVersion + ".");
         }
     }
