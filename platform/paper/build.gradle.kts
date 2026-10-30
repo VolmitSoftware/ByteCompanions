@@ -265,6 +265,7 @@ tasks.shadowJar {
         exclude(dependency("de.crazydev22.slimjar.helper:.*:.*"))
         exclude(dependency("com.volmit:.*:.*"))
     }
+    exclude("art/arcane/volmlib/native/**")
     relocate("io.github.slimjar", "$libraryPrefix.slimjar")
     relocate("art.arcane.volmlib", "$libraryPrefix.volmlib")
     runtimeRelocations.forEach { (source, destination) -> relocate(source, destination) }
@@ -316,7 +317,7 @@ extensions.configure<PluginPackagingExtension> {
         isStripLocalVariables = true
         isReleaseCompression = providers.gradleProperty("compactRelease").map { it.toBoolean() }
             .getOrElse(!PackagingMode.resolve(providers).development())
-        maximumBytes = 2_100_000
+        maximumBytes = 2_300_000
         prunePrefixes = listOf("com/volmit/bytecompanions/libs/volmlib/")
         requiredEntries = listOf(
             "plugin.yml", "bytecompanions-build.properties", "bytecompanions-language-source.properties",
