@@ -1,6 +1,7 @@
 package com.volmit.bytecompanions.platform.paper.progression;
 
 import com.volmit.bytecompanions.providers.storage.sqlcommon.SQLStorageConnection;
+import com.volmit.bytecompanions.providers.storage.sqlcommon.SqlDialect;
 import com.zaxxer.hikari.HikariDataSource;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
@@ -43,7 +44,7 @@ class ProgressionServiceTest {
         pool = new HikariDataSource();
         pool.setJdbcUrl("jdbc:h2:mem:" + UUID.randomUUID() + ";MODE=MySQL");
         pool.setMaximumPoolSize(2);
-        connection = new SQLStorageConnection(pool, Logger.getAnonymousLogger());
+        connection = new SQLStorageConnection(pool, SqlDialect.H2, Logger.getAnonymousLogger());
         connection.connect();
         plugin = proxy(Plugin.class, (name, args) -> switch (name) {
             case "getLogger" -> Logger.getAnonymousLogger();
@@ -66,7 +67,7 @@ class ProgressionServiceTest {
         pool.close();
     }
     private ProgressionService create() {
-        ProgressionService created = new ProgressionService(plugin, connection, Runnable::run, definitions(), true, true,
+        ProgressionService created = new ProgressionService(plugin, scope -> new SqlProgressionStore(connection, scope), Runnable::run, definitions(), true, true,
                 () -> true, clock::get, ignored -> true, false);
         created.initializeAsync().join();
         return created;
@@ -76,7 +77,7 @@ class ProgressionServiceTest {
         service.closeAsync().join();
         ArrayDeque<Runnable> accepted = new ArrayDeque<>();
         AtomicBoolean defer = new AtomicBoolean();
-        service = new ProgressionService(plugin, connection, action -> {
+        service = new ProgressionService(plugin, scope -> new SqlProgressionStore(connection, scope), action -> {
             if (defer.get()) accepted.add(action); else action.run();
         }, definitions(), true, true, () -> true, clock::get, ignored -> true, false);
         service.initializeAsync().join();
@@ -92,7 +93,7 @@ class ProgressionServiceTest {
         assertEquals(ProgressionService.Status.PAYMENT_REJECTED, purchase.join().status());
         assertTrue(owners.isDone());
         assertEquals(0, service.snapshot(playerId, "bee").tracks().getOrDefault("speed", 0));
-        ProgressionStore store = new ProgressionStore(connection, "test");
+        ProgressionStore store = new SqlProgressionStore(connection, "test");
         assertEquals("CANCELLED", store.transaction(transaction -> transaction.journal(purchase.join().transactionId())).status());
         CompletableFuture<Void> closed = service.closeAsync();
         assertFalse(closed.isDone());
@@ -116,7 +117,7 @@ class ProgressionServiceTest {
     }
     @Test
     void ambiguousCrashJournalBlocksRepurchaseAndManualGrantIsIdempotent() throws Exception {
-        ProgressionStore store = new ProgressionStore(connection, "test");
+        ProgressionStore store = new SqlProgressionStore(connection, "test");
         String id = UUID.randomUUID().toString();
         ProgressionService.PurchaseJournal journal = new ProgressionService.PurchaseJournal(id, playerId, "UPGRADE", "bee", "speed", 0,
                 new ProgressionDefinitions.Cost(10, Map.of()), "ATTEMPTING", "test/provider", clock.get(), "");
@@ -212,7 +213,7 @@ class ProgressionServiceTest {
     void failedInitializationCanStillDrainAndClose() {
         service.closeAsync().join();
         pool.close();
-        service = new ProgressionService(plugin, connection, Runnable::run, definitions(), true, true,
+        service = new ProgressionService(plugin, scope -> new SqlProgressionStore(connection, scope), Runnable::run, definitions(), true, true,
                 () -> true, clock::get, ignored -> true, false);
         assertThrows(RuntimeException.class, () -> service.initializeAsync().join());
         service.closeAsync().join();
@@ -220,7 +221,7 @@ class ProgressionServiceTest {
     }
     @Test
     void sqlRollbackDoesNotPublishPartialXpOrTierChanges() throws Exception {
-        ProgressionStore store = new ProgressionStore(connection, "test");
+        ProgressionStore store = new SqlProgressionStore(connection, "test");
         assertThrows(Exception.class, () -> store.transaction(transaction -> {
             ProgressionService.PlayerState previous = transaction.player(playerId);
             transaction.player(playerId, new ProgressionService.PlayerState(10,

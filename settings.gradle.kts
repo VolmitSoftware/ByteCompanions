@@ -37,7 +37,7 @@ include(
     "api", "spi", "core", "adapter-common", "adapter-v26_1", "adapter-v26_3", "adapter-spigot26_1", "adapter-spigot26_3",
     "library-item-blueprint", "slimjar-runtime",
     "providers:storage", "providers:storage:sql-common", "providers:storage:h2",
-    "providers:storage:mysql", "platform:paper", "particle-adapter",
+    "providers:storage:mysql", "providers:storage:sqlite", "providers:storage:json", "platform:paper", "particle-adapter",
     "particle-adapter:v26_1"
 )
 

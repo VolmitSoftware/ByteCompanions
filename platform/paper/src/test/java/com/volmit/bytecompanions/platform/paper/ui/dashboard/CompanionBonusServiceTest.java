@@ -13,7 +13,9 @@ import com.volmit.bytecompanions.features.buffs.util.Operation;
 import com.volmit.bytecompanions.features.buffs.service.BuffService;
 import com.volmit.bytecompanions.platform.paper.progression.ProgressionDefinitions;
 import com.volmit.bytecompanions.platform.paper.progression.ProgressionService;
+import com.volmit.bytecompanions.platform.paper.progression.SqlProgressionStore;
 import com.volmit.bytecompanions.providers.storage.sqlcommon.SQLStorageConnection;
+import com.volmit.bytecompanions.providers.storage.sqlcommon.SqlDialect;
 import com.zaxxer.hikari.HikariDataSource;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -87,9 +89,9 @@ class CompanionBonusServiceTest {
         try (HikariDataSource pool = new HikariDataSource()) {
             pool.setJdbcUrl("jdbc:h2:mem:" + UUID.randomUUID() + ";MODE=MySQL");
             pool.setMaximumPoolSize(2);
-            SQLStorageConnection connection = new SQLStorageConnection(pool, Logger.getAnonymousLogger());
+            SQLStorageConnection connection = new SQLStorageConnection(pool, SqlDialect.H2, Logger.getAnonymousLogger());
             connection.connect();
-            ProgressionService progression = new ProgressionService(plugin, connection, Runnable::run, definitions,
+            ProgressionService progression = new ProgressionService(plugin, scope -> new SqlProgressionStore(connection, scope), Runnable::run, definitions,
                     false, true, () -> true);
             try {
                 progression.initializeAsync().join();

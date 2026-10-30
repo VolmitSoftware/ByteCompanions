@@ -15,26 +15,42 @@ public class SQLStorageConnection implements StorageConnection {
     private final ThreadLocal<Connection> connectionHolder = ThreadLocal.withInitial(() -> null);
 
     private final HikariDataSource hikariDataSource;
+    private final SqlDialect dialect;
     private final Logger logger;
 
     public SQLStorageConnection(
             final @NotNull HikariDataSource hikariDataSource,
+            final @NotNull SqlDialect dialect,
             final @NotNull Logger logger
     ) {
         this.hikariDataSource = hikariDataSource;
+        this.dialect = dialect;
         this.logger = logger;
     }
 
+    public @NotNull SqlDialect dialect() {
+        return this.dialect;
+    }
+
+    public @NotNull HikariDataSource dataSource() {
+        return this.hikariDataSource;
+    }
+
     public @NotNull String createPlayersTableQuery() {
+        String index = this.dialect.inlineIndexes() ? ", INDEX idx_player_id (player_id)" : "";
         return """
                 CREATE TABLE IF NOT EXISTS %s(
-                    id INT PRIMARY KEY AUTO_INCREMENT,
-                    player_id BINARY(16) NOT NULL,
+                    %s,
+                    player_id %s NOT NULL,
                     player_name VARCHAR(18),
-                    companion_type_id VARCHAR(32) NOT NULL,
-                    INDEX idx_player_id (player_id)
-                );
-                """.formatted(SQLConstants.COMPANION_PLAYERS_TABLE_NAME);
+                    companion_type_id VARCHAR(32) NOT NULL%s
+                )
+                """.formatted(SQLConstants.COMPANION_PLAYERS_TABLE_NAME, this.dialect.autoIncrementPrimaryKey("id"),
+                this.dialect.binary16(), index);
+    }
+
+    public @NotNull String createPlayersIndexQuery() {
+        return "CREATE INDEX IF NOT EXISTS idx_player_id ON " + SQLConstants.COMPANION_PLAYERS_TABLE_NAME + "(player_id)";
     }
 
     @Override
@@ -43,6 +59,9 @@ public class SQLStorageConnection implements StorageConnection {
 
         try (final Connection connection = this.hikariDataSource.getConnection()) {
             this.createTable(connection, this.createPlayersTableQuery());
+            if (!this.dialect.inlineIndexes()) {
+                this.createTable(connection, this.createPlayersIndexQuery());
+            }
 
             this.logger.info("Connection to the database established successfully. Tables created. ^^");
         } catch (final SQLException e) {

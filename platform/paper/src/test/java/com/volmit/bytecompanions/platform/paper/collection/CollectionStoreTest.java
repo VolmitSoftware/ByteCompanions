@@ -2,6 +2,8 @@ package com.volmit.bytecompanions.platform.paper.collection;
 
 import com.volmit.bytecompanions.core.concurrent.VirtualThreadAsyncExecutor;
 import com.volmit.bytecompanions.providers.storage.sqlcommon.SQLStorageConnection;
+import com.volmit.bytecompanions.platform.paper.storage.StorageException;
+import com.volmit.bytecompanions.providers.storage.sqlcommon.SqlDialect;
 import com.volmit.bytecompanions.providers.storage.sqlcommon.SQLUserStorage;
 import com.volmit.bytecompanions.spi.storage.entry.UserEntry;
 import com.zaxxer.hikari.HikariDataSource;
@@ -9,7 +11,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -27,15 +28,15 @@ class CollectionStoreTest {
     private final UUID player = UUID.randomUUID();
 
     @BeforeEach
-    void open() throws SQLException {
+    void open() throws Exception {
         source = new HikariDataSource();
         source.setJdbcUrl("jdbc:h2:mem:" + UUID.randomUUID() + ";MODE=MySQL");
         source.setMaximumPoolSize(2);
-        SQLStorageConnection connection = new SQLStorageConnection(source, Logger.getAnonymousLogger());
+        SQLStorageConnection connection = new SQLStorageConnection(source, SqlDialect.H2, Logger.getAnonymousLogger());
         connection.connect();
         executor = new VirtualThreadAsyncExecutor();
         selections = new SQLUserStorage(Logger.getAnonymousLogger(), connection, executor);
-        store = new CollectionStore(connection);
+        store = new SqlCollectionStore(connection);
         store.initialize();
     }
 
@@ -47,7 +48,7 @@ class CollectionStoreTest {
     }
 
     @Test
-    void viewerPreferencesSurviveReconnectAndUnrelatedCollectionChanges() throws SQLException {
+    void viewerPreferencesSurviveReconnectAndUnrelatedCollectionChanges() throws Exception {
         ViewerPreferences preferences = new ViewerPreferences(ViewerPreferences.Visibility.OWN, ViewerPreferences.ParticleIntensity.REDUCED);
         CollectionProfile first = CollectionProfile.empty().withViewerPreferences(preferences);
         store.save(player, CollectionProfile.empty(), first, selections, null);
@@ -60,7 +61,7 @@ class CollectionStoreTest {
     }
 
     @Test
-    void legacyCollectionRowsKeepTheirSelectionAndReceiveViewerDefaults() throws SQLException {
+    void legacyCollectionRowsKeepTheirSelectionAndReceiveViewerDefaults() throws Exception {
         try (var connection = source.getConnection(); var statement = connection.prepareStatement(
                 "INSERT INTO bc_collections(player_id,schema_version,revision,data_json) VALUES (?,1,4,?)")) {
             statement.setString(1, player.toString());
@@ -77,7 +78,7 @@ class CollectionStoreTest {
     }
 
     @Test
-    void outfitsAndCosmeticsRoundTripWithoutLosingUnknownCompanionIds() throws SQLException {
+    void outfitsAndCosmeticsRoundTripWithoutLosingUnknownCompanionIds() throws Exception {
         CompanionStyle style = new CompanionStyle("Little Friend", "winter", "cloud_effect", "line");
         Outfit outfit = new Outfit("Travel", List.of("retired_companion"), Map.of("retired_companion", style), List.of("retired_companion"));
         CollectionProfile saved = CollectionProfile.empty().next(Set.of("retired_companion"), Map.of("travel", outfit),
@@ -87,16 +88,16 @@ class CollectionStoreTest {
     }
 
     @Test
-    void staleRevisionCannotOverwriteAnotherSession() throws SQLException {
+    void staleRevisionCannotOverwriteAnotherSession() throws Exception {
         CollectionProfile first = CollectionProfile.empty().next(Set.of("first"), Map.of(), Map.of(), List.of());
         store.save(player, CollectionProfile.empty(), first, selections, null);
         CollectionProfile stale = CollectionProfile.empty().next(Set.of("second"), Map.of(), Map.of(), List.of());
-        assertThrows(SQLException.class, () -> store.save(player, CollectionProfile.empty(), stale, selections, null));
+        assertThrows(StorageException.class, () -> store.save(player, CollectionProfile.empty(), stale, selections, null));
         assertEquals(first, store.load(player));
     }
 
     @Test
-    void profileAndEquippedSelectionCommitTogether() throws SQLException {
+    void profileAndEquippedSelectionCommitTogether() throws Exception {
         selections.save(new UserEntry(player, "Tester", List.of("old")));
         CollectionProfile next = CollectionProfile.empty().next(Set.of("new"), Map.of(), Map.of(), List.of());
         store.save(player, CollectionProfile.empty(), next, selections, new UserEntry(player, "Tester", List.of("new")));
@@ -108,13 +109,13 @@ class CollectionStoreTest {
     void selectionWriteFailureRollsBackProfileAndPriorSelection() {
         selections.save(new UserEntry(player, "Tester", List.of("old")));
         CollectionProfile next = CollectionProfile.empty().next(Set.of("new"), Map.of(), Map.of(), List.of());
-        assertThrows(SQLException.class, () -> store.save(player, CollectionProfile.empty(), next, selections,
+        assertThrows(StorageException.class, () -> store.save(player, CollectionProfile.empty(), next, selections,
                 new UserEntry(player, "Tester", List.of("x".repeat(100)))));
         assertEquals(CollectionProfile.empty(), load());
         assertEquals(List.of("old"), selections.fetch(player).companionTypeIds());
     }
 
     private CollectionProfile load() {
-        try { return store.load(player); } catch (SQLException failure) { throw new AssertionError(failure); }
+        try { return store.load(player); } catch (StorageException failure) { throw new AssertionError(failure); }
     }
 }

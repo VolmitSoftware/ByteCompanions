@@ -17,7 +17,6 @@ import com.volmit.bytecompanions.platform.paper.util.scheduling.BukkitOwnerTasks
 import com.volmit.bytecompanions.platform.paper.util.lifecycle.AsyncTeardown;
 import io.github.slimjar.app.builder.SpigotApplicationBuilder;
 import com.volmit.bytecompanions.platform.paper.bootstrap.H2ResourceRelocator;
-import com.zaxxer.hikari.HikariDataSource;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -96,6 +95,8 @@ import com.volmit.bytecompanions.platform.paper.loader.CompanionConfigurationLoa
 import com.volmit.bytecompanions.platform.paper.manager.CompanionPlayerManager;
 import com.volmit.bytecompanions.platform.paper.messenger.MessageDispatcher;
 import com.volmit.bytecompanions.platform.paper.localization.LanguageService;
+import com.volmit.bytecompanions.platform.paper.storage.RuntimeStorage;
+import com.volmit.bytecompanions.platform.paper.storage.RuntimeStorageFactory;
 import com.volmit.bytecompanions.platform.paper.scheduler.CompanionsTickScheduler;
 import com.volmit.bytecompanions.platform.paper.scheduler.CompanionViewerService;
 import com.volmit.bytecompanions.spi.companions.CompanionViewerEnvironment;
@@ -103,19 +104,9 @@ import com.volmit.bytecompanions.api.companion.Companion;
 import com.volmit.bytecompanions.core.user.DefaultCompanionPlayer;
 import com.volmit.bytecompanions.platform.paper.service.CompanionPlayerLifecyclePlatformService;
 import com.volmit.bytecompanions.platform.paper.service.CompanionsSyncService;
-import com.volmit.bytecompanions.providers.storage.h2.H2StorageConnectionData;
-import com.volmit.bytecompanions.providers.storage.mysql.MySQLStorageConnectionData;
-import com.volmit.bytecompanions.providers.storage.sqlcommon.SQLStorageConnection;
-import com.volmit.bytecompanions.providers.storage.sqlcommon.SQLTransactionManager;
-import com.volmit.bytecompanions.providers.storage.sqlcommon.SQLUserStorage;
-import com.volmit.bytecompanions.providers.storage.sqlcommon.config.JdbcCredentials;
-import com.volmit.bytecompanions.providers.storage.sqlcommon.config.JdbcPoolConfig;
-import com.volmit.bytecompanions.providers.storage.sqlcommon.transaction.TransactionManager;
 import com.volmit.bytecompanions.spi.companions.NmsCompanionEntityFactory;
 import com.volmit.bytecompanions.spi.concurrent.AsyncExecutor;
 import com.volmit.bytecompanions.spi.eventbus.CompanionEventBus;
-import com.volmit.bytecompanions.spi.storage.StorageConnection;
-import com.volmit.bytecompanions.spi.storage.UserStorage;
 import com.volmit.bytecompanions.internal.itemblueprint.ItemBlueprintRegistry;
 import com.volmit.bytecompanions.internal.itemblueprint.text.TextSerializer;
 import com.volmit.bytecompanions.features.animations.AnimationsFeature;
@@ -197,9 +188,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
     private CompanionPlayerManager companionPlayerManager;
     private UserCompanionFactory userCompanionFactory;
 
-    private StorageConnection storageConnection;
-    private UserStorage userStorage;
-    private TransactionManager transactionManager;
+    private RuntimeStorage storage;
 
     private CompanionPlayerCache playerCache;
     private DefaultUserLoader userLoader;
@@ -391,7 +380,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
 
         this.companionEventBus = new BukkitCompanionEventBus(this);
         this.companionEntityCache = new CompanionEntityCache();
-        this.storageConnection.connect();
+        this.storage.connect();
 
         CompletableFuture<Void> progressionReady = CompletableFuture.completedFuture(null);
         if (configuration.features().enabled("progression") || configuration.features().enabled("boosters")) {
@@ -399,7 +388,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
                 ProgressionDefinitions definitions = ProgressionDefinitions.parse(
                         this.contentSnapshot.source("features/progression/config.toml").getBytes(StandardCharsets.UTF_8));
                 this.progressionService = new ProgressionService(
-                        this, (SQLStorageConnection) this.storageConnection, this.asyncExecutor.executor(), definitions,
+                        this, this.storage::progression, this.asyncExecutor.executor(), definitions,
                         configuration.features().enabled("progression"), configuration.features().enabled("boosters"),
                         this.captureRuntimeGuard());
                 ProgressionService current = this.progressionService;
@@ -425,8 +414,8 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
 
         this.playerCache = new CompanionPlayerCache();
         this.userCompanionFactory = new UserCompanionFactory();
-        this.userLoader = new DefaultUserLoader(this.playerCache, this.userStorage, this.userCompanionFactory, this.companionTypeRegistry);
-        this.userManager = new DefaultUserManager(this.playerCache, this.userStorage);
+        this.userLoader = new DefaultUserLoader(this.playerCache, this.storage.users(), this.userCompanionFactory, this.companionTypeRegistry);
+        this.userManager = new DefaultUserManager(this.playerCache, this.storage.users());
 
         this.companionFactory = new DefaultCompanionFactory(
                 this.componentSerializerAdapter,
@@ -449,7 +438,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
                 this.companionManager,
                 this.messageDispatcher,
                 this.companionTypeRegistry,
-                this.userStorage,
+                this.storage.users(),
                 this.configuration.general().companionLimits()
         );
 
@@ -457,8 +446,8 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
         new AnimationsFeature(this).enable();
         this.startPlayerFeatures(audienceRules);
         this.collectionVariants = new VariantCatalog(this);
-        this.collectionService = new CollectionService(this, (SQLStorageConnection) this.storageConnection,
-                this.asyncExecutor.executor(), this.userStorage, this.companionManager,
+        this.collectionService = new CollectionService(this, this.storage.collections(),
+                this.asyncExecutor.executor(), this.storage.users(), this.companionManager,
                 this.configuration.general().companionLimits(), this.particlesFeature,
                 this.configuration.collections().maximumOutfits(), this.collectionVariants);
         this.registerListeners(this.collectionService);
@@ -930,14 +919,14 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
         if (this.particlesFeature != null) {
             this.cleanup("particle resources", this.particlesFeature::closeResources);
         }
-        if (this.userStorage instanceof SQLUserStorage sqlUserStorage) {
-            this.cleanup("accepted storage operations", () -> sqlUserStorage.closeAsync().join());
+        if (this.storage != null) {
+            this.cleanup("accepted storage operations", () -> this.storage.closeQueues().join());
         }
         if (this.asyncExecutor != null) {
             this.cleanup("storage executor", this.asyncExecutor::shutdown);
         }
-        if (this.storageConnection != null) {
-            this.cleanup("storage connection", this.storageConnection::disconnect);
+        if (this.storage != null) {
+            this.cleanup("storage connection", this.storage::disconnect);
         }
     }
 
@@ -971,9 +960,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
         this.companionFactory = null;
         this.messageDispatcher = null;
         this.configuration = null;
-        this.userStorage = null;
-        this.storageConnection = null;
-        this.transactionManager = null;
+        this.storage = null;
         this.asyncExecutor = null;
         this.nmsCompanionEntityFactory = null;
         this.companionEntityCache = null;
@@ -985,7 +972,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
 
     private void startPlayerFeatures(AtomicReference<RuntimeServerRules> audienceRules) {
         if (this.configuration.features().enabled("particles")) {
-            this.particlesFeature = new ParticlesFeature(this, this);
+            this.particlesFeature = new ParticlesFeature(this, this, this.storage.particles());
             this.particlesFeature.enable();
             this.featureCommands.put("particles", this.particlesFeature.command());
         }
@@ -1263,14 +1250,8 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
         for (String feature : List.of("attributes", "buffs", "decorations", "effects", "particles")) {
             features.put(feature, this.isFeatureEnabled(feature));
         }
-        Map<String, art.arcane.volmlib.util.scheduling.KeyedTaskQueue.Snapshot> storageQueues = new LinkedHashMap<>();
-        if (this.userStorage instanceof com.volmit.bytecompanions.providers.storage.sqlcommon.SQLUserStorage sqlStorage) {
-            storageQueues.put("companions", sqlStorage.operationSnapshot());
-        }
-        if (this.particlesFeature != null && this.particlesFeature.userStorage()
-                instanceof com.volmit.bytecompanions.features.particles.storage.sql.AbstractSQLUserStorage particleStorage) {
-            storageQueues.put("particles", particleStorage.operationSnapshot());
-        }
+        Map<String, art.arcane.volmlib.util.scheduling.KeyedTaskQueue.Snapshot> storageQueues =
+                this.storage == null ? Map.of() : this.storage.queueSnapshots();
         CompanionDebugReport.RuntimeSnapshot runtime = new CompanionDebugReport.RuntimeSnapshot(
                 this.tickScheduler == null ? null : this.tickScheduler.snapshot(),
                 this.lifecyclePlatformService == null ? 0 : this.lifecyclePlatformService.loadFailures(), storageQueues,
@@ -1302,52 +1283,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
     }
 
     private void initializeStorage() {
-        final Configuration.Storage storageConfig = this.configuration.storage();
-        final JdbcPoolConfig poolConfig = new JdbcPoolConfig(
-                storageConfig.pool().connectionTimeoutMillis(),
-                storageConfig.pool().maxLifetimeMillis(),
-                storageConfig.pool().maxPoolSize(),
-                storageConfig.pool().minIdle()
-        );
-
-        final String type = storageConfig.backend().toUpperCase(java.util.Locale.ROOT);
-        if (type.equals("H2")) {
-            final String parentDirectory = storageConfig.h2().directory();
-            final String finalPathDirectory = parentDirectory == null ? "" : parentDirectory + "/";
-            final File file = this.getDataFolder().toPath().resolve(finalPathDirectory + "/storage").toFile();
-
-            final HikariDataSource hikari = new H2StorageConnectionData()
-                    .file(file)
-                    .pool(poolConfig)
-                    .build();
-
-            this.storageConnection = new SQLStorageConnection(hikari, this.getLogger());
-            this.userStorage = new SQLUserStorage(this.getLogger(), (SQLStorageConnection) this.storageConnection, this.asyncExecutor);
-
-            this.getLogger().info("H2 storage initialized successfully at: " + file.getAbsolutePath());
-        } else if (type.equals("MYSQL")) {
-            final JdbcCredentials jdbcCredentials = new JdbcCredentials(
-                    storageConfig.mysql().host(),
-                    storageConfig.mysql().port(),
-                    storageConfig.mysql().database(),
-                    storageConfig.mysql().username(),
-                    storageConfig.mysql().password(),
-                    storageConfig.mysql().useSsl()
-            );
-
-            final HikariDataSource hikariDataSource = new MySQLStorageConnectionData()
-                    .credentials(jdbcCredentials)
-                    .pool(poolConfig)
-                    .build();
-
-            this.storageConnection = new SQLStorageConnection(hikariDataSource, this.getLogger());
-            this.userStorage = new SQLUserStorage(this.getLogger(), (SQLStorageConnection) this.storageConnection, this.asyncExecutor);
-            this.getLogger().info("MySQL storage initialized successfully.");
-        } else {
-            throw new IllegalStateException("Invalid storage backend: " + type);
-        }
-
-        this.transactionManager = new SQLTransactionManager((SQLStorageConnection) this.storageConnection, this.asyncExecutor);
+        this.storage = RuntimeStorageFactory.create(this, this.configuration.storage(), this.asyncExecutor);
     }
 
     private @NotNull NmsCompanionEntityFactory createNmsCompanionEntityFactory() {
@@ -1391,10 +1327,6 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
 
     public CompanionPlayerManager companionPlayerManager() {
         return this.companionPlayerManager;
-    }
-
-    public TransactionManager transactionManager() {
-        return this.transactionManager;
     }
 
     public UserCompanionFactory userCompanionFactory() {

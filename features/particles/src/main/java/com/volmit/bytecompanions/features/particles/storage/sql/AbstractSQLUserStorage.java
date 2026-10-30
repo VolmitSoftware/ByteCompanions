@@ -8,6 +8,7 @@ import com.volmit.bytecompanions.features.particles.storage.UserStorage;
 import com.volmit.bytecompanions.features.particles.storage.entry.UserEntry;
 import com.volmit.bytecompanions.features.particles.storage.view.UserView;
 import com.volmit.bytecompanions.features.particles.util.UUIDUtil;
+import com.volmit.bytecompanions.providers.storage.sqlcommon.SqlDialect;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,18 +25,32 @@ public final class AbstractSQLUserStorage implements UserStorage {
     private final Logger logger;
     private final HikariDataSource hikariDataSource;
     private final ExecutorService executorService;
+    private final SqlDialect dialect;
     private final KeyedTaskQueue<UUID> operations;
 
     public AbstractSQLUserStorage(
             final @NotNull Logger logger,
             final @NotNull HikariDataSource hikariDataSource,
-            final @NotNull ExecutorService executorService
+            final @NotNull ExecutorService executorService,
+            final @NotNull SqlDialect dialect
     ) {
         this.logger = logger;
         this.hikariDataSource = hikariDataSource;
         this.executorService = executorService;
+        this.dialect = dialect;
         this.operations = new KeyedTaskQueue<>(executorService, (playerId, failure) ->
                 logger.error("Particle persistence failed for {}", playerId, failure));
+    }
+
+    public void initialize() {
+        String sql = "CREATE TABLE IF NOT EXISTS bcp_users (owner_id " + this.dialect.binary16()
+                + " NOT NULL, companion_type_id VARCHAR(64) NOT NULL, effect_id VARCHAR(64), PRIMARY KEY(owner_id, companion_type_id))";
+        try (final Connection connection = this.hikariDataSource.getConnection();
+             final PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.executeUpdate();
+        } catch (final SQLException exception) {
+            throw new RuntimeException(exception);
+        }
     }
 
     @Override
@@ -69,13 +84,9 @@ public final class AbstractSQLUserStorage implements UserStorage {
 
         try (
                 final Connection connection = this.hikariDataSource.getConnection();
-                final PreparedStatement preparedStatement = connection.prepareStatement("""
-                        INSERT INTO bcp_users (owner_id, companion_type_id, effect_id)
-                        VALUES (?, ?, ?)
-                        ON DUPLICATE KEY UPDATE
-                            effect_id = VALUES(effect_id)
-                        """
-                )
+                final PreparedStatement preparedStatement = connection.prepareStatement(
+                        "INSERT INTO bcp_users (owner_id, companion_type_id, effect_id) VALUES (?, ?, ?) "
+                                + this.dialect.upsertSuffix("owner_id, companion_type_id", "effect_id"))
         ) {
             preparedStatement.setBytes(1, UUIDUtil.uuidToBytes(userEntry.userId()));
             preparedStatement.setString(2, userEntry.companionTypeId());

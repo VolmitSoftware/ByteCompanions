@@ -494,16 +494,6 @@ final class RuntimeJarTest {
     }
 
     @Test
-    void particleStorageRetainsItsConfiguredDatabasePathAndPoolSize() throws Exception {
-        Object configuration = readConfiguration("[storage.h2]\npath = \"selected-particles\"\n\n[storage.pool]\nmax-pool-size = 4\n", PLUGIN_PACKAGE + ".features.particles.configuration.ParticlesConfiguration");
-        Object storage = configuration.getClass().getMethod("storage").invoke(configuration);
-        Object h2 = storage.getClass().getMethod("h2").invoke(storage);
-        Object pool = storage.getClass().getMethod("pool").invoke(storage);
-        assertEquals("selected-particles", h2.getClass().getMethod("parentPath").invoke(h2));
-        assertEquals(4, pool.getClass().getMethod("maxPoolSize").invoke(pool));
-    }
-
-    @Test
     void allParticleFactoriesRetainIndependentEffectState() throws Exception {
         Class<?> feature = loader.loadClass(PLUGIN_PACKAGE + ".features.particles.ParticlesFeature");
         Class<?> adapterType = loader.loadClass(PLUGIN_PACKAGE + ".features.particles.adapternms.v26_1.V26_1NMSAdapter");

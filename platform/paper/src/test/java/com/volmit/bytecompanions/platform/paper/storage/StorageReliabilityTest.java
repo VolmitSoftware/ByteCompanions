@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import com.volmit.bytecompanions.core.concurrent.VirtualThreadAsyncExecutor;
 import com.volmit.bytecompanions.providers.storage.sqlcommon.SQLStorageConnection;
+import com.volmit.bytecompanions.providers.storage.sqlcommon.SqlDialect;
 import com.volmit.bytecompanions.providers.storage.sqlcommon.SQLUserStorage;
 import com.volmit.bytecompanions.spi.storage.entry.UserEntry;
 import com.volmit.bytecompanions.spi.storage.view.UserView;
@@ -44,7 +45,7 @@ class StorageReliabilityTest {
         Logger logger = Logger.getAnonymousLogger();
         logger.setLevel(Level.OFF);
         executor = new VirtualThreadAsyncExecutor();
-        connection = new SQLStorageConnection(source, logger);
+        connection = new SQLStorageConnection(source, SqlDialect.H2, logger);
         connection.connect();
         companions = new SQLUserStorage(logger, connection, executor);
 

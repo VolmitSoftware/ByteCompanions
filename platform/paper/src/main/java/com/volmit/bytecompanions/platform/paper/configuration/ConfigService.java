@@ -514,8 +514,8 @@ public final class ConfigService implements AutoCloseable {
     private static void validate(Configuration configuration) throws IOException {
         Configuration.Storage storage = configuration.storage();
         String backend = storage.backend().toLowerCase(Locale.ROOT);
-        if (!Set.of("h2", "mysql").contains(backend)) {
-            throw invalid("storage.backend", "must be h2 or mysql");
+        if (!Set.of("json", "sqlite", "h2", "mysql").contains(backend)) {
+            throw invalid("storage.backend", "must be json, sqlite, h2, or mysql");
         }
         Configuration.Storage.Pool pool = storage.pool();
         require(pool.connectionTimeoutMillis() == 0 || pool.connectionTimeoutMillis() >= 250,

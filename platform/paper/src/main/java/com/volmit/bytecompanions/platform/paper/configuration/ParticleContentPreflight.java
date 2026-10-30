@@ -38,17 +38,9 @@ final class ParticleContentPreflight {
         } finally {
             items.clear();
         }
-        if (!Set.of("H2", "MYSQL", "MARIADB").contains(typed.storage().type().toUpperCase(Locale.ROOT))) {
-            throw new IllegalArgumentException("Unknown particle storage type" );
-        }
         if (!Set.of("MINI_MESSAGE", "LEGACY_AMPERSAND").contains(typed.settings().serializer().toUpperCase(Locale.ROOT))) {
             throw new IllegalArgumentException("Unknown particle serializer" );
         }
-        ConfigurationNode pool = config.node("storage", "pool");
-        integer(pool.node("connection-timeout"), 5000, 250, Integer.MAX_VALUE);
-        int maximum = integer(pool.node("max-pool-size"), 10, 1, Integer.MAX_VALUE);
-        integer(pool.node("min-idle"), 1, 0, maximum);
-        integer(pool.node("max-lifetime"), 1800000, 0, Integer.MAX_VALUE);
         for (String key : List.of("settle-delay-seconds", "movement-epsilon-squared")) {
             ConfigurationNode value = config.node("settings", "movement", key);
             if (!value.virtual() && finite(value.rawScalar(), key) < 0) {

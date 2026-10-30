@@ -1,9 +1,7 @@
 package com.volmit.bytecompanions.features.particles;
 
-import org.slf4j.LoggerFactory;
 import java.util.concurrent.CompletableFuture;
 import com.volmit.bytecompanions.spi.companions.CompanionViewerEnvironment;
-import com.zaxxer.hikari.HikariDataSource;
 import org.bukkit.entity.Player;
 import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.event.HandlerList;
@@ -26,7 +24,6 @@ import com.volmit.bytecompanions.features.particles.adventure.ComponentSerialize
 import com.volmit.bytecompanions.features.particles.adventure.ComponentSerializerFactory;
 import com.volmit.bytecompanions.features.particles.command.ParticlesCommand;
 import com.volmit.bytecompanions.features.particles.configuration.ParticlesConfiguration;
-import com.volmit.bytecompanions.features.particles.configuration.StorageConfiguration;
 import com.volmit.bytecompanions.features.particles.configuration.ParticleIconsConfiguration;
 import com.volmit.bytecompanions.features.particles.effect.EffectTrackingAnimation;
 import com.volmit.bytecompanions.features.particles.effect.ParticleEffect;
@@ -36,24 +33,12 @@ import com.volmit.bytecompanions.features.particles.manager.PlayerEffectManager;
 import com.volmit.bytecompanions.features.particles.messages.MessageSender;
 import com.volmit.bytecompanions.features.particles.registry.ParticleEffectEntry;
 import com.volmit.bytecompanions.features.particles.registry.ParticleEffectRegistry;
-import com.volmit.bytecompanions.features.particles.storage.StorageConnection;
 import com.volmit.bytecompanions.features.particles.storage.UserStorage;
-import com.volmit.bytecompanions.features.particles.storage.config.JdbcCredentials;
-import com.volmit.bytecompanions.features.particles.storage.config.JdbcPoolConfig;
-import com.volmit.bytecompanions.features.particles.storage.data.H2StorageConnectionData;
-import com.volmit.bytecompanions.features.particles.storage.data.MariaDBStorageConnectionData;
-import com.volmit.bytecompanions.features.particles.storage.data.MySQLStorageConnectionData;
-import com.volmit.bytecompanions.features.particles.storage.sql.AbstractSQLStorageConnection;
-import com.volmit.bytecompanions.features.particles.storage.sql.AbstractSQLUserStorage;
 import com.volmit.bytecompanions.internal.itemblueprint.ItemBlueprint;
 import com.volmit.bytecompanions.internal.itemblueprint.ItemBlueprintRegistry;
 
-import java.io.File;
 import com.volmit.bytecompanions.platform.paper.PaperPlugin;
-import java.util.Locale;
 import java.util.Objects;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.function.Supplier;
 
 public final class ParticlesFeature {
@@ -65,9 +50,10 @@ public final class ParticlesFeature {
     private CompanionListener listener;
     private BukkitCommand command;
 
-    public ParticlesFeature(JavaPlugin plugin, ByteCompanions companions) {
+    public ParticlesFeature(JavaPlugin plugin, ByteCompanions companions, UserStorage userStorage) {
         this.plugin = Objects.requireNonNull(plugin, "plugin");
         this.companions = Objects.requireNonNull(companions, "companions");
+        this.userStorage = Objects.requireNonNull(userStorage, "userStorage");
     }
 
     public BukkitCommand command() {
@@ -80,14 +66,12 @@ public final class ParticlesFeature {
         return Objects.requireNonNull(nmsAdapter, "NMSAdapter is null");
     }
 
-    private ExecutorService executorService;
     private ParticleEffectRegistry particleEffectRegistry;
     private ParticlesConfiguration particlesConfiguration;
     private ParticleIconsConfiguration iconsConfiguration;
 
     private PlayerEffectManager playerEffectManager;
-    private StorageConnection storageConnection;
-    private UserStorage userStorage;
+    private final UserStorage userStorage;
 
     private ComponentSerializerAdapter serializerAdapter;
     private MessageSender messageSender;
@@ -100,7 +84,6 @@ public final class ParticlesFeature {
 
         this.playerEffectManager = new PlayerEffectManager(this, this.plugin, this.companions);
 
-        this.executorService = Executors.newVirtualThreadPerTaskExecutor();
         this.particlesConfiguration = this.loadConfiguration("config", ParticlesConfiguration.class);
 
         this.itemBlueprintRegistry = ItemBlueprintRegistry.create(TextSerializerFactory.create(this.particlesConfiguration.settings().serializer()));
@@ -114,7 +97,6 @@ public final class ParticlesFeature {
         this.registerParticleEffects();
         this.registerAnimations();
 
-        this.initializeStorage();
         this.listener = new CompanionListener(this);
         this.plugin.getServer().getPluginManager().registerEvents(this.listener, this.plugin);
         this.command = new ParticlesCommand(this, this.companions,
@@ -152,17 +134,6 @@ public final class ParticlesFeature {
                 this.companions.animationRegistry().unregister(AnimationChannel.POST_TRACKING, entry.id());
             }
         }
-        if (this.userStorage instanceof com.volmit.bytecompanions.features.particles.storage.sql.AbstractSQLUserStorage sqlStorage) {
-            sqlStorage.closeAsync().join();
-        }
-        if (this.executorService != null) {
-            this.executorService.close();
-            this.executorService = null;
-        }
-        if (this.storageConnection != null) {
-            this.storageConnection.disconnect();
-            this.storageConnection = null;
-        }
         if (this.itemBlueprintRegistry != null) {
             this.itemBlueprintRegistry.clear();
         }
@@ -185,52 +156,6 @@ public final class ParticlesFeature {
         batch.set(kinds.length, new DustStyle(1, 0, 0, 1), 0, 0, 0, 0, 0, 0, 0, 1);
         batch.setColored(kinds.length + 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1);
         batch.clear();
-    }
-
-    void initializeStorage() {
-        final StorageConfiguration storageConfiguration = this.particlesConfiguration.storage();
-        final JdbcPoolConfig jdbcPoolConfig = new JdbcPoolConfig(
-                storageConfiguration.pool().connectionTimeout(),
-                storageConfiguration.pool().maxLifetime(),
-                storageConfiguration.pool().maxPoolSize(),
-                storageConfiguration.pool().minIdle()
-        );
-
-        final JdbcCredentials jdbcCredentials = new JdbcCredentials(
-                storageConfiguration.credentials().host(),
-                storageConfiguration.credentials().port(),
-                storageConfiguration.credentials().database(),
-                storageConfiguration.credentials().username(),
-                storageConfiguration.credentials().password(),
-                storageConfiguration.credentials().useSSL()
-        );
-
-        final String type = storageConfiguration.type().toUpperCase(Locale.ROOT);
-        final HikariDataSource hikariDataSource = switch (type) {
-            case "H2" -> {
-                final File file = this.plugin.getDataFolder().toPath().resolve("features/particles").resolve(storageConfiguration.h2().parentPath() + "/database").toFile();
-                yield H2StorageConnectionData.builder()
-                        .file(file)
-                        .pool(jdbcPoolConfig)
-                        .build();
-            }
-            case "MYSQL" -> MySQLStorageConnectionData.builder()
-                    .credentials(jdbcCredentials)
-                    .pool(jdbcPoolConfig)
-                    .build();
-
-            case "MARIADB" -> MariaDBStorageConnectionData.builder()
-                    .credentials(jdbcCredentials)
-                    .pool(jdbcPoolConfig)
-                    .build();
-
-            default -> throw new IllegalArgumentException("An invalid storage type was typed. ''" + type + "''");
-        };
-
-        LoggerFactory.getLogger(this.plugin.getName()).info("Initializing connection to database: {}", type);
-        this.storageConnection = new AbstractSQLStorageConnection(LoggerFactory.getLogger(this.plugin.getName()), hikariDataSource);
-        this.userStorage = new AbstractSQLUserStorage(LoggerFactory.getLogger(this.plugin.getName()), hikariDataSource, this.executorService);
-        this.storageConnection.connect();
     }
 
     void registerParticleEffects() {
@@ -282,10 +207,6 @@ public final class ParticlesFeature {
 
     public ItemBlueprintRegistry itemBlueprintRegistry() {
         return this.itemBlueprintRegistry;
-    }
-
-    public StorageConnection storageConnection() {
-        return this.storageConnection;
     }
 
     public UserStorage userStorage() {

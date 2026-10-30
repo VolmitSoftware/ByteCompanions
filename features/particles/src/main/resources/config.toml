@@ -1,27 +1,3 @@
-# Particle storage supports H2, MYSQL, or MARIADB.
-[storage]
-type = "H2"
-
-# Connection pool limits and timeouts in milliseconds.
-[storage.pool]
-connection-timeout = 5000
-max-lifetime = 1800000
-max-pool-size = 10
-min-idle = 1
-
-# External SQL credentials; ignored for embedded H2.
-[storage.credentials]
-host = "localhost"
-port = 3306
-database = "byteballoons"
-username = "root"
-password = "ilovefory"
-use-ssl = "false"
-
-# Directory for embedded H2 data.
-[storage.h2]
-path = "storage"
-
 # Text formats: MINI_MESSAGE or LEGACY_AMPERSAND.
 [settings]
 serializer = "MINI_MESSAGE"

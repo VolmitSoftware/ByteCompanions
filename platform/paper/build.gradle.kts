@@ -110,6 +110,8 @@ dependencies {
     implementation(project(":library-item-blueprint"))
     implementation(project(":providers:storage:h2"))
     implementation(project(":providers:storage:mysql"))
+    implementation(project(":providers:storage:sqlite"))
+    implementation(project(":providers:storage:json"))
     implementation(project(":particle-adapter"))
     implementation(project(":particle-adapter:v26_1"))
     implementation(providers.gradleProperty("volmLibCoordinate")
@@ -126,6 +128,7 @@ dependencies {
     "slimApi"("com.h2database:h2:2.4.240")
     "slimApi"("com.mysql:mysql-connector-j:9.5.0")
     "slimApi"("org.mariadb.jdbc:mariadb-java-client:3.5.8")
+    "slimApi"("org.xerial:sqlite-jdbc:3.49.1.0")
     listOf("adventure-api", "adventure-text-minimessage", "adventure-text-serializer-legacy",
         "adventure-text-serializer-plain", "adventure-text-serializer-gson", "adventure-text-serializer-json").forEach {
         "slimApi"("net.kyori:$it:4.26.1")
@@ -143,6 +146,7 @@ dependencies {
     testImplementation("me.clip:placeholderapi:2.12.2") { isTransitive = false }
     compileOnly("com.github.MilkBowl:VaultAPI:1.7") { isTransitive = false }
     testImplementation("com.github.MilkBowl:VaultAPI:1.7") { isTransitive = false }
+    testImplementation("org.xerial:sqlite-jdbc:3.49.1.0")
     testImplementation("org.junit.jupiter:junit-jupiter:5.13.4")
     testImplementation("org.mockito:mockito-core:5.14.2")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")

@@ -3,7 +3,7 @@ package com.volmit.bytecompanions.platform.paper.progression;
 import art.arcane.volmlib.integration.VaultEconomy;
 import art.arcane.volmlib.util.scheduling.FoliaScheduler;
 import art.arcane.volmlib.util.scheduling.KeyedTaskQueue;
-import com.volmit.bytecompanions.providers.storage.sqlcommon.SQLStorageConnection;
+import java.util.function.Function;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -80,7 +80,7 @@ public final class ProgressionService {
     }
     record GlobalState(List<Booster> boosters) { GlobalState { boosters = List.copyOf(boosters); } }
     private final Plugin plugin;
-    private final SQLStorageConnection connection;
+    private final Function<String, ProgressionStore> stores;
     private final ProgressionDefinitions definitions;
     private final boolean progressionEnabled;
     private final boolean boostersEnabled;
@@ -106,15 +106,15 @@ public final class ProgressionService {
     private CompletableFuture<Void> stopped;
     private CompletableFuture<Void> ownerTasksStopped;
 
-    public ProgressionService(Plugin plugin, SQLStorageConnection connection, Executor executor,
+    public ProgressionService(Plugin plugin, Function<String, ProgressionStore> stores, Executor executor,
             ProgressionDefinitions definitions, boolean progressionEnabled, boolean boostersEnabled, BooleanSupplier runtimeCurrent) {
-        this(plugin, connection, executor, definitions, progressionEnabled, boostersEnabled, runtimeCurrent,
+        this(plugin, stores, executor, definitions, progressionEnabled, boostersEnabled, runtimeCurrent,
                 System::currentTimeMillis, FoliaScheduler::isOwnedByCurrentRegion, true);
     }
-    ProgressionService(Plugin plugin, SQLStorageConnection connection, Executor executor,
+    ProgressionService(Plugin plugin, Function<String, ProgressionStore> stores, Executor executor,
             ProgressionDefinitions definitions, boolean progressionEnabled, boolean boostersEnabled, BooleanSupplier runtimeCurrent,
             LongSupplier clock, Predicate<Player> ownerCheck, boolean runTimer) {
-        this.plugin = plugin; this.connection = connection; this.definitions = definitions;
+        this.plugin = plugin; this.stores = stores; this.definitions = definitions;
         this.progressionEnabled = progressionEnabled; this.boostersEnabled = boostersEnabled; this.runtimeCurrent = runtimeCurrent;
         this.clock = clock; this.ownerCheck = ownerCheck; this.runTimer = runTimer; this.lastCheckpoint = clock.getAsLong();
         operations = new KeyedTaskQueue<>(executor, (key, failure) -> plugin.getLogger().log(Level.SEVERE, "Progression persistence failed", failure));
@@ -136,7 +136,7 @@ public final class ProgressionService {
                     if (!Files.exists(path)) Files.writeString(path, UUID.randomUUID().toString(), StandardOpenOption.CREATE_NEW);
                     scope = "local:" + UUID.fromString(Files.readString(path).strip());
                 }
-                store = new ProgressionStore(connection, scope);
+                store = stores.apply(scope);
                 store.initialize();
                 global = store.transaction(transaction -> transaction.global());
                 for (PurchaseJournal journal : store.transaction(transaction -> transaction.unresolved())) unresolved.add(journal.playerId());

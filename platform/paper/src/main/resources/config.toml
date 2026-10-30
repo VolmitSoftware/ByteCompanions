@@ -30,7 +30,7 @@ notifyOperators = true
 uploadEnabled = true
 
 [storage]
-backend = "h2"
+backend = "json"
 
 [storage.pool]
 connectionTimeoutMillis = 5000

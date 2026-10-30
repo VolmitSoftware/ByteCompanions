@@ -11,8 +11,7 @@ import com.volmit.bytecompanions.features.particles.ParticlesFeature;
 import com.volmit.bytecompanions.features.particles.manager.PlayerEffectManager;
 import com.volmit.bytecompanions.platform.paper.PaperPlugin;
 import com.volmit.bytecompanions.platform.paper.configuration.Configuration;
-import com.volmit.bytecompanions.providers.storage.sqlcommon.SQLStorageConnection;
-import com.volmit.bytecompanions.providers.storage.sqlcommon.SQLUserStorage;
+import com.volmit.bytecompanions.platform.paper.storage.StorageException;
 import com.volmit.bytecompanions.spi.storage.UserStorage;
 import com.volmit.bytecompanions.spi.storage.entry.UserEntry;
 import org.bukkit.entity.Player;
@@ -21,7 +20,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -52,7 +50,7 @@ public final class CollectionService implements Listener {
 
     private final PaperPlugin plugin;
     private final CollectionStore store;
-    private final SQLUserStorage selections;
+    private final UserStorage selections;
     private final DefaultCompanionManager manager;
     private final Configuration.CompanionLimits limits;
     private final ParticlesFeature particles;
@@ -64,14 +62,13 @@ public final class CollectionService implements Listener {
     private final CompletableFuture<Void> ready;
     private volatile boolean closed;
 
-    public CollectionService(PaperPlugin plugin, SQLStorageConnection connection, Executor executor,
+    public CollectionService(PaperPlugin plugin, CollectionStore store, Executor executor,
                              UserStorage selections, DefaultCompanionManager manager,
                              Configuration.CompanionLimits limits, ParticlesFeature particles,
                              int maximumOutfits, StyleAdapter adapter) {
         this.plugin = plugin;
-        this.store = new CollectionStore(connection);
-        if (!(selections instanceof SQLUserStorage sql)) throw new IllegalArgumentException("Collections require SQL user storage");
-        this.selections = sql;
+        this.store = store;
+        this.selections = selections;
         this.manager = manager;
         this.limits = limits;
         this.particles = particles;
@@ -80,7 +77,7 @@ public final class CollectionService implements Listener {
         this.maximumOutfits = maximumOutfits;
         this.runtime = plugin.captureRuntimeGuard();
         this.ready = track(CompletableFuture.runAsync(() -> {
-            try { store.initialize(); } catch (SQLException failure) { throw new CompletionException(failure); }
+            try { store.initialize(); } catch (StorageException failure) { throw new CompletionException(failure); }
         }, executor));
         if (particles != null) {
             particles.playerEffectManager().selectionHandler(new PlayerEffectManager.SelectionHandler() {
@@ -89,6 +86,10 @@ public final class CollectionService implements Listener {
                 }
                 @Override public void select(Player player, String companionId, String effectId) {
                     String previous = particles.playerEffectManager().selected(player.getUniqueId(), companionId);
+                    if (effectId != null && effectId.equals(previous)) {
+                        particles.messageSender().send(player, "particle-effects.already-equipped", effectId);
+                        return;
+                    }
                     particleFeedback(player, updateParticle(player, companionId, effectId), effectId, previous);
                 }
                 @Override public void clear(Player player, List<String> companionIds) {
@@ -155,7 +156,7 @@ public final class CollectionService implements Listener {
         Session existing = sessions.putIfAbsent(playerId, session);
         if (existing != null) return existing.loaded.copy();
         track(ready.thenCompose(ignored -> selections.submit(playerId, () -> {
-            try { return store.load(playerId); } catch (SQLException failure) { throw new CompletionException(failure); }
+            try { return store.load(playerId); } catch (StorageException failure) { throw new CompletionException(failure); }
         }))).whenComplete((profile, failure) -> {
             if (failure != null) session.loaded.completeExceptionally(failure);
             else if (!closed && sessions.get(playerId) == session) {
@@ -329,7 +330,7 @@ public final class CollectionService implements Listener {
         CompletableFuture<Result> result = new CompletableFuture<>();
         track(selections.submit(playerId, () -> {
             try { store.save(playerId, previous, next, selections, capturedSelection); return next; }
-            catch (SQLException failure) { throw new CompletionException(failure); }
+            catch (StorageException failure) { throw new CompletionException(failure); }
         })).whenComplete((saved, failure) -> {
             if (failure == null) session.profile = saved;
             else plugin.getLogger().log(Level.SEVERE, "Could not save collection for " + playerId, failure);

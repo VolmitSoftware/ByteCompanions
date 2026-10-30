@@ -35,7 +35,8 @@ public final class H2StorageConnectionData implements Builder<HikariDataSource> 
                 "jdbc:h2:file:" + basePath +
                         ";MODE=MySQL" +
                         ";DATABASE_TO_UPPER=FALSE" +
-                        ";DB_CLOSE_DELAY=-1";
+                        ";DB_CLOSE_DELAY=-1" +
+                        ";WRITE_DELAY=0";
 
         hikari.addDataSourceProperty("URL", jdbcUrl);
         hikari.setUsername("sa");

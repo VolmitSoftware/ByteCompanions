@@ -280,10 +280,10 @@ public final class Configuration implements ConfigurationSettings {
     @ConfigSerializable
     @ConfigDescription("Player data storage backend and connection pool.")
     public static final class Storage {
-        @ConfigDoc(value = "Storage backend for player companions, collections, and progression: h2 or mysql.", impact = "Applies on the next runtime replacement; data is not moved between backends automatically.")
-        private String backend = "h2";
+        @ConfigDoc(value = "Storage backend for player companions, collections, progression, and particle choices: json, sqlite, h2, or mysql.", impact = "Applies on the next runtime replacement; data is not moved between backends automatically.")
+        private String backend = "json";
 
-        @ConfigDoc(value = "Connection pool limits shared by both backends.", impact = "Applies on the next runtime replacement.")
+        @ConfigDoc(value = "Connection pool limits for the sqlite, h2, and mysql backends.", impact = "Applies on the next runtime replacement; sqlite always uses one connection.")
         private Pool pool = new Pool();
 
         @ConfigDoc(value = "Embedded H2 database location.", impact = "Used only when backend is h2.")

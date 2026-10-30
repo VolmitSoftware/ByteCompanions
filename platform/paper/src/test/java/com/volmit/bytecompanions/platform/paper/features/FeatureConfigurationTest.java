@@ -5,7 +5,6 @@ import org.spongepowered.configurate.ConfigurationOptions;
 import com.volmit.bytecompanions.platform.paper.configuration.ContentSnapshot;
 import com.volmit.bytecompanions.platform.paper.configuration.Configuration;
 import com.volmit.bytecompanions.platform.paper.configuration.ConfigService;
-import com.volmit.bytecompanions.features.particles.configuration.ParticlesConfiguration;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -63,12 +62,6 @@ class FeatureConfigurationTest {
         assertFalse(disabled.openDashboardOnInteract());
         assertTrue(disabled.dispatchInteractEvent());
         assertThrows(IOException.class, () -> ConfigService.prepare("[menus]\nrightClickDashboard = [\"invalid\"]\n"));
-    }
-
-    @Test
-    void shippedParticleStoragePathControlsTheDatabaseLocation() throws IOException {
-        ParticlesConfiguration configuration = read("[storage.h2]\npath = \"selected-particles\"\n", ParticlesConfiguration.class);
-        assertEquals("selected-particles", configuration.storage().h2().parentPath());
     }
 
     private static <T> T read(String toml, Class<T> type) throws IOException {

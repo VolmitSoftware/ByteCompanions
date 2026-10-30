@@ -24,3 +24,6 @@
 -keep class * implements com.volmit.bytecompanions.libs.volmlib.integration.IntegrationServiceContract { *; }
 -keep class com.volmit.bytecompanions.platform.paper.configuration.Configuration { *; }
 -keep class com.volmit.bytecompanions.platform.paper.configuration.Configuration$* { *; }
+-keep class com.volmit.bytecompanions.providers.storage.json.** { *; }
+-keep class com.volmit.bytecompanions.features.particles.storage.json.JsonParticleUserStorage$Document { *; }
+-keep class com.volmit.bytecompanions.platform.paper.collection.JsonCollectionStore$Document { *; }

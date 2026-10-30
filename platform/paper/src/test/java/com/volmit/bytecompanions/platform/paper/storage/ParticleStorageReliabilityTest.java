@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Timeout;
 import org.slf4j.LoggerFactory;
 import com.volmit.bytecompanions.features.particles.storage.entry.UserEntry;
 import com.volmit.bytecompanions.features.particles.storage.sql.AbstractSQLUserStorage;
+import com.volmit.bytecompanions.providers.storage.sqlcommon.SqlDialect;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -39,7 +40,7 @@ class ParticleStorageReliabilityTest {
         source.setJdbcUrl("jdbc:h2:mem:" + UUID.randomUUID() + ";MODE=MySQL");
         source.setMaximumPoolSize(4);
         executor = Executors.newVirtualThreadPerTaskExecutor();
-        particles = new AbstractSQLUserStorage(LoggerFactory.getLogger(ParticleStorageReliabilityTest.class), source, executor);
+        particles = new AbstractSQLUserStorage(LoggerFactory.getLogger(ParticleStorageReliabilityTest.class), source, executor, SqlDialect.H2);
         try (Connection sql = source.getConnection(); PreparedStatement statement = sql.prepareStatement("""
                 CREATE TABLE bcp_users (
                     owner_id BINARY(16) NOT NULL,

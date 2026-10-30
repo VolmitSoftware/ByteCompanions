@@ -27,7 +27,8 @@ public final class MySQLStorageConnectionData implements Builder<HikariDataSourc
         final HikariConfig hikari = new HikariConfig();
 
         hikari.setJdbcUrl(
-                "jdbc:mysql://" + this.jdbcCredentials.hostname() + ":" + this.jdbcCredentials.port() + "/" + this.jdbcCredentials.database() + "?useSSL=" + this.jdbcCredentials.useSSL()
+                "jdbc:mysql://" + this.jdbcCredentials.hostname() + ":" + this.jdbcCredentials.port() + "/" + this.jdbcCredentials.database()
+                        + "?useSSL=" + this.jdbcCredentials.useSSL() + "&allowPublicKeyRetrieval=" + !this.jdbcCredentials.useSSL()
         );
 
         hikari.setUsername(this.jdbcCredentials.username());

@@ -17,6 +17,7 @@ import com.volmit.bytecompanions.platform.paper.localization.LanguageService;
 import com.volmit.bytecompanions.platform.paper.manager.CompanionPlayerManager;
 import com.volmit.bytecompanions.platform.paper.messenger.MessageDispatcher;
 import com.volmit.bytecompanions.providers.storage.sqlcommon.SQLStorageConnection;
+import com.volmit.bytecompanions.providers.storage.sqlcommon.SqlDialect;
 import com.volmit.bytecompanions.providers.storage.sqlcommon.SQLUserStorage;
 import com.volmit.bytecompanions.spi.companions.CompanionFactory;
 import com.volmit.bytecompanions.spi.eventbus.CompanionEventBus;
@@ -105,7 +106,7 @@ class CompanionSelectionRecoveryTest {
         source.setJdbcUrl("jdbc:h2:mem:" + UUID.randomUUID() + ";MODE=MySQL");
         source.setMaximumPoolSize(2);
         executor = new VirtualThreadAsyncExecutor();
-        SQLStorageConnection connection = new SQLStorageConnection(source, logger);
+        SQLStorageConnection connection = new SQLStorageConnection(source, SqlDialect.H2, logger);
         connection.connect();
         storage = new SQLUserStorage(logger, connection, executor);
         UserStorage.Async delegate = storage.async();

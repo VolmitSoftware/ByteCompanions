@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import com.zaxxer.hikari.HikariDataSource;
 import com.volmit.bytecompanions.core.concurrent.VirtualThreadAsyncExecutor;
 import com.volmit.bytecompanions.providers.storage.sqlcommon.SQLStorageConnection;
+import com.volmit.bytecompanions.providers.storage.sqlcommon.SqlDialect;
 import com.volmit.bytecompanions.providers.storage.sqlcommon.SQLUserStorage;
 import com.volmit.bytecompanions.spi.storage.entry.UserEntry;
 
@@ -70,7 +71,7 @@ class SQLUserStorageTest {
                 return connection;
             }
         };
-        SQLStorageConnection storage = new SQLStorageConnection(source, Logger.getAnonymousLogger());
+        SQLStorageConnection storage = new SQLStorageConnection(source, SqlDialect.H2, Logger.getAnonymousLogger());
         SQLException actual = assertThrows(SQLException.class, () -> storage.withTransaction(sql -> {
             throw writeFailure;
         }));
@@ -96,7 +97,7 @@ class SQLUserStorageTest {
                 });
         Logger logger = Logger.getAnonymousLogger();
         logger.setLevel(Level.OFF);
-        SQLStorageConnection source = new SQLStorageConnection(null, logger) {
+        SQLStorageConnection source = new SQLStorageConnection(null, SqlDialect.H2, logger) {
             @Override
             public Connection getConnection() {
                 return connection;

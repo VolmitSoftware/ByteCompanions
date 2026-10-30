@@ -8,6 +8,7 @@ import com.volmit.bytecompanions.spi.storage.view.UserView;
 import java.util.Collection;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 
 /**
  * Persistent storage contract for companion player data.
@@ -89,6 +90,14 @@ public interface UserStorage {
      */
     @NotNull
     Async async();
+
+    default <T> @NotNull CompletableFuture<T> submit(final @NotNull UUID playerId, final @NotNull Supplier<T> operation) {
+        return CompletableFuture.supplyAsync(operation);
+    }
+
+    default @NotNull CompletableFuture<Void> closeAsync() {
+        return CompletableFuture.completedFuture(null);
+    }
 
     interface Async {
 
