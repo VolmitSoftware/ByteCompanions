@@ -116,6 +116,37 @@ class ProgressionServiceTest {
         assertEquals(3, service.bonusAddition(playerId, "bee", "effect:minecraft:speed"));
     }
     @Test
+    void purchaseStoppedBeforePaymentIsCancelledAndDoesNotBlockTheNextPurchase() throws Exception {
+        service.grantXp(playerId, "bee", 100).join();
+        long revision = service.snapshot(playerId, "bee").revision();
+        Player leaving = proxy(Player.class, (name, args) -> switch (name) {
+            case "getUniqueId" -> playerId;
+            case "isOnline" -> throw new IllegalStateException("player left during the owner hop");
+            default -> null;
+        });
+        ProgressionService.MutationResult stopped = service.purchase(leaving, "bee", "speed", 0, revision).join();
+        assertEquals(ProgressionService.Status.PAYMENT_REJECTED, stopped.status());
+        ProgressionStore store = new SqlProgressionStore(connection, "test");
+        assertEquals("CANCELLED", store.transaction(transaction -> transaction.journal(stopped.transactionId())).status());
+        assertFalse(service.snapshot(playerId, "bee").busy());
+        assertTrue(service.purchase(player, "bee", "speed", 0, revision).join().success());
+    }
+    @Test
+    void journalLeftBeforePaymentIsCancelledOnStartup() throws Exception {
+        ProgressionStore store = new SqlProgressionStore(connection, "test");
+        String id = UUID.randomUUID().toString();
+        store.transaction(transaction -> {
+            transaction.create(new ProgressionService.PurchaseJournal(id, playerId, "UPGRADE", "bee", "speed", 0,
+                    new ProgressionDefinitions.Cost(10, Map.of()), "PREPARED", "", clock.get(), ""));
+            return null;
+        });
+        service.closeAsync().join();
+        service = create(); service.load(playerId).join();
+        assertFalse(service.snapshot(playerId, "bee").busy());
+        assertEquals("CANCELLED", store.transaction(transaction -> transaction.journal(id)).status());
+        assertTrue(service.unresolvedPurchases().join().isEmpty());
+    }
+    @Test
     void ambiguousCrashJournalBlocksRepurchaseAndManualGrantIsIdempotent() throws Exception {
         ProgressionStore store = new SqlProgressionStore(connection, "test");
         String id = UUID.randomUUID().toString();

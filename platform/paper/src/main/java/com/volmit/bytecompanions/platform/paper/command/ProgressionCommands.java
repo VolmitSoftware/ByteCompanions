@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
@@ -176,7 +177,7 @@ final class ProgressionCommands {
                             "provider", row.provider(), "created", java.time.Instant.ofEpochMilli(row.createdAt()).toString());
                 }
             });
-        } else if (action.equals("resolve") && !value(args, 2).isBlank()
+        } else if (action.equals("resolve") && transactionId(value(args, 2))
                 && Set.of("grant", "cancel").contains(value(args, 3).toLowerCase(Locale.ROOT))) {
             complete(sender, service.resolvePurchase(args[2], args[3].equalsIgnoreCase("grant")), result -> {
                 mutation(sender, result);
@@ -184,6 +185,14 @@ final class ProgressionCommands {
             });
         } else {
             usage(sender, "/bytecompanions transactions list | resolve <transaction> grant|cancel");
+        }
+    }
+
+    private static boolean transactionId(String value) {
+        try {
+            return UUID.fromString(value).toString().equals(value);
+        } catch (IllegalArgumentException invalid) {
+            return false;
         }
     }
 

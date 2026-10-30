@@ -139,7 +139,14 @@ public final class ProgressionService {
                 store = stores.apply(scope);
                 store.initialize();
                 global = store.transaction(transaction -> transaction.global());
-                for (PurchaseJournal journal : store.transaction(transaction -> transaction.unresolved())) unresolved.add(journal.playerId());
+                for (PurchaseJournal journal : store.transaction(transaction -> transaction.unresolved())) {
+                    if (!journal.status().equals("PREPARED")) {
+                        unresolved.add(journal.playerId());
+                        continue;
+                    }
+                    store.transaction(transaction -> { transaction.journal(journal.state("CANCELLED", journal.provider(), "Interrupted before payment")); return null; });
+                    plugin.getLogger().warning("Cancelled purchase " + journal.transactionId() + " that stopped before payment; no money or items were taken");
+                }
                 initialized = true;
                 if (runTimer && boostersEnabled) timer.scheduleAtFixedRate(this::checkpoint, 1, 1, TimeUnit.SECONDS);
             } catch (Exception failure) { throw new IllegalStateException("Could not initialize progression", failure); }
@@ -263,6 +270,7 @@ public final class ProgressionService {
             if (unresolved.contains(id) || purchases.putIfAbsent(id, result) != null) return completed(Status.BUSY, id, journal.companionId());
         }
         AtomicBoolean journalCreated = new AtomicBoolean();
+        AtomicBoolean paymentStarted = new AtomicBoolean();
         submit(() -> {
             Snapshot view = snapshot(id, journal.companionId());
             if (view.revision() != revision || (journal.kind().equals("UPGRADE") && view.tracks().getOrDefault(journal.definitionId(), 0) != journal.expectedTier())) return Status.STALE;
@@ -281,21 +289,41 @@ public final class ProgressionService {
             return onOwner(player, () -> preparePayment(player, journal)).thenCompose(selection -> {
                 if (selection.status() != Status.SUCCESS) return settle(journal, new Payment(selection.status(), "", selection.message()));
                 String provider = selection.provider() == null ? "" : selection.provider().identity();
-                return submit(() -> { store.transaction(transaction -> { transaction.journal(journal.state("ATTEMPTING", provider, "")); return null; }); return true; })
+                return submit(() -> { paymentStarted.set(true); store.transaction(transaction -> { transaction.journal(journal.state("ATTEMPTING", provider, "")); return null; }); return true; })
                         .thenCompose(ignored -> onOwner(player, () -> charge(player, journal, selection)))
                         .thenCompose(payment -> settle(journal, payment));
             });
-        }).whenComplete((value, failure) -> {
-            if (failure != null) {
-                if (journalCreated.get()) unresolved.add(id);
-                plugin.getLogger().log(Level.SEVERE, "Purchase " + journal.transactionId()
-                        + (journalCreated.get() ? " requires reconciliation; do not retry payment" : " failed before payment"), failure);
-                value = new MutationResult(journalCreated.get() ? Status.PAYMENT_UNKNOWN : Status.PERSISTENCE_FAILED, journal.transactionId(), failure.toString(), snapshot(id, journal.companionId()));
-            }
-            purchases.remove(id, result);
-            result.complete(new MutationResult(value.status(), value.transactionId(), value.message(), snapshot(id, journal.companionId())));
-        });
+        }).handle((value, failure) -> failure == null ? CompletableFuture.completedFuture(value)
+                : recoverPurchase(journal, failure, journalCreated.get(), paymentStarted.get()))
+                .thenCompose(outcome -> outcome)
+                .whenComplete((value, failure) -> {
+                    purchases.remove(id, result);
+                    MutationResult settled = failure == null ? value
+                            : new MutationResult(Status.PAYMENT_UNKNOWN, journal.transactionId(), failure.toString(), null);
+                    result.complete(new MutationResult(settled.status(), settled.transactionId(), settled.message(), snapshot(id, journal.companionId())));
+                });
         return result;
+    }
+    private CompletableFuture<MutationResult> recoverPurchase(PurchaseJournal journal, Throwable failure, boolean journalCreated, boolean paymentStarted) {
+        UUID id = journal.playerId();
+        if (!journalCreated) {
+            plugin.getLogger().log(Level.SEVERE, "Purchase " + journal.transactionId() + " failed before payment", failure);
+            return CompletableFuture.completedFuture(new MutationResult(Status.PERSISTENCE_FAILED, journal.transactionId(), failure.toString(), null));
+        }
+        if (paymentStarted) {
+            unresolved.add(id);
+            plugin.getLogger().log(Level.SEVERE, "Purchase " + journal.transactionId() + " requires reconciliation; do not retry payment", failure);
+            return CompletableFuture.completedFuture(new MutationResult(Status.PAYMENT_UNKNOWN, journal.transactionId(), failure.toString(), null));
+        }
+        plugin.getLogger().log(Level.WARNING, "Purchase " + journal.transactionId() + " stopped before payment; cancelling it", failure);
+        return submitInternal(() -> {
+            store.transaction(transaction -> { transaction.journal(journal.state("CANCELLED", "", "Stopped before payment: " + failure)); return null; });
+            return new MutationResult(Status.PAYMENT_REJECTED, journal.transactionId(), failure.toString(), null);
+        }).exceptionally(cancelFailure -> {
+            unresolved.add(id);
+            plugin.getLogger().log(Level.SEVERE, "Purchase " + journal.transactionId() + " stopped before payment but could not be cancelled; no money or items were taken", cancelFailure);
+            return new MutationResult(Status.PAYMENT_UNKNOWN, journal.transactionId(), failure.toString(), null);
+        });
     }
     private PaymentSelection preparePayment(Player player, PurchaseJournal journal) {
         if (!active() || !player.isOnline() || !isLoaded(journal.playerId())) return new PaymentSelection(Status.PAYMENT_REJECTED, null, "Player/runtime changed");
@@ -431,7 +459,7 @@ public final class ProgressionService {
                 if (purchases.containsKey(journal.playerId())) throw new IllegalStateException("Purchase is still running");
                 if (journal.status().equals("GRANTED") || journal.status().equals("CANCELLED")) return journal;
                 if (grant) transaction.player(journal.playerId(), applyGrant(transaction.player(journal.playerId()), journal));
-                transaction.journal(journal.state(grant ? "GRANTED" : "CANCELLED", journal.provider(), "Manually reconciled; no money or items transferred")); return journal;
+                transaction.journal(journal.state(grant ? "GRANTED" : "CANCELLED", journal.provider(), grant ? "Manually reconciled as granted" : "Manually reconciled as cancelled")); return journal;
             });
             if (resolved == null) return result(Status.STALE, null, "");
             unresolved.remove(resolved.playerId());
