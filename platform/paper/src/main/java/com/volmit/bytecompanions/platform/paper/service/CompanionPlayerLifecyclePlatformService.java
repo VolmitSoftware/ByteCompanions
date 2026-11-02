@@ -94,6 +94,7 @@ public final class CompanionPlayerLifecyclePlatformService implements AutoClosea
             cache.put(player, state);
             companions.equipVisual(player);
         }
+        plugin.removeOwnedAttributeModifiers(player);
         events.callPlayerLoad(player, state);
         if (cache.getByUniqueId(player.getUniqueId()) == state && player.isOnline()) {
             ticks.start(player);

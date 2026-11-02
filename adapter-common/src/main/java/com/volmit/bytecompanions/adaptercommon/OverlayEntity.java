@@ -98,8 +98,8 @@ public final class OverlayEntity implements CompanionOverlay {
 
     @Override
     public void visible(final boolean visible) {
-        this.armorStand.setInvisible(true);
-        this.abstractCapableCompanionEntity.dirtyMovement = true;
+        this.armorStand.setInvisible(!visible);
+        this.abstractCapableCompanionEntity.dirtyMetadata = true;
         this.abstractCapableCompanionEntity.flushDirty();
     }
 

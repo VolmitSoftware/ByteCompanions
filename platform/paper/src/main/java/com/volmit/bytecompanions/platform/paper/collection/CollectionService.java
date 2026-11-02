@@ -118,8 +118,9 @@ public final class CollectionService implements Listener {
     private void particleFeedback(Player player, CompletableFuture<Result> operation, String selected, String previous) {
         UUID playerId = player.getUniqueId();
         Session session = sessions.get(playerId);
-        operation.thenAccept(result -> BukkitOwnerTasks.entity(plugin, player, () -> {
+        operation.whenComplete((completed, failure) -> BukkitOwnerTasks.entity(plugin, player, () -> {
             if (!active(player) || sessions.get(playerId) != session) return;
+            Result result = failure == null ? completed : new Result(Status.FAILED, CollectionFailure.of(CollectionFailure.Reason.FAILED));
             if (!result.success()) {
                 plugin.languageService().send(player, "gui.collection-operation-failed", "reason", result.failure().render(plugin.languageService(), player));
             } else if (selected != null) {

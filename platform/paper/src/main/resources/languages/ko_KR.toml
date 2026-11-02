@@ -6,99 +6,100 @@
 # /bytecompanions language server edit ko_KR
 #
 # === 접두사 ===
-# runtime.prefix supplies the styled plugin name for {prefix}.
-# Remove {prefix} from a message to hide the plugin name for that message.
+# runtime.prefix는 {prefix}에 들어갈 서식 있는 플러그인 이름을 지정합니다.
+# 메시지에서 {prefix}를 제거하면 해당 메시지에서 플러그인 이름이 숨겨집니다.
 #
 # === 서식 ===
-# Colors and styles: &0-&f, &k-&r.
-# RGB colors: &#RRGGBB, &xRRGGBB, &x&R&R&G&G&B&B, [RRGGBB].
-# MiniMessage supports custom formatting such as <gold> and <gradient:#ffcc00:#ff9900>. Put a backslash before & or [ to display it literally.
+# 색상 및 스타일: &0-&f, &k-&r.
+# RGB 색상: &#RRGGBB, &xRRGGBB, &x&R&R&G&G&B&B, [RRGGBB].
+# MiniMessage는 <gold>, <gradient:#ffcc00:#ff9900> 같은 사용자 지정 서식을 지원합니다. & 또는 [ 앞에 백슬래시를 붙이면 해당 문자를 그대로 표시합니다.
 #
 # === 변수 ===
 # 변수 이름을 변경하지 말고 각 메시지에 원래 있는 변수만 사용하세요.
-#   {action}  Requested action
-#   {actions}  Available actions
-#   {after}  Value after the change
-#   {amount}  Amount or count
-#   {argument}  Unexpected command argument
-#   {before}  Value before the change
-#   {bonus}  Bonus name
-#   {booster}  Booster identifier
-#   {category}  Category name
-#   {change}  Described change
-#   {channel}  Booster channel
-#   {choice}  Selected option
-#   {command}  Command path
-#   {companion}  Companion identifier
-#   {companions}  Companion identifiers
-#   {count}  Number of items
-#   {created}  Creation time
-#   {current}  Current value
-#   {definition}  Companion definition
-#   {detail}  Failure detail
-#   {effect}  Particle effect identifier
-#   {entry}  Entry label
-#   {feature}  Feature name
-#   {features}  Enabled features
-#   {field}  Studio field name
-#   {formation}  Formation name
-#   {group}  Message category name
-#   {hot_reload}  Hot reload state
-#   {index}  Position number
-#   {integrations}  Integration states
-#   {item}  Item name
-#   {items}  Item list
-#   {java}  Java major version
-#   {key}  Message or setting key
-#   {kind}  Transaction kind
-#   {language}  Active language
-#   {level}  Level number
-#   {limit}  Configured limit
-#   {line}  Message line number
-#   {locale}  Locale identifier
-#   {maximum}  Maximum accepted value
-#   {mode}  Combining rule
-#   {model}  Companion model
-#   {money}  Money amount
-#   {name}  Display name
-#   {new}  Installed rendered value
-#   {next}  Next value
-#   {old}  Previous rendered value
-#   {operation}  Bonus operation
-#   {page}  Current page number
-#   {pages}  Total page count
-#   {parameter}  Parameter name
-#   {path}  File path or setting path
-#   {percent}  Percentage value
-#   {permission}  Required permission
-#   {personal}  Personal locale when it differs
-#   {player}  Player name
-#   {players}  Loaded player count
-#   {plugin}  Plugin name
-#   {prefix}  Styled plugin name from runtime.prefix
-#   {provider}  Payment provider
-#   {range}  Supported Minecraft range
-#   {reason}  Failure reason
-#   {required}  Required amount
-#   {scheduler}  Scheduler implementation
-#   {seconds}  Duration in seconds
-#   {section}  Language editor section
-#   {setting}  Setting name
-#   {sources}  Bonus sources
-#   {status}  Status marker
-#   {step}  Adjustment step
-#   {target}  Selection target
-#   {tier}  Upgrade tier
-#   {time}  Duration text
-#   {transaction}  Transaction identifier
-#   {type}  Parameter type
-#   {url}  Public report URL
-#   {usage}  Command usage
-#   {value}  Current or raw value
-#   {variables}  Placeholders valid for the message
-#   {variant}  Appearance variant
-#   {version}  Plugin version
-#   {xp}  Companion experience
+#   {activation}  부스터 활성화 식별자
+#   {added}  언어 업데이트로 추가된 메시지
+#   {after}  변경 후 값
+#   {amount}  양 또는 개수
+#   {argument}  예상하지 못한 명령어 인수
+#   {before}  변경 전 값
+#   {bonus}  보너스 이름
+#   {booster}  부스터 식별자
+#   {category}  카테고리 이름
+#   {change}  변경 내용 설명
+#   {channel}  부스터 채널
+#   {choice}  선택한 옵션
+#   {command}  명령어 경로
+#   {companion}  동료 식별자
+#   {companions}  동료 식별자 목록
+#   {count}  항목 수
+#   {created}  생성 시각
+#   {current}  현재 값
+#   {definition}  동료 정의
+#   {detail}  실패 세부 정보
+#   {effect}  파티클 효과 식별자
+#   {enabled}  동료 활성화 상태
+#   {feature}  기능 이름
+#   {features}  활성화된 기능
+#   {field}  작업실 항목 이름
+#   {formation}  대형 이름
+#   {group}  메시지 카테고리 이름
+#   {hot_reload}  핫 리로드 상태
+#   {index}  위치 번호
+#   {integrations}  연동 상태
+#   {item}  아이템 이름
+#   {items}  아이템 목록
+#   {java}  Java 주 버전
+#   {kept}  언어 업데이트에서 유지된 로컬 편집
+#   {key}  메시지 또는 설정 키
+#   {kind}  거래 종류
+#   {language}  사용 중인 언어
+#   {level}  레벨 숫자
+#   {limit}  설정된 제한
+#   {line}  메시지 줄 번호
+#   {locale}  로케일 식별자
+#   {maximum}  허용되는 최대값
+#   {mode}  결합 규칙
+#   {model}  동료 모델
+#   {money}  금액
+#   {name}  표시 이름
+#   {next}  다음 값
+#   {number}  목록 항목 번호
+#   {operation}  보너스 연산
+#   {page}  현재 페이지 번호
+#   {pages}  전체 페이지 수
+#   {parameter}  매개변수 이름
+#   {path}  파일 경로 또는 설정 경로
+#   {percent}  백분율 값
+#   {permission}  필요한 권한
+#   {personal}  서버 기본값과 다를 때의 개인 로케일
+#   {player}  플레이어 이름
+#   {players}  불러온 플레이어 수
+#   {plugin}  플러그인 이름
+#   {prefix}  runtime.prefix에 설정된 서식 있는 플러그인 이름
+#   {provider}  결제 제공자
+#   {range}  지원하는 Minecraft 버전 범위
+#   {reason}  실패 이유
+#   {remaining}  다음 언어 확인이 가능해질 때까지 남은 시간
+#   {required}  필요한 양
+#   {scheduler}  스케줄러 구현
+#   {seconds}  초 단위 시간
+#   {section}  언어 편집기 섹션
+#   {sources}  보너스 출처
+#   {status}  상태 표시
+#   {step}  조정 단위
+#   {target}  선택 대상
+#   {tier}  업그레이드 단계
+#   {time}  시간 텍스트
+#   {transaction}  거래 식별자
+#   {type}  매개변수 형식
+#   {updated}  언어 업데이트로 변경된 메시지
+#   {url}  공개 보고서 URL
+#   {usage}  명령어 사용법
+#   {value}  현재 값 또는 원시 값
+#   {variables}  메시지에서 사용할 수 있는 자리표시자
+#   {variant}  외형 변형
+#   {version}  플러그인 버전
+#   {xp}  동료 경험치
 
 "runtime.prefix" = "<bold><gradient:#ffcc00:#ff9900>ByteCompanions</gradient></bold>"
 "gui.studio-review-change" = "<gold>변경 {index}"
@@ -118,7 +119,7 @@
 "gui.title.studio-presets" = "<gold>프리셋 선택"
 "gui.title.studio-confirm" = "<gold>동료 변경 사항 확인"
 "gui.studio" = "<gold>✎ 동료 작업실"
-"gui.studio-hint" = "<gray>서버 전체에 적용할 동료를 편집합니다."
+"gui.studio-hint" = "<gray>서버 전체에 적용되도록 이 동료를 편집합니다."
 "gui.studio-heading" = "<gold>✎ {companion}"
 "gui.studio-draft" = "<yellow>저장하지 않은 초안 • 저장 후에만 변경 사항이 적용됩니다."
 "gui.studio-unchanged" = "<gray>저장하지 않은 변경 사항이 없습니다."
@@ -165,8 +166,8 @@
 "studio.prompt" = "{prefix} <gold>채팅에 {field} 값을 입력하거나 <white>cancel</white>을 입력하세요. 최대 256자이며 60초 후 만료됩니다.</gold>"
 "studio.cancelled" = "{prefix} <gray>입력이 취소되었거나 만료되었습니다. 초안은 변경되지 않았습니다.</gray>"
 "studio.failed" = "{prefix} <red>변경 거부: {reason}</red>"
-"studio.preview" = "{prefix} <aqua>5분 동안 비공개 미리 보기를 시작했습니다. <white>/bytecompanions edit {companion}</white>으로 돌아오세요. 보너스는 지급되지 않습니다.</aqua>"
-"studio.retained" = "{prefix} <gray>메뉴를 닫아도 활동이 없는 상태로 15분 동안 초안이 유지됩니다. <white>/bytecompanions edit</white>으로 돌아오세요.</gray>"
+"studio.preview" = "{prefix} <aqua>5분 동안 비공개 미리 보기를 시작했습니다. <white>/bytecompanions edit {companion}</white> 명령어로 돌아올 수 있습니다. 보너스는 지급되지 않습니다.</aqua>"
+"studio.retained" = "{prefix} <gray>메뉴를 닫아도 활동이 없는 상태로 15분 동안 초안이 유지됩니다. <white>/bytecompanions edit</white> 명령어로 돌아올 수 있습니다.</gray>"
 "studio.existing" = "{prefix} <yellow>{companion}의 초안이 이미 있습니다. 다른 동료를 편집하기 전에 저장하거나 버리세요.</yellow>"
 "studio.expired" = "{prefix} <gray>사용하지 않은 동료 초안을 버렸습니다.</gray>"
 "studio.saving" = "{prefix} <gold>동료 저장 및 다시 불러오는 중...</gold>"
@@ -186,7 +187,7 @@
 "success.companion-equipped" = "<green><white>{companion}</white>을(를) 장착했습니다.</green>"
 "success.companion-unequipped" = "<green>동료 장착을 해제했습니다.</green>"
 "command.description.root" = "{prefix} 도움말 및 관리"
-"command.description.menu" = "동료 둘러보기; 장착한 동료를 우클릭하면 파티클을 엽니다"
+"command.description.menu" = "동료 둘러보기. 장착한 동료를 우클릭하면 파티클 메뉴가 열립니다"
 "command.description.spawn" = "동료 장착"
 "command.description.despawn" = "동료 하나 또는 모두 해제"
 "command.description.debug" = "{prefix} 진단 도구"
@@ -219,38 +220,38 @@
 "errors.persistence-failed" = "<red>이번 접속의 선택은 변경되었지만 저장하지 못했습니다. 다시 접속하면 이전 선택으로 돌아갈 수 있습니다. 관리자에게 알려 주세요.</red>"
 
 "gui.title.collection" = "<gold>동료 컬렉션"
-"gui.title.dashboard" = "<gold>동료 관리"
-"gui.title.particles" = "<gold>동료 입자"
+"gui.title.dashboard" = "<gold>동료 대시보드"
+"gui.title.particles" = "<gold>동료 파티클"
 "gui.title.bonuses" = "<gold>동료 보너스"
 "gui.collection" = "<gold>📦 동료 컬렉션"
 "gui.collection-hint" = "<gray>동료를 선택하여 옵션을 확인하세요."
 "gui.equipped" = "<green>✓ 장착됨"
 "gui.available" = "<yellow>사용 가능"
 "gui.locked" = "<red>잠김: 권한이 없습니다."
-"gui.open-dashboard" = "<gray>클릭하여 이 동료의 관리 화면을 여세요."
+"gui.open-dashboard" = "<gray>클릭하여 이 동료의 대시보드를 엽니다."
 "gui.empty" = "<yellow>동료 없음"
 "gui.empty-hint" = "<gray>사용 가능한 동료 정의가 없습니다."
 "gui.not-equipped" = "<yellow>장착하지 않음"
 "gui.overview" = "<gray>아래 버튼으로 이 동료를 관리하세요."
 "gui.equip" = "<green>✓ 동료 장착"
-"gui.equip-hint" = "<gray>이 동료를 곁으로 소환하세요."
+"gui.equip-hint" = "<gray>이 동료를 곁에 소환합니다."
 "gui.unequip" = "<yellow>동료 해제"
 "gui.unequip-hint" = "<gray>이 동료를 돌려보냅니다. 다시 장착할 수 있습니다."
-"gui.particles" = "<aqua>✦ 입자"
-"gui.particles-hint" = "<gray>이 동료의 입자 효과를 선택하세요."
+"gui.particles" = "<aqua>✦ 파티클"
+"gui.particles-hint" = "<gray>이 동료의 파티클 효과를 선택합니다."
 "gui.disabled" = "<gray>이 서버에서 비활성화되었습니다."
 "gui.equip-first" = "<yellow>먼저 이 동료를 장착하세요."
-"gui.current-particle" = "<gray>선택한 입자: <white>{effect}"
+"gui.current-particle" = "<gray>선택한 파티클: <white>{effect}"
 "gui.none" = "없음"
 "gui.bonuses" = "<gold>★ 보너스 및 효과"
-"gui.bonuses-hint" = "<gray>활성 보너스, 물약 효과 및 중첩을 확인하세요."
-"gui.select-particle" = "<yellow>클릭하여 이 입자 효과를 장착하세요."
-"gui.remove-particle" = "<yellow>입자 효과 제거"
-"gui.remove-particle-hint" = "<gray>이 동료에 선택된 입자를 제거하세요."
-"gui.back" = "<gold>◀ 관리 화면으로"
-"gui.back-hint" = "<gray>이 동료의 옵션으로 돌아가세요."
+"gui.bonuses-hint" = "<gray>활성 보너스, 물약 효과 및 중첩을 확인합니다."
+"gui.select-particle" = "<yellow>클릭하여 이 파티클 효과를 장착합니다."
+"gui.remove-particle" = "<yellow>파티클 효과 제거"
+"gui.remove-particle-hint" = "<gray>이 동료에 선택된 파티클을 제거합니다."
+"gui.back" = "<gold>◀ 대시보드로 돌아가기"
+"gui.back-hint" = "<gray>이 동료의 옵션으로 돌아갑니다."
 "gui.close" = "<red>✖ 닫기"
-"gui.close-hint" = "<gray>이 메뉴를 닫으세요."
+"gui.close-hint" = "<gray>이 메뉴를 닫습니다."
 "gui.previous" = "<yellow>◀ 이전 페이지"
 "gui.next" = "<green>다음 페이지 ▶"
 "gui.page" = "<gray>{page} / {pages} 페이지"
@@ -259,13 +260,13 @@
 "gui.no-bonuses" = "<yellow>설정된 보너스 없음"
 "gui.no-bonuses-hint" = "<gray>이 동료에는 보너스나 물약 효과가 설정되어 있지 않습니다."
 "gui.refresh" = "<aqua>보너스 새로고침"
-"gui.refresh-hint" = "<gray>현재 값과 재사용 대기시간을 갱신하세요."
+"gui.refresh-hint" = "<gray>현재 값과 재사용 대기시간을 갱신합니다."
 "gui.attribute" = "속성"
 "gui.effect" = "물약"
 "gui.buff" = "보너스"
 "gui.bonus-name" = "<gold>{category}: <white>{name}"
 "gui.configured" = "<gray>설정값: <white>{operation} {value}"
-"gui.attribute-total" = "<gray>다른 출처를 포함한 총합: <white>{value}"
+"gui.attribute-total" = "<gray>다른 출처를 포함한 내 총합: <white>{value}"
 "gui.effect-level" = "<gray>설정된 물약 레벨: <white>{level}"
 "gui.stack-mode" = "<gray>결합 규칙: <white>{mode}"
 "gui.resolved-level" = "<gray>동료 물약 레벨: <white>{level}"
@@ -299,7 +300,7 @@
 "gui.stack.highest" = "가장 높은 우선순위"
 "gui.target.all" = "모든 몹"
 "gui.target.hostile" = "적대적인 몹"
-"gui.target.passive" = "비공격적인 몹"
+"gui.target.passive" = "우호적인 몹"
 
 "command.description.upgrades" = "동료의 업그레이드 확인"
 "command.description.boosts" = "개인 및 서버 부스터 확인"
@@ -313,18 +314,20 @@
 "command.parameter.activation" = "활성 또는 대기 중인 부스터 활성화 ID"
 "command.parameter.transaction" = "미해결 구매 거래 ID"
 "command.parameter.resolution" = "결제 기록을 확인한 후 grant 또는 cancel"
-"command.progression.granted" = "<green><green>{player}</green>의 <green>{companion}</green>에 동료 경험치 <green>{amount}</green>을(를) 저장했습니다."
-"command.progression.not-configured" = "<gold><gold>{companion}</gold>의 성장 설정이 없습니다."
-"command.progression.player-unavailable" = "<red><red>{player}</red>은(는) 접속 중이 아닙니다."
-"command.progression.player-loading" = "<gold><gold>{player}</gold>의 성장 데이터가 준비되지 않았습니다. 불러온 후 다시 시도하세요."
-"command.progression.invalid-amount" = "<red>1부터 <red>{maximum}</red>까지의 정수를 입력하세요."
-"command.booster.granted" = "<green><green>{player}</green>에게 <green>{booster}</green> 부스터 사용 횟수 <green>{amount}</green>회가 저장되었습니다."
-"command.booster.not-found" = "<red>ID가 <red>{booster}</red>인 부스터가 없습니다."
-"command.booster.server-only" = "<red>이 명령어는 서버 부스터만 시작합니다."
-"command.transactions.count" = "<gold>미해결 구매: <gold>{count}</gold>"
-"command.transactions.entry" = "<gray><yellow>{transaction}</yellow> 플레이어: <gray>{player}</gray>; <gray>{kind}</gray>; 동료: <gray>{companion}</gray>; 설정: <gray>{definition}</gray>; 이전 단계: <gray>{tier}</gray>; 상태: <gray>{status}</gray>; 금액: <gray>{money}</gray>; 아이템: <gray>{items}</gray>; 제공자: <gray>{provider}</gray>; 생성: <gray>{created}</gray>"
-"command.transactions.reference" = "<gray>거래 또는 활성화 ID: <white>{transaction}</white>"
-"command.transactions.reconciled" = "<gold>처리 결과가 저장되었습니다. 돈이나 아이템을 자동으로 차감하거나 환불하지 않았습니다."
+"command.progression.granted" = "<green>{player}의 {companion}에 동료 경험치 {amount}을(를) 저장했습니다.</green>"
+"command.progression.not-configured" = "<gold>{companion}에 설정된 성장 정보가 없습니다.</gold>"
+"command.progression.player-unavailable" = "<red>{player}은(는) 접속 중이 아닙니다.</red>"
+"command.progression.player-loading" = "<gold>{player}의 성장 데이터가 준비되지 않았습니다. 불러온 후 다시 시도하세요.</gold>"
+"command.progression.invalid-amount" = "<red>1부터 {maximum}까지의 정수를 입력하세요.</red>"
+"command.booster.granted" = "<green>{player}에게 {booster} 부스터 사용 횟수 {amount}회를 저장했습니다.</green>"
+"command.booster.not-found" = "<red>ID가 {booster}인 부스터가 없습니다.</red>"
+"command.booster.server-only" = "<red>이 명령어는 서버 부스터만 시작합니다.</red>"
+"command.booster.started" = "<green>서버 부스터 {booster}을(를) 시작했거나 대기열에 추가했습니다.</green>"
+"command.booster.cancelled" = "<green>부스터 활성화 {activation}을(를) 취소했습니다.</green>"
+"command.transactions.count" = "<gold>미해결 구매: {count}</gold>"
+"command.transactions.entry" = "<yellow>{transaction}</yellow> <gray>플레이어: {player}; {kind}; 동료: {companion}; 정의: {definition}; 이전 단계: {tier}; 상태: {status}; 금액: {money}; 아이템: {items}; 제공자: {provider}; 생성: {created}</gray>"
+"command.transactions.reference" = "<gray>거래 또는 활성화 ID: <white>{transaction}</white></gray>"
+"command.transactions.reconciled" = "<gold>처리 결과를 저장했습니다. 돈이나 아이템은 자동으로 차감되거나 환불되지 않았습니다.</gold>"
 "gui.title.upgrades" = "<gold>동료 업그레이드"
 "gui.title.purchase" = "<gold>구매 확인"
 "gui.title.boosts" = "<gold>동료 부스터"
@@ -334,13 +337,13 @@
 "gui.upgrades-hint" = "<gray>동료를 성장시키고 보너스를 강화하세요."
 "gui.boosts" = "<gradient:#ffe082:#ffb74d>⌛ 부스터</gradient>"
 "gui.boosts-hint" = "<gray>개인 및 서버 전체 부스트를 확인하세요."
-"gui.progress-level" = "<gold>★ 레벨 <white>{level}</white>"
-"gui.progress-xp" = "<gray>동료 경험치: <yellow>{xp}</yellow> / <white>{required}</white>"
+"gui.progress-level" = "<gold>★ 레벨 <white>{level}"
+"gui.progress-xp" = "<gray>동료 경험치: <yellow>{xp}</yellow> / <white>{required}"
 "gui.max-level" = "<green>✓ 동료 최대 레벨 달성"
-"gui.upgrade-tier" = "<gray>업그레이드 단계: <gold>{tier}</gold> / <white>{maximum}</white>"
+"gui.upgrade-tier" = "<gray>업그레이드 단계: <gold>{tier}</gold> / <white>{maximum}"
 "gui.max-tier" = "<green>✓ 최대 단계 달성"
-"gui.upgrade-change" = "<gray><gray>{bonus}</gray>: <white>{current}</white> <gold>→</gold> <green>{next}</green>"
-"gui.required-level" = "<gray>필요한 동료 레벨: <yellow>{level}</yellow>"
+"gui.upgrade-change" = "<gray>{bonus}: <white>{current}</white> <gold>→</gold> <green>{next}"
+"gui.required-level" = "<gray>필요한 동료 레벨: <yellow>{level}"
 "gui.level-locked" = "<red>조건을 충족하지 못했습니다."
 "gui.upgrade-preview" = "<yellow>클릭하여 업그레이드를 확인하세요."
 "gui.no-upgrades" = "<gold>설정된 업그레이드 없음"
@@ -349,18 +352,18 @@
 "gui.confirm-purchase-hint" = "<gray>표시된 비용을 지불하고 구매를 완료합니다."
 "gui.cancel-purchase" = "<yellow>◀ 취소"
 "gui.cancel-purchase-hint" = "<gray>아무것도 소비하지 않고 돌아갑니다."
-"gui.cost-free" = "<gray>비용: <green>무료</green>"
-"gui.cost-money" = "<gray>필요 금액: <gold>{amount}</gold>"
-"gui.cost-item" = "<gray>필요 아이템: <yellow>{amount}</yellow> × <yellow>{item}</yellow>"
+"gui.cost-free" = "<gray>비용: <green>무료"
+"gui.cost-money" = "<gray>필요 금액: <gold>{amount}"
+"gui.cost-item" = "<gray>필요 아이템: <yellow>{amount} × {item}"
 "gui.booster-open" = "<yellow>클릭하여 구매 및 활성화 옵션을 확인하세요."
 "gui.booster-scope.personal" = "<aqua>개인 부스트 <dark_gray>• <gray>나에게만 적용"
 "gui.booster-scope.server" = "<gold>서버 부스트 <dark_gray>• <gray>이 서버의 모든 플레이어"
-"gui.booster-channel" = "<gray><gray>{channel}</gray>: +<green>{percent}</green>%"
-"gui.booster-duration" = "<gray>지속 시간: <white>{time}</white>"
-"gui.booster-remaining" = "<gray>남은 시간: <yellow>{time}</yellow>"
+"gui.booster-channel" = "<gray>{channel}: <green>+{percent}%"
+"gui.booster-duration" = "<gray>지속 시간: <white>{time}"
+"gui.booster-remaining" = "<gray>남은 시간: <yellow>{time}"
 "gui.booster-rule.queue" = "<gray>겹치는 부스트는 대기열에서 기다립니다."
 "gui.booster-rule.highest" = "<gray>각 적용 범위에서 가장 강한 부스트가 적용됩니다."
-"gui.booster-credits" = "<gray>보유한 사용 횟수: <gold>{count}</gold>"
+"gui.booster-credits" = "<gray>보유한 사용 횟수: <gold>{count}"
 "gui.buy-booster" = "<green>사용 횟수 1회 구매"
 "gui.buy-booster-hint" = "<gray>구매 전에 비용을 확인하세요."
 "gui.activate-booster" = "<gold>부스터 활성화"
@@ -372,9 +375,9 @@
 "gui.active-boosts-hint" = "<gray>개인 부스트, 서버 이벤트, 합산 비율을 확인하세요."
 "gui.booster-running" = "<green>✓ 진행 중"
 "gui.booster-queued" = "<yellow>⌛ 대기 중"
-"gui.booster-total" = "<gray><gray>{channel}</gray> 부스트 합계: +<green>{percent}</green>%"
-"gui.booster-cap" = "<gray>최대 합산 부스트: +<white>{percent}</white>%"
-"gui.booster-applied" = "<gray>개인 + 서버 부스트: 원래 보상의 +<green>{percent}</green>%"
+"gui.booster-total" = "<gray>{channel} 부스터 합계: <green>+{percent}%"
+"gui.booster-cap" = "<gray>최대 합산 부스터: <white>+{percent}%"
+"gui.booster-applied" = "<gray>개인 + 서버 부스트: <green>원래 보상의 +{percent}%"
 "gui.no-active-boosts" = "<gold>활성 부스트 없음"
 "gui.no-active-boosts-hint" = "<gray>보유한 부스터를 활성화하여 시작하세요."
 "gui.back-boosts" = "<gold>◀ 부스터로 돌아가기"
@@ -397,32 +400,32 @@
 "progression.result.no_credit" = "<red>이 부스터의 사용 횟수를 보유하고 있지 않습니다."
 "progression.result.disabled" = "<gray>서버에서 이 기능을 비활성화했습니다."
 "progression.result.invalid_request" = "<red>잘못된 요청입니다. 명령어 도움말을 확인하거나 메뉴를 다시 여세요."
-"command.description.setup" = "기본 동료 설정"
-"gui.title.setup" = "<gold>동료 설정"
-"gui.title.setup-confirm" = "<gold>설정 확인"
+"command.description.setup" = "기본 동료 초기 설정"
+"gui.title.setup" = "<gold>동료 초기 설정"
+"gui.title.setup-confirm" = "<gold>초기 설정 확인"
 "gui.setup" = "<gold>초기 설정"
 "gui.setup-hint" = "<gray>기본 동료를 설치하고 서버 보너스를 선택합니다."
 "gui.setup-cosmetic" = "<aqua>치장용 동료"
-"gui.setup-cosmetic-hint" = "<gray>능력치, 버프, 효과, 업그레이드와 부스터를 비활성화합니다."
+"gui.setup-cosmetic-hint" = "<gray>속성, 버프, 효과, 업그레이드, 부스터를 비활성화합니다."
 "gui.setup-survival" = "<green>생존용 동료"
-"gui.setup-survival-hint" = "<gray>설정된 능력치, 버프와 물약 효과를 활성화합니다."
+"gui.setup-survival-hint" = "<gray>설정된 속성, 버프, 물약 효과를 활성화합니다."
 "gui.setup-common" = "<gray>누락된 기본 동료를 설치하고 기존 동료 파일은 유지합니다."
 "gui.setup-costs" = "<gray>업그레이드와 부스터는 꺼진 상태로 유지하고 파티클은 활성화합니다."
 "gui.setup-permissions" = "<gray>플레이어 접근에는 기존 권한 설정이 계속 적용됩니다."
 "gui.setup-preview" = "<gold>동료 둘러보기"
 "gui.setup-preview-hint" = "<gray>기본 동료를 장착하고 파티클과 보너스를 확인합니다."
-"gui.setup-confirm" = "<green>설정 적용"
+"gui.setup-confirm" = "<green>초기 설정 적용"
 "gui.setup-confirm-hint" = "<gray>이 프로필을 플러그인 전체에 적용하고 다시 불러옵니다."
-"gui.setup-cancel" = "<gold>설정으로 돌아가기"
+"gui.setup-cancel" = "<gold>초기 설정으로 돌아가기"
 "gui.setup-cancel-hint" = "<gray>변경 사항을 적용하지 않고 돌아갑니다."
 "gui.setup-current" = "<gray>불러온 동료: {count}"
-"setup.applying" = "{prefix} <gold>동료 설정 적용 중...</gold>"
-"setup.applied" = "{prefix} <green>동료 설정을 저장했습니다. <white>/bytecompanions menu</white>에서 동료를 선택하세요.</green>"
-"setup.failed" = "{prefix} <red>설정을 적용하지 못했습니다. 콘솔을 확인하세요. 이전 설정은 계속 유지됩니다.</red>"
-"setup.stale" = "{prefix} <gold>설정이 변경되었습니다. 설정 화면을 다시 연 다음 적용하세요.</gold>"
+"setup.applying" = "{prefix} <gold>동료 초기 설정 적용 중...</gold>"
+"setup.applied" = "{prefix} <green>동료 초기 설정을 저장했습니다. <white>/bytecompanions menu</white>에서 동료를 선택하세요.</green>"
+"setup.failed" = "{prefix} <red>초기 설정을 적용하지 못했습니다. 콘솔을 확인하세요. 이전 설정은 계속 유지됩니다.</red>"
+"setup.stale" = "{prefix} <gold>설정이 변경되었습니다. 초기 설정을 다시 연 다음 적용하세요.</gold>"
 "command.description.collection" = "컬렉션 둘러보기 및 필터링"
-"command.description.outfits" = "저장한 동료 구성을 관리합니다"
-"command.description.interact" = "장착한 동료와 상호작용합니다"
+"command.description.outfits" = "저장한 동료 구성 관리"
+"command.description.interact" = "장착한 동료와 상호작용"
 "gui.title.outfits" = "저장한 구성"
 "gui.title.outfit" = "구성 확인"
 "gui.title.outfit-delete" = "구성 삭제"
@@ -444,7 +447,7 @@
 "gui.outfit-apply" = "<green>이 구성 사용"
 "gui.outfit-delete" = "<red>구성 삭제"
 "gui.outfit-delete-confirm" = "<red>삭제 확인"
-"gui.outfit-count" = "<gray>동료 수: {count}"
+"gui.outfit-count" = "<gray>동료 수: <white>{count}"
 "gui.personalize" = "<gold>꾸미기"
 "gui.nickname" = "<gold>이름 설정"
 "gui.name-reset" = "<gray>이름 초기화"
@@ -453,7 +456,7 @@
 "gui.formation" = "<gold>대형"
 "gui.formation-line" = "<gold>일렬"
 "gui.formation-grid" = "<gold>격자"
-"gui.formation-orbit" = "<gold>공전"
+"gui.formation-orbit" = "<gold>궤도"
 "gui.formation-earlier" = "<gold>앞으로 이동"
 "gui.formation-later" = "<gold>뒤로 이동"
 "gui.interactions" = "<gold>동료 행동"
@@ -462,7 +465,7 @@
 "gui.action-sit" = "<gold>앉기"
 "gui.action-stay" = "<gold>기다리기"
 "gui.action-call" = "<gold>이리 와"
-"gui.trial" = "<aqua>나만 시험하기"
+"gui.trial" = "<aqua>비공개로 체험하기"
 "gui.trial-stop" = "<gray>비공개 체험 중지"
 "gui.trial-hint" = "<gray>나에게만 보입니다. {seconds}초, 보너스 없음."
 "gui.choice-value" = "<white>{value}"
@@ -475,8 +478,8 @@
 "collection.rejected" = "{prefix} <red>변경을 적용하지 못했습니다: {detail}"
 "collection.saved" = "{prefix} <green>컬렉션을 저장했습니다."
 "collection.working" = "{prefix} <yellow>이전 변경 사항을 아직 저장 중입니다."
-"collection.too-long" = "{prefix} <red>최대 32자를 사용하세요."
-"collection.input-expired" = "{prefix} <gray>입력 시간이 만료되었습니다. 변경되지 않았습니다."
+"collection.too-long" = "{prefix} <red>최대 32자까지 입력하세요."
+"collection.input-expired" = "{prefix} <gray>입력 시간이 만료되었습니다. 아무것도 변경되지 않았습니다."
 "gui.collection-operation-failed" = "{prefix} <red>변경을 적용하지 못했습니다: {reason}"
 "gui.title.settings" = "<gold>표시 설정"
 "gui.settings" = "<gold>표시 설정"
@@ -491,9 +494,9 @@
 "gui.settings-particles" = "<aqua>파티클"
 "gui.settings-particles-full" = "<green>전체"
 "gui.settings-particles-full-hint" = "<gray>모든 파티클 프레임을 표시합니다."
-"gui.settings-particles-reduced" = "<yellow>줄이기"
+"gui.settings-particles-reduced" = "<yellow>감소"
 "gui.settings-particles-reduced-hint" = "<gray>파티클 프레임을 하나 걸러 표시합니다."
-"gui.settings-particles-off" = "<red>끄기"
+"gui.settings-particles-off" = "<red>꺼짐"
 "gui.settings-particles-off-hint" = "<gray>동료 파티클을 숨깁니다."
 "gui.settings-server-limit" = "<gray>서버가 파티클 강도를 제한할 수 있습니다."
 "command.description.settings" = "동료 표시 및 파티클 선택"
@@ -501,34 +504,34 @@
 "command.parameter.value" = "값"
 
 "collection.reason.equip-first" = "먼저 이 동료를 장착하세요."
-"collection.reason.outfit-limit" = "세트 한도 {limit}개에 도달했습니다."
-"collection.reason.outfit-unavailable" = "이 세트를 사용할 수 없습니다."
-"collection.reason.formation-order" = "대형에는 장착한 동료만 포함할 수 있습니다."
-"collection.reason.model-limit" = "세트가 모델별 한도를 초과합니다."
-"collection.reason.personalization-locked" = "개인 설정이 잠겨 있습니다."
+"collection.reason.outfit-limit" = "구성 한도 {limit}개에 도달했습니다."
+"collection.reason.outfit-unavailable" = "이 구성을 사용할 수 없습니다."
+"collection.reason.formation-order" = "대형 순서에는 장착한 동료가 포함되어야 합니다."
+"collection.reason.model-limit" = "구성이 모델별 한도를 초과합니다."
+"collection.reason.personalization-locked" = "꾸미기가 잠겨 있습니다."
 "collection.reason.particle-unavailable" = "이 파티클 효과를 사용할 수 없습니다."
 "collection.reason.particle-locked" = "이 파티클 효과는 잠겨 있습니다."
 "collection.reason.particle-remove-denied" = "이 파티클 효과를 해제할 수 없습니다."
 "collection.reason.nickname-invalid" = "이름은 서식 없는 텍스트로 32자 이하여야 합니다."
 "collection.reason.formation-invalid" = "알 수 없는 대형: {formation}."
 "collection.reason.cosmetic-invalid" = "잘못된 외형 식별자입니다."
-"collection.reason.outfit-name-invalid" = "세트 이름은 영문자, 숫자, 밑줄 또는 하이픈으로 1~32자여야 합니다."
+"collection.reason.outfit-name-invalid" = "구성 이름은 영문자, 숫자, 밑줄 또는 하이픈으로 1~32자여야 합니다."
 "collection.reason.variant-locked" = "잠긴 변형: {variant}."
 "collection.reason.variant-unavailable" = "사용할 수 없는 변형: {variant}."
 "collection.reason.cancelled" = "다른 플러그인이 이 동료 변경을 취소했습니다."
-"collection.reason.save-failed" = "저장하지 못했습니다. 가능한 이전 설정을 복원했습니다."
+"collection.reason.save-failed" = "저장하지 못했습니다. 가능한 범위에서 이전 설정을 복원했습니다."
 "collection.reason.busy" = "이전 변경 사항의 저장이 끝날 때까지 기다리세요."
 "command.description.status" = "런타임, 기능, 호환성 상태 표시"
 "command.description.debug_dump" = "포괄적인 {prefix} 진단 보고서 만들기"
 "command.parameter.upload" = "공개 업로드가 허용된 경우 보고서 업로드"
 "command.feedback.inactive" = "{prefix} <gray>런타임을 다시 시작하는 중입니다. 잠시 후 다시 시도하세요.</gray>"
 "command.status.header" = "런타임"
-"command.status.configuration" = "<gray>동료: {enabled} <dark_gray>|</dark_gray> 언어: <white>{language}</white> <dark_gray>|</dark_gray> 자동 새로고침: {hot_reload}</gray>"
+"command.status.configuration" = "<gray>동료: {enabled} <dark_gray>|</dark_gray> 언어: <white>{language}</white> <dark_gray>|</dark_gray> 핫 리로드: {hot_reload}</gray>"
 "command.status.runtime" = "<gray>정의: <white>{count}</white> <dark_gray>|</dark_gray> 불러온 플레이어: <white>{players}</white> <dark_gray>|</dark_gray> 장착된 동료: <white>{companions}</white></gray>"
 "command.status.features" = "<gray>기능: <white>{features}</white> <dark_gray>|</dark_gray> 저장소: <white>{value}</white></gray>"
 "command.status.integrations" = "<gray>연동: <white>{integrations}</white></gray>"
 "command.status.compatibility" = "<gray>Java <white>{java}</white> / Bukkit <white>{range}</white> <dark_gray>|</dark_gray> 스케줄러: <white>{scheduler}</white> <dark_gray>|</dark_gray> 어댑터: <white>{value}</white></gray>"
-"runtime.hot_reload.success" = "<green>적용됨:</green> <gray>설정 및 언어 파일 변경 사항.</gray>"
+"runtime.hot_reload.success" = "<gray>설정 및 언어 파일 변경 사항을</gray> <green>적용했습니다.</green>"
 "runtime.hot_reload.failed" = "<red>파일 변경이 거부되었습니다. 마지막으로 유효했던 설정이 유지됩니다.</red>"
 "director.help.category" = "명령어 카테고리"
 "director.help.command_group" = "명령어 그룹입니다. 클릭하여 엽니다."
@@ -541,17 +544,17 @@
 "director.help.navigation.next.hover" = "다음 페이지"
 "director.help.navigation.parent.hover" = "상위 명령어 그룹으로 돌아가기"
 "director.help.navigation.previous.hover" = "이전 페이지"
-"director.help.parameter.default" = "지정하지 않으면 기본값은 \"{value}\"입니다."
+"director.help.parameter.default" = "지정하지 않으면 기본값은 “{value}”입니다."
 "director.help.parameter.optional" = "이 매개변수는 선택 사항입니다."
 "director.help.parameter.required" = "이 매개변수는 필수입니다."
 "director.help.parameter.type" = "이 매개변수의 유형은 {type}입니다."
-"director.runtime.error.conversion_failed" = "\"{value}\" 값을 {parameter}용 {type} 형식으로 변환할 수 없습니다"
+"director.runtime.error.conversion_failed" = "“{value}” 값을 {parameter}용 {type} 형식으로 변환할 수 없습니다"
 "director.runtime.error.default_parse_failed" = "매개변수 {parameter}의 기본값을 분석할 수 없습니다"
 "director.runtime.error.execution_failed" = "명령어 {command} 실행에 실패했습니다: {reason}"
 "director.runtime.error.invalid_origin" = "이 실행 위치에서는 이 명령어를 실행할 수 없습니다."
-"director.runtime.error.missing_argument" = "인수 \"{parameter}\" ({type})가 필요합니다"
-"director.runtime.error.unclosed_group" = "매개변수 {key}의 닫는 \"]\"가 누락되었습니다"
-"director.runtime.error.unexpected_argument" = "예상하지 못한 인수 \"{argument}\". 선택적 매개변수는 키와 함께 지정해야 합니다. 예: seed=123"
+"director.runtime.error.missing_argument" = "인수 “{parameter}”({type})이(가) 누락되었습니다"
+"director.runtime.error.unclosed_group" = "매개변수 {key}의 닫는 “]”가 없습니다"
+"director.runtime.error.unexpected_argument" = "예상하지 못한 인수 “{argument}”. 선택적 매개변수는 키와 함께 지정해야 합니다. 예: seed=123"
 "director.runtime.error.unknown_parameter" = "알 수 없는 매개변수 키: {key}"
 "language.menu.your_language" = "내 언어"
 "language.menu.reset_your_language" = "내 언어 재설정"
@@ -581,14 +584,21 @@
 "language.error.server-locale-required" = "&c서버 기본 언어로 en_US 같은 언어 코드를 선택하세요."
 "language.error.unavailable-for-all" = "&c{locale} 언어는 선택한 모든 플러그인에서 지원되는 것은 아닙니다."
 "language.usage.editor" = "&7사용법: /{command} language server edit [locale]"
-"language.usage.selection" = "&7사용법: /{command} language self [locale|reset] or server [locale]"
+"language.usage.selection" = "&7사용법: /{command} language self [locale|reset] 또는 server [locale]"
 "language.usage.volmit-selection" = "&7사용법: /volmit plugins languages [locale]"
+"language.usage.update" = "&7사용법: /{command} language update"
 "language.selection.preparing" = "&7{target}의 {locale} 언어를 준비하는 중..."
 "language.selection.save-failed" = "{plugin}: &c언어 선택을 저장하지 못했습니다. 서버 콘솔을 확인하세요."
-"language.selection.english-fallback" = "{plugin}: &e{locale}을 사용할 수 없어 영어(en_US)를 사용합니다."
-"language.selection.personal-selected" = "{plugin}: &7개인 언어를 {locale}으로 변경했습니다."
-"language.selection.server-selected" = "{plugin}: &7서버 언어를 {locale}으로 변경했습니다."
+"language.selection.english-fallback" = "{plugin}: &e{locale}을(를) 사용할 수 없어 영어(en_US)를 사용합니다."
+"language.selection.personal-selected" = "{plugin}: &7개인 언어를 {locale}(으)로 변경했습니다."
+"language.selection.server-selected" = "{plugin}: &7서버 언어를 {locale}(으)로 변경했습니다."
 "language.selection.server-default-selected" = "{plugin}: &7개인 언어가 이제 서버 기본 언어를 따릅니다."
+"language.update.checking" = "{plugin}: &7언어 저장소의 변경 사항을 확인하는 중..."
+"language.update.unchanged" = "{plugin}: &7설치된 언어가 이미 저장소와 일치합니다."
+"language.update.applied" = "{plugin}: &7{locale}을(를) 업데이트했습니다 (추가 {added}, 변경 {updated}, 유지된 로컬 편집 {kept})."
+"language.update.cooldown" = "{plugin}: &7언어 저장소를 최근에 확인했습니다. {remaining} 후에 다시 시도하세요."
+"language.update.locale-failed" = "{plugin}: &c{locale}을(를) 업데이트하지 못했습니다: {reason}"
+"language.update.failed" = "{plugin}: &c언어 업데이트에 실패했습니다: {reason}"
 "language.editor.title" = "{plugin} › {section}"
 "language.editor.loading" = "&7{locale} 메시지를 불러오는 중..."
 "language.editor.section.languages" = "언어"
@@ -617,10 +627,10 @@
 "language.editor.message.edit-chat" = "&7클릭하여 채팅에서 편집합니다.&r"
 "language.editor.locale.open" = "&8클릭하여 이 언어를 엽니다.&r"
 "language.editor.category.message-count" = "&7메시지 {count}개&r"
-"language.editor.category.open" = "&8클릭하여 이 그룹을 엽니다.&r"
+"language.editor.category.open" = "&8클릭하여 이 카테고리를 엽니다.&r"
 "language.editor.error.no-permission" = "&c{plugin}의 언어를 편집할 권한이 없습니다."
 "language.editor.error.unable-to-edit" = "&c편집하지 못했습니다: {reason}"
-"language.editor.saved.summary" = "&7{locale}을 저장했습니다. 언어 선택은 변경되지 않았습니다."
+"language.editor.saved.summary" = "&7{locale}을(를) 저장했습니다. 언어 선택은 변경되지 않았습니다."
 "language.editor.saved.change" = "&7{key}: “{before}”에서 “{after}”로 변경했습니다."
 "language.editor.part.line" = "{line}번째 줄"
 "language.editor.value.none" = "없음"
@@ -650,7 +660,7 @@
 "config.editor.entry" = "항목 {number}"
 "config.editor.current" = "현재: {value}"
 "config.editor.open" = "클릭하여 이 항목을 여세요."
-"config.editor.toggle" = "클릭하여 켜거나 끄세요."
+"config.editor.toggle" = "클릭하여 true 또는 false로 전환하세요."
 "config.editor.edit" = "클릭하여 채팅에 새 값을 입력하세요."
 "config.editor.prompt" = "{path}의 새 값을 입력하세요. cancel을 입력하면 돌아갑니다."
 "config.editor.expired" = "설정 입력 시간이 만료되었습니다."
@@ -667,64 +677,64 @@
 "config.editor.next" = "다음 페이지"
 "config.editor.refresh" = "새로 고침"
 "config.editor.close" = "닫기"
-"config.editor.type.text" = "바깥쪽 따옴표 없이 텍스트를 입력하세요."
+"config.editor.type.text" = "텍스트입니다. 바깥쪽 따옴표는 필요 없습니다."
 "config.editor.type.integer" = "정수를 입력하세요."
 "config.editor.type.decimal" = "0.25 같은 숫자를 입력하세요."
 "config.editor.type.list" = "[\"stone\", \"deepslate\"] 같은 TOML 목록을 사용하세요."
 "config.editor.adjust" = "왼쪽 +{step}, 오른쪽 -{step}, Shift x10, Q로 정확한 값을 입력하세요."
 
 "gui.config.title" = "설정"
-"gui.setting.collections" = "개인 컬렉션, 의상, 체험, 성격."
-"gui.setting.collections.idleReactions" = "컴패니언이 멈춰 있는 동안 가끔 대기 반응을 보이도록 허용합니다."
+"gui.setting.collections" = "개인 컬렉션, 구성, 체험, 성격."
+"gui.setting.collections.idleReactions" = "동료가 멈춰 있는 동안 가끔 대기 반응을 보이도록 허용합니다."
 "gui.setting.collections.idleReactions.name" = "대기 반응"
-"gui.setting.collections.maximumOutfits" = "플레이어당 저장할 수 있는 의상의 최대 수로, 1에서 32 사이입니다."
-"gui.setting.collections.maximumOutfits.name" = "최대 의상 수"
+"gui.setting.collections.maximumOutfits" = "플레이어당 저장할 수 있는 구성의 최대 수로, 1에서 32 사이입니다."
+"gui.setting.collections.maximumOutfits.name" = "최대 구성 수"
 "gui.setting.collections.name" = "컬렉션"
 "gui.setting.collections.personalityEnabled" = "쓰다듬기, 손 흔들기, 앉기, 기다리기, 부르기 상호작용을 허용합니다."
 "gui.setting.collections.personalityEnabled.name" = "성격 사용"
-"gui.setting.collections.trialSeconds" = "잠긴 컴패니언을 비공개로 미리 볼 수 있는 시간으로, 5초에서 120초 사이입니다."
+"gui.setting.collections.trialSeconds" = "잠긴 동료를 비공개로 미리 볼 수 있는 시간으로, 5초에서 120초 사이입니다."
 "gui.setting.collections.trialSeconds.name" = "체험 시간(초)"
 "gui.setting.debug" = "진단 보고서 업로드."
 "gui.setting.debug.name" = "디버그"
-"gui.setting.debug.uploadEnabled" = "/bytecompanions debug dump upload=true 명령이 보고서를 로컬에 저장한 뒤 mclo.gs 사이트에 게시하도록 허용합니다."
+"gui.setting.debug.uploadEnabled" = "/bytecompanions debug dump upload=true 명령어가 보고서를 로컬에 저장한 뒤 mclo.gs에 게시하도록 허용합니다."
 "gui.setting.debug.uploadEnabled.name" = "업로드 허용"
-"gui.setting.features" = "기능 팩으로, 비활성화된 팩은 해당 명령을 숨기고 저장된 상태는 유지합니다."
-"gui.setting.features.attributes" = "컴패니언 속성 수정자를 활성화합니다."
+"gui.setting.features" = "기능 팩입니다. 비활성화된 팩은 해당 명령어를 숨기고 저장된 상태는 유지합니다."
+"gui.setting.features.attributes" = "동료 속성 수정자를 활성화합니다."
 "gui.setting.features.attributes.name" = "속성"
-"gui.setting.features.boosters" = "개인 및 서버 전체 컴패니언 부스터를 활성화합니다."
+"gui.setting.features.boosters" = "개인 및 서버 전체 동료 부스터를 활성화합니다."
 "gui.setting.features.boosters.name" = "부스터"
-"gui.setting.features.buffs" = "드롭 및 경험치 보너스 같은 컴패니언 버프를 활성화합니다."
+"gui.setting.features.buffs" = "드롭 및 경험치 보너스 같은 동료 버프를 활성화합니다."
 "gui.setting.features.buffs.name" = "버프"
-"gui.setting.features.decorations" = "고정 장식 컴패니언을 활성화합니다."
+"gui.setting.features.decorations" = "고정 장식 동료를 활성화합니다."
 "gui.setting.features.decorations.name" = "장식"
-"gui.setting.features.effects" = "컴패니언 물약 효과를 활성화합니다."
+"gui.setting.features.effects" = "동료 물약 효과를 활성화합니다."
 "gui.setting.features.effects.name" = "효과"
 "gui.setting.features.name" = "기능"
-"gui.setting.features.particles" = "컴패니언 파티클 효과를 활성화합니다."
+"gui.setting.features.particles" = "동료 파티클 효과를 활성화합니다."
 "gui.setting.features.particles.name" = "파티클"
-"gui.setting.features.progression" = "컴패니언 레벨과 선택적 보너스 업그레이드를 활성화합니다."
+"gui.setting.features.progression" = "동료 레벨과 선택적 보너스 업그레이드를 활성화합니다."
 "gui.setting.features.progression.name" = "성장"
-"gui.setting.general" = "마스터 스위치, 서버 언어, 업데이트 알림, 컴패니언 제한."
-"gui.setting.general.autoLoadCompanions" = "런타임이 시작될 때 companions 폴더에서 컴패니언 정의를 불러옵니다."
-"gui.setting.general.autoLoadCompanions.name" = "컴패니언 자동 불러오기"
-"gui.setting.general.companionLimits" = "한 플레이어가 동시에 장착할 수 있는 컴패니언 수의 제한."
-"gui.setting.general.companionLimits.maxTotalPerPlayer" = "한 플레이어가 동시에 장착할 수 있는 컴패니언의 최대 수로, -1 은 제한을 해제합니다."
+"gui.setting.general" = "마스터 스위치, 서버 언어, 업데이트 알림, 동료 제한."
+"gui.setting.general.autoLoadCompanions" = "런타임이 시작될 때 companions 폴더에서 동료 정의를 불러옵니다."
+"gui.setting.general.autoLoadCompanions.name" = "동료 자동 불러오기"
+"gui.setting.general.companionLimits" = "한 플레이어가 동시에 장착할 수 있는 동료 수의 제한."
+"gui.setting.general.companionLimits.maxTotalPerPlayer" = "한 플레이어가 동시에 장착할 수 있는 동료의 최대 수입니다. -1은 제한을 해제합니다."
 "gui.setting.general.companionLimits.maxTotalPerPlayer.name" = "플레이어당 최대 합계"
-"gui.setting.general.companionLimits.name" = "컴패니언 제한"
-"gui.setting.general.companionLimits.perModel" = "컴패니언 모델별 개별 제한."
-"gui.setting.general.companionLimits.perModel.fullBody" = "한 플레이어가 동시에 장착할 수 있는 전신 컴패니언의 최대 수로, -1 은 제한을 해제합니다."
+"gui.setting.general.companionLimits.name" = "동료 제한"
+"gui.setting.general.companionLimits.perModel" = "동료 모델별 개별 제한."
+"gui.setting.general.companionLimits.perModel.fullBody" = "한 플레이어가 동시에 장착할 수 있는 전신 동료의 최대 수입니다. -1은 제한을 해제합니다."
 "gui.setting.general.companionLimits.perModel.fullBody.name" = "전신"
-"gui.setting.general.companionLimits.perModel.headOnly" = "한 플레이어가 동시에 장착할 수 있는 머리 전용 컴패니언의 최대 수로, -1 은 제한을 해제합니다."
+"gui.setting.general.companionLimits.perModel.headOnly" = "한 플레이어가 동시에 장착할 수 있는 머리 전용 동료의 최대 수입니다. -1은 제한을 해제합니다."
 "gui.setting.general.companionLimits.perModel.headOnly.name" = "머리 전용"
 "gui.setting.general.companionLimits.perModel.name" = "모델별"
-"gui.setting.general.enabled" = "컴패니언 시각 효과와 게임플레이 보너스의 마스터 스위치."
+"gui.setting.general.enabled" = "동료 시각 효과와 게임플레이 보너스의 마스터 스위치."
 "gui.setting.general.enabled.name" = "사용"
-"gui.setting.general.language" = "서버 기본 로캘로, 직접 편집할 수 있는 languages/<locale>.toml 파일로 저장됩니다."
+"gui.setting.general.language" = "서버 기본 로케일로, 직접 편집할 수 있는 languages/<locale>.toml 파일로 저장됩니다."
 "gui.setting.general.language.name" = "언어"
 "gui.setting.general.name" = "일반"
 "gui.setting.general.updateNotifications" = "접속 시 운영자와 bytecompanions.update 권한을 가진 플레이어에게 새로운 GitHub 릴리스를 알립니다."
 "gui.setting.general.updateNotifications.name" = "업데이트 알림"
-"gui.setting.hotReload" = "설정, 컴패니언, 기능, 언어 파일의 자동 다시 불러오기."
+"gui.setting.hotReload" = "설정, 동료, 기능, 언어 파일의 자동 다시 불러오기."
 "gui.setting.hotReload.cooldownMillis" = "변경된 파일이 적용되기 전까지 변경 없이 유지되어야 하는 밀리초로, 250에서 60000 사이입니다."
 "gui.setting.hotReload.cooldownMillis.name" = "대기 시간(밀리초)"
 "gui.setting.hotReload.enabled" = "데이터 폴더 아래의 안정된 파일 변경을 자동으로 적용합니다."
@@ -735,47 +745,47 @@
 "gui.setting.hotReload.pollIntervalMillis" = "파일 검사 간격 밀리초로, 250에서 60000 사이입니다."
 "gui.setting.hotReload.pollIntervalMillis.name" = "검사 간격(밀리초)"
 "gui.setting.languages" = "서버 번역과 서식을 편집합니다."
-"gui.setting.languages.name" = "언어 파일"
+"gui.setting.languages.name" = "언어"
 "gui.setting.menus" = "대시보드 단축 동작."
 "gui.setting.menus.name" = "메뉴"
-"gui.setting.menus.rightClickDashboard" = "소유자가 주 손으로 컴패니언을 우클릭하면 컴패니언 대시보드를 엽니다."
+"gui.setting.menus.rightClickDashboard" = "소유자가 주 손으로 동료를 우클릭하면 동료 대시보드를 엽니다."
 "gui.setting.menus.rightClickDashboard.name" = "우클릭 대시보드"
 "gui.setting.metrics" = "익명 사용 통계."
-"gui.setting.metrics.enabled" = "익명 ByteCompanions 사용 통계를 bStats 에 제출합니다."
+"gui.setting.metrics.enabled" = "익명 ByteCompanions 사용 통계를 bStats에 제출합니다."
 "gui.setting.metrics.enabled.name" = "사용"
 "gui.setting.metrics.name" = "지표"
 "gui.setting.performance" = "틱 주기, 관찰자 추적, 파티클 제한."
-"gui.setting.performance.dispatchInteractEvent" = "플레이어가 컴패니언을 클릭하면 다른 플러그인을 위해 CompanionPlayerInteractEvent 를 발생시킵니다."
+"gui.setting.performance.dispatchInteractEvent" = "플레이어가 동료를 클릭하면 다른 플러그인을 위해 CompanionPlayerInteractEvent를 발생시킵니다."
 "gui.setting.performance.dispatchInteractEvent.name" = "상호작용 이벤트 발생"
 "gui.setting.performance.maximumParticleIntensity" = "플레이어가 받을 수 있는 최대 파티클 강도로, FULL, REDUCED, OFF 중 하나입니다."
 "gui.setting.performance.maximumParticleIntensity.name" = "최대 파티클 강도"
 "gui.setting.performance.name" = "성능"
-"gui.setting.performance.updateInterval" = "컴패니언 애니메이션 업데이트 간격 틱 수로, 최소 1 입니다."
+"gui.setting.performance.updateInterval" = "동료 애니메이션 업데이트 간격 틱 수로, 최소 1입니다."
 "gui.setting.performance.updateInterval.name" = "업데이트 간격"
-"gui.setting.performance.viewDistance" = "다른 플레이어에게 컴패니언이 보이는 블록 거리로, 0 이상입니다."
+"gui.setting.performance.viewDistance" = "다른 플레이어에게 동료가 보이는 블록 거리로, 0 이상입니다."
 "gui.setting.performance.viewDistance.name" = "시야 거리"
-"gui.setting.performance.viewerRefreshDelay" = "관찰자 거리 확인 간격 틱 수로, 최소 1 입니다."
+"gui.setting.performance.viewerRefreshDelay" = "관찰자 거리 확인 간격 틱 수로, 최소 1입니다."
 "gui.setting.performance.viewerRefreshDelay.name" = "관찰자 갱신 지연"
-"gui.setting.presentation" = "콘솔 스플래시, 명령 피드백 소리, 텍스트 서식."
+"gui.setting.presentation" = "콘솔 스플래시, 명령어 피드백 소리, 텍스트 서식."
 "gui.setting.presentation.alternateSplashes" = "열 번 중 한 번의 시작 시 스플래시 아트를 대체 작품 중 하나로 교체합니다."
 "gui.setting.presentation.alternateSplashes.name" = "대체 스플래시"
-"gui.setting.presentation.commandSounds" = "명령이 플레이어에게 결과를 보고할 때 짧은 성공 또는 실패 소리를 재생합니다."
-"gui.setting.presentation.commandSounds.name" = "명령 소리"
+"gui.setting.presentation.commandSounds" = "명령어가 플레이어에게 결과를 보고할 때 짧은 성공 또는 실패 소리를 재생합니다."
+"gui.setting.presentation.commandSounds.name" = "명령어 소리"
 "gui.setting.presentation.name" = "표시"
-"gui.setting.presentation.serializer" = "컴패니언 이름, 설명, 아이템 청사진의 텍스트 형식으로, MINI_MESSAGE, LEGACY_AMPERSAND, PLAIN 중 하나입니다."
+"gui.setting.presentation.serializer" = "동료 이름, 설명, 아이템 청사진의 텍스트 형식으로, MINI_MESSAGE, LEGACY_AMPERSAND, PLAIN 중 하나입니다."
 "gui.setting.presentation.serializer.name" = "직렬화 형식"
 "gui.setting.presentation.splashScreen" = "서비스가 준비된 후 ByteCompanions 시작 스플래시를 출력합니다."
 "gui.setting.presentation.splashScreen.name" = "스플래시 화면"
 "gui.setting.serverRules" = "월드 및 구역 제한."
-"gui.setting.serverRules.bonusDisabledWorlds" = "컴패니언 속성, 효과, 보상 보너스, 자동 컴패니언 경험치가 중단되는 월드 이름."
+"gui.setting.serverRules.bonusDisabledWorlds" = "동료 속성, 효과, 보상 보너스, 자동 동료 경험치가 중단되는 월드 이름."
 "gui.setting.serverRules.bonusDisabledWorlds.name" = "보너스 비활성 월드"
-"gui.setting.serverRules.hiddenWorlds" = "컴패니언 시각 효과가 숨겨지는 월드 이름."
+"gui.setting.serverRules.hiddenWorlds" = "동료 시각 효과가 숨겨지는 월드 이름."
 "gui.setting.serverRules.hiddenWorlds.name" = "숨김 월드"
 "gui.setting.serverRules.name" = "서버 규칙"
-"gui.setting.serverRules.worldguard" = "WorldGuard 가 설치된 경우 bytecompanions-visuals 및 bytecompanions-bonuses 플래그를 따릅니다."
+"gui.setting.serverRules.worldguard" = "WorldGuard가 설치된 경우 bytecompanions-visuals 및 bytecompanions-bonuses 플래그를 따릅니다."
 "gui.setting.serverRules.worldguard.name" = "WorldGuard"
 "gui.setting.storage" = "플레이어 데이터 저장 백엔드와 연결 풀."
-"gui.setting.storage.backend" = "플레이어 동반자, 컬렉션, 진행 상황, 파티클 선택을 위한 저장 백엔드: json, sqlite, h2 또는 mysql."
+"gui.setting.storage.backend" = "플레이어 동료, 컬렉션, 성장 데이터, 파티클 선택을 위한 저장 백엔드: json, sqlite, h2 또는 mysql."
 "gui.setting.storage.backend.name" = "백엔드"
 "gui.setting.storage.h2" = "내장 H2 데이터베이스 위치."
 "gui.setting.storage.h2.directory" = "내장 데이터베이스 파일을 보관하는 plugins/ByteCompanions 아래의 디렉터리."
@@ -791,15 +801,15 @@
 "gui.setting.storage.mysql.password.name" = "비밀번호"
 "gui.setting.storage.mysql.port" = "데이터베이스 포트로, 1에서 65535 사이입니다."
 "gui.setting.storage.mysql.port.name" = "포트"
-"gui.setting.storage.mysql.useSsl" = "데이터베이스 연결에 TLS 를 요구합니다."
+"gui.setting.storage.mysql.useSsl" = "데이터베이스 연결에 TLS를 요구합니다."
 "gui.setting.storage.mysql.useSsl.name" = "SSL 사용"
 "gui.setting.storage.mysql.username" = "데이터베이스 사용자."
 "gui.setting.storage.mysql.username.name" = "사용자 이름"
 "gui.setting.storage.name" = "저장소"
 "gui.setting.storage.pool" = "sqlite, h2, mysql 백엔드의 연결 풀 제한입니다."
-"gui.setting.storage.pool.connectionTimeoutMillis" = "풀 연결을 기다리는 밀리초로, 0 은 드라이버 기본값을 사용하고 그 외에는 최소 250 입니다."
+"gui.setting.storage.pool.connectionTimeoutMillis" = "풀 연결을 기다리는 밀리초입니다. 0은 드라이버 기본값을 사용하고, 그 외에는 최소 250입니다."
 "gui.setting.storage.pool.connectionTimeoutMillis.name" = "연결 시간 제한(밀리초)"
-"gui.setting.storage.pool.maxLifetimeMillis" = "풀 연결의 최대 수명 밀리초로, 0 은 폐기를 비활성화하고 그 외에는 최소 30000 입니다."
+"gui.setting.storage.pool.maxLifetimeMillis" = "풀 연결의 최대 수명(밀리초)입니다. 0은 폐기를 비활성화하고, 그 외에는 최소 30000입니다."
 "gui.setting.storage.pool.maxLifetimeMillis.name" = "최대 수명(밀리초)"
 "gui.setting.storage.pool.maxPoolSize" = "이 풀에서 동시에 사용할 수 있는 데이터베이스 연결의 최대 수."
 "gui.setting.storage.pool.maxPoolSize.name" = "최대 풀 크기"

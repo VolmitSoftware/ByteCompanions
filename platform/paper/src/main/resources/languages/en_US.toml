@@ -43,6 +43,8 @@
 "command.booster.granted" = "<green>Saved {amount} {booster} booster credits for {player}.</green>"
 "command.booster.not-found" = "<red>No booster with ID {booster} exists.</red>"
 "command.booster.server-only" = "<red>This command starts server boosters only.</red>"
+"command.booster.started" = "<green>Started or queued the {booster} server booster.</green>"
+"command.booster.cancelled" = "<green>Cancelled booster activation {activation}.</green>"
 "command.transactions.count" = "<gold>Unresolved purchases: {count}</gold>"
 "command.transactions.entry" = "<yellow>{transaction}</yellow> <gray>Player: {player}; {kind}; companion: {companion}; definition: {definition}; previous tier: {tier}; status: {status}; money: {money}; items: {items}; provider: {provider}; created: {created}</gray>"
 "command.transactions.reference" = "<gray>Transaction or activation ID: <white>{transaction}</white></gray>"

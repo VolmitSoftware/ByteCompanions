@@ -36,4 +36,29 @@ class AttributeOwnershipTest {
         AttributesFeature.removeModifier(instance, ownKey);
         assertEquals(List.of(owned), removed);
     }
+
+    @Test
+    void joinSweepRemovesEveryOwnedModifierAndKeepsOtherPlugins() {
+        AttributeModifier stale = new AttributeModifier(new NamespacedKey("bytecompanions", "deleted_speed"), 0.1,
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY);
+        AttributeModifier current = new AttributeModifier(new NamespacedKey("bytecompanions", "bee_speed"), 0.1,
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY);
+        AttributeModifier external = new AttributeModifier(new NamespacedKey("other", "bee_speed"), 0.2,
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY);
+        List<AttributeModifier> modifiers = new ArrayList<>(List.of(stale, external, current));
+        AttributeInstance instance = AttributeInstance.class.cast(Proxy.newProxyInstance(
+                AttributeInstance.class.getClassLoader(), new Class<?>[]{AttributeInstance.class},
+                (proxy, method, arguments) -> {
+                    if (method.getName().equals("getModifiers")) {
+                        return modifiers;
+                    }
+                    if (method.getName().equals("removeModifier")) {
+                        modifiers.remove((AttributeModifier) arguments[0]);
+                        return null;
+                    }
+                    throw new UnsupportedOperationException(method.getName());
+                }));
+        AttributesFeature.removeNamespace(instance, "bytecompanions");
+        assertEquals(List.of(external), modifiers);
+    }
 }

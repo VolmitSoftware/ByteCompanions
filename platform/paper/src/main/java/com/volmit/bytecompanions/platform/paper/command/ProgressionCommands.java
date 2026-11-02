@@ -151,7 +151,14 @@ final class ProgressionCommands {
                     send(sender, "command.booster.server-only");
                     return;
                 }
-                complete(sender, service.startGlobal(id), result -> mutation(sender, result));
+                complete(sender, service.startGlobal(id), result -> {
+                    if (result.status() != ProgressionService.Status.SUCCESS) {
+                        mutation(sender, result);
+                        return;
+                    }
+                    send(sender, "command.booster.started", "booster", id);
+                    send(sender, "command.transactions.reference", "transaction", result.transactionId());
+                });
             }
             case "cancel" -> {
                 String id = value(args, 5);
@@ -159,7 +166,10 @@ final class ProgressionCommands {
                     usage(sender, "/bytecompanions booster cancel <activation>");
                     return;
                 }
-                complete(sender, service.cancelBooster(id), result -> mutation(sender, result));
+                complete(sender, service.cancelBooster(id), result -> {
+                    if (result.status() == ProgressionService.Status.SUCCESS) send(sender, "command.booster.cancelled", "activation", id);
+                    else mutation(sender, result);
+                });
             }
             default -> usage(sender, "/bytecompanions booster give <player> <booster> <count> | start <booster> | cancel <activation>" );
         }

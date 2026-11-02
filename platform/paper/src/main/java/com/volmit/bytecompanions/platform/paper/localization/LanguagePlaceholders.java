@@ -15,8 +15,8 @@ public final class LanguagePlaceholders {
 
     private static Map<String, String> build() {
         Map<String, String> dictionary = new TreeMap<>();
-        dictionary.put("action", "Requested action");
-        dictionary.put("actions", "Available actions");
+        dictionary.put("activation", "Booster activation identifier");
+        dictionary.put("added", "Messages added by a language update");
         dictionary.put("after", "Value after the change");
         dictionary.put("amount", "Amount or count");
         dictionary.put("argument", "Unexpected command argument");
@@ -36,7 +36,7 @@ public final class LanguagePlaceholders {
         dictionary.put("definition", "Companion definition");
         dictionary.put("detail", "Failure detail");
         dictionary.put("effect", "Particle effect identifier");
-        dictionary.put("entry", "Entry label");
+        dictionary.put("enabled", "Whether companions are enabled");
         dictionary.put("feature", "Feature name");
         dictionary.put("features", "Enabled features");
         dictionary.put("field", "Studio field name");
@@ -48,6 +48,7 @@ public final class LanguagePlaceholders {
         dictionary.put("item", "Item name");
         dictionary.put("items", "Item list");
         dictionary.put("java", "Java major version");
+        dictionary.put("kept", "Local edits kept by a language update");
         dictionary.put("key", "Message or setting key");
         dictionary.put("kind", "Transaction kind");
         dictionary.put("language", "Active language");
@@ -60,9 +61,8 @@ public final class LanguagePlaceholders {
         dictionary.put("model", "Companion model");
         dictionary.put("money", "Money amount");
         dictionary.put("name", "Display name");
-        dictionary.put("new", "Installed rendered value");
         dictionary.put("next", "Next value");
-        dictionary.put("old", "Previous rendered value");
+        dictionary.put("number", "List entry number");
         dictionary.put("operation", "Bonus operation");
         dictionary.put("page", "Current page number");
         dictionary.put("pages", "Total page count");
@@ -78,11 +78,11 @@ public final class LanguagePlaceholders {
         dictionary.put("provider", "Payment provider");
         dictionary.put("range", "Supported Minecraft range");
         dictionary.put("reason", "Failure reason");
+        dictionary.put("remaining", "Time until the next language check is allowed");
         dictionary.put("required", "Required amount");
         dictionary.put("scheduler", "Scheduler implementation");
         dictionary.put("seconds", "Duration in seconds");
         dictionary.put("section", "Language editor section");
-        dictionary.put("setting", "Setting name");
         dictionary.put("sources", "Bonus sources");
         dictionary.put("status", "Status marker");
         dictionary.put("step", "Adjustment step");
@@ -91,6 +91,7 @@ public final class LanguagePlaceholders {
         dictionary.put("time", "Duration text");
         dictionary.put("transaction", "Transaction identifier");
         dictionary.put("type", "Parameter type");
+        dictionary.put("updated", "Messages changed by a language update");
         dictionary.put("url", "Public report URL");
         dictionary.put("usage", "Command usage");
         dictionary.put("value", "Current or raw value");

@@ -27,13 +27,10 @@ package io.github.slimjar.app.builder;
 import io.github.slimjar.app.Application;
 import io.github.slimjar.downloader.DependencyDownloaderFactory;
 import io.github.slimjar.downloader.URLDependencyDownloaderFactory;
-import io.github.slimjar.downloader.output.DependencyOutputWriterFactory;
-import io.github.slimjar.downloader.strategy.ChecksumFilePathStrategy;
 import io.github.slimjar.downloader.strategy.FilePathStrategy;
-import io.github.slimjar.downloader.verify.ChecksumDependencyVerifierFactory;
 import io.github.slimjar.downloader.verify.DependencyVerifierFactory;
 import io.github.slimjar.downloader.verify.FileChecksumCalculator;
-import io.github.slimjar.downloader.verify.PassthroughDependencyVerifierFactory;
+import io.github.slimjar.downloader.verify.PinnedDependencyVerifier;
 import io.github.slimjar.injector.DependencyInjector;
 import io.github.slimjar.injector.DependencyInjectorFactory;
 import io.github.slimjar.injector.SimpleDependencyInjectorFactory;
@@ -413,11 +410,8 @@ public abstract class ApplicationBuilder<T extends ApplicationBuilder<T>> {
     @Contract(mutates = "this")
     protected final @NotNull DependencyVerifierFactory getVerifierFactory() {
         if (verifierFactory == null) {
-            final var filePathStrategy = ChecksumFilePathStrategy.createStrategy(getDownloadDirectoryPath().toFile(), "SHA-1");
-            final var checksumOutputFactory = new DependencyOutputWriterFactory(filePathStrategy);
-            final var fallback = new PassthroughDependencyVerifierFactory();
-            final var checksumCalculator = new FileChecksumCalculator("SHA-1");
-            this.verifierFactory = new ChecksumDependencyVerifierFactory(checksumOutputFactory, fallback, checksumCalculator);
+            this.verifierFactory = PinnedDependencyVerifier.factory(
+                ApplicationBuilder.class.getClassLoader().getResource(PinnedDependencyVerifier.RESOURCE));
         }
 
         return verifierFactory;

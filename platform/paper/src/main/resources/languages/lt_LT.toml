@@ -6,108 +6,109 @@
 # /bytecompanions language server edit lt_LT
 #
 # === Priešdėlis ===
-# runtime.prefix supplies the styled plugin name for {prefix}.
-# Remove {prefix} from a message to hide the plugin name for that message.
+# runtime.prefix pateikia suformatuotą papildinio pavadinimą kintamajam {prefix}.
+# Pašalinkite {prefix} iš pranešimo, kad tame pranešime papildinio pavadinimas nebūtų rodomas.
 #
 # === Formatavimas ===
-# Colors and styles: &0-&f, &k-&r.
-# RGB colors: &#RRGGBB, &xRRGGBB, &x&R&R&G&G&B&B, [RRGGBB].
-# MiniMessage supports custom formatting such as <gold> and <gradient:#ffcc00:#ff9900>. Put a backslash before & or [ to display it literally.
+# Spalvos ir stiliai: &0-&f, &k-&r.
+# RGB spalvos: &#RRGGBB, &xRRGGBB, &x&R&R&G&G&B&B, [RRGGBB].
+# MiniMessage palaiko savitą formatavimą, pavyzdžiui, <gold> ir <gradient:#ffcc00:#ff9900>. Kad & arba [ būtų rodomi kaip paprasti simboliai, prieš juos parašykite kairinį pasvirąjį brūkšnį.
 #
 # === Kintamieji ===
 # Nekeiskite kintamųjų pavadinimų ir naudokite tik konkrečiame pranešime esančius kintamuosius.
-#   {action}  Requested action
-#   {actions}  Available actions
-#   {after}  Value after the change
-#   {amount}  Amount or count
-#   {argument}  Unexpected command argument
-#   {before}  Value before the change
-#   {bonus}  Bonus name
-#   {booster}  Booster identifier
-#   {category}  Category name
-#   {change}  Described change
-#   {channel}  Booster channel
-#   {choice}  Selected option
-#   {command}  Command path
-#   {companion}  Companion identifier
-#   {companions}  Companion identifiers
-#   {count}  Number of items
-#   {created}  Creation time
-#   {current}  Current value
-#   {definition}  Companion definition
-#   {detail}  Failure detail
-#   {effect}  Particle effect identifier
-#   {entry}  Entry label
-#   {feature}  Feature name
-#   {features}  Enabled features
-#   {field}  Studio field name
-#   {formation}  Formation name
-#   {group}  Message category name
-#   {hot_reload}  Hot reload state
-#   {index}  Position number
-#   {integrations}  Integration states
-#   {item}  Item name
-#   {items}  Item list
-#   {java}  Java major version
-#   {key}  Message or setting key
-#   {kind}  Transaction kind
-#   {language}  Active language
-#   {level}  Level number
-#   {limit}  Configured limit
-#   {line}  Message line number
-#   {locale}  Locale identifier
-#   {maximum}  Maximum accepted value
-#   {mode}  Combining rule
-#   {model}  Companion model
-#   {money}  Money amount
-#   {name}  Display name
-#   {new}  Installed rendered value
-#   {next}  Next value
-#   {old}  Previous rendered value
-#   {operation}  Bonus operation
-#   {page}  Current page number
-#   {pages}  Total page count
-#   {parameter}  Parameter name
-#   {path}  File path or setting path
-#   {percent}  Percentage value
-#   {permission}  Required permission
-#   {personal}  Personal locale when it differs
-#   {player}  Player name
-#   {players}  Loaded player count
-#   {plugin}  Plugin name
-#   {prefix}  Styled plugin name from runtime.prefix
-#   {provider}  Payment provider
-#   {range}  Supported Minecraft range
-#   {reason}  Failure reason
-#   {required}  Required amount
-#   {scheduler}  Scheduler implementation
-#   {seconds}  Duration in seconds
-#   {section}  Language editor section
-#   {setting}  Setting name
-#   {sources}  Bonus sources
-#   {status}  Status marker
-#   {step}  Adjustment step
-#   {target}  Selection target
-#   {tier}  Upgrade tier
-#   {time}  Duration text
-#   {transaction}  Transaction identifier
-#   {type}  Parameter type
-#   {url}  Public report URL
-#   {usage}  Command usage
-#   {value}  Current or raw value
-#   {variables}  Placeholders valid for the message
-#   {variant}  Appearance variant
-#   {version}  Plugin version
-#   {xp}  Companion experience
+#   {activation}  stiprintuvo aktyvavimo ID
+#   {added}  kalbos atnaujinimo pridėtų pranešimų skaičius
+#   {after}  reikšmė po pakeitimo
+#   {amount}  kiekis arba skaičius
+#   {argument}  netikėtas komandos argumentas
+#   {before}  reikšmė prieš pakeitimą
+#   {bonus}  premijos pavadinimas
+#   {booster}  stiprintuvo ID
+#   {category}  kategorijos pavadinimas
+#   {change}  pakeitimo aprašymas
+#   {channel}  stiprintuvo kanalas
+#   {choice}  pasirinkta parinktis
+#   {command}  komandos kelias
+#   {companion}  palydovo ID
+#   {companions}  palydovų ID
+#   {count}  elementų skaičius
+#   {created}  sukūrimo laikas
+#   {current}  dabartinė reikšmė
+#   {definition}  palydovo aprašas
+#   {detail}  klaidos informacija
+#   {effect}  dalelių efekto ID
+#   {enabled}  palydovų būsena
+#   {feature}  funkcijos pavadinimas
+#   {features}  įjungtos funkcijos
+#   {field}  studijos lauko pavadinimas
+#   {formation}  rikiuotės pavadinimas
+#   {group}  pranešimų kategorijos pavadinimas
+#   {hot_reload}  automatinio perkrovimo būsena
+#   {index}  eilės numeris
+#   {integrations}  integracijų būsenos
+#   {item}  daikto pavadinimas
+#   {items}  daiktų sąrašas
+#   {java}  pagrindinė Java versija
+#   {kept}  kalbos atnaujinimo išsaugoti vietiniai pakeitimai
+#   {key}  pranešimo arba nustatymo raktas
+#   {kind}  operacijos rūšis
+#   {language}  aktyvi kalba
+#   {level}  lygio numeris
+#   {limit}  nustatyta riba
+#   {line}  pranešimo eilutės numeris
+#   {locale}  kalbos kodas
+#   {maximum}  didžiausia leidžiama reikšmė
+#   {mode}  derinimo taisyklė
+#   {model}  palydovo modelis
+#   {money}  pinigų suma
+#   {name}  rodomas pavadinimas
+#   {next}  kita reikšmė
+#   {number}  sąrašo įrašo numeris
+#   {operation}  premijos operacija
+#   {page}  dabartinio puslapio numeris
+#   {pages}  bendras puslapių skaičius
+#   {parameter}  parametro pavadinimas
+#   {path}  failo arba nustatymo kelias
+#   {percent}  procentinė reikšmė
+#   {permission}  reikalingas leidimas
+#   {personal}  asmeninės kalbos kodas, jei jis skiriasi
+#   {player}  žaidėjo vardas
+#   {players}  įkeltų žaidėjų skaičius
+#   {plugin}  papildinio pavadinimas
+#   {prefix}  suformatuotas papildinio pavadinimas iš runtime.prefix
+#   {provider}  mokėjimų teikėjas
+#   {range}  palaikomas Minecraft versijų intervalas
+#   {reason}  klaidos priežastis
+#   {remaining}  laikas iki kito leidžiamo kalbų tikrinimo
+#   {required}  reikalingas kiekis
+#   {scheduler}  užduočių planuoklio realizacija
+#   {seconds}  trukmė sekundėmis
+#   {section}  kalbos redaktoriaus skiltis
+#   {sources}  premijų šaltiniai
+#   {status}  būsenos žyma
+#   {step}  keitimo žingsnis
+#   {target}  pasirinkimo paskirtis
+#   {tier}  patobulinimo pakopa
+#   {time}  trukmė tekstu
+#   {transaction}  operacijos ID
+#   {type}  parametro tipas
+#   {updated}  kalbos atnaujinimo pakeistų pranešimų skaičius
+#   {url}  viešas ataskaitos URL
+#   {usage}  komandos naudojimas
+#   {value}  dabartinė arba neapdorota reikšmė
+#   {variables}  pranešime galimi vietos žymekliai
+#   {variant}  išvaizdos variantas
+#   {version}  papildinio versija
+#   {xp}  palydovo XP
 
 "runtime.prefix" = "<bold><gradient:#ffcc00:#ff9900>ByteCompanions</gradient></bold>"
 "gui.studio-review-change" = "<gold>Pakeitimas {index}"
 "gui.studio-duplicate" = "<aqua>Kopijuoti kaip naują palydovą"
-"gui.studio-duplicate-hint" = "<gray>Kopijuok juodraštį nauju ID; originalas liks nepakeistas."
-"studio.duplicate-prompt" = "{prefix} <gold>Įvesk naują palydovo ID: nuo 1 iki 64 mažųjų raidžių, skaitmenų, pabraukimų arba brūkšnelių. Grįžk parašęs <white>cancel</white>.</gold>"
+"gui.studio-duplicate-hint" = "<gray>Nukopijuokite juodraštį nauju ID; originalas liks nepakeistas."
+"studio.duplicate-prompt" = "{prefix} <gold>Įveskite naują palydovo ID: nuo 1 iki 64 mažųjų raidžių, skaitmenų, pabraukimų arba brūkšnelių. Norėdami grįžti, parašykite <white>cancel</white>.</gold>"
 "gui.studio-remove" = "<red>Pašalinti šią premiją"
-"gui.studio-remove-hint" = "<gray>Pašalink visą premijos įrašą iš šio juodraščio."
-"studio.too-long" = "{prefix} <yellow>Įvestis per ilga. Naudok iki 256 simbolių; juodraštis nepakeistas.</yellow>"
+"gui.studio-remove-hint" = "<gray>Pašalinkite visą premijos įrašą iš šio juodraščio."
+"studio.too-long" = "{prefix} <yellow>Įvestis per ilga. Naudokite iki 256 simbolių; juodraštis nepakeistas.</yellow>"
 "gui.studio-selected" = "<green>✓ Įtraukta į šį juodraštį"
 "gui.studio-unselected" = "<gray>Neįtraukta į šį juodraštį"
 "gui.studio-change" = "<gray>{change}"
@@ -118,7 +119,7 @@
 "gui.title.studio-presets" = "<gold>Pasirinkti šabloną"
 "gui.title.studio-confirm" = "<gold>Peržiūrėti palydovo pakeitimus"
 "gui.studio" = "<gold>✎ Palydovų studija"
-"gui.studio-hint" = "<gray>Redaguok šį palydovą visam serveriui."
+"gui.studio-hint" = "<gray>Redaguokite šį palydovą visam serveriui."
 "gui.studio-heading" = "<gold>✎ {companion}"
 "gui.studio-draft" = "<yellow>Neišsaugotas juodraštis • Pakeitimai įsigalios tik išsaugojus."
 "gui.studio-unchanged" = "<gray>Nėra neišsaugotų pakeitimų."
@@ -127,51 +128,51 @@
 "gui.studio-equipment" = "<aqua>Įranga ir spalvos"
 "gui.studio-movement" = "<green>Judėjimas ir animacija"
 "gui.studio-particles" = "<light_purple>Integruotos dalelės"
-"gui.studio-attributes" = "<aqua>Savybių premijos"
-"gui.studio-effects" = "<light_purple>Gėrimų premijos"
+"gui.studio-attributes" = "<aqua>Atributų premijos"
+"gui.studio-effects" = "<light_purple>Eliksyrų premijos"
 "gui.studio-buffs" = "<green>XP ir atlygio premijos"
-"gui.studio-category-hint" = "<gray>Pasirink nustatymą arba pridėk šabloną."
+"gui.studio-category-hint" = "<gray>Pasirinkite nustatymą arba pridėkite šabloną."
 "gui.studio-disabled" = "<yellow>Ši funkcija išjungta; išsaugotos premijos lieka neaktyvios."
 "gui.studio-field" = "<gold>{field}"
 "gui.studio-value" = "<gray>Dabartinė reikšmė: <white>{value}"
-"gui.studio-edit-hint" = "<gray>Spustelėk, kad redaguotum šį nustatymą."
+"gui.studio-edit-hint" = "<gray>Spustelėkite, kad redaguotumėte šį nustatymą."
 "gui.studio-type" = "<gold>Įvesti reikšmę"
-"gui.studio-type-hint" = "<gray>Įvesk tikslią reikšmę privačiai pokalbyje."
+"gui.studio-type-hint" = "<gray>Įveskite tikslią reikšmę privačiai pokalbyje."
 "gui.studio-toggle" = "<gold>Perjungti nustatymą"
 "gui.studio-toggle-hint" = "<gray>Perjungti tarp true ir false."
 "gui.studio-increase" = "<green>Padidinti"
 "gui.studio-decrease" = "<gold>Sumažinti"
-"gui.studio-adjust-hint" = "<gray>Pakeisk reikšmę per {step}."
+"gui.studio-adjust-hint" = "<gray>Keičia reikšmę po {step}."
 "gui.studio-presets" = "<gold>Pridėti arba pasirinkti šabloną"
-"gui.studio-presets-hint" = "<gray>Peržiūrėk galimus šio skyriaus pasirinkimus."
+"gui.studio-presets-hint" = "<gray>Peržiūrėkite galimus šio skyriaus pasirinkimus."
 "gui.studio-choice" = "<aqua>{choice}"
-"gui.studio-choice-hint" = "<gray>Taikyk juodraščiui; peržiūrėk prieš išsaugodamas."
-"gui.studio-particle-hint" = "<gray>Įjunk arba išjunk šį šabloną."
+"gui.studio-choice-hint" = "<gray>Pritaikykite juodraščiui; peržiūrėkite prieš išsaugodami."
+"gui.studio-particle-hint" = "<gray>Įjunkite arba išjunkite šį šabloną."
 "gui.studio-preview" = "<aqua>Peržiūra pasaulyje"
-"gui.studio-preview-hint" = "<gray>Matai tik tu; be premijų ar išsaugotų pasirinkimų."
+"gui.studio-preview-hint" = "<gray>Matote tik jūs; be premijų ir išsaugotų pasirinkimų."
 "gui.studio-stop-preview" = "<gold>Sustabdyti peržiūrą"
 "gui.studio-save" = "<green>Peržiūrėti ir išsaugoti"
-"gui.studio-save-hint" = "<gray>Peržiūrėk juodraštį prieš pakeisdamas serverio turinį."
+"gui.studio-save-hint" = "<gray>Peržiūrėkite juodraštį prieš pakeisdami serverio turinį."
 "gui.studio-apply" = "<green>Išsaugoti visiems"
-"gui.studio-apply-hint" = "<gray>Patikrina, išsaugo ir įkelia įskiepį iš naujo."
+"gui.studio-apply-hint" = "<gray>Patikrina, išsaugo ir iš naujo įkelia papildinį."
 "gui.studio-reload-hint" = "<yellow>Kiti redaktoriai uždaromi; prisijungusių žaidėjų palydovai atkuriami."
 "gui.studio-discard" = "<red>Atmesti juodraštį"
-"gui.studio-discard-hint" = "<gray>Atmesk neišsaugotus pakeitimus ir sustabdyk peržiūrą."
+"gui.studio-discard-hint" = "<gray>Atmeskite visus neišsaugotus pakeitimus ir sustabdykite peržiūrą."
 "gui.studio-reset" = "<gold>Atkurti juodraštį"
-"gui.studio-reset-hint" = "<gray>Grįžk prie atidarymo metu buvusių reikšmių."
+"gui.studio-reset-hint" = "<gray>Grįžkite prie reikšmių, buvusių atidarymo metu."
 "gui.studio-back" = "<gold>◀ Atgal"
-"gui.studio-back-hint" = "<gray>Grįžk neprarasdamas juodraščio."
-"gui.studio-empty" = "<gray>Nustatymų dar nėra. Pradėk pridėdamas šabloną."
-"studio.prompt" = "{prefix} <gold>Įvesk {field} pokalbyje arba parašyk <white>cancel</white>. Iki 256 simbolių; galioja 60 sekundžių.</gold>"
+"gui.studio-back-hint" = "<gray>Grįžkite neprarasdami juodraščio."
+"gui.studio-empty" = "<gray>Nustatymų dar nėra. Pradėkite pridėdami šabloną."
+"studio.prompt" = "{prefix} <gold>Pokalbyje įveskite {field} arba parašykite <white>cancel</white>. Iki 256 simbolių; galioja 60 sekundžių.</gold>"
 "studio.cancelled" = "{prefix} <gray>Įvestis atšaukta arba jos laikas baigėsi; juodraštis nepakeistas.</gray>"
 "studio.failed" = "{prefix} <red>Pakeitimas atmestas: {reason}</red>"
-"studio.preview" = "{prefix} <aqua>Privati peržiūra paleista penkioms minutėms. Grįžk su <white>/bytecompanions edit {companion}</white>. Premijos nesuteikiamos.</aqua>"
-"studio.retained" = "{prefix} <gray>Uždarius meniu, juodraštis išlieka 15 minučių neveiklos. Grįžk su <white>/bytecompanions edit</white>.</gray>"
-"studio.existing" = "{prefix} <yellow>Jau turi {companion} juodraštį. Išsaugok arba atmesk jį prieš redaguodamas kitą palydovą.</yellow>"
+"studio.preview" = "{prefix} <aqua>Privati peržiūra paleista penkioms minutėms. Grįžkite naudodami <white>/bytecompanions edit {companion}</white>. Premijos nesuteikiamos.</aqua>"
+"studio.retained" = "{prefix} <gray>Uždarius meniu, juodraštis saugomas, kol neveikiate 15 minučių. Grįžkite naudodami <white>/bytecompanions edit</white>.</gray>"
+"studio.existing" = "{prefix} <yellow>Jau turite palydovo {companion} juodraštį. Išsaugokite arba atmeskite jį prieš redaguodami kitą palydovą.</yellow>"
 "studio.expired" = "{prefix} <gray>Neaktyvus palydovo juodraštis atmestas.</gray>"
 "studio.saving" = "{prefix} <gold>Palydovas išsaugomas ir įkeliamas iš naujo...</gold>"
 "studio.saved" = "{prefix} <green>Palydovas išsaugotas visam serveriui.</green>"
-"studio.restore-failed" = "{prefix} <yellow>Palydovas išsaugotas, bet prisijungusių žaidėjų palydovų atkurti nepavyko. Prisijunk iš naujo ir patikrink konsolę.</yellow>"
+"studio.restore-failed" = "{prefix} <yellow>Palydovas išsaugotas, bet prisijungusių žaidėjų palydovų atkurti nepavyko. Prisijunkite iš naujo ir patikrinkite konsolę.</yellow>"
 "studio.discarded" = "{prefix} <gray>Juodraštis atmestas. Serverio turinys nepakeistas.</gray>"
 "errors.no-permission" = "<red>Neturite leidimo atlikti šį veiksmą.</red>"
 "errors.no-access-to-companion" = "<red>Negalite pasirinkti šio palydovo.</red>"
@@ -200,7 +201,7 @@
 "command.feedback.disabled" = "<gold>Funkcija {feature} išjungta.</gold>"
 "command.feedback.player-only" = "<red>Šią komandą gali naudoti tik žaidėjas.</red>"
 "command.feedback.companion-required" = "<red>Reikalingas palydovo vardas.</red>"
-"command.feedback.failed" = "<red>Nepavyko atlikti komandos. Žr. konsolę.</red>"
+"command.feedback.failed" = "<red>Nepavyko atlikti komandos. Išsamesnė informacija – konsolėje.</red>"
 "command.feedback.usage" = "<gold>Naudojimas: {usage}</gold>"
 "command.feedback.version" = "<gradient:#ffcc00:#ff9900>{prefix} v{version}</gradient>"
 "particles.title" = "<gold>Palydovų dalelės</gold>"
@@ -215,71 +216,71 @@
 "particles.particle-effects.already-equipped" = "<red><white>{effect}</white> jau įjungtas.</red>"
 "particles.companions.not-equipped" = "<red>Pirmiausia turite pasirinkti palydovą.</red>"
 "particles.companions.invalid-type-id" = "<red>Turite nurodyti galiojantį palydovo tipo ID.</red>"
-"errors.player-not-loaded" = "<red>Tavo palydovų duomenys dar įkeliami arba jų nepavyko įkelti. Prisijunk iš naujo arba kreipkis į administratorių.</red>"
-"errors.persistence-failed" = "<red>Tavo pasirinkimas pakeistas šiam seansui, bet jo nepavyko išsaugoti. Prisijungus iš naujo jis gali grįžti į ankstesnę būseną. Pranešk administratoriui.</red>"
+"errors.player-not-loaded" = "<red>Jūsų palydovų duomenys dar įkeliami arba jų nepavyko įkelti. Prisijunkite iš naujo arba kreipkitės į administratorių.</red>"
+"errors.persistence-failed" = "<red>Jūsų pasirinkimas pakeistas šiam seansui, bet jo nepavyko išsaugoti. Prisijungus iš naujo jis gali būti atšauktas. Praneškite administratoriui.</red>"
 
 "gui.title.collection" = "<gold>Palydovų kolekcija"
-"gui.title.dashboard" = "<gold>Palydovo valdymas"
+"gui.title.dashboard" = "<gold>Palydovo valdymo skydelis"
 "gui.title.particles" = "<gold>Palydovo dalelės"
 "gui.title.bonuses" = "<gold>Palydovo premijos"
 "gui.collection" = "<gold>📦 Palydovų kolekcija"
-"gui.collection-hint" = "<gray>Pasirink palydovą, kad pamatytum jo parinktis."
+"gui.collection-hint" = "<gray>Pasirinkite palydovą, kad pamatytumėte jo parinktis."
 "gui.equipped" = "<green>✓ Pasirinktas"
 "gui.available" = "<yellow>Prieinamas"
-"gui.locked" = "<red>Užrakinta: neturi leidimo."
-"gui.open-dashboard" = "<gray>Spustelėk, kad atidarytum šio palydovo valdymą."
+"gui.locked" = "<red>Užrakinta: neturite leidimo."
+"gui.open-dashboard" = "<gray>Spustelėkite, kad atidarytumėte šio palydovo valdymo skydelį."
 "gui.empty" = "<yellow>Palydovų nėra"
 "gui.empty-hint" = "<gray>Nėra prieinamų palydovų aprašų."
 "gui.not-equipped" = "<yellow>Nepasirinktas"
-"gui.overview" = "<gray>Valdyk šį palydovą žemiau esančiais mygtukais."
+"gui.overview" = "<gray>Valdykite šį palydovą žemiau esančiais mygtukais."
 "gui.equip" = "<green>✓ Pasirinkti palydovą"
-"gui.equip-hint" = "<gray>Pakviesk šį palydovą šalia savęs."
-"gui.unequip" = "<yellow>Atšaukti palydovą"
-"gui.unequip-hint" = "<gray>Išleisk šį palydovą. Galėsi jį pasirinkti dar kartą."
+"gui.equip-hint" = "<gray>Pakvieskite šį palydovą šalia savęs."
+"gui.unequip" = "<yellow>Pašalinti palydovą"
+"gui.unequip-hint" = "<gray>Paleiskite šį palydovą. Vėliau galėsite jį vėl pasirinkti."
 "gui.particles" = "<aqua>✦ Dalelės"
-"gui.particles-hint" = "<gray>Pasirink dalelių efektą šiam palydovui."
+"gui.particles-hint" = "<gray>Pasirinkite dalelių efektą šiam palydovui."
 "gui.disabled" = "<gray>Išjungta šiame serveryje."
-"gui.equip-first" = "<yellow>Pirmiausia pasirink šį palydovą."
-"gui.current-particle" = "<gray>Pasirinktos dalelės: <white>{effect}"
+"gui.equip-first" = "<yellow>Pirmiausia pasirinkite šį palydovą."
+"gui.current-particle" = "<gray>Pasirinktas dalelių efektas: <white>{effect}"
 "gui.none" = "Nėra"
 "gui.bonuses" = "<gold>★ Premijos ir efektai"
-"gui.bonuses-hint" = "<gray>Peržiūrėk aktyvias premijas, gėrimų efektus ir jų derinimą."
-"gui.select-particle" = "<yellow>Spustelėk, kad pasirinktum šį dalelių efektą."
+"gui.bonuses-hint" = "<gray>Peržiūrėkite aktyvias premijas, eliksyrų efektus ir jų derinimą."
+"gui.select-particle" = "<yellow>Spustelėkite, kad pasirinktumėte šį dalelių efektą."
 "gui.remove-particle" = "<yellow>Pašalinti dalelių efektą"
-"gui.remove-particle-hint" = "<gray>Pašalink šiam palydovui pasirinktas daleles."
-"gui.back" = "<gold>◀ Grįžti į valdymą"
-"gui.back-hint" = "<gray>Grįžk į šio palydovo parinktis."
+"gui.remove-particle-hint" = "<gray>Pašalinkite šiam palydovui pasirinktas daleles."
+"gui.back" = "<gold>◀ Grįžti į valdymo skydelį"
+"gui.back-hint" = "<gray>Grįžkite į šio palydovo parinktis."
 "gui.close" = "<red>✖ Uždaryti"
-"gui.close-hint" = "<gray>Uždaryk šį meniu."
+"gui.close-hint" = "<gray>Uždaryti šį meniu."
 "gui.previous" = "<yellow>◀ Ankstesnis puslapis"
 "gui.next" = "<green>Kitas puslapis ▶"
 "gui.page" = "<gray>Puslapis {page} iš {pages}"
-"gui.loading" = "<yellow>Tavo palydovų duomenys dar neparuošti. Netrukus bandyk dar kartą."
-"gui.bonus-snapshot" = "<gray>Reikšmės atidarymo metu. Atnaujink, kad patikrintum dar kartą."
+"gui.loading" = "<yellow>Jūsų palydovų duomenys dar neparuošti. Netrukus bandykite dar kartą."
+"gui.bonus-snapshot" = "<gray>Reikšmės atidarymo metu. Atnaujinkite, kad patikrintumėte dar kartą."
 "gui.no-bonuses" = "<yellow>Premijos nesukonfigūruotos"
-"gui.no-bonuses-hint" = "<gray>Šiam palydovui nėra nustatytų premijų ar gėrimų efektų."
+"gui.no-bonuses-hint" = "<gray>Šiam palydovui nenustatyta jokių premijų ar eliksyrų efektų."
 "gui.refresh" = "<aqua>Atnaujinti premijas"
-"gui.refresh-hint" = "<gray>Atnaujink dabartines reikšmes ir laukimo laikus."
-"gui.attribute" = "Savybė"
-"gui.effect" = "Gėrimas"
+"gui.refresh-hint" = "<gray>Atnaujinti dabartines reikšmes ir laukimo laikus."
+"gui.attribute" = "Atributas"
+"gui.effect" = "Eliksyras"
 "gui.buff" = "Premija"
 "gui.bonus-name" = "<gold>{category}: <white>{name}"
 "gui.configured" = "<gray>Nustatyta: <white>{operation} {value}"
-"gui.attribute-total" = "<gray>Tavo bendras rezultatas su kitais šaltiniais: <white>{value}"
-"gui.effect-level" = "<gray>Nustatytas gėrimo lygis: <white>{level}"
+"gui.attribute-total" = "<gray>Jūsų bendra reikšmė su kitais šaltiniais: <white>{value}"
+"gui.effect-level" = "<gray>Nustatytas eliksyro lygis: <white>{level}"
 "gui.stack-mode" = "<gray>Derinimo taisyklė: <white>{mode}"
-"gui.resolved-level" = "<gray>Palydovų gėrimo lygis: <white>{level}"
-"gui.current-level" = "<gray>Dabartinis gėrimo lygis: <white>{level}"
+"gui.resolved-level" = "<gray>Palydovo eliksyro lygis: <white>{level}"
+"gui.current-level" = "<gray>Dabartinis eliksyro lygis: <white>{level}"
 "gui.priority" = "<gray>Prioritetas: <white>{value}"
 "gui.winner" = "<gray>Pirmenybę turintis palydovas: <white>{companion}"
 "gui.winning-value" = "<gray>Taikoma taisyklė: <white>{operation} {value}"
 "gui.applies-to" = "<gray>Taikoma: <white>{target}"
 "gui.cooldown" = "<gray>Laukimo laikas: <white>{seconds}s"
 "gui.cooldown-remaining" = "<yellow>Paruošta po {seconds}s"
-"gui.excluded-sources" = "<gray>Apdorojama pagal šaltinio premijas: <white>{sources}"
+"gui.excluded-sources" = "<gray>Apdoroja šaltinių premijos: <white>{sources}"
 "gui.contributors" = "<gray>Prisidedantys palydovai: <white>{companions}"
-"gui.feature.attributes" = "<gray>Savybės"
-"gui.feature.effects" = "<gray>Gėrimų efektai"
+"gui.feature.attributes" = "<gray>Atributai"
+"gui.feature.effects" = "<gray>Eliksyrų efektai"
 "gui.feature.buffs" = "<gray>Žaidimo premijos"
 "gui.status.active" = "<green>✓ Aktyvu"
 "gui.status.stacked" = "<green>✓ Sujungta su kitais palydovais"
@@ -295,7 +296,7 @@
 "gui.operation.sum" = "Pridėti"
 "gui.operation.multiply" = "Padauginti iš"
 "gui.operation.add_percent" = "Pridėti procentą"
-"gui.stack.sum" = "Sudėti stiprintuvus"
+"gui.stack.sum" = "Sudėti stiprumo lygius"
 "gui.stack.highest" = "Aukščiausias prioritetas"
 "gui.target.all" = "Visi padarai"
 "gui.target.hostile" = "Priešiški padarai"
@@ -304,63 +305,65 @@
 "command.description.upgrades" = "Peržiūrėti palydovo patobulinimus"
 "command.description.boosts" = "Peržiūrėti asmeninius ir serverio stiprintuvus"
 "command.description.progression" = "Suteikti palydovo XP prisijungusiam žaidėjui"
-"command.description.booster" = "Suteikti stiprintuvo aktyvavimų; pradėti arba atšaukti aktyvavimus"
+"command.description.booster" = "Suteikti stiprintuvo aktyvavimų; paleisti arba atšaukti aktyvavimus"
 "command.description.transactions" = "Peržiūrėti ir išspręsti nebaigtus pirkimus"
 "command.parameter.player" = "Tikslus prisijungusio žaidėjo vardas"
 "command.parameter.xp" = "Teigiamas sveikasis palydovo XP kiekis"
 "command.parameter.booster" = "Sukonfigūruoto stiprintuvo ID"
 "command.parameter.count" = "Teigiamas sveikasis stiprintuvo aktyvavimų skaičius"
-"command.parameter.activation" = "Veikiančio arba eilėje esančio aktyvavimo ID"
+"command.parameter.activation" = "Veikiančio arba eilėje esančio stiprintuvo aktyvavimo ID"
 "command.parameter.transaction" = "Neišspręsto pirkimo operacijos ID"
 "command.parameter.resolution" = "Patikrinę mokėjimų įrašus pasirinkite grant arba cancel"
-"command.progression.granted" = "<green>Žaidėjo <green>{player}</green> palydovui <green>{companion}</green> išsaugota <green>{amount}</green> XP."
-"command.progression.not-configured" = "<gold>Palydovui <gold>{companion}</gold> progresas nesukonfigūruotas."
-"command.progression.player-unavailable" = "<red><red>{player}</red> neprisijungęs."
-"command.progression.player-loading" = "<gold>Žaidėjo <gold>{player}</gold> progreso duomenys dar neparuošti. Bandykite juos įkėlus."
-"command.progression.invalid-amount" = "<red>Įveskite sveikąjį skaičių nuo 1 iki <red>{maximum}</red>."
-"command.booster.granted" = "<green>Žaidėjui <green>{player}</green> išsaugota <green>{amount}</green> stiprintuvo <green>{booster}</green> aktyvavimų."
-"command.booster.not-found" = "<red>Stiprintuvo su ID <red>{booster}</red> nėra."
-"command.booster.server-only" = "<red>Ši komanda paleidžia tik serverio stiprintuvus."
-"command.transactions.count" = "<gold>Neišspręsti pirkimai: <gold>{count}</gold>"
-"command.transactions.entry" = "<gray><yellow>{transaction}</yellow> Žaidėjas: <gray>{player}</gray>; <gray>{kind}</gray>; palydovas: <gray>{companion}</gray>; aprašas: <gray>{definition}</gray>; ankstesnė pakopa: <gray>{tier}</gray>; būsena: <gray>{status}</gray>; pinigai: <gray>{money}</gray>; daiktai: <gray>{items}</gray>; teikėjas: <gray>{provider}</gray>; sukurta: <gray>{created}</gray>"
-"command.transactions.reference" = "<gray>Operacijos arba aktyvavimo ID: <white>{transaction}</white>"
-"command.transactions.reconciled" = "<gold>Sprendimas išsaugotas. Pinigai ir daiktai nebuvo automatiškai nuskaityti ar grąžinti."
+"command.progression.granted" = "<green>Žaidėjo {player} palydovui {companion} išsaugota {amount} palydovo XP.</green>"
+"command.progression.not-configured" = "<gold>Palydovui {companion} progresas nesukonfigūruotas.</gold>"
+"command.progression.player-unavailable" = "<red>{player} neprisijungęs.</red>"
+"command.progression.player-loading" = "<gold>Žaidėjo {player} progreso duomenys dar neparuošti. Bandykite dar kartą, kai jie bus įkelti.</gold>"
+"command.progression.invalid-amount" = "<red>Įveskite sveikąjį skaičių nuo 1 iki {maximum}.</red>"
+"command.booster.granted" = "<green>Žaidėjui {player} išsaugota {amount} stiprintuvo {booster} aktyvavimų.</green>"
+"command.booster.not-found" = "<red>Stiprintuvo su ID {booster} nėra.</red>"
+"command.booster.server-only" = "<red>Ši komanda paleidžia tik serverio stiprintuvus.</red>"
+"command.booster.started" = "<green>Serverio stiprintuvas {booster} paleistas arba įtrauktas į eilę.</green>"
+"command.booster.cancelled" = "<green>Stiprintuvo aktyvavimas {activation} atšauktas.</green>"
+"command.transactions.count" = "<gold>Neišspręsti pirkimai: {count}</gold>"
+"command.transactions.entry" = "<yellow>{transaction}</yellow> <gray>Žaidėjas: {player}; {kind}; palydovas: {companion}; aprašas: {definition}; ankstesnė pakopa: {tier}; būsena: {status}; pinigai: {money}; daiktai: {items}; teikėjas: {provider}; sukurta: {created}</gray>"
+"command.transactions.reference" = "<gray>Operacijos arba aktyvavimo ID: <white>{transaction}</white></gray>"
+"command.transactions.reconciled" = "<gold>Sprendimas išsaugotas. Pinigai ir daiktai nebuvo automatiškai nuskaityti ar grąžinti.</gold>"
 "gui.title.upgrades" = "<gold>Palydovo patobulinimai"
 "gui.title.purchase" = "<gold>Patvirtinti pirkimą"
 "gui.title.boosts" = "<gold>Palydovų stiprintuvai"
 "gui.title.booster" = "<gold>Stiprintuvo informacija"
-"gui.title.active-boosts" = "<gold>Aktyvūs sustiprinimai"
+"gui.title.active-boosts" = "<gold>Aktyvūs stiprintuvai"
 "gui.upgrades" = "<gradient:#ffcf70:#ff9f43>★ Palydovo patobulinimai</gradient>"
 "gui.upgrades-hint" = "<gray>Auginkite palydovą ir gerinkite jo premijas."
 "gui.boosts" = "<gradient:#ffe082:#ffb74d>⌛ Stiprintuvai</gradient>"
-"gui.boosts-hint" = "<gray>Peržiūrėkite asmeninius ir viso serverio sustiprinimus."
-"gui.progress-level" = "<gold>★ Lygis <white>{level}</white>"
-"gui.progress-xp" = "<gray>Palydovo XP: <yellow>{xp}</yellow> / <white>{required}</white>"
+"gui.boosts-hint" = "<gray>Peržiūrėkite asmeninius ir viso serverio stiprintuvus."
+"gui.progress-level" = "<gold>★ Lygis <white>{level}"
+"gui.progress-xp" = "<gray>Palydovo XP: <yellow>{xp}</yellow> / <white>{required}"
 "gui.max-level" = "<green>✓ Didžiausias palydovo lygis"
-"gui.upgrade-tier" = "<gray>Patobulinimo pakopa: <gold>{tier}</gold> / <white>{maximum}</white>"
+"gui.upgrade-tier" = "<gray>Patobulinimo pakopa: <gold>{tier}</gold> / <white>{maximum}"
 "gui.max-tier" = "<green>✓ Visiškai patobulinta"
-"gui.upgrade-change" = "<gray><gray>{bonus}</gray>: <white>{current}</white> <gold>→</gold> <green>{next}</green>"
-"gui.required-level" = "<gray>Reikalingas palydovo lygis: <yellow>{level}</yellow>"
+"gui.upgrade-change" = "<gray>{bonus}: <white>{current}</white> <gold>→</gold> <green>{next}"
+"gui.required-level" = "<gray>Reikalingas palydovo lygis: <yellow>{level}"
 "gui.level-locked" = "<red>Reikalavimai neįvykdyti."
-"gui.upgrade-preview" = "<yellow>Spustelėkite norėdami peržiūrėti patobulinimą."
+"gui.upgrade-preview" = "<yellow>Spustelėkite, kad peržiūrėtumėte šį patobulinimą."
 "gui.no-upgrades" = "<gold>Patobulinimų nesukonfigūruota"
-"gui.no-upgrades-hint" = "<gray>Šis palydovas neturi tobulinimo krypčių."
+"gui.no-upgrades-hint" = "<gray>Šis palydovas neturi patobulinimų krypčių."
 "gui.confirm-purchase" = "<green>✓ Patvirtinti pirkimą"
 "gui.confirm-purchase-hint" = "<gray>Sumokėkite nurodytą kainą ir užbaikite pirkimą."
 "gui.cancel-purchase" = "<yellow>◀ Atšaukti"
 "gui.cancel-purchase-hint" = "<gray>Grįžkite nieko neišleisdami."
-"gui.cost-free" = "<gray>Kaina: <green>Nemokamai</green>"
-"gui.cost-money" = "<gray>Reikalinga pinigų suma: <gold>{amount}</gold>"
-"gui.cost-item" = "<gray>Reikalingi daiktai: <yellow>{amount}</yellow> × <yellow>{item}</yellow>"
-"gui.booster-open" = "<yellow>Spustelėkite norėdami peržiūrėti pirkimo ir aktyvavimo galimybes."
-"gui.booster-scope.personal" = "<aqua>Asmeninis sustiprinimas <dark_gray>• <gray>Tik jums"
-"gui.booster-scope.server" = "<gold>Serverio sustiprinimas <dark_gray>• <gray>Visiems šio serverio žaidėjams"
-"gui.booster-channel" = "<gray><gray>{channel}</gray>: +<green>{percent}</green>%"
-"gui.booster-duration" = "<gray>Trukmė: <white>{time}</white>"
-"gui.booster-remaining" = "<gray>Liko laiko: <yellow>{time}</yellow>"
-"gui.booster-rule.queue" = "<gray>Persidengiantys sustiprinimai laukia eilėje."
-"gui.booster-rule.highest" = "<gray>Kiekvienoje taikymo srityje galioja stipriausias sustiprinimas."
-"gui.booster-credits" = "<gray>Turimi aktyvavimai: <gold>{count}</gold>"
+"gui.cost-free" = "<gray>Kaina: <green>Nemokamai"
+"gui.cost-money" = "<gray>Reikalinga pinigų suma: <gold>{amount}"
+"gui.cost-item" = "<gray>Reikalingi daiktai: <yellow>{amount} × {item}"
+"gui.booster-open" = "<yellow>Spustelėkite, kad peržiūrėtumėte pirkimo ir aktyvavimo galimybes."
+"gui.booster-scope.personal" = "<aqua>Asmeninis stiprintuvas <dark_gray>• <gray>Tik jums"
+"gui.booster-scope.server" = "<gold>Serverio stiprintuvas <dark_gray>• <gray>Visiems šio serverio žaidėjams"
+"gui.booster-channel" = "<gray>{channel}: <green>+{percent}%"
+"gui.booster-duration" = "<gray>Trukmė: <white>{time}"
+"gui.booster-remaining" = "<gray>Liko laiko: <yellow>{time}"
+"gui.booster-rule.queue" = "<gray>Persidengiantys stiprintuvai laukia eilėje."
+"gui.booster-rule.highest" = "<gray>Kiekvienoje taikymo srityje galioja stipriausias stiprintuvas."
+"gui.booster-credits" = "<gray>Turimi aktyvavimai: <gold>{count}"
 "gui.buy-booster" = "<green>Pirkti vieną aktyvavimą"
 "gui.buy-booster-hint" = "<gray>Prieš pirkdami peržiūrėkite kainą."
 "gui.activate-booster" = "<gold>Aktyvuoti stiprintuvą"
@@ -368,14 +371,14 @@
 "gui.no-booster-credit" = "<gray>Neturite šio stiprintuvo aktyvavimo."
 "gui.no-boosters" = "<gold>Stiprintuvų nesukonfigūruota"
 "gui.no-boosters-hint" = "<gray>Šiame serveryje nėra stiprintuvų aprašų."
-"gui.active-boosts" = "<aqua>⌛ Aktyvūs sustiprinimai ir eilė"
-"gui.active-boosts-hint" = "<gray>Peržiūrėkite savo sustiprinimus, serverio įvykius ir bendrus dydžius."
+"gui.active-boosts" = "<aqua>⌛ Aktyvūs stiprintuvai ir eilė"
+"gui.active-boosts-hint" = "<gray>Peržiūrėkite savo stiprintuvus, serverio įvykius ir bendrus koeficientus."
 "gui.booster-running" = "<green>✓ Veikia"
 "gui.booster-queued" = "<yellow>⌛ Eilėje"
-"gui.booster-total" = "<gray>Bendras <gray>{channel}</gray> sustiprinimas: +<green>{percent}</green>%"
-"gui.booster-cap" = "<gray>Didžiausias bendras sustiprinimas: +<white>{percent}</white>%"
-"gui.booster-applied" = "<gray>Asmeniniai ir serverio sustiprinimai: +<green>{percent}</green>% pradinio atlygio"
-"gui.no-active-boosts" = "<gold>Aktyvių sustiprinimų nėra"
+"gui.booster-total" = "<gray>Bendras {channel} stiprintuvų priedas: <green>+{percent}%"
+"gui.booster-cap" = "<gray>Didžiausias bendras stiprintuvų priedas: <white>+{percent}%"
+"gui.booster-applied" = "<gray>Asmeniniai ir serverio stiprintuvai: <green>+{percent}% pradinio atlygio"
+"gui.no-active-boosts" = "<gold>Aktyvių stiprintuvų nėra"
 "gui.no-active-boosts-hint" = "<gray>Pradėkite aktyvuodami turimą stiprintuvą."
 "gui.back-boosts" = "<gold>◀ Atgal į stiprintuvus"
 "gui.back-boosts-hint" = "<gray>Peržiūrėkite stiprintuvus ir turimus aktyvavimus."
@@ -420,9 +423,9 @@
 "setup.applied" = "{prefix} <green>Palydovų sąranka išsaugota. Atidarykite <white>/bytecompanions menu</white> ir pasirinkite palydovą.</green>"
 "setup.failed" = "{prefix} <red>Nepavyko pritaikyti sąrankos. Patikrinkite konsolę; ankstesni nustatymai lieka aktyvūs.</red>"
 "setup.stale" = "{prefix} <gold>Nustatymai pasikeitė. Prieš taikydami dar kartą atidarykite sąranką.</gold>"
-"command.description.collection" = "Naršykite ir filtruokite kolekciją"
-"command.description.outfits" = "Tvarkykite išsaugotus palydovų rinkinius"
-"command.description.interact" = "Bendraukite su pasirinktu palydovu"
+"command.description.collection" = "Naršyti ir filtruoti savo kolekciją"
+"command.description.outfits" = "Tvarkyti išsaugotus palydovų rinkinius"
+"command.description.interact" = "Sąveikauti su pasirinktu palydovu"
 "gui.title.outfits" = "Išsaugoti rinkiniai"
 "gui.title.outfit" = "Peržiūrėti rinkinį"
 "gui.title.outfit-delete" = "Ištrinti rinkinį"
@@ -444,50 +447,50 @@
 "gui.outfit-apply" = "<green>Naudoti šį rinkinį"
 "gui.outfit-delete" = "<red>Ištrinti rinkinį"
 "gui.outfit-delete-confirm" = "<red>Patvirtinti ištrynimą"
-"gui.outfit-count" = "<gray>Palydovai: {count}"
+"gui.outfit-count" = "<gray>Palydovai: <white>{count}"
 "gui.personalize" = "<gold>Pritaikyti"
 "gui.nickname" = "<gold>Nustatyti vardą"
 "gui.name-reset" = "<gray>Atkurti vardą"
-"gui.variants" = "<gold>Leidžiami variantai"
+"gui.variants" = "<gold>Patvirtinti variantai"
 "gui.default-choice" = "<gray>Naudoti numatytąjį"
 "gui.formation" = "<gold>Rikiuotė"
 "gui.formation-line" = "<gold>Linija"
 "gui.formation-grid" = "<gold>Tinklelis"
 "gui.formation-orbit" = "<gold>Orbita"
-"gui.formation-earlier" = "<gold>Perkelti pirmyn"
-"gui.formation-later" = "<gold>Perkelti atgal"
+"gui.formation-earlier" = "<gold>Perkelti anksčiau"
+"gui.formation-later" = "<gold>Perkelti vėliau"
 "gui.interactions" = "<gold>Palydovo veiksmai"
 "gui.action-pet" = "<gold>Paglostyti"
-"gui.action-wave" = "<gold>Pamoti"
-"gui.action-sit" = "<gold>Sėdėti"
+"gui.action-wave" = "<gold>Pamojuoti"
+"gui.action-sit" = "<gold>Sėsti"
 "gui.action-stay" = "<gold>Laukti"
-"gui.action-call" = "<gold>Ateik čia"
+"gui.action-call" = "<gold>Pašaukti"
 "gui.trial" = "<aqua>Išbandyti privačiai"
 "gui.trial-stop" = "<gray>Baigti privatų bandymą"
 "gui.trial-hint" = "<gray>Matote tik jūs. {seconds}s; be premijų."
 "gui.choice-value" = "<white>{value}"
 "collection.trial-started" = "{prefix} <aqua>Privatus bandymas pradėtas. Jis nesuteikia premijų."
-"collection.outfit-prompt" = "{prefix} <yellow>Pokalbyje įrašykite rinkinio vardą (1–32 raidės, skaičiai, _ arba -) arba cancel. Galioja 60 sekundžių."
-"collection.name-prompt" = "{prefix} <yellow>Pokalbyje įrašykite paprastą vardą (iki 32 ženklų) arba cancel. Galioja 60 sekundžių."
+"collection.outfit-prompt" = "{prefix} <yellow>Pokalbyje įveskite rinkinio pavadinimą (1–32 raidės, skaitmenys, _ arba -) arba cancel. Galioja 60 sekundžių."
+"collection.name-prompt" = "{prefix} <yellow>Pokalbyje įveskite paprastą vardą (iki 32 simbolių) arba cancel. Galioja 60 sekundžių."
 "collection.choose-equipped" = "{prefix} <yellow>Pirmiausia pasirinkite palydovą. Jei jų keli, nurodykite jo ID."
 "collection.action-applied" = "{prefix} <green>Jūsų palydovas sureagavo."
-"collection.cooldown" = "{prefix} <yellow>Prieš kitą veiksmą trumpai palaukite."
+"collection.cooldown" = "{prefix} <yellow>Prieš kitą sąveiką šiek tiek palaukite."
 "collection.rejected" = "{prefix} <red>Nepavyko pritaikyti pakeitimo: {detail}"
 "collection.saved" = "{prefix} <green>Kolekcija išsaugota."
 "collection.working" = "{prefix} <yellow>Ankstesnis pakeitimas vis dar saugomas."
-"collection.too-long" = "{prefix} <red>Naudokite ne daugiau kaip 32 ženklus."
+"collection.too-long" = "{prefix} <red>Naudokite ne daugiau kaip 32 simbolius."
 "collection.input-expired" = "{prefix} <gray>Įvesties laikas baigėsi. Nieko nepakeista."
 "gui.collection-operation-failed" = "{prefix} <red>Nepavyko pritaikyti pakeitimo: {reason}"
 "gui.title.settings" = "<gold>Matomumo nustatymai"
 "gui.settings" = "<gold>Matomumo nustatymai"
-"gui.settings-hint" = "<gray>Pasirink, kuriuos palydovus ir daleles matyti."
+"gui.settings-hint" = "<gray>Pasirinkite, kuriuos palydovus ir daleles matote."
 "gui.settings-visibility" = "<aqua>Palydovai"
 "gui.settings-visibility-all" = "<green>Visi palydovai"
 "gui.settings-visibility-all-hint" = "<gray>Rodyti palydovus ir dekoracijas."
 "gui.settings-visibility-own" = "<yellow>Tik mano"
-"gui.settings-visibility-own-hint" = "<gray>Rodyti tik tavo palydovus."
+"gui.settings-visibility-own-hint" = "<gray>Rodyti tik jūsų palydovus."
 "gui.settings-visibility-none" = "<red>Slėpti palydovus"
-"gui.settings-visibility-none-hint" = "<gray>Slėpti palydovus ir dekoracijas tavo vaizde."
+"gui.settings-visibility-none-hint" = "<gray>Paslėpti palydovus ir dekoracijas iš jūsų vaizdo."
 "gui.settings-particles" = "<aqua>Dalelės"
 "gui.settings-particles-full" = "<green>Visos"
 "gui.settings-particles-full-hint" = "<gray>Rodyti kiekvieną dalelių kadrą."
@@ -501,18 +504,18 @@
 "command.parameter.value" = "Reikšmė"
 
 "collection.reason.equip-first" = "Pirmiausia pasirinkite šį palydovą."
-"collection.reason.outfit-limit" = "Pasiekėte {limit} rinkinių ribą."
+"collection.reason.outfit-limit" = "Pasiekėte rinkinių ribą ({limit})."
 "collection.reason.outfit-unavailable" = "Šis rinkinys nepasiekiamas."
 "collection.reason.formation-order" = "Rikiuotėje gali būti tik pasirinkti palydovai."
 "collection.reason.model-limit" = "Rinkinys viršija jūsų modelio ribą."
-"collection.reason.personalization-locked" = "Asmeninimas užrakintas."
+"collection.reason.personalization-locked" = "Pritaikymas užrakintas."
 "collection.reason.particle-unavailable" = "Šis dalelių efektas nepasiekiamas."
 "collection.reason.particle-locked" = "Šis dalelių efektas užrakintas."
 "collection.reason.particle-remove-denied" = "Negalite pašalinti šio dalelių efekto."
-"collection.reason.nickname-invalid" = "Vardai turi būti paprastas tekstas iki 32 simbolių."
+"collection.reason.nickname-invalid" = "Vardas turi būti paprastas tekstas, ne ilgesnis nei 32 simboliai."
 "collection.reason.formation-invalid" = "Nežinoma rikiuotė: {formation}."
-"collection.reason.cosmetic-invalid" = "Netinkamas išvaizdos identifikatorius."
-"collection.reason.outfit-name-invalid" = "Rinkinių varduose gali būti 1–32 raidės, skaitmenys, pabraukimai arba brūkšneliai."
+"collection.reason.cosmetic-invalid" = "Netinkamas kosmetinio elemento identifikatorius."
+"collection.reason.outfit-name-invalid" = "Rinkinių pavadinimuose gali būti 1–32 raidės, skaitmenys, pabraukimai arba brūkšneliai."
 "collection.reason.variant-locked" = "Užrakintas variantas: {variant}."
 "collection.reason.variant-unavailable" = "Nepasiekiamas variantas: {variant}."
 "collection.reason.cancelled" = "Kitas papildinys atšaukė šį palydovo pakeitimą."
@@ -524,7 +527,7 @@
 "command.feedback.inactive" = "{prefix} <gray>Vykdymo aplinka paleidžiama iš naujo; bandykite dar kartą po akimirkos.</gray>"
 "command.status.header" = "Vykdymas"
 "command.status.configuration" = "<gray>Palydovai: {enabled} <dark_gray>|</dark_gray> Kalba: <white>{language}</white> <dark_gray>|</dark_gray> Automatinis perkrovimas: {hot_reload}</gray>"
-"command.status.runtime" = "<gray>Apibrėžimai: <white>{count}</white> <dark_gray>|</dark_gray> Įkelti žaidėjai: <white>{players}</white> <dark_gray>|</dark_gray> Įrengti palydovai: <white>{companions}</white></gray>"
+"command.status.runtime" = "<gray>Aprašai: <white>{count}</white> <dark_gray>|</dark_gray> Įkelti žaidėjai: <white>{players}</white> <dark_gray>|</dark_gray> Pasirinkti palydovai: <white>{companions}</white></gray>"
 "command.status.features" = "<gray>Funkcijos: <white>{features}</white> <dark_gray>|</dark_gray> Saugykla: <white>{value}</white></gray>"
 "command.status.integrations" = "<gray>Integracijos: <white>{integrations}</white></gray>"
 "command.status.compatibility" = "<gray>Java <white>{java}</white> / Bukkit <white>{range}</white> <dark_gray>|</dark_gray> Planuoklis: <white>{scheduler}</white> <dark_gray>|</dark_gray> Adapteris: <white>{value}</white></gray>"
@@ -541,20 +544,20 @@
 "director.help.navigation.next.hover" = "Kitas puslapis"
 "director.help.navigation.parent.hover" = "Grįžti į pirminę komandų grupę"
 "director.help.navigation.previous.hover" = "Ankstesnis puslapis"
-"director.help.parameter.default" = "Jei nenurodyta, numatytoji reikšmė yra \"{value}\"."
+"director.help.parameter.default" = "Jei nenurodyta, numatytoji reikšmė yra „{value}“."
 "director.help.parameter.optional" = "Šis parametras yra neprivalomas."
 "director.help.parameter.required" = "Šis parametras yra privalomas."
 "director.help.parameter.type" = "Šio parametro tipas yra {type}."
-"director.runtime.error.conversion_failed" = "Reikšmės \"{value}\" nepavyko konvertuoti į {type} parametrui {parameter}"
+"director.runtime.error.conversion_failed" = "Reikšmės „{value}“ nepavyko konvertuoti į {type} parametrui {parameter}"
 "director.runtime.error.default_parse_failed" = "Nepavyko nuskaityti parametro {parameter} numatytosios reikšmės"
 "director.runtime.error.execution_failed" = "Nepavyko įvykdyti komandos {command}: {reason}"
 "director.runtime.error.invalid_origin" = "Šios komandos negalima vykdyti iš šio šaltinio."
-"director.runtime.error.missing_argument" = "Trūksta argumento \"{parameter}\" ({type})"
-"director.runtime.error.unexpected_argument" = "Netikėtas argumentas \"{argument}\". Pasirenkami parametrai turi būti nurodyti su raktu, pvz. seed=123"
-"director.runtime.error.unclosed_group" = "Trūksta uždarančio \"]\" parametrui {key}"
+"director.runtime.error.missing_argument" = "Trūksta argumento „{parameter}“ ({type})"
+"director.runtime.error.unexpected_argument" = "Netikėtas argumentas „{argument}“. Pasirenkami parametrai turi būti nurodyti su raktu, pvz., seed=123"
+"director.runtime.error.unclosed_group" = "Parametrui {key} trūksta uždarančiojo „]“"
 "director.runtime.error.unknown_parameter" = "Nežinomas parametro raktas: {key}"
 "language.menu.your_language" = "Jūsų kalba"
-"language.menu.reset_your_language" = "Atkurti jūsų kalbą"
+"language.menu.reset_your_language" = "Atkurti savo kalbą"
 "language.menu.server_default" = "Numatytoji serverio kalba"
 "language.menu.edit_messages" = "Redaguoti kalbos pranešimus"
 "language.menu.use_server_default" = "Naudoti numatytąją serverio kalbą"
@@ -569,26 +572,33 @@
 "language.menu.no_controls" = "Jums nepasiekiami kalbos nustatymai."
 "language.menu.command" = "Komanda: {command}"
 "language.menu.selected" = "pasirinkta"
-"language.menu.all-volmit-plugins" = "Visi Volmit papildiniai"
+"language.menu.all-volmit-plugins" = "visi Volmit papildiniai"
 "language.error.stopping" = "&cStabdant papildinį kalbos pasirinkimas nepasiekiamas."
-"language.error.editor-player-only" = "&cAtverti kalbos rengyklę žaidime."
+"language.error.editor-player-only" = "&cKalbos redaktorių atidarykite žaidime."
 "language.error.no-providers" = "&cNėra prieinamų Volmit kalbų teikėjų."
-"language.error.numeric-page" = "&cĮveskite puslapio numerį."
-"language.error.personal-player-only" = "&cŽaidžiant turi būti pasirinkti žaidėjų kalbos nustatymai."
-"language.error.personal-permission" = "&cJūs neturite leidimo pasirinkti savo kalbą."
+"language.error.numeric-page" = "&cKalbų puslapį nurodykite skaičiumi."
+"language.error.personal-player-only" = "&cŽaidėjo kalbos nuostatas reikia pasirinkti žaidime."
+"language.error.personal-permission" = "&cNeturite leidimo pasirinkti savo kalbos."
 "language.error.plugin-personal-permission" = "&cNeturite leidimo pasirinkti savo kalbos papildiniui {plugin}."
 "language.error.plugin-server-permission" = "&cNeturite leidimo keisti papildinio {plugin} serverio kalbos."
 "language.error.server-locale-required" = "&cPasirinkite numatytosios serverio kalbos kodą, pavyzdžiui, en_US."
 "language.error.unavailable-for-all" = "&cKalba {locale} prieinama ne visiems pasirinktiems papildiniams."
 "language.usage.editor" = "&7Naudojimas: /{command} language server edit [locale]"
-"language.usage.selection" = "&7Naudojimas: /{command} language self [locale|reset] or server [locale]"
+"language.usage.selection" = "&7Naudojimas: /{command} language self [locale|reset] arba server [locale]"
 "language.usage.volmit-selection" = "&7Naudojimas: /volmit plugins languages [locale]"
-"language.selection.preparing" = "&7Ruošiama kalba {locale} papildiniui {target}..."
+"language.usage.update" = "&7Naudojimas: /{command} language update"
+"language.selection.preparing" = "&7Ruošiama kalba {locale}: {target}..."
 "language.selection.save-failed" = "{plugin}: &cnepavyko išsaugoti kalbos pasirinkimo; patikrinkite serverio konsolę."
 "language.selection.english-fallback" = "{plugin}: &e{locale} neprieinama; naudojama anglų kalba (en_US)."
-"language.selection.personal-selected" = "{plugin}: &7dabar jūsų kalba {locale}."
-"language.selection.server-selected" = "{plugin}: &7serverio kalba yra dabar {locale}."
+"language.selection.personal-selected" = "{plugin}: &7jūsų kalba dabar yra {locale}."
+"language.selection.server-selected" = "{plugin}: &7serverio kalba dabar yra {locale}."
 "language.selection.server-default-selected" = "{plugin}: &7jūsų kalba dabar atitinka numatytąją serverio kalbą."
+"language.update.checking" = "{plugin}: &7tikrinami kalbų saugyklos pakeitimai..."
+"language.update.unchanged" = "{plugin}: &7įdiegtos kalbos jau atitinka saugyklą."
+"language.update.applied" = "{plugin}: &7kalba {locale} atnaujinta (pridėta: {added}, pakeista: {updated}, išsaugota vietinių pakeitimų: {kept})."
+"language.update.cooldown" = "{plugin}: &7kalbų saugykla neseniai tikrinta; bandykite dar kartą po {remaining}."
+"language.update.locale-failed" = "{plugin}: &ckalba {locale} neatnaujinta: {reason}"
+"language.update.failed" = "{plugin}: &ckalbų atnaujinti nepavyko: {reason}"
 "language.editor.title" = "{plugin} › {section}"
 "language.editor.loading" = "&7Įkeliami kalbos {locale} pranešimai..."
 "language.editor.section.languages" = "Kalbos"
@@ -600,7 +610,7 @@
 "language.editor.prompt.current" = "&7Dabartinė reikšmė: {value}"
 "language.editor.prompt.variables" = "&7Kintamieji: {variables}"
 "language.editor.prompt.guidance" = "&7Naudokite \\n naujai eilutei, \\\\ atvirkštiniam pasvirajam brūkšniui arba įveskite cancel, kad grįžtumėte."
-"language.editor.input.expired" = "&eBaigėsi kalbos rengyklės įvesties laikas."
+"language.editor.input.expired" = "&eBaigėsi kalbos redaktoriaus įvesties laikas."
 "language.editor.input.too-long" = "&cĮvestyje gali būti ne daugiau kaip {maximum} simbolių."
 "language.editor.input.unable-to-save" = "&cNepavyko išsaugoti: {reason}"
 "language.editor.navigation.back" = "&eAtgal&r"
@@ -615,8 +625,8 @@
 "language.editor.message.edit-plural" = "&7Spustelėkite norėdami redaguoti daugiskaitos formą.&r"
 "language.editor.message.edit-lines" = "&7Spustelėkite norėdami redaguoti atskiras eilutes.&r"
 "language.editor.message.edit-chat" = "&7Spustelėkite norėdami redaguoti pokalbyje.&r"
-"language.editor.locale.open" = "&8Spauskite norėdami atverti šią kalbą.&r"
-"language.editor.category.message-count" = "&7{count} pranešimai&r"
+"language.editor.locale.open" = "&8Spustelėkite norėdami atverti šią kalbą.&r"
+"language.editor.category.message-count" = "&7Pranešimų: {count}&r"
 "language.editor.category.open" = "&8Spustelėkite norėdami atverti šią kategoriją.&r"
 "language.editor.error.no-permission" = "&cNeturite leidimo redaguoti papildinio {plugin} kalbų."
 "language.editor.error.unable-to-edit" = "&cNepavyko redaguoti: {reason}"
@@ -626,7 +636,7 @@
 "language.editor.value.none" = "Nėra"
 "language.editor.value.empty" = "(tuščia)"
 "debug.error.missing-permission" = "&cTrūksta leidimo: {permission}"
-"debug.error.already-preparing" = "&cĮskiepio {plugin} diagnostikos ataskaita jau rengiama."
+"debug.error.already-preparing" = "&cPapildinio {plugin} diagnostikos ataskaita jau rengiama."
 "debug.error.already-preparing-short" = "&cDiagnostikos ataskaita jau rengiama."
 "debug.error.schedule-failed" = "&cNepavyko suplanuoti diagnostikos ataskaitos rengimo."
 "debug.error.provider-closed" = "&cDiagnostikos duomenų teikėjas uždarytas."
@@ -635,8 +645,8 @@
 "debug.error.capture-failed" = "&cNepavyko surinkti diagnostikos ataskaitos duomenų; patikrinkite serverio konsolę."
 "debug.error.closed-before-write" = "&cDiagnostikos duomenų teikėjas buvo uždarytas prieš įrašant ataskaitą."
 "debug.error.write-failed" = "&cNepavyko įrašyti diagnostikos ataskaitos; patikrinkite serverio konsolę."
-"debug.preparing" = "&7Rengiama įskiepio {plugin} diagnostikos ataskaita..."
-"debug.saved" = "&7Įskiepio {plugin} diagnostikos ataskaita išsaugota: {path}."
+"debug.preparing" = "&7Rengiama papildinio {plugin} diagnostikos ataskaita..."
+"debug.saved" = "&7Papildinio {plugin} diagnostikos ataskaita išsaugota: {path}."
 "debug.upload.interrupted" = "&7Diagnostikos ataskaitos įkėlimas nutrauktas; vietinė ataskaita išsaugota."
 "debug.upload.failed" = "&cNepavyko įkelti diagnostikos ataskaitos; vietinė ataskaita išsaugota."
 "debug.upload.completed" = "&7Įkelta pavadinimu VolmitSoftware - {plugin} - v{version}."
@@ -648,11 +658,11 @@
 "config.editor.section" = "Skyrius: {path}"
 "config.editor.page" = "Puslapis {page} iš {pages}"
 "config.editor.entry" = "Įrašas {number}"
-"config.editor.current" = "Dabar: {value}"
+"config.editor.current" = "Dabartinė: {value}"
 "config.editor.open" = "Spustelėkite, kad atidarytumėte skyrių."
-"config.editor.toggle" = "Spustelėkite, kad įjungtumėte arba išjungtumėte."
+"config.editor.toggle" = "Spustelėkite, kad perjungtumėte true arba false."
 "config.editor.edit" = "Spustelėkite ir įveskite naują reikšmę pokalbyje."
-"config.editor.prompt" = "Įveskite {path} reikšmę. Grįžti įrašykite cancel."
+"config.editor.prompt" = "Įveskite naują {path} reikšmę. Norėdami grįžti, įveskite cancel."
 "config.editor.expired" = "Konfigūracijos įvedimo laikas baigėsi."
 "config.editor.too-long" = "Įveskite daugiausia {maximum} simbolių."
 "config.editor.saving" = "Saugoma konfigūracija..."
@@ -671,65 +681,65 @@
 "config.editor.type.integer" = "Įveskite sveikąjį skaičių."
 "config.editor.type.decimal" = "Įveskite skaičių, pavyzdžiui, 0.25."
 "config.editor.type.list" = "Naudokite TOML sąrašą, pavyzdžiui, [\"stone\", \"deepslate\"]."
-"config.editor.adjust" = "Kairysis +{step}, dešinysis -{step}, Shift x10, Q tikslios reikšmės įvedimui."
+"config.editor.adjust" = "Kairysis +{step}, dešinysis -{step}, Shift x10, Q – įvesti tikslią reikšmę."
 
 "gui.config.title" = "Konfigūracija"
-"gui.setting.collections" = "Asmeninės kolekcijos, aprangos, bandymai ir asmenybė."
-"gui.setting.collections.idleReactions" = "Leisti retkarčiais rodyti neveiklumo reakcijas, kai kompanionas stovi vietoje."
+"gui.setting.collections" = "Asmeninės kolekcijos, rinkiniai, bandymai ir asmenybė."
+"gui.setting.collections.idleReactions" = "Leisti retkarčiais rodyti neveiklumo reakcijas, kai palydovas stovi vietoje."
 "gui.setting.collections.idleReactions.name" = "Neveiklumo reakcijos"
-"gui.setting.collections.maximumOutfits" = "Didžiausias išsaugotų aprangų skaičius vienam žaidėjui, nuo 1 iki 32."
-"gui.setting.collections.maximumOutfits.name" = "Didžiausias aprangų skaičius"
+"gui.setting.collections.maximumOutfits" = "Didžiausias išsaugotų rinkinių skaičius vienam žaidėjui, nuo 1 iki 32."
+"gui.setting.collections.maximumOutfits.name" = "Didžiausias rinkinių skaičius"
 "gui.setting.collections.name" = "Kolekcijos"
 "gui.setting.collections.personalityEnabled" = "Leisti glostymo, mojavimo, sėdėjimo, laukimo ir pašaukimo sąveikas."
 "gui.setting.collections.personalityEnabled.name" = "Asmenybė įjungta"
-"gui.setting.collections.trialSeconds" = "Privačios užrakinto kompaniono peržiūros trukmė, nuo 5 iki 120 sekundžių."
-"gui.setting.collections.trialSeconds.name" = "Bandymo sekundės"
+"gui.setting.collections.trialSeconds" = "Privačios užrakinto palydovo peržiūros trukmė, nuo 5 iki 120 sekundžių."
+"gui.setting.collections.trialSeconds.name" = "Bandymo trukmė sekundėmis"
 "gui.setting.debug" = "Diagnostikos ataskaitų įkėlimai."
 "gui.setting.debug.name" = "Derinimas"
 "gui.setting.debug.uploadEnabled" = "Leisti komandai /bytecompanions debug dump upload=true paskelbti ataskaitas mclo.gs svetainėje, prieš tai jas išsaugojus vietoje."
 "gui.setting.debug.uploadEnabled.name" = "Įkėlimas įjungtas"
 "gui.setting.features" = "Funkcijų paketai; išjungti paketai paslepia savo komandas ir išlaiko išsaugotą būseną."
-"gui.setting.features.attributes" = "Įjungti kompanionų atributų modifikatorius."
+"gui.setting.features.attributes" = "Įjungti palydovų atributų modifikatorius."
 "gui.setting.features.attributes.name" = "Atributai"
-"gui.setting.features.boosters" = "Įjungti asmeninius ir viso serverio kompanionų stiprintuvus."
+"gui.setting.features.boosters" = "Įjungti asmeninius ir viso serverio palydovų stiprintuvus."
 "gui.setting.features.boosters.name" = "Stiprintuvai"
-"gui.setting.features.buffs" = "Įjungti kompanionų sustiprinimus, pavyzdžiui, grobio ir patirties premijas."
-"gui.setting.features.buffs.name" = "Sustiprinimai"
-"gui.setting.features.decorations" = "Įjungti statinius dekoracinius kompanionus."
+"gui.setting.features.buffs" = "Įjungti palydovų premijas, pavyzdžiui, papildomą grobį ir patirtį."
+"gui.setting.features.buffs.name" = "Premijos"
+"gui.setting.features.decorations" = "Įjungti statinius dekoratyvinius palydovus."
 "gui.setting.features.decorations.name" = "Dekoracijos"
-"gui.setting.features.effects" = "Įjungti kompanionų gėrimų efektus."
+"gui.setting.features.effects" = "Įjungti palydovų eliksyrų efektus."
 "gui.setting.features.effects.name" = "Efektai"
 "gui.setting.features.name" = "Funkcijos"
-"gui.setting.features.particles" = "Įjungti kompanionų dalelių efektus."
+"gui.setting.features.particles" = "Įjungti palydovų dalelių efektus."
 "gui.setting.features.particles.name" = "Dalelės"
-"gui.setting.features.progression" = "Įjungti kompanionų lygius ir pasirenkamus premijų patobulinimus."
+"gui.setting.features.progression" = "Įjungti palydovų lygius ir pasirenkamus premijų patobulinimus."
 "gui.setting.features.progression.name" = "Progresas"
-"gui.setting.general" = "Pagrindinis jungiklis, serverio kalba, atnaujinimų pranešimai ir kompanionų ribos."
-"gui.setting.general.autoLoadCompanions" = "Įkelti kompanionų apibrėžimus iš companions aplanko, kai paleidžiama vykdymo aplinka."
-"gui.setting.general.autoLoadCompanions.name" = "Automatinis kompanionų įkėlimas"
-"gui.setting.general.companionLimits" = "Ribos, kiek kompanionų vienas žaidėjas gali naudoti vienu metu."
-"gui.setting.general.companionLimits.maxTotalPerPlayer" = "Didžiausias kompanionų skaičius, kurį vienas žaidėjas gali naudoti vienu metu; -1 pašalina ribą."
+"gui.setting.general" = "Pagrindinis jungiklis, serverio kalba, atnaujinimų pranešimai ir palydovų ribos."
+"gui.setting.general.autoLoadCompanions" = "Įkelti palydovų aprašus iš aplanko companions, kai paleidžiama vykdymo aplinka."
+"gui.setting.general.autoLoadCompanions.name" = "Automatinis palydovų įkėlimas"
+"gui.setting.general.companionLimits" = "Ribos, kiek palydovų vienas žaidėjas gali naudoti vienu metu."
+"gui.setting.general.companionLimits.maxTotalPerPlayer" = "Didžiausias palydovų skaičius, kurį vienas žaidėjas gali naudoti vienu metu; -1 pašalina ribą."
 "gui.setting.general.companionLimits.maxTotalPerPlayer.name" = "Didžiausias skaičius žaidėjui"
-"gui.setting.general.companionLimits.name" = "Kompanionų ribos"
-"gui.setting.general.companionLimits.perModel" = "Atskiros ribos kiekvienam kompaniono modeliui."
-"gui.setting.general.companionLimits.perModel.fullBody" = "Didžiausias viso kūno kompanionų skaičius, kurį vienas žaidėjas gali naudoti vienu metu; -1 pašalina ribą."
+"gui.setting.general.companionLimits.name" = "Palydovų ribos"
+"gui.setting.general.companionLimits.perModel" = "Atskiros ribos kiekvienam palydovo modeliui."
+"gui.setting.general.companionLimits.perModel.fullBody" = "Didžiausias viso kūno palydovų skaičius, kurį vienas žaidėjas gali naudoti vienu metu; -1 pašalina ribą."
 "gui.setting.general.companionLimits.perModel.fullBody.name" = "Visas kūnas"
-"gui.setting.general.companionLimits.perModel.headOnly" = "Didžiausias tik galvos kompanionų skaičius, kurį vienas žaidėjas gali naudoti vienu metu; -1 pašalina ribą."
+"gui.setting.general.companionLimits.perModel.headOnly" = "Didžiausias tik galvos palydovų skaičius, kurį vienas žaidėjas gali naudoti vienu metu; -1 pašalina ribą."
 "gui.setting.general.companionLimits.perModel.headOnly.name" = "Tik galva"
 "gui.setting.general.companionLimits.perModel.name" = "Pagal modelį"
-"gui.setting.general.enabled" = "Pagrindinis kompanionų vaizdų ir žaidimo premijų jungiklis."
+"gui.setting.general.enabled" = "Pagrindinis palydovų vaizdų ir žaidimo premijų jungiklis."
 "gui.setting.general.enabled.name" = "Įjungta"
-"gui.setting.general.language" = "Numatytoji serverio lokalė, saugoma tiesiogiai redaguojamame languages/<locale>.toml faile."
+"gui.setting.general.language" = "Numatytoji serverio kalba, saugoma tiesiogiai redaguojamame faile languages/<locale>.toml."
 "gui.setting.general.language.name" = "Kalba"
 "gui.setting.general.name" = "Bendra"
 "gui.setting.general.updateNotifications" = "Prisijungus pranešti operatoriams ir žaidėjams su bytecompanions.update apie naujesnius GitHub leidimus."
 "gui.setting.general.updateNotifications.name" = "Atnaujinimų pranešimai"
-"gui.setting.hotReload" = "Automatinis konfigūracijos, kompanionų, funkcijų ir kalbų failų perkrovimas."
+"gui.setting.hotReload" = "Automatinis konfigūracijos, palydovų, funkcijų ir kalbų failų perkrovimas."
 "gui.setting.hotReload.cooldownMillis" = "Milisekundės, kurias pakeistas failas turi likti nepakitęs prieš pritaikant, nuo 250 iki 60000."
-"gui.setting.hotReload.cooldownMillis.name" = "Atvėsimo milisekundės"
+"gui.setting.hotReload.cooldownMillis.name" = "Delsos milisekundės"
 "gui.setting.hotReload.enabled" = "Automatiškai pritaikyti stabilius failų pakeitimus duomenų aplanke."
 "gui.setting.hotReload.enabled.name" = "Įjungta"
-"gui.setting.hotReload.name" = "Karštasis perkrovimas"
+"gui.setting.hotReload.name" = "Automatinis perkrovimas"
 "gui.setting.hotReload.notifyOperators" = "Pranešti prisijungusiems žaidėjams su bytecompanions.config, kai automatinis failo perkrovimas pavyksta arba nepavyksta."
 "gui.setting.hotReload.notifyOperators.name" = "Pranešti operatoriams"
 "gui.setting.hotReload.pollIntervalMillis" = "Milisekundės tarp failų nuskaitymų, nuo 250 iki 60000."
@@ -738,21 +748,21 @@
 "gui.setting.languages.name" = "Kalbos"
 "gui.setting.menus" = "Valdymo skydelio nuorodos."
 "gui.setting.menus.name" = "Meniu"
-"gui.setting.menus.rightClickDashboard" = "Atidaryti kompaniono valdymo skydelį, kai savininkas spusteli jį dešiniuoju pelės mygtuku pagrindine ranka."
+"gui.setting.menus.rightClickDashboard" = "Atidaryti palydovo valdymo skydelį, kai savininkas spusteli jį dešiniuoju pelės mygtuku pagrindine ranka."
 "gui.setting.menus.rightClickDashboard.name" = "Skydelis dešiniu spustelėjimu"
 "gui.setting.metrics" = "Anoniminė naudojimo statistika."
 "gui.setting.metrics.enabled" = "Siųsti anoniminę ByteCompanions naudojimo statistiką į bStats."
 "gui.setting.metrics.enabled.name" = "Įjungta"
 "gui.setting.metrics.name" = "Metrika"
 "gui.setting.performance" = "Žingsnių dažnis, stebėtojų sekimas ir dalelių ribos."
-"gui.setting.performance.dispatchInteractEvent" = "Iškviesti CompanionPlayerInteractEvent kitiems papildiniams, kai žaidėjas spusteli kompanioną."
+"gui.setting.performance.dispatchInteractEvent" = "Iškviesti CompanionPlayerInteractEvent kitiems papildiniams, kai žaidėjas spusteli palydovą."
 "gui.setting.performance.dispatchInteractEvent.name" = "Siųsti sąveikos įvykį"
 "gui.setting.performance.maximumParticleIntensity" = "Didžiausias dalelių intensyvumas, kurį žaidėjai gali gauti: FULL, REDUCED arba OFF."
 "gui.setting.performance.maximumParticleIntensity.name" = "Didžiausias dalelių intensyvumas"
 "gui.setting.performance.name" = "Našumas"
-"gui.setting.performance.updateInterval" = "Žingsniai tarp kompanionų animacijos atnaujinimų, bent 1."
+"gui.setting.performance.updateInterval" = "Žingsniai tarp palydovų animacijos atnaujinimų, bent 1."
 "gui.setting.performance.updateInterval.name" = "Atnaujinimo intervalas"
-"gui.setting.performance.viewDistance" = "Blokų atstumas, kuriame kiti žaidėjai mato kompanioną, 0 arba daugiau."
+"gui.setting.performance.viewDistance" = "Blokų atstumas, kuriame kiti žaidėjai mato palydovą, 0 arba daugiau."
 "gui.setting.performance.viewDistance.name" = "Matymo atstumas"
 "gui.setting.performance.viewerRefreshDelay" = "Žingsniai tarp stebėtojų atstumo patikrų, bent 1."
 "gui.setting.performance.viewerRefreshDelay.name" = "Stebėtojų atnaujinimo delsa"
@@ -762,14 +772,14 @@
 "gui.setting.presentation.commandSounds" = "Groti trumpą sėkmės arba nesėkmės garsą, kai komanda praneša žaidėjui savo rezultatą."
 "gui.setting.presentation.commandSounds.name" = "Komandų garsai"
 "gui.setting.presentation.name" = "Pateikimas"
-"gui.setting.presentation.serializer" = "Kompanionų pavadinimų, aprašymų ir daiktų šablonų teksto formatas: MINI_MESSAGE, LEGACY_AMPERSAND arba PLAIN."
+"gui.setting.presentation.serializer" = "Palydovų vardų, aprašymų ir daiktų šablonų teksto formatas: MINI_MESSAGE, LEGACY_AMPERSAND arba PLAIN."
 "gui.setting.presentation.serializer.name" = "Serializatorius"
 "gui.setting.presentation.splashScreen" = "Spausdinti ByteCompanions paleidimo pasveikinimą, kai paslaugos yra paruoštos."
 "gui.setting.presentation.splashScreen.name" = "Pasveikinimo ekranas"
 "gui.setting.serverRules" = "Pasaulių ir regionų apribojimai."
-"gui.setting.serverRules.bonusDisabledWorlds" = "Pasaulių pavadinimai, kuriuose sustabdomi kompanionų atributai, efektai, atlygio premijos ir automatinė kompanionų patirtis."
+"gui.setting.serverRules.bonusDisabledWorlds" = "Pasaulių pavadinimai, kuriuose sustabdomi palydovų atributai, eliksyrų efektai, atlygio premijos ir automatinis palydovų XP."
 "gui.setting.serverRules.bonusDisabledWorlds.name" = "Pasauliai be premijų"
-"gui.setting.serverRules.hiddenWorlds" = "Pasaulių pavadinimai, kuriuose kompanionų vaizdai paslepiami."
+"gui.setting.serverRules.hiddenWorlds" = "Pasaulių pavadinimai, kuriuose palydovų vaizdai paslepiami."
 "gui.setting.serverRules.hiddenWorlds.name" = "Paslėpti pasauliai"
 "gui.setting.serverRules.name" = "Serverio taisyklės"
 "gui.setting.serverRules.worldguard" = "Paisyti bytecompanions-visuals ir bytecompanions-bonuses vėliavėlių, kai įdiegtas WorldGuard."

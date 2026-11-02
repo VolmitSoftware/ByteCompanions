@@ -11,6 +11,7 @@ import io.github.slimjar.downloader.verify.FileChecksumCalculator;
 import io.github.slimjar.exceptions.DownloaderException;
 import io.github.slimjar.exceptions.OutputWriterException;
 import io.github.slimjar.exceptions.SlimJarException;
+import io.github.slimjar.exceptions.VerificationException;
 import io.github.slimjar.relocation.facade.ReflectiveJarRelocatorFacadeFactory;
 import io.github.slimjar.resolver.DependencyResolver;
 import io.github.slimjar.resolver.ResolutionResult;
@@ -100,7 +101,6 @@ public class NetworkBootstrapTest {
                         }
                         @Override public Optional<File> getChecksumFile(Dependency dependency) { return Optional.empty(); }
                     });
-            Path earlyCache = temporary.newFolder("early").toPath();
             ExecutorService callers = Executors.newFixedThreadPool(7);
             long started = System.nanoTime();
             try {
@@ -111,7 +111,6 @@ public class NetworkBootstrapTest {
                 calls.add(callers.submit(() -> assertTrue(new WrappingPreResolutionDataProvider(PreResolutionDataReader.DEFAULT, server.url("/headers")).get().isEmpty())));
                 calls.add(callers.submit(() -> assertTimeoutFailure(() -> downloader.download(DEPENDENCY))));
                 calls.add(callers.submit(() -> assertTimeoutFailure(() -> verifier.verify(checksumArtifact.toFile(), DEPENDENCY))));
-                calls.add(callers.submit(() -> assertTimeoutFailure(() -> ReflectiveJarRelocatorFacadeFactory.create(earlyCache, List.of(new Repository(server.url("/bootstrap/")))))));
                 for (Future<?> call : calls) call.get(50, TimeUnit.SECONDS);
             } finally {
                 callers.shutdownNow();
@@ -123,7 +122,6 @@ public class NetworkBootstrapTest {
             assertFalse(Files.exists(artifact));
             assertFalse(Files.exists(checksum));
             assertArrayEquals(PAYLOAD, Files.readAllBytes(checksumArtifact));
-            assertTrue("internal relocator checksum was never requested", server.requests.keySet().stream().anyMatch(path -> path.startsWith("/bootstrap/") && path.endsWith(".sha1")));
             assertNoTemporaryFiles(temporary.getRoot().toPath());
             server.recover();
             assertEquals(artifact.toFile(), downloader.download(DEPENDENCY).orElseThrow());
@@ -136,6 +134,22 @@ public class NetworkBootstrapTest {
             assertEquals(artifactRequests, server.count("/artifact"));
             assertEquals(checksumRequests, server.count("/checksum"));
             assertNoTemporaryFiles(temporary.getRoot().toPath());
+        }
+    }
+
+    @Test
+    public void relocatorBootstrapRejectsUnpinnedArtifacts() throws Exception {
+        try (RepositoryServer server = new RepositoryServer()) {
+            server.recover();
+            Path cache = temporary.newFolder("bootstrap").toPath();
+            Throwable failure = assertThrows(Throwable.class,
+                    () -> ReflectiveJarRelocatorFacadeFactory.create(cache, List.of(new Repository(server.url("/bootstrap/")))));
+            assertTrue(failure.toString(), causes(failure).anyMatch(cause -> cause instanceof VerificationException
+                    && cause.getMessage().contains("No pinned SHA-256")));
+            assertTrue(server.requests.keySet().stream().anyMatch(path -> path.startsWith("/bootstrap/") && path.endsWith(".jar")));
+            try (Stream<Path> files = Files.walk(cache)) {
+                assertFalse(files.anyMatch(path -> path.toString().endsWith(".jar")));
+            }
         }
     }
 
@@ -249,6 +263,10 @@ public class NetworkBootstrapTest {
         };
         return new ChecksumDependencyVerifier(resolver, new DependencyOutputWriterFactory(d -> checksum.toFile()), fallback,
                 new FileChecksumCalculator("SHA-256"));
+    }
+
+    private static Stream<Throwable> causes(Throwable failure) {
+        return Stream.iterate(failure, cause -> cause != null, Throwable::getCause);
     }
 
     private static void assertTimeoutFailure(CheckedCall call) {

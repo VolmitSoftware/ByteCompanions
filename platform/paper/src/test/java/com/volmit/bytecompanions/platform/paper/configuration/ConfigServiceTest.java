@@ -169,7 +169,7 @@ final class ConfigServiceTest {
                 "[storage.mysql]\nuseSsl = \"false\"",
                 "[storage.h2]\ndirectory = \"\"",
                 "[presentation]\nserializer = \"unsupported-secret-value\"",
-                "[general]\nlanguage = \"unsupported-secret-value\"",
+                "[general]\nlanguage = \"unsupported-secret-value/..\"",
                 "[general.companionLimits]\nmaxTotalPerPlayer = -2",
                 "[general.companionLimits.perModel]\nfullBody = -2",
                 "[general.companionLimits.perModel]\nheadOnly = -2",

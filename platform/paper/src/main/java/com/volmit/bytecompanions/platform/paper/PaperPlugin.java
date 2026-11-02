@@ -179,6 +179,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
     private BukkitLanguageSwitcher languageSwitcher;
     private ExecutorService configurationExecutor;
     private final Set<CompletableFuture<Void>> pendingInstallations = ConcurrentHashMap.newKeySet();
+    private final Set<String> pendingLanguageInstalls = ConcurrentHashMap.newKeySet();
     private volatile boolean closing;
 
     private DefaultCompanionFactory companionFactory;
@@ -190,7 +191,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
 
     private RuntimeStorage storage;
 
-    private CompanionPlayerCache playerCache;
+    private volatile CompanionPlayerCache playerCache;
     private DefaultUserLoader userLoader;
     private DefaultUserManager userManager;
     private NmsCompanionEntityFactory nmsCompanionEntityFactory;
@@ -215,6 +216,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
     private final Map<String, BukkitCommand> featureCommands = new LinkedHashMap<>();
     private final List<Listener> runtimeListeners = new ArrayList<>();
     private volatile boolean runtimeActive;
+    private ByteCompanionsProvider.Registration apiRegistration;
     private volatile long runtimeGeneration;
     private BukkitDebugDump debugDump;
 
@@ -298,7 +300,8 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
                         this.languageService.directorResolver())));
         this.languageSwitcher = BukkitLanguageSwitcher.register(this, this.languageService.selections(),
                 new BukkitLanguageSwitcher.Options(CompanionBukkitCommand.ROOT, FeaturePermission.Command.CONFIG,
-                        ChatMenuStyle.theme(), this.languageService.directorResolver(), this.languageService.editorOptions()));
+                        ChatMenuStyle.theme(), this.languageService.directorResolver(), this.languageService.editorOptions(),
+                        null, this.languageService.updateAction(), this.languageService.displayNames()));
         this.configEditor.configureLayout(ConfigEditorLayout.create(
                 player -> this.languageSwitcher.command(player, new String[]{"server"}),
                 player -> this.languageSwitcher.openEditor(player, returned -> this.configEditor.open(returned))));
@@ -320,6 +323,9 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
                 this.configService.startWatching(exception -> this.getLogger().log(Level.SEVERE,
                         "Could not reload ByteCompanions configuration", exception));
                 this.languageService.startWatching(() -> this.configService.current().hotReload().enabled());
+                this.languageService.sourceFailure().ifPresent(sourceFailure -> this.getLogger().log(Level.WARNING,
+                        "Language source is unavailable; built-in English and installed language files remain active", sourceFailure));
+                this.languageService.startUpstreamCheck();
                 this.getLogger().info("Starter companions: use /bytecompanions setup in-game to choose cosmetic or survival bonuses.");
             } catch (Exception | LinkageError exception) {
                 this.failStartup(exception);
@@ -442,7 +448,6 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
                 this.configuration.general().companionLimits()
         );
 
-        ByteCompanionsProvider.setInstance(this);
         new AnimationsFeature(this).enable();
         this.startPlayerFeatures(audienceRules);
         this.collectionVariants = new VariantCatalog(this);
@@ -594,7 +599,8 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
         this.getLogger().info("Listeners registered successfully.");
 
         this.runtimeActive = true;
-
+        this.unregisterApi();
+        this.apiRegistration = ByteCompanionsProvider.register(this);
 
         this.loadAllOnlinePlayers();
 
@@ -618,6 +624,43 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
         this.updateService.reconfigure();
         this.configService.updateTiming(current.hotReload().pollIntervalMillis(), current.hotReload().cooldownMillis());
         this.languageService.updateTiming(current.hotReload().pollIntervalMillis(), current.hotReload().cooldownMillis());
+        this.requestConfiguredLanguage();
+    }
+
+    private void requestConfiguredLanguage() {
+        String locale = this.configService.language();
+        if (!this.languageService.installPending(locale) || !this.pendingLanguageInstalls.add(locale)) {
+            return;
+        }
+        this.languageService.requestInstall(locale).whenComplete((content, failure) -> {
+            this.pendingLanguageInstalls.remove(locale);
+            if (failure != null) {
+                this.getLogger().log(Level.WARNING, "Unable to install ByteCompanions language " + locale
+                        + "; English remains active", failure);
+                return;
+            }
+            if (this.closing || !locale.equals(this.configService.language())) {
+                return;
+            }
+            if (!FoliaScheduler.runGlobal(this, this::activateConfiguredLanguage)) {
+                this.getLogger().warning("Installed language " + locale
+                        + " will activate on the next reload or restart because scheduling was unavailable.");
+            }
+        });
+    }
+
+    private void activateConfiguredLanguage() {
+        if (this.closing) {
+            return;
+        }
+        String locale = this.configService.language();
+        try {
+            this.languageService.install(this.languageService.prepare(locale));
+            this.languageService.refreshSelections();
+            this.getLogger().info("Activated ByteCompanions language " + locale + ".");
+        } catch (IOException | RuntimeException exception) {
+            this.getLogger().log(Level.WARNING, "Installed language " + locale + " could not be activated; English remains active", exception);
+        }
     }
 
     private void printSplash() {
@@ -679,7 +722,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
         return List.of(
                 new CompanionBukkitCommand.StatusEntry("command.status.configuration", MessageArgs.builder()
                         .trusted("enabled", current.general().enabled() ? enabled : disabled)
-                        .untrusted("language", current.general().language())
+                        .untrusted("language", current.general().language() + " (" + this.languageService.sourceSummary() + ")")
                         .trusted("hot_reload", current.hotReload().enabled() ? enabled : disabled).build()),
                 new CompanionBukkitCommand.StatusEntry("command.status.runtime", MessageArgs.builder()
                         .untrusted("count", Integer.toString(this.companionTypeRegistry.totalRegistered()))
@@ -794,6 +837,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
             this.cleanup("diagnostics", this.debugDump::close);
             this.debugDump = null;
         }
+        this.unregisterApi();
         this.runtimeActive = false;
         this.runtimeGeneration++;
         if (this.progressionGameplayListener != null) {
@@ -931,6 +975,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
     }
 
     private void releaseRuntimeReferences() {
+        this.unregisterApi();
         this.decorationsFeature = null;
         this.particlesFeature = null;
         this.buffsFeature = null;
@@ -966,8 +1011,14 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
         this.companionEntityCache = null;
         this.companionEventBus = null;
         this.animationRegistry = null;
-        ByteCompanionsProvider.resetInstance();
         this.getLogger().info("Plugin runtime stopped.");
+    }
+
+    private synchronized void unregisterApi() {
+        if (this.apiRegistration != null) {
+            this.apiRegistration.unregister();
+            this.apiRegistration = null;
+        }
     }
 
     private void startPlayerFeatures(AtomicReference<RuntimeServerRules> audienceRules) {
@@ -1245,6 +1296,10 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
         return this.debugDump;
     }
 
+    public void removeOwnedAttributeModifiers(Player player) {
+        AttributesFeature.removeOwnedModifiers(player, this);
+    }
+
     private CompanionDebugReport captureDebugReport() {
         Map<String, Boolean> features = new LinkedHashMap<>();
         for (String feature : List.of("attributes", "buffs", "decorations", "effects", "particles")) {
@@ -1257,7 +1312,8 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
                 this.lifecyclePlatformService == null ? 0 : this.lifecyclePlatformService.loadFailures(), storageQueues,
                 com.volmit.bytecompanions.features.particles.effect.EffectTrackingAnimation.trafficSnapshot(),
                 this.decorationsFeature == null ? 0 : this.decorationsFeature.registeredCompanions().size(),
-                this.configuration.general().language(), "config.toml (active runtime snapshot)");
+                this.configuration.general().language(), this.languageService.sourceDescription(), this.languageService.sourceState(),
+                "config.toml (active runtime snapshot)");
         return new CompanionDebugReport(this.runtimeActive, this.runtimeGeneration,
                 this.nmsCompanionEntityFactory.getClass().getSimpleName(), this.configuration.storage().backend(),
                 this.companionTypeRegistry.totalRegistered(), this.playerCache.all().size(), features,
@@ -1373,7 +1429,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
 
     @Override
     public @NotNull ConfigurationSettings configurationSettings() {
-        return this.configuration;
+        return available(this.configuration);
     }
 
     @Override
@@ -1383,12 +1439,19 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
 
     @Override
     public @NotNull CompanionManager companionManager() {
-        return this.companionManager;
+        return available(this.companionManager);
     }
 
     @Override
     public @NotNull AnimationRegistry animationRegistry() {
-        return this.animationRegistry;
+        return available(this.animationRegistry);
+    }
+
+    private static <T> @NotNull T available(final @Nullable T value) {
+        if (value == null) {
+            throw new IllegalStateException("ByteCompanions is reloading; try again after it is enabled");
+        }
+        return value;
     }
 
     @Override
@@ -1408,7 +1471,8 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
 
     @Override
     public @Nullable CompanionPlayer getCompanionPlayerOrNull(final @NotNull Player player) {
-        return this.playerCache.getByEntityId(player.getEntityId());
+        final CompanionPlayerCache cache = this.playerCache;
+        return cache == null ? null : cache.getByEntityId(player.getEntityId());
     }
 
     @Override
@@ -1418,7 +1482,8 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
 
     @Override
     public @Nullable CompanionPlayer getCompanionPlayerOrNull(final @NotNull UUID playerId) {
-        return this.playerCache.getByUniqueId(playerId);
+        final CompanionPlayerCache cache = this.playerCache;
+        return cache == null ? null : cache.getByUniqueId(playerId);
     }
 
 }

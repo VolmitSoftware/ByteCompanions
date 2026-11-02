@@ -1197,7 +1197,6 @@ public abstract class AbstractCapableCompanionEntity implements NmsCapableCompan
         }
     }
 
-    // TODO: implement this
     public boolean overlayVisible(@NotNull String overlayId, boolean visible) {
         if (!this.isSpawned()) {
             return false;
@@ -1208,10 +1207,7 @@ public abstract class AbstractCapableCompanionEntity implements NmsCapableCompan
             return false;
         }
 
-        overlay.armorStand().setInvisible(!visible);
-        this.dirtyMetadata = true;
-        this.flushDirty();
-
+        overlay.visible(visible);
         return true;
     }
 

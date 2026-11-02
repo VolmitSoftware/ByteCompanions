@@ -190,6 +190,9 @@ public final class PlayerEffectManager {
     ) {
         final CompanionPlayer companionPlayer = this.companions.getCompanionPlayerOrNull(player);
         if (companionPlayer == null) {
+            if (!silent) {
+                this.feature.messageSender().send(player, "general.player-not-loaded");
+            }
             return;
         }
 
@@ -205,6 +208,9 @@ public final class PlayerEffectManager {
             final boolean silent
     ) {
         if (!this.active) {
+            if (!silent) {
+                this.feature.messageSender().send(player, "general.inactive");
+            }
             return;
         }
         if (companion == null) {

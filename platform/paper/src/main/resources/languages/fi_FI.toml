@@ -6,99 +6,100 @@
 # /bytecompanions language server edit fi_FI
 #
 # === Etuliite ===
-# runtime.prefix supplies the styled plugin name for {prefix}.
-# Remove {prefix} from a message to hide the plugin name for that message.
+# runtime.prefix määrittää lisäosan muotoillun nimen muuttujalle {prefix}.
+# Poista {prefix} viestistä, jos haluat piilottaa lisäosan nimen siitä viestistä.
 #
 # === Muotoilu ===
-# Colors and styles: &0-&f, &k-&r.
-# RGB colors: &#RRGGBB, &xRRGGBB, &x&R&R&G&G&B&B, [RRGGBB].
-# MiniMessage supports custom formatting such as <gold> and <gradient:#ffcc00:#ff9900>. Put a backslash before & or [ to display it literally.
+# Värit ja tyylit: &0-&f, &k-&r.
+# RGB-värit: &#RRGGBB, &xRRGGBB, &x&R&R&G&G&B&B, [RRGGBB].
+# MiniMessage tukee mukautettua muotoilua, kuten <gold> ja <gradient:#ffcc00:#ff9900>. Jos haluat näyttää merkin & tai [ sellaisenaan, lisää sen eteen kenoviiva.
 #
 # === Muuttujat ===
 # Säilytä muuttujien nimet ja käytä vain kunkin viestin omia muuttujia.
-#   {action}  Requested action
-#   {actions}  Available actions
-#   {after}  Value after the change
-#   {amount}  Amount or count
-#   {argument}  Unexpected command argument
-#   {before}  Value before the change
-#   {bonus}  Bonus name
-#   {booster}  Booster identifier
-#   {category}  Category name
-#   {change}  Described change
-#   {channel}  Booster channel
-#   {choice}  Selected option
-#   {command}  Command path
-#   {companion}  Companion identifier
-#   {companions}  Companion identifiers
-#   {count}  Number of items
-#   {created}  Creation time
-#   {current}  Current value
-#   {definition}  Companion definition
-#   {detail}  Failure detail
-#   {effect}  Particle effect identifier
-#   {entry}  Entry label
-#   {feature}  Feature name
-#   {features}  Enabled features
-#   {field}  Studio field name
-#   {formation}  Formation name
-#   {group}  Message category name
-#   {hot_reload}  Hot reload state
-#   {index}  Position number
-#   {integrations}  Integration states
-#   {item}  Item name
-#   {items}  Item list
-#   {java}  Java major version
-#   {key}  Message or setting key
-#   {kind}  Transaction kind
-#   {language}  Active language
-#   {level}  Level number
-#   {limit}  Configured limit
-#   {line}  Message line number
-#   {locale}  Locale identifier
-#   {maximum}  Maximum accepted value
-#   {mode}  Combining rule
-#   {model}  Companion model
-#   {money}  Money amount
-#   {name}  Display name
-#   {new}  Installed rendered value
-#   {next}  Next value
-#   {old}  Previous rendered value
-#   {operation}  Bonus operation
-#   {page}  Current page number
-#   {pages}  Total page count
-#   {parameter}  Parameter name
-#   {path}  File path or setting path
-#   {percent}  Percentage value
-#   {permission}  Required permission
-#   {personal}  Personal locale when it differs
-#   {player}  Player name
-#   {players}  Loaded player count
-#   {plugin}  Plugin name
-#   {prefix}  Styled plugin name from runtime.prefix
-#   {provider}  Payment provider
-#   {range}  Supported Minecraft range
-#   {reason}  Failure reason
-#   {required}  Required amount
-#   {scheduler}  Scheduler implementation
-#   {seconds}  Duration in seconds
-#   {section}  Language editor section
-#   {setting}  Setting name
-#   {sources}  Bonus sources
-#   {status}  Status marker
-#   {step}  Adjustment step
-#   {target}  Selection target
-#   {tier}  Upgrade tier
-#   {time}  Duration text
-#   {transaction}  Transaction identifier
-#   {type}  Parameter type
-#   {url}  Public report URL
-#   {usage}  Command usage
-#   {value}  Current or raw value
-#   {variables}  Placeholders valid for the message
-#   {variant}  Appearance variant
-#   {version}  Plugin version
-#   {xp}  Companion experience
+#   {activation}  Tehostimen aktivoinnin tunnus
+#   {added}  Kielipäivityksen lisäämät viestit
+#   {after}  Arvo muutoksen jälkeen
+#   {amount}  Määrä tai lukumäärä
+#   {argument}  Odottamaton komennon argumentti
+#   {before}  Arvo ennen muutosta
+#   {bonus}  Bonuksen nimi
+#   {booster}  Tehostimen tunnus
+#   {category}  Luokan nimi
+#   {change}  Muutoksen kuvaus
+#   {channel}  Tehostimen kanava
+#   {choice}  Valittu vaihtoehto
+#   {command}  Komentopolku
+#   {companion}  Kumppanin tunnus
+#   {companions}  Kumppanien tunnukset
+#   {count}  Kohteiden määrä
+#   {created}  Luontiaika
+#   {current}  Nykyinen arvo
+#   {definition}  Kumppanin määritys
+#   {detail}  Virheen tarkempi kuvaus
+#   {effect}  Hiukkastehosteen tunnus
+#   {enabled}  Kumppanien tila
+#   {feature}  Ominaisuuden nimi
+#   {features}  Käytössä olevat ominaisuudet
+#   {field}  Studion kentän nimi
+#   {formation}  Muodostelman nimi
+#   {group}  Viestiluokan nimi
+#   {hot_reload}  Automaattisen uudelleenlatauksen tila
+#   {index}  Järjestysnumero
+#   {integrations}  Integraatioiden tilat
+#   {item}  Esineen nimi
+#   {items}  Esineluettelo
+#   {java}  Javan pääversio
+#   {kept}  Kielipäivityksessä säilytetyt paikalliset muokkaukset
+#   {key}  Viestin tai asetuksen avain
+#   {kind}  Tapahtuman tyyppi
+#   {language}  Aktiivinen kieli
+#   {level}  Tason numero
+#   {limit}  Määritetty raja
+#   {line}  Viestin rivinumero
+#   {locale}  Kielitunnus
+#   {maximum}  Suurin sallittu arvo
+#   {mode}  Yhdistämissääntö
+#   {model}  Kumppanin malli
+#   {money}  Rahamäärä
+#   {name}  Näyttönimi
+#   {next}  Seuraava arvo
+#   {number}  Luettelon kohteen numero
+#   {operation}  Bonuksen laskutoimitus
+#   {page}  Nykyisen sivun numero
+#   {pages}  Sivujen kokonaismäärä
+#   {parameter}  Parametrin nimi
+#   {path}  Tiedostopolku tai asetuksen polku
+#   {percent}  Prosenttiarvo
+#   {permission}  Vaadittu käyttöoikeus
+#   {personal}  Henkilökohtainen kielitunnus, jos se poikkeaa
+#   {player}  Pelaajan nimi
+#   {players}  Ladattujen pelaajien määrä
+#   {plugin}  Lisäosan nimi
+#   {prefix}  Lisäosan muotoiltu nimi avaimesta runtime.prefix
+#   {provider}  Maksupalvelun tarjoaja
+#   {range}  Tuettu Minecraft-versioväli
+#   {reason}  Virheen syy
+#   {remaining}  Aika seuraavaan sallittuun kielitarkistukseen
+#   {required}  Vaadittu määrä
+#   {scheduler}  Ajastimen toteutus
+#   {seconds}  Kesto sekunteina
+#   {section}  Kielieditorin osio
+#   {sources}  Bonusten lähteet
+#   {status}  Tilamerkintä
+#   {step}  Säätöaskel
+#   {target}  Valinnan kohde
+#   {tier}  Parannusporras
+#   {time}  Kesto tekstinä
+#   {transaction}  Tapahtuman tunnus
+#   {type}  Parametrin tyyppi
+#   {updated}  Kielipäivityksen muuttamat viestit
+#   {url}  Raportin julkinen URL
+#   {usage}  Komennon käyttö
+#   {value}  Nykyinen tai raaka-arvo
+#   {variables}  Viestissä sallitut paikkamerkit
+#   {variant}  Ulkoasun muunnelma
+#   {version}  Lisäosan versio
+#   {xp}  Kumppanin kokemus
 
 "runtime.prefix" = "<bold><gradient:#ffcc00:#ff9900>ByteCompanions</gradient></bold>"
 "gui.studio-review-change" = "<gold>Muutos {index}"
@@ -120,18 +121,18 @@
 "gui.studio" = "<gold>✎ Kumppanistudio"
 "gui.studio-hint" = "<gray>Muokkaa tätä kumppania koko palvelimelle."
 "gui.studio-heading" = "<gold>✎ {companion}"
-"gui.studio-draft" = "<yellow>Tallentamaton luonnos • Muutokset tulevat voimaan tallennettaessa."
+"gui.studio-draft" = "<yellow>Tallentamaton luonnos • Muutokset tulevat voimaan vasta tallennettaessa."
 "gui.studio-unchanged" = "<gray>Ei tallentamattomia muutoksia."
 "gui.studio-working" = "<yellow>Tarkistetaan muutoksia..."
 "gui.studio-appearance" = "<gold>Ulkoasu ja nimi"
 "gui.studio-equipment" = "<aqua>Varusteet ja värit"
 "gui.studio-movement" = "<green>Liike ja animaatio"
 "gui.studio-particles" = "<light_purple>Sisäänrakennetut hiukkaset"
-"gui.studio-attributes" = "<aqua>Ominaisuusbonukset"
-"gui.studio-effects" = "<light_purple>Taikajuomabonukset"
-"gui.studio-buffs" = "<green>XP- ja palkintobonukset"
+"gui.studio-attributes" = "<aqua>Attribuuttibonukset"
+"gui.studio-effects" = "<light_purple>Juomabonukset"
+"gui.studio-buffs" = "<green>Kokemus- ja palkintobonukset"
 "gui.studio-category-hint" = "<gray>Valitse asetus tai lisää esiasetus."
-"gui.studio-disabled" = "<yellow>Tämä toiminto on pois päältä; tallennetut bonukset eivät ole käytössä."
+"gui.studio-disabled" = "<yellow>Tämä ominaisuus on pois päältä; tallennetut bonukset eivät ole voimassa."
 "gui.studio-field" = "<gold>{field}"
 "gui.studio-value" = "<gray>Nykyinen arvo: <white>{value}"
 "gui.studio-edit-hint" = "<gray>Muokkaa asetusta napsauttamalla."
@@ -141,14 +142,14 @@
 "gui.studio-toggle-hint" = "<gray>Vaihda arvojen true ja false välillä."
 "gui.studio-increase" = "<green>Suurenna"
 "gui.studio-decrease" = "<gold>Pienennä"
-"gui.studio-adjust-hint" = "<gray>Muuta arvoa määrällä {step}."
+"gui.studio-adjust-hint" = "<gray>Muuta arvoa {step} kerrallaan."
 "gui.studio-presets" = "<gold>Lisää tai valitse esiasetus"
 "gui.studio-presets-hint" = "<gray>Katso tämän osion käytettävissä olevat vaihtoehdot."
 "gui.studio-choice" = "<aqua>{choice}"
-"gui.studio-choice-hint" = "<gray>Käytä luonnokseen; esikatsele ennen tallentamista."
+"gui.studio-choice-hint" = "<gray>Lisää luonnokseen; esikatsele ennen tallentamista."
 "gui.studio-particle-hint" = "<gray>Kytke tämä esiasetus päälle tai pois."
 "gui.studio-preview" = "<aqua>Esikatsele maailmassa"
-"gui.studio-preview-hint" = "<gray>Vain sinä näet sen; ei bonuksia tai tallennettuja valintoja."
+"gui.studio-preview-hint" = "<gray>Vain sinä näet sen; ei bonuksia eikä tallennettuja valintoja."
 "gui.studio-stop-preview" = "<gold>Lopeta esikatselu"
 "gui.studio-save" = "<green>Tarkista ja tallenna"
 "gui.studio-save-hint" = "<gray>Tarkista luonnos ennen palvelimen sisällön korvaamista."
@@ -156,58 +157,58 @@
 "gui.studio-apply-hint" = "<gray>Tarkistaa, tallentaa ja lataa lisäosan uudelleen."
 "gui.studio-reload-hint" = "<yellow>Muut muokkaimet sulkeutuvat; paikalla olevien pelaajien kumppanit palautetaan."
 "gui.studio-discard" = "<red>Hylkää luonnos"
-"gui.studio-discard-hint" = "<gray>Hylkää tallentamattomat muutokset ja lopeta esikatselu."
+"gui.studio-discard-hint" = "<gray>Hylkää kaikki tallentamattomat muutokset ja lopeta esikatselu."
 "gui.studio-reset" = "<gold>Palauta luonnos"
 "gui.studio-reset-hint" = "<gray>Palaa avaamishetken arvoihin."
 "gui.studio-back" = "<gold>◀ Takaisin"
-"gui.studio-back-hint" = "<gray>Palaa takaisin säilyttäen luonnos."
+"gui.studio-back-hint" = "<gray>Palaa menettämättä luonnosta."
 "gui.studio-empty" = "<gray>Ei vielä asetuksia. Aloita lisäämällä esiasetus."
-"studio.prompt" = "{prefix} <gold>Kirjoita {field} chattiin tai kirjoita <white>cancel</white>. Enintään 256 merkkiä; vanhenee 60 sekunnissa.</gold>"
-"studio.cancelled" = "{prefix} <gray>Syöttö peruttu tai vanhentunut; luonnos ei muuttunut.</gray>"
+"studio.prompt" = "{prefix} <gold>Kirjoita {field} chattiin tai peru kirjoittamalla <white>cancel</white>. Enintään 256 merkkiä; vanhenee 60 sekunnissa.</gold>"
+"studio.cancelled" = "{prefix} <gray>Syöte peruttiin tai vanheni; luonnos ei muuttunut.</gray>"
 "studio.failed" = "{prefix} <red>Muutos hylätty: {reason}</red>"
 "studio.preview" = "{prefix} <aqua>Yksityinen esikatselu alkoi viideksi minuutiksi. Palaa komennolla <white>/bytecompanions edit {companion}</white>. Bonuksia ei anneta.</aqua>"
 "studio.retained" = "{prefix} <gray>Valikon sulkemisen jälkeen luonnos säilyy 15 minuuttia ilman toimintaa. Palaa komennolla <white>/bytecompanions edit</white>.</gray>"
 "studio.existing" = "{prefix} <yellow>Sinulla on jo luonnos kumppanille {companion}. Tallenna tai hylkää se ennen toisen kumppanin muokkaamista.</yellow>"
-"studio.expired" = "{prefix} <gray>Käyttämätön kumppaniluonnos hylättiin.</gray>"
+"studio.expired" = "{prefix} <gray>Käyttämättä jäänyt kumppaniluonnoksesi hylättiin.</gray>"
 "studio.saving" = "{prefix} <gold>Tallennetaan kumppania ja ladataan uudelleen...</gold>"
 "studio.saved" = "{prefix} <green>Kumppani tallennettiin koko palvelimelle.</green>"
 "studio.restore-failed" = "{prefix} <yellow>Kumppani tallennettiin, mutta paikalla olevien pelaajien kumppaneita ei voitu palauttaa. Liity uudelleen ja tarkista konsoli.</yellow>"
 "studio.discarded" = "{prefix} <gray>Luonnos hylättiin. Palvelimen sisältö ei muuttunut.</gray>"
 "errors.no-permission" = "<red>Sinulla ei ole oikeutta tähän toimintoon.</red>"
-"errors.no-access-to-companion" = "<red>Et voi ottaa tätä seuralaista käyttöön.</red>"
-"errors.companion-not-found" = "<red>Seuralaista tunnuksella <white>{companion}</white> ei ole.</red>"
-"errors.no-companion-equipped" = "<gold>Sinulla ei ole seuralaista käytössä.</gold>"
-"errors.companion-already-equipped" = "<gold>Tämä seuralainen on jo käytössäsi.</gold>"
-"errors.companion-does-not-have-animations" = "<aqua>Tämä seuralainen ei tue animaatioita.</aqua>"
-"errors.companion-is-exclusive" = "<red>Tämä seuralainen on yksin käytettävä eikä sitä voi ottaa käyttöön.</red>"
-"errors.companions-limit-reached" = "<red>Olet saavuttanut seuralaisten enimmäismäärän.</red>"
-"errors.companions-limit-per-model-reached" = "<red>Olet saavuttanut mallin <white>{model}</white> seuralaisten enimmäismäärän.</red>"
-"errors.player-has-a-exclusive-companion" = "<red>Sinulla on jo yksin käytettävä seuralainen käytössä.</red>"
-"success.companion-equipped" = "<green>Otit seuralaisen <white>{companion}</white> käyttöön.</green>"
-"success.companion-unequipped" = "<green>Seuralaisesi poistettiin käytöstä.</green>"
+"errors.no-access-to-companion" = "<red>Et voi ottaa tätä kumppania käyttöön.</red>"
+"errors.companion-not-found" = "<red>Kumppania tunnuksella <white>{companion}</white> ei ole.</red>"
+"errors.no-companion-equipped" = "<gold>Sinulla ei ole kumppania käytössä.</gold>"
+"errors.companion-already-equipped" = "<gold>Tämä kumppani on jo käytössäsi.</gold>"
+"errors.companion-does-not-have-animations" = "<aqua>Tämä kumppani ei tue animaatioita.</aqua>"
+"errors.companion-is-exclusive" = "<red>Tämä kumppani on eksklusiivinen, eikä sitä voi ottaa käyttöön.</red>"
+"errors.companions-limit-reached" = "<red>Olet saavuttanut sallittujen kumppanien enimmäismäärän.</red>"
+"errors.companions-limit-per-model-reached" = "<red>Olet saavuttanut mallin <white>{model}</white> kumppanien enimmäismäärän.</red>"
+"errors.player-has-a-exclusive-companion" = "<red>Sinulla on jo eksklusiivinen kumppani käytössä.</red>"
+"success.companion-equipped" = "<green>Otit kumppanin <white>{companion}</white> käyttöön.</green>"
+"success.companion-unequipped" = "<green>Kumppanisi poistettiin käytöstä.</green>"
 "command.description.root" = "{prefix}: ohje ja hallinta"
-"command.description.menu" = "Selaa seuralaisia; napsauta käytössä olevaa oikealla avataksesi hiukkaset"
-"command.description.spawn" = "Ota seuralainen käyttöön"
-"command.description.despawn" = "Poista yksi tai kaikki seuralaiset"
+"command.description.menu" = "Selaa kumppaneita; avaa hiukkaset napsauttamalla käytössä olevaa kumppania hiiren oikealla"
+"command.description.spawn" = "Ota kumppani käyttöön"
+"command.description.despawn" = "Poista yksi tai kaikki kumppanit"
 "command.description.debug" = "{prefix}: diagnostiikkatyökalut"
 "command.description.config" = "Avaa koko asetuseditori pelissä"
 "command.description.language" = "Valitse käytettävissä oleva {prefix}-kieli"
 "command.description.version" = "Näytä asennettu {prefix}-versio"
-"command.description.particles" = "Hallitse seuralaisten hiukkasia"
-"command.parameter.companion" = "Seuralaisen tunnus; jätä pois poistaaksesi kaikki"
+"command.description.particles" = "Hallitse kumppanien hiukkasia"
+"command.parameter.companion" = "Kumppanin tunnus; jätä pois poistaaksesi kaikki kumppanit"
 "command.parameter.action" = "Suoritettava toiminto"
 "command.parameter.effect" = "Hiukkastehosteen tunnus"
-"command.feedback.disabled" = "<gold>Toiminto {feature} on poistettu käytöstä.</gold>"
+"command.feedback.disabled" = "<gold>Ominaisuus {feature} on poistettu käytöstä.</gold>"
 "command.feedback.player-only" = "<red>Vain pelaaja voi käyttää tätä komentoa.</red>"
-"command.feedback.companion-required" = "<red>Seuralaisen nimi vaaditaan.</red>"
-"command.feedback.failed" = "<red>Komentoa ei voitu suorittaa. Katso konsoli.</red>"
+"command.feedback.companion-required" = "<red>Kumppanin nimi vaaditaan.</red>"
+"command.feedback.failed" = "<red>Komentoa ei voitu suorittaa. Katso lisätiedot konsolista.</red>"
 "command.feedback.usage" = "<gold>Käyttö: {usage}</gold>"
 "command.feedback.version" = "<gradient:#ffcc00:#ff9900>{prefix} v{version}</gradient>"
 "particles.title" = "<gold>Kumppanien hiukkaset</gold>"
-"particles.help.menu" = "Selaa tehosteita"
-"particles.help.equip" = "Ota tehoste käyttöön"
-"particles.help.unequip" = "Poista yksi tai kaikki tehosteet"
-"particles.particle-effects.no-permission" = "<red>Sinulla ei ole oikeutta käyttää tehostetta <white>{effect}</white>.</red>"
+"particles.help.menu" = "Selaa hiukkastehosteita"
+"particles.help.equip" = "Ota hiukkastehoste käyttöön"
+"particles.help.unequip" = "Poista yksi tai kaikki hiukkastehosteet"
+"particles.particle-effects.no-permission" = "<red>Sinulla ei ole oikeutta käyttää hiukkastehostetta <white>{effect}</white>.</red>"
 "particles.particle-effects.equipped" = "<green>Hiukkastehoste otettu käyttöön: <white>{effect}</white>.</green>"
 "particles.particle-effects.unequipped" = "<yellow>Hiukkastehoste poistettu käytöstä.</yellow>"
 "particles.particle-effects.not-found" = "<red>Hiukkastehostetta <white>{effect}</white> ei löytynyt.</red>"
@@ -215,77 +216,77 @@
 "particles.particle-effects.already-equipped" = "<red><white>{effect}</white> on jo käytössä.</red>"
 "particles.companions.not-equipped" = "<red>Ota ensin kumppani käyttöön.</red>"
 "particles.companions.invalid-type-id" = "<red>Anna kelvollinen kumppanityypin tunnus.</red>"
-"errors.player-not-loaded" = "<red>Seuralaisesi tietoja ladataan vielä tai lataaminen epäonnistui. Liity uudelleen tai kysy ylläpitäjältä.</red>"
+"errors.player-not-loaded" = "<red>Kumppanitietojasi ladataan vielä, tai niiden lataaminen epäonnistui. Liity uudelleen tai ota yhteyttä ylläpitäjään.</red>"
 "errors.persistence-failed" = "<red>Valintasi muuttui tämän istunnon ajaksi, mutta sitä ei voitu tallentaa. Se voi palautua ennalleen, kun liityt uudelleen. Ilmoita ylläpitäjälle.</red>"
 
-"gui.title.collection" = "<gold>Seuralaiskokoelma"
-"gui.title.dashboard" = "<gold>Seuralaisen hallinta"
-"gui.title.particles" = "<gold>Seuralaisen hiukkaset"
-"gui.title.bonuses" = "<gold>Seuralaisen bonukset"
-"gui.collection" = "<gold>📦 Seuralaiskokoelma"
-"gui.collection-hint" = "<gray>Valitse seuralainen nähdäksesi sen vaihtoehdot."
+"gui.title.collection" = "<gold>Kumppanikokoelma"
+"gui.title.dashboard" = "<gold>Kumppanin hallintapaneeli"
+"gui.title.particles" = "<gold>Kumppanin hiukkaset"
+"gui.title.bonuses" = "<gold>Kumppanin bonukset"
+"gui.collection" = "<gold>📦 Kumppanikokoelma"
+"gui.collection-hint" = "<gray>Valitse kumppani nähdäksesi sen vaihtoehdot."
 "gui.equipped" = "<green>✓ Käytössä"
 "gui.available" = "<yellow>Saatavilla"
 "gui.locked" = "<red>Lukittu: sinulla ei ole oikeutta."
-"gui.open-dashboard" = "<gray>Avaa seuralaisen hallinta napsauttamalla."
-"gui.empty" = "<yellow>Ei seuralaisia"
-"gui.empty-hint" = "<gray>Seuralaisten määrityksiä ei ole saatavilla."
+"gui.open-dashboard" = "<gray>Avaa tämän kumppanin hallintapaneeli napsauttamalla."
+"gui.empty" = "<yellow>Ei kumppaneita"
+"gui.empty-hint" = "<gray>Kumppanimäärityksiä ei ole saatavilla."
 "gui.not-equipped" = "<yellow>Ei käytössä"
-"gui.overview" = "<gray>Hallitse seuralaista alla olevilla painikkeilla."
-"gui.equip" = "<green>✓ Ota seuralainen käyttöön"
-"gui.equip-hint" = "<gray>Kutsu tämä seuralainen vierellesi."
-"gui.unequip" = "<yellow>Poista seuralainen käytöstä"
-"gui.unequip-hint" = "<gray>Lähetä seuralainen pois. Voit ottaa sen uudelleen käyttöön."
+"gui.overview" = "<gray>Hallitse tätä kumppania alla olevilla painikkeilla."
+"gui.equip" = "<green>✓ Ota kumppani käyttöön"
+"gui.equip-hint" = "<gray>Kutsu tämä kumppani viereesi."
+"gui.unequip" = "<yellow>Poista kumppani käytöstä"
+"gui.unequip-hint" = "<gray>Lähetä tämä kumppani pois. Voit ottaa sen uudelleen käyttöön."
 "gui.particles" = "<aqua>✦ Hiukkaset"
-"gui.particles-hint" = "<gray>Valitse hiukkastehoste tälle seuralaiselle."
+"gui.particles-hint" = "<gray>Valitse hiukkastehoste tälle kumppanille."
 "gui.disabled" = "<gray>Poistettu käytöstä tällä palvelimella."
-"gui.equip-first" = "<yellow>Ota tämä seuralainen ensin käyttöön."
+"gui.equip-first" = "<yellow>Ota tämä kumppani ensin käyttöön."
 "gui.current-particle" = "<gray>Valittu hiukkastehoste: <white>{effect}"
 "gui.none" = "Ei mitään"
 "gui.bonuses" = "<gold>★ Bonukset ja vaikutukset"
 "gui.bonuses-hint" = "<gray>Katso aktiiviset bonukset, juomavaikutukset ja niiden yhdistyminen."
 "gui.select-particle" = "<yellow>Ota tämä hiukkastehoste käyttöön napsauttamalla."
 "gui.remove-particle" = "<yellow>Poista hiukkastehoste"
-"gui.remove-particle-hint" = "<gray>Poista tämän seuralaisen valitut hiukkaset."
-"gui.back" = "<gold>◀ Takaisin hallintaan"
-"gui.back-hint" = "<gray>Palaa tämän seuralaisen vaihtoehtoihin."
+"gui.remove-particle-hint" = "<gray>Poista tämän kumppanin valitut hiukkaset."
+"gui.back" = "<gold>◀ Takaisin hallintapaneeliin"
+"gui.back-hint" = "<gray>Palaa tämän kumppanin vaihtoehtoihin."
 "gui.close" = "<red>✖ Sulje"
 "gui.close-hint" = "<gray>Sulje tämä valikko."
 "gui.previous" = "<yellow>◀ Edellinen sivu"
 "gui.next" = "<green>Seuraava sivu ▶"
 "gui.page" = "<gray>Sivu {page}/{pages}"
-"gui.loading" = "<yellow>Seuralaistietosi eivät ole valmiit. Yritä hetken kuluttua uudelleen."
+"gui.loading" = "<yellow>Kumppanitietosi eivät ole vielä valmiita. Yritä hetken kuluttua uudelleen."
 "gui.bonus-snapshot" = "<gray>Arvot avaushetkellä. Tarkista ne uudelleen päivittämällä."
 "gui.no-bonuses" = "<yellow>Bonuksia ei ole määritetty"
-"gui.no-bonuses-hint" = "<gray>Tälle seuralaiselle ei ole määritetty bonuksia tai juomavaikutuksia."
+"gui.no-bonuses-hint" = "<gray>Tälle kumppanille ei ole määritetty bonuksia eikä juomavaikutuksia."
 "gui.refresh" = "<aqua>Päivitä bonukset"
 "gui.refresh-hint" = "<gray>Päivitä nykyiset arvot ja palautumisajat."
-"gui.attribute" = "Ominaisuus"
+"gui.attribute" = "Attribuutti"
 "gui.effect" = "Juoma"
 "gui.buff" = "Bonus"
 "gui.bonus-name" = "<gold>{category}: <white>{name}"
 "gui.configured" = "<gray>Määritetty: <white>{operation} {value}"
-"gui.attribute-total" = "<gray>Kokonaisarvosi muine lähteineen: <white>{value}"
+"gui.attribute-total" = "<gray>Kokonaisarvosi muut lähteet mukaan lukien: <white>{value}"
 "gui.effect-level" = "<gray>Määritetty juomataso: <white>{level}"
 "gui.stack-mode" = "<gray>Yhdistämissääntö: <white>{mode}"
-"gui.resolved-level" = "<gray>Seuralaisten juomataso: <white>{level}"
+"gui.resolved-level" = "<gray>Kumppanin juomataso: <white>{level}"
 "gui.current-level" = "<gray>Nykyinen juomataso: <white>{level}"
 "gui.priority" = "<gray>Etusija: <white>{value}"
-"gui.winner" = "<gray>Etusijalla oleva seuralainen: <white>{companion}"
+"gui.winner" = "<gray>Etusijalla oleva kumppani: <white>{companion}"
 "gui.winning-value" = "<gray>Sovellettu sääntö: <white>{operation} {value}"
 "gui.applies-to" = "<gray>Koskee kohteita: <white>{target}"
 "gui.cooldown" = "<gray>Palautumisaika: <white>{seconds}s"
 "gui.cooldown-remaining" = "<yellow>Valmis {seconds}s kuluttua"
 "gui.excluded-sources" = "<gray>Lähdebonusten käsittelemät: <white>{sources}"
-"gui.contributors" = "<gray>Vaikuttavat seuralaiset: <white>{companions}"
-"gui.feature.attributes" = "<gray>Ominaisuudet"
+"gui.contributors" = "<gray>Vaikuttavat kumppanit: <white>{companions}"
+"gui.feature.attributes" = "<gray>Attribuutit"
 "gui.feature.effects" = "<gray>Juomavaikutukset"
 "gui.feature.buffs" = "<gray>Pelibonukset"
 "gui.status.active" = "<green>✓ Aktiivinen"
-"gui.status.stacked" = "<green>✓ Yhdistetty muiden seuralaisten kanssa"
-"gui.status.overridden" = "<yellow>Toisen seuralaisen sääntö syrjäyttää tämän"
+"gui.status.stacked" = "<green>✓ Yhdistetty muiden kumppanien kanssa"
+"gui.status.overridden" = "<yellow>Toisen kumppanin sääntö syrjäyttää tämän"
 "gui.status.external_override" = "<yellow>Toinen vaikutus tai muunnin korvaa tämän"
-"gui.status.not_equipped" = "<gray>Ei aktiivinen: seuralainen ei ole käytössä"
+"gui.status.not_equipped" = "<gray>Ei aktiivinen: kumppani ei ole käytössä"
 "gui.status.disabled" = "<gray>Poistettu käytöstä tällä palvelimella"
 "gui.status.inactive" = "<gray>Ei tällä hetkellä käytössä"
 "gui.status.cooldown" = "<yellow>Palautumassa"
@@ -295,8 +296,8 @@
 "gui.operation.sum" = "Lisää"
 "gui.operation.multiply" = "Kerro luvulla"
 "gui.operation.add_percent" = "Lisää prosentti"
-"gui.stack.sum" = "Laske vahvistimet yhteen"
-"gui.stack.highest" = "Korkein prioriteetti"
+"gui.stack.sum" = "Laske voimakkuustasot yhteen"
+"gui.stack.highest" = "Korkein etusija"
 "gui.target.all" = "Kaikki olennot"
 "gui.target.hostile" = "Vihamieliset olennot"
 "gui.target.passive" = "Passiiviset olennot"
@@ -307,60 +308,62 @@
 "command.description.booster" = "Anna tehostimen käyttökertoja; käynnistä tai peru aktivointeja"
 "command.description.transactions" = "Tarkista ja selvitä keskeneräiset ostot"
 "command.parameter.player" = "Paikalla olevan pelaajan tarkka nimi"
-"command.parameter.xp" = "Positiivinen kokonaismäärä kumppanikokemusta"
+"command.parameter.xp" = "Kumppanikokemuksen määrä positiivisena kokonaislukuna"
 "command.parameter.booster" = "Määritetyn tehostimen tunnus"
-"command.parameter.count" = "Positiivinen kokonaismäärä tehostimen käyttökertoja"
-"command.parameter.activation" = "Aktiivisen tai jonossa olevan aktivoinnin tunnus"
+"command.parameter.count" = "Tehostimen käyttökertojen määrä positiivisena kokonaislukuna"
+"command.parameter.activation" = "Aktiivisen tai jonossa olevan tehostinaktivoinnin tunnus"
 "command.parameter.transaction" = "Keskeneräisen ostotapahtuman tunnus"
 "command.parameter.resolution" = "grant tai cancel maksutietojen tarkistamisen jälkeen"
-"command.progression.granted" = "<green>Tallennettiin <green>{amount}</green> kokemusta pelaajan <green>{player}</green> kumppanille <green>{companion}</green>."
-"command.progression.not-configured" = "<gold>Kumppanille <gold>{companion}</gold> ei ole määritetty edistymistä."
-"command.progression.player-unavailable" = "<red><red>{player}</red> ei ole paikalla."
-"command.progression.player-loading" = "<gold>Pelaajan <gold>{player}</gold> edistymistiedot eivät ole valmiit. Yritä latauksen jälkeen."
-"command.progression.invalid-amount" = "<red>Anna kokonaisluku väliltä 1–<red>{maximum}</red>."
-"command.booster.granted" = "<green>Tallennettiin pelaajalle <green>{player}</green> tehostimen <green>{booster}</green> käyttökertoja: <green>{amount}</green>."
-"command.booster.not-found" = "<red>Tehostinta tunnuksella <red>{booster}</red> ei ole."
-"command.booster.server-only" = "<red>Tämä komento käynnistää vain palvelimen tehostimia."
-"command.transactions.count" = "<gold>Keskeneräiset ostot: <gold>{count}</gold>"
-"command.transactions.entry" = "<gray><yellow>{transaction}</yellow> Pelaaja: <gray>{player}</gray>; <gray>{kind}</gray>; kumppani: <gray>{companion}</gray>; määritys: <gray>{definition}</gray>; edellinen porras: <gray>{tier}</gray>; tila: <gray>{status}</gray>; raha: <gray>{money}</gray>; esineet: <gray>{items}</gray>; palvelu: <gray>{provider}</gray>; luotu: <gray>{created}</gray>"
-"command.transactions.reference" = "<gray>Tapahtuman tai aktivoinnin tunnus: <white>{transaction}</white>"
-"command.transactions.reconciled" = "<gold>Selvitys tallennettu. Rahaa tai esineitä ei veloitettu eikä palautettu automaattisesti."
+"command.progression.granted" = "<green>Tallennettiin {amount} kumppanikokemusta pelaajan {player} kumppanille {companion}.</green>"
+"command.progression.not-configured" = "<gold>Kumppanille {companion} ei ole määritetty etenemistä.</gold>"
+"command.progression.player-unavailable" = "<red>{player} ei ole paikalla.</red>"
+"command.progression.player-loading" = "<gold>Pelaajan {player} etenemistiedot eivät ole valmiita. Yritä uudelleen, kun ne on ladattu.</gold>"
+"command.progression.invalid-amount" = "<red>Anna kokonaisluku väliltä 1–{maximum}.</red>"
+"command.booster.granted" = "<green>Tallennettiin {amount} tehostimen {booster} käyttökertaa pelaajalle {player}.</green>"
+"command.booster.not-found" = "<red>Tehostinta tunnuksella {booster} ei ole.</red>"
+"command.booster.server-only" = "<red>Tämä komento käynnistää vain palvelintehostimia.</red>"
+"command.booster.started" = "<green>Palvelintehostin {booster} käynnistettiin tai lisättiin jonoon.</green>"
+"command.booster.cancelled" = "<green>Tehostimen aktivointi {activation} peruttiin.</green>"
+"command.transactions.count" = "<gold>Keskeneräiset ostot: {count}</gold>"
+"command.transactions.entry" = "<yellow>{transaction}</yellow> <gray>Pelaaja: {player}; {kind}; kumppani: {companion}; määritys: {definition}; edellinen porras: {tier}; tila: {status}; raha: {money}; esineet: {items}; palveluntarjoaja: {provider}; luotu: {created}</gray>"
+"command.transactions.reference" = "<gray>Tapahtuman tai aktivoinnin tunnus: <white>{transaction}</white></gray>"
+"command.transactions.reconciled" = "<gold>Selvitys tallennettu. Rahaa tai esineitä ei veloitettu eikä palautettu automaattisesti.</gold>"
 "gui.title.upgrades" = "<gold>Kumppanin parannukset"
 "gui.title.purchase" = "<gold>Vahvista osto"
 "gui.title.boosts" = "<gold>Kumppanitehostimet"
 "gui.title.booster" = "<gold>Tehostimen tiedot"
-"gui.title.active-boosts" = "<gold>Aktiiviset tehosteet"
+"gui.title.active-boosts" = "<gold>Aktiiviset tehostimet"
 "gui.upgrades" = "<gradient:#ffcf70:#ff9f43>★ Kumppanin parannukset</gradient>"
 "gui.upgrades-hint" = "<gray>Kehitä kumppaniasi ja paranna sen bonuksia."
 "gui.boosts" = "<gradient:#ffe082:#ffb74d>⌛ Tehostimet</gradient>"
-"gui.boosts-hint" = "<gray>Selaa henkilökohtaisia ja koko palvelimen tehosteita."
-"gui.progress-level" = "<gold>★ Taso <white>{level}</white>"
-"gui.progress-xp" = "<gray>Kumppanikokemus: <yellow>{xp}</yellow> / <white>{required}</white>"
+"gui.boosts-hint" = "<gray>Selaa henkilökohtaisia ja koko palvelimen tehostimia."
+"gui.progress-level" = "<gold>★ Taso <white>{level}"
+"gui.progress-xp" = "<gray>Kumppanikokemus: <yellow>{xp}</yellow> / <white>{required}"
 "gui.max-level" = "<green>✓ Kumppanin enimmäistaso"
-"gui.upgrade-tier" = "<gray>Parannusporras: <gold>{tier}</gold> / <white>{maximum}</white>"
+"gui.upgrade-tier" = "<gray>Parannusporras: <gold>{tier}</gold> / <white>{maximum}"
 "gui.max-tier" = "<green>✓ Täysin parannettu"
-"gui.upgrade-change" = "<gray><gray>{bonus}</gray>: <white>{current}</white> <gold>→</gold> <green>{next}</green>"
-"gui.required-level" = "<gray>Vaadittu kumppanin taso: <yellow>{level}</yellow>"
+"gui.upgrade-change" = "<gray>{bonus}: <white>{current}</white> <gold>→</gold> <green>{next}"
+"gui.required-level" = "<gray>Vaadittu kumppanin taso: <yellow>{level}"
 "gui.level-locked" = "<red>Vaatimukset eivät täyty."
 "gui.upgrade-preview" = "<yellow>Tarkastele parannusta napsauttamalla."
 "gui.no-upgrades" = "<gold>Parannuksia ei ole määritetty"
 "gui.no-upgrades-hint" = "<gray>Tällä kumppanilla ei ole parannuspolkuja."
 "gui.confirm-purchase" = "<green>✓ Vahvista osto"
-"gui.confirm-purchase-hint" = "<gray>Maksa ilmoitettu hinta ja viimeistele ostos."
+"gui.confirm-purchase-hint" = "<gray>Maksa ilmoitettu hinta ja viimeistele osto."
 "gui.cancel-purchase" = "<yellow>◀ Peru"
 "gui.cancel-purchase-hint" = "<gray>Palaa kuluttamatta mitään."
-"gui.cost-free" = "<gray>Hinta: <green>Ilmainen</green>"
-"gui.cost-money" = "<gray>Tarvittava raha: <gold>{amount}</gold>"
-"gui.cost-item" = "<gray>Tarvittavat esineet: <yellow>{amount}</yellow> × <yellow>{item}</yellow>"
+"gui.cost-free" = "<gray>Hinta: <green>Ilmainen"
+"gui.cost-money" = "<gray>Tarvittava raha: <gold>{amount}"
+"gui.cost-item" = "<gray>Tarvittavat esineet: <yellow>{amount} × {item}"
 "gui.booster-open" = "<yellow>Näytä osto- ja aktivointivaihtoehdot napsauttamalla."
-"gui.booster-scope.personal" = "<aqua>Henkilökohtainen tehoste <dark_gray>• <gray>Vain sinulle"
-"gui.booster-scope.server" = "<gold>Palvelintehoste <dark_gray>• <gray>Kaikille tämän palvelimen pelaajille"
-"gui.booster-channel" = "<gray><gray>{channel}</gray>: +<green>{percent}</green>%"
-"gui.booster-duration" = "<gray>Kesto: <white>{time}</white>"
-"gui.booster-remaining" = "<gray>Aikaa jäljellä: <yellow>{time}</yellow>"
-"gui.booster-rule.queue" = "<gray>Päällekkäiset tehosteet odottavat jonossa."
-"gui.booster-rule.highest" = "<gray>Kummankin vaikutusalueen vahvin tehoste vaikuttaa."
-"gui.booster-credits" = "<gray>Omistetut käyttökerrat: <gold>{count}</gold>"
+"gui.booster-scope.personal" = "<aqua>Henkilökohtainen tehostin <dark_gray>• <gray>Vain sinulle"
+"gui.booster-scope.server" = "<gold>Palvelintehostin <dark_gray>• <gray>Kaikille tällä palvelimella"
+"gui.booster-channel" = "<gray>{channel}: <green>+{percent}%"
+"gui.booster-duration" = "<gray>Kesto: <white>{time}"
+"gui.booster-remaining" = "<gray>Aikaa jäljellä: <yellow>{time}"
+"gui.booster-rule.queue" = "<gray>Päällekkäiset tehostimet odottavat jonossa."
+"gui.booster-rule.highest" = "<gray>Kunkin vaikutusalueen vahvin tehostin on voimassa."
+"gui.booster-credits" = "<gray>Omistetut käyttökerrat: <gold>{count}"
 "gui.buy-booster" = "<green>Osta yksi käyttökerta"
 "gui.buy-booster-hint" = "<gray>Tarkista hinta ennen ostamista."
 "gui.activate-booster" = "<gold>Aktivoi tehostin"
@@ -368,24 +371,24 @@
 "gui.no-booster-credit" = "<gray>Et omista tämän tehostimen käyttökertaa."
 "gui.no-boosters" = "<gold>Tehostimia ei ole määritetty"
 "gui.no-boosters-hint" = "<gray>Tällä palvelimella ei ole tehostinmäärityksiä."
-"gui.active-boosts" = "<aqua>⌛ Aktiiviset tehosteet ja jono"
-"gui.active-boosts-hint" = "<gray>Näytä omat ja palvelimen tehosteet sekä yhteisvaikutus."
+"gui.active-boosts" = "<aqua>⌛ Aktiiviset tehostimet ja jono"
+"gui.active-boosts-hint" = "<gray>Näytä omat tehostimesi, palvelimen tapahtumat ja yhdistetyt kertoimet."
 "gui.booster-running" = "<green>✓ Käynnissä"
 "gui.booster-queued" = "<yellow>⌛ Jonossa"
-"gui.booster-total" = "<gray>Kanavan <gray>{channel}</gray> tehosteet yhteensä: +<green>{percent}</green>%"
-"gui.booster-cap" = "<gray>Yhdistetyn tehosteen enimmäismäärä: +<white>{percent}</white>%"
-"gui.booster-applied" = "<gray>Omat ja palvelimen tehosteet: +<green>{percent}</green>% alkuperäisestä palkkiosta"
-"gui.no-active-boosts" = "<gold>Ei aktiivisia tehosteita"
+"gui.booster-total" = "<gray>Kanavan {channel} tehostimet yhteensä: <green>+{percent}%"
+"gui.booster-cap" = "<gray>Yhdistetyn tehostimen enimmäismäärä: <white>+{percent}%"
+"gui.booster-applied" = "<gray>Omat + palvelimen tehostimet: <green>+{percent}% alkuperäisestä palkinnosta"
+"gui.no-active-boosts" = "<gold>Ei aktiivisia tehostimia"
 "gui.no-active-boosts-hint" = "<gray>Aloita aktivoimalla omistamasi tehostin."
 "gui.back-boosts" = "<gold>◀ Takaisin tehostimiin"
 "gui.back-boosts-hint" = "<gray>Selaa tehostimia ja omistamiasi käyttökertoja."
 "gui.purchase-busy" = "<yellow>Osto odottaa tai vaatii ylläpitäjän tarkistuksen."
 "gui.purchase-failed" = "<red>Toimintoa ei voitu suorittaa. Pyydä ylläpitäjää tarkistamaan tapahtumaloki."
 "progression.result.success" = "<green>✓ Tallennettu."
-"progression.result.not_ready" = "<yellow>Edistymistietojasi ladataan vielä."
+"progression.result.not_ready" = "<yellow>Etenemistietojasi ladataan vielä."
 "progression.result.busy" = "<yellow>Osto on jo kesken tai vaatii ylläpitäjän tarkistuksen."
-"progression.result.stale" = "<yellow>Edistymisesi muuttui. Avaa valikko uudelleen nähdäksesi nykyisen tarjouksen."
-"progression.result.locked" = "<red>Tämän toiminnon taso- tai käyttöoikeusvaatimukset eivät täyty."
+"progression.result.stale" = "<yellow>Etenemisesi muuttui. Avaa valikko uudelleen nähdäksesi nykyisen tarjouksen."
+"progression.result.locked" = "<red>Et täytä tämän toiminnon taso- tai käyttöoikeusvaatimuksia."
 "progression.result.max_level" = "<yellow>Tämä parannus on jo enimmäisportaalla."
 "progression.result.insufficient_items" = "<red>Sinulla ei ole kaikkia tarvittavia tavallisia esineitä. Nimettyjä tai muokattuja esineitä ei käytetä."
 "progression.result.economy_unavailable" = "<red>Palvelimen talouspalvelu ei ole käytettävissä. Maksua ei pyydetty."
@@ -403,9 +406,9 @@
 "gui.setup" = "<gold>Aloitusmääritys"
 "gui.setup-hint" = "<gray>Asenna aloituskumppanit ja valitse palvelimen bonukset."
 "gui.setup-cosmetic" = "<aqua>Kosmeettiset kumppanit"
-"gui.setup-cosmetic-hint" = "<gray>Poista ominaisuudet, bonukset, tehosteet, parannukset ja tehostimet käytöstä."
+"gui.setup-cosmetic-hint" = "<gray>Poista attribuutit, buffit, juomavaikutukset, parannukset ja tehostimet käytöstä."
 "gui.setup-survival" = "<green>Selviytymiskumppanit"
-"gui.setup-survival-hint" = "<gray>Ota määritetyt ominaisuudet, bonukset ja juomatehosteet käyttöön."
+"gui.setup-survival-hint" = "<gray>Ota määritetyt attribuutit, buffit ja juomavaikutukset käyttöön."
 "gui.setup-common" = "<gray>Asentaa puuttuvat aloituskumppanit; säilyttää kumppanitiedostosi."
 "gui.setup-costs" = "<gray>Parannukset ja tehostimet pysyvät pois käytöstä; hiukkaset otetaan käyttöön."
 "gui.setup-permissions" = "<gray>Pelaajien pääsy määräytyy edelleen käyttöoikeusasetustesi mukaan."
@@ -422,7 +425,7 @@
 "setup.stale" = "{prefix} <gold>Asetukset muuttuivat. Avaa määritys uudelleen ennen käyttöönottoa.</gold>"
 "command.description.collection" = "Selaa ja suodata kokoelmaasi"
 "command.description.outfits" = "Hallitse tallennettuja kumppanikokoonpanoja"
-"command.description.interact" = "Toimi varustetun kumppanin kanssa"
+"command.description.interact" = "Ole vuorovaikutuksessa käytössä olevan kumppanin kanssa"
 "gui.title.outfits" = "Tallennetut kokoonpanot"
 "gui.title.outfit" = "Tarkista kokoonpano"
 "gui.title.outfit-delete" = "Poista kokoonpano"
@@ -444,11 +447,11 @@
 "gui.outfit-apply" = "<green>Käytä tätä kokoonpanoa"
 "gui.outfit-delete" = "<red>Poista kokoonpano"
 "gui.outfit-delete-confirm" = "<red>Vahvista poistaminen"
-"gui.outfit-count" = "<gray>Kumppaneita: {count}"
+"gui.outfit-count" = "<gray>Kumppaneita: <white>{count}"
 "gui.personalize" = "<gold>Mukauta"
 "gui.nickname" = "<gold>Aseta nimi"
 "gui.name-reset" = "<gray>Palauta nimi"
-"gui.variants" = "<gold>Sallitut muunnelmat"
+"gui.variants" = "<gold>Hyväksytyt muunnelmat"
 "gui.default-choice" = "<gray>Käytä oletusta"
 "gui.formation" = "<gold>Muodostelma"
 "gui.formation-line" = "<gold>Jono"
@@ -458,20 +461,20 @@
 "gui.formation-later" = "<gold>Siirrä myöhemmäksi"
 "gui.interactions" = "<gold>Kumppanin toiminnot"
 "gui.action-pet" = "<gold>Silitä"
-"gui.action-wave" = "<gold>Vilkutus"
+"gui.action-wave" = "<gold>Vilkuta"
 "gui.action-sit" = "<gold>Istu"
-"gui.action-stay" = "<gold>Odota"
+"gui.action-stay" = "<gold>Pysy"
 "gui.action-call" = "<gold>Tule tänne"
 "gui.trial" = "<aqua>Kokeile yksityisesti"
 "gui.trial-stop" = "<gray>Lopeta yksityinen kokeilu"
 "gui.trial-hint" = "<gray>Vain sinä näet sen. {seconds}s; ei bonuksia."
 "gui.choice-value" = "<white>{value}"
 "collection.trial-started" = "{prefix} <aqua>Yksityinen kokeilu alkoi. Se ei anna bonuksia."
-"collection.outfit-prompt" = "{prefix} <yellow>Kirjoita kokoonpanon nimi chattiin (1–32 kirjainta, numeroa, _ tai -), tai cancel. Vanhenee 60 sekunnissa."
-"collection.name-prompt" = "{prefix} <yellow>Kirjoita tavallinen nimi chattiin (enintään 32 merkkiä), tai cancel. Vanhenee 60 sekunnissa."
-"collection.choose-equipped" = "{prefix} <yellow>Varusta ensin kumppani. Jos niitä on useita, anna sen tunnus."
+"collection.outfit-prompt" = "{prefix} <yellow>Kirjoita kokoonpanon nimi chattiin (1–32 kirjainta, numeroa, _ tai -) tai kirjoita cancel. Vanhenee 60 sekunnissa."
+"collection.name-prompt" = "{prefix} <yellow>Kirjoita tavallinen nimi chattiin (enintään 32 merkkiä) tai kirjoita cancel. Vanhenee 60 sekunnissa."
+"collection.choose-equipped" = "{prefix} <yellow>Ota ensin kumppani käyttöön. Jos käytössä on useita, lisää sen tunnus."
 "collection.action-applied" = "{prefix} <green>Kumppanisi reagoi."
-"collection.cooldown" = "{prefix} <yellow>Odota hetki ennen seuraavaa toimintoa."
+"collection.cooldown" = "{prefix} <yellow>Odota hetki ennen seuraavaa vuorovaikutusta."
 "collection.rejected" = "{prefix} <red>Muutosta ei voitu tehdä: {detail}"
 "collection.saved" = "{prefix} <green>Kokoelma tallennettu."
 "collection.working" = "{prefix} <yellow>Edellistä muutosta tallennetaan vielä."
@@ -480,42 +483,42 @@
 "gui.collection-operation-failed" = "{prefix} <red>Muutosta ei voitu tehdä: {reason}"
 "gui.title.settings" = "<gold>Näkyvyysasetukset"
 "gui.settings" = "<gold>Näkyvyysasetukset"
-"gui.settings-hint" = "<gray>Valitse, mitkä seuralaiset ja hiukkaset näet."
-"gui.settings-visibility" = "<aqua>Seuralaiset"
-"gui.settings-visibility-all" = "<green>Kaikki seuralaiset"
-"gui.settings-visibility-all-hint" = "<gray>Näytä seuralaiset ja koristeet."
+"gui.settings-hint" = "<gray>Valitse, mitkä kumppanit ja hiukkaset näet."
+"gui.settings-visibility" = "<aqua>Kumppanit"
+"gui.settings-visibility-all" = "<green>Kaikki kumppanit"
+"gui.settings-visibility-all-hint" = "<gray>Näytä kumppanit ja koristeet."
 "gui.settings-visibility-own" = "<yellow>Vain omat"
-"gui.settings-visibility-own-hint" = "<gray>Näytä vain omat seuralaisesi."
-"gui.settings-visibility-none" = "<red>Piilota seuralaiset"
-"gui.settings-visibility-none-hint" = "<gray>Piilota seuralaiset ja koristeet näkymästäsi."
+"gui.settings-visibility-own-hint" = "<gray>Näytä vain omat kumppanisi."
+"gui.settings-visibility-none" = "<red>Piilota kumppanit"
+"gui.settings-visibility-none-hint" = "<gray>Piilota kumppanit ja koristeet näkymästäsi."
 "gui.settings-particles" = "<aqua>Hiukkaset"
-"gui.settings-particles-full" = "<green>Täydet"
+"gui.settings-particles-full" = "<green>Täysi"
 "gui.settings-particles-full-hint" = "<gray>Näytä jokainen hiukkasruutu."
-"gui.settings-particles-reduced" = "<yellow>Vähennetyt"
+"gui.settings-particles-reduced" = "<yellow>Vähennetty"
 "gui.settings-particles-reduced-hint" = "<gray>Näytä joka toinen hiukkasruutu."
 "gui.settings-particles-off" = "<red>Pois"
-"gui.settings-particles-off-hint" = "<gray>Piilota seuralaisten hiukkaset."
-"gui.settings-server-limit" = "<gray>Palvelin voi rajoittaa hiukkasten määrää."
-"command.description.settings" = "Valitse seuralaisten näkyvyys ja hiukkaset"
+"gui.settings-particles-off-hint" = "<gray>Piilota kumppanien hiukkaset."
+"gui.settings-server-limit" = "<gray>Palvelin voi rajoittaa hiukkasten voimakkuutta."
+"command.description.settings" = "Valitse kumppanien näkyvyys ja hiukkaset"
 "command.parameter.setting" = "Asetus"
 "command.parameter.value" = "Arvo"
 
-"collection.reason.equip-first" = "Ota tämä seuralainen ensin käyttöön."
-"collection.reason.outfit-limit" = "Olet saavuttanut kokoonpanojen rajan {limit}."
+"collection.reason.equip-first" = "Ota tämä kumppani ensin käyttöön."
+"collection.reason.outfit-limit" = "Olet saavuttanut kokoonpanojen enimmäismäärän ({limit})."
 "collection.reason.outfit-unavailable" = "Kokoonpano ei ole saatavilla."
-"collection.reason.formation-order" = "Muodostelmaan saa lisätä vain käytössä olevia seuralaisia."
+"collection.reason.formation-order" = "Muodostelman järjestyksessä saa olla vain käytössä olevia kumppaneita."
 "collection.reason.model-limit" = "Kokoonpano ylittää mallikohtaisen rajasi."
 "collection.reason.personalization-locked" = "Mukauttaminen on lukittu."
-"collection.reason.particle-unavailable" = "Partikkelitehoste ei ole saatavilla."
-"collection.reason.particle-locked" = "Partikkelitehoste on lukittu."
-"collection.reason.particle-remove-denied" = "Et voi poistaa tätä partikkelitehostetta."
-"collection.reason.nickname-invalid" = "Nimissä saa olla enintään 32 tavallista tekstimerkkiä."
+"collection.reason.particle-unavailable" = "Hiukkastehoste ei ole saatavilla."
+"collection.reason.particle-locked" = "Hiukkastehoste on lukittu."
+"collection.reason.particle-remove-denied" = "Et voi poistaa tätä hiukkastehostetta."
+"collection.reason.nickname-invalid" = "Nimen on oltava tavallista tekstiä, enintään 32 merkkiä."
 "collection.reason.formation-invalid" = "Tuntematon muodostelma: {formation}."
-"collection.reason.cosmetic-invalid" = "Virheellinen ulkoasun tunniste."
+"collection.reason.cosmetic-invalid" = "Virheellinen kosmeettinen tunniste."
 "collection.reason.outfit-name-invalid" = "Kokoonpanon nimessä saa olla 1–32 kirjainta, numeroa, alaviivaa tai yhdysmerkkiä."
 "collection.reason.variant-locked" = "Lukittu muunnelma: {variant}."
 "collection.reason.variant-unavailable" = "Muunnelma ei ole saatavilla: {variant}."
-"collection.reason.cancelled" = "Toinen lisäosa perui tämän seuralaismuutoksen."
+"collection.reason.cancelled" = "Toinen lisäosa perui tämän kumppanimuutoksen."
 "collection.reason.save-failed" = "Tallennus epäonnistui; aiemmat asetukset palautettiin mahdollisuuksien mukaan."
 "collection.reason.busy" = "Odota edellisen muutoksen tallentumista."
 "command.description.status" = "Näytä ajonaikainen tila, ominaisuudet ja yhteensopivuus"
@@ -523,14 +526,14 @@
 "command.parameter.upload" = "Lähetä raportti, kun julkiset lähetykset on sallittu"
 "command.feedback.inactive" = "{prefix} <gray>Ajoympäristö käynnistyy uudelleen; yritä hetken kuluttua uudelleen.</gray>"
 "command.status.header" = "Ajonaikainen tila"
-"command.status.configuration" = "<gray>Kumppanit: {enabled} <dark_gray>|</dark_gray> Kieli: <white>{language}</white> <dark_gray>|</dark_gray> Automaattinen lataus: {hot_reload}</gray>"
-"command.status.runtime" = "<gray>Määritykset: <white>{count}</white> <dark_gray>|</dark_gray> Ladatut pelaajat: <white>{players}</white> <dark_gray>|</dark_gray> Varustetut kumppanit: <white>{companions}</white></gray>"
+"command.status.configuration" = "<gray>Kumppanit: {enabled} <dark_gray>|</dark_gray> Kieli: <white>{language}</white> <dark_gray>|</dark_gray> Automaattinen uudelleenlataus: {hot_reload}</gray>"
+"command.status.runtime" = "<gray>Määritykset: <white>{count}</white> <dark_gray>|</dark_gray> Ladatut pelaajat: <white>{players}</white> <dark_gray>|</dark_gray> Käytössä olevat kumppanit: <white>{companions}</white></gray>"
 "command.status.features" = "<gray>Ominaisuudet: <white>{features}</white> <dark_gray>|</dark_gray> Tallennus: <white>{value}</white></gray>"
 "command.status.integrations" = "<gray>Integraatiot: <white>{integrations}</white></gray>"
 "command.status.compatibility" = "<gray>Java <white>{java}</white> / Bukkit <white>{range}</white> <dark_gray>|</dark_gray> Ajastin: <white>{scheduler}</white> <dark_gray>|</dark_gray> Sovitin: <white>{value}</white></gray>"
 "runtime.hot_reload.success" = "<green>Otettu käyttöön:</green> <gray>asetus- ja kielitiedostojen muutokset.</gray>"
 "runtime.hot_reload.failed" = "<red>Tiedostomuutokset hylättiin; viimeiset kelvolliset asetukset pysyvät käytössä.</red>"
-"director.help.category" = "Komentokategoria"
+"director.help.category" = "Komentoluokka"
 "director.help.command_group" = "Komentoryhmä. Avaa napsauttamalla."
 "director.help.no_description" = "Kuvausta ei ole annettu"
 "director.help.no_parameters" = "Ei parametreja. Esitäytä komento napsauttamalla."
@@ -541,17 +544,17 @@
 "director.help.navigation.next.hover" = "Seuraava sivu"
 "director.help.navigation.parent.hover" = "Palaa ylempään komentoryhmään"
 "director.help.navigation.previous.hover" = "Edellinen sivu"
-"director.help.parameter.default" = "Oletusarvo on \"{value}\", jos sitä ei määritetä."
+"director.help.parameter.default" = "Oletusarvo on ”{value}”, jos sitä ei määritetä."
 "director.help.parameter.optional" = "Tämä parametri on valinnainen."
 "director.help.parameter.required" = "Tämä parametri on pakollinen."
 "director.help.parameter.type" = "Tämän parametrin tyyppi on {type}."
-"director.runtime.error.conversion_failed" = "Arvoa \"{value}\" ei voi muuntaa tyypiksi {type} parametrille {parameter}"
+"director.runtime.error.conversion_failed" = "Arvoa ”{value}” ei voi muuntaa tyypiksi {type} parametrille {parameter}"
 "director.runtime.error.default_parse_failed" = "Parametrin {parameter} oletusarvoa ei voi jäsentää"
 "director.runtime.error.execution_failed" = "Komennon {command} suoritus epäonnistui: {reason}"
 "director.runtime.error.invalid_origin" = "Tätä komentoa ei voi suorittaa tästä lähteestä."
-"director.runtime.error.missing_argument" = "Puuttuva argumentti \"{parameter}\" ({type})"
-"director.runtime.error.unexpected_argument" = "Odottamaton argumentti \"{argument}\". Valinnaiset parametrit on annettava avaimella, esim. seed=123"
-"director.runtime.error.unclosed_group" = "Sulkeva \"]\" puuttuu parametrilta {key}"
+"director.runtime.error.missing_argument" = "Puuttuva argumentti ”{parameter}” ({type})"
+"director.runtime.error.unexpected_argument" = "Odottamaton argumentti ”{argument}”. Valinnaiset parametrit on annettava avaimen kanssa, esim. seed=123"
+"director.runtime.error.unclosed_group" = "Parametrilta {key} puuttuu sulkeva ”]”"
 "director.runtime.error.unknown_parameter" = "Tuntematon parametriavain: {key}"
 "language.menu.your_language" = "Oma kielesi"
 "language.menu.reset_your_language" = "Palauta oma kielesi"
@@ -569,33 +572,40 @@
 "language.menu.no_controls" = "Sinulla ei ole käytettävissä kieliasetuksia."
 "language.menu.command" = "Komento: {command}"
 "language.menu.selected" = "valittu"
-"language.menu.all-volmit-plugins" = "Kaikki Volmit-lisäosat"
-"language.error.stopping" = "&cKielivalintaa ei ole saatavilla, kun plugin pysähtyy."
+"language.menu.all-volmit-plugins" = "kaikki Volmit-lisäosat"
+"language.error.stopping" = "&cKielivalinta ei ole käytettävissä, kun lisäosa pysähtyy."
 "language.error.editor-player-only" = "&cAvaa kielieditori pelissä."
-"language.error.no-providers" = "&cYhtään Volmit-kielipalvelua ei ole saatavilla."
+"language.error.no-providers" = "&cVolmit-kielipalveluita ei ole saatavilla."
 "language.error.numeric-page" = "&cAnna sivunumero numerona."
 "language.error.personal-player-only" = "&cPelaajan kieliasetukset on valittava pelissä."
-"language.error.personal-permission" = "&cSinulla ei ole lupaa valita kieltäsi."
+"language.error.personal-permission" = "&cSinulla ei ole oikeutta valita kieltäsi."
 "language.error.plugin-personal-permission" = "&cSinulla ei ole oikeutta valita kieltäsi lisäosalle {plugin}."
 "language.error.plugin-server-permission" = "&cSinulla ei ole oikeutta muuttaa lisäosan {plugin} palvelinkieltä."
 "language.error.server-locale-required" = "&cValitse palvelimen oletuskieleksi kielikoodi, kuten en_US."
 "language.error.unavailable-for-all" = "&cKieli {locale} ei ole saatavilla kaikille valituille lisäosille."
 "language.usage.editor" = "&7Käyttö: /{command} language server edit [locale]"
-"language.usage.selection" = "&7Käyttö: /{command} language self [locale|reset] or server [locale]"
+"language.usage.selection" = "&7Käyttö: /{command} language self [locale|reset] tai server [locale]"
 "language.usage.volmit-selection" = "&7Käyttö: /volmit plugins languages [locale]"
+"language.usage.update" = "&7Käyttö: /{command} language update"
 "language.selection.preparing" = "&7Valmistellaan kieltä {locale} kohteelle {target}..."
-"language.selection.save-failed" = "{plugin}: &ckielivalintaa ei voitu tallentaa; tarkista palvelinkonsoli."
+"language.selection.save-failed" = "{plugin}: &ckielivalintaa ei voitu tallentaa; tarkista palvelimen konsoli."
 "language.selection.english-fallback" = "{plugin}: &e{locale} ei ole saatavilla; käytetään englantia (en_US)."
-"language.selection.personal-selected" = "{plugin}: &7kieli on nyt {locale}."
+"language.selection.personal-selected" = "{plugin}: &7kielesi on nyt {locale}."
 "language.selection.server-selected" = "{plugin}: &7palvelinkieli on nyt {locale}."
 "language.selection.server-default-selected" = "{plugin}: &7kielesi noudattaa nyt palvelimen oletuskieltä."
+"language.update.checking" = "{plugin}: &7tarkistetaan kielivaraston muutoksia..."
+"language.update.unchanged" = "{plugin}: &7asennetut kielet vastaavat jo varastoa."
+"language.update.applied" = "{plugin}: &7{locale} päivitetty ({added} lisätty, {updated} muutettu, {kept} paikallista muokkausta säilytetty)."
+"language.update.cooldown" = "{plugin}: &7kielivarasto tarkistettiin äskettäin; yritä uudelleen {remaining} kuluttua."
+"language.update.locale-failed" = "{plugin}: &c{locale} ei päivittynyt: {reason}"
+"language.update.failed" = "{plugin}: &ckielipäivitys epäonnistui: {reason}"
 "language.editor.title" = "{plugin} › {section}"
 "language.editor.loading" = "&7Ladataan kielen {locale} viestejä..."
 "language.editor.section.languages" = "Kielet"
 "language.editor.section.search" = "Etsi"
 "language.editor.section.search-title" = "{locale} / Etsi"
 "language.editor.section.group-title" = "{locale} / {group}"
-"language.editor.prompt.search" = "&7Hae viestin avainta tai tekstiä. Palaa kirjoittamalla cancel."
+"language.editor.prompt.search" = "&7Hae viestien avaimia tai tekstiä. Palaa kirjoittamalla cancel."
 "language.editor.prompt.value" = "&7Kirjoita avaimen {key} uusi arvo chattiin."
 "language.editor.prompt.current" = "&7Nykyinen arvo: {value}"
 "language.editor.prompt.variables" = "&7Muuttujat: {variables}"
@@ -623,7 +633,7 @@
 "language.editor.saved.summary" = "&7{locale} tallennettu. Kielivalinnat säilyvät ennallaan."
 "language.editor.saved.change" = "&7{key}: ”{before}” muutettiin arvoon ”{after}”."
 "language.editor.part.line" = "Rivi {line}"
-"language.editor.value.none" = "Ei ole"
+"language.editor.value.none" = "Ei mitään"
 "language.editor.value.empty" = "(tyhjä)"
 "debug.preparing" = "&7Valmistellaan lisäosan {plugin} vianmääritysraporttia..."
 "debug.saved" = "&7Lisäosan {plugin} vianmääritysraportti tallennettiin polkuun {path}."
@@ -650,8 +660,8 @@
 "config.editor.entry" = "Kohde {number}"
 "config.editor.current" = "Nykyinen: {value}"
 "config.editor.open" = "Avaa osio napsauttamalla."
-"config.editor.toggle" = "Vaihda käyttöön tai pois napsauttamalla."
-"config.editor.edit" = "Napsauta ja kirjoita uusi arvo keskusteluun."
+"config.editor.toggle" = "Vaihda arvojen true ja false välillä napsauttamalla."
+"config.editor.edit" = "Napsauta ja kirjoita uusi arvo chattiin."
 "config.editor.prompt" = "Kirjoita uusi arvo kohteelle {path}. Palaa kirjoittamalla cancel."
 "config.editor.expired" = "Asetusten syöttö vanheni."
 "config.editor.too-long" = "Kirjoita enintään {maximum} merkkiä."
@@ -671,24 +681,24 @@
 "config.editor.type.integer" = "Kirjoita kokonaisluku."
 "config.editor.type.decimal" = "Kirjoita luku, esimerkiksi 0.25."
 "config.editor.type.list" = "Käytä TOML-listaa, esimerkiksi [\"stone\", \"deepslate\"]."
-"config.editor.adjust" = "Vasen +{step}, oikea -{step}, vaihto x10, Q syöttääksesi tarkan arvon."
+"config.editor.adjust" = "Vasen +{step}, oikea -{step}, Shift x10, Q tarkan arvon kirjoittamiseen."
 
 "gui.config.title" = "Asetukset"
-"gui.setting.collections" = "Henkilökohtaiset kokoelmat, asut, kokeilut ja persoonallisuus."
+"gui.setting.collections" = "Henkilökohtaiset kokoelmat, kokoonpanot, kokeilut ja persoonallisuus."
 "gui.setting.collections.idleReactions" = "Salli satunnaiset joutilaat reaktiot, kun kumppani on paikallaan."
 "gui.setting.collections.idleReactions.name" = "Joutilaat reaktiot"
-"gui.setting.collections.maximumOutfits" = "Tallennettujen asujen enimmäismäärä pelaajaa kohden, vähintään 1 ja enintään 32."
-"gui.setting.collections.maximumOutfits.name" = "Asujen enimmäismäärä"
+"gui.setting.collections.maximumOutfits" = "Tallennettujen kokoonpanojen enimmäismäärä pelaajaa kohden, 1–32."
+"gui.setting.collections.maximumOutfits.name" = "Kokoonpanojen enimmäismäärä"
 "gui.setting.collections.name" = "Kokoelmat"
-"gui.setting.collections.personalityEnabled" = "Salli silitys-, vilkutus-, istu-, pysy- ja kutsuvuorovaikutukset."
+"gui.setting.collections.personalityEnabled" = "Salli silittäminen, vilkuttaminen, istuminen, paikallaan pysyminen ja kutsuminen."
 "gui.setting.collections.personalityEnabled.name" = "Persoonallisuus käytössä"
-"gui.setting.collections.trialSeconds" = "Yksityisen lukitun kumppanin esikatselun kesto, vähintään 5 ja enintään 120 sekuntia."
-"gui.setting.collections.trialSeconds.name" = "Kokeilun sekunnit"
-"gui.setting.debug" = "Diagnostiikkaraporttien lähetykset."
-"gui.setting.debug.name" = "Virheenjäljitys"
+"gui.setting.collections.trialSeconds" = "Lukitun kumppanin yksityisen kokeilun kesto, 5–120 sekuntia."
+"gui.setting.collections.trialSeconds.name" = "Kokeilun kesto sekunteina"
+"gui.setting.debug" = "Vianmääritysraporttien lähetykset."
+"gui.setting.debug.name" = "Vianmääritys"
 "gui.setting.debug.uploadEnabled" = "Salli komennon /bytecompanions debug dump upload=true julkaista raportit mclo.gs-palveluun sen jälkeen, kun ne on tallennettu paikallisesti."
 "gui.setting.debug.uploadEnabled.name" = "Lähetys käytössä"
-"gui.setting.features" = "Ominaisuuspaketit; poistetut paketit piilottavat komentonsa ja säilyttävät tallennetun tilansa."
+"gui.setting.features" = "Ominaisuuspaketit; käytöstä poistetut paketit piilottavat komentonsa ja säilyttävät tallennetun tilansa."
 "gui.setting.features.attributes" = "Ota kumppanien attribuuttimuokkaimet käyttöön."
 "gui.setting.features.attributes.name" = "Attribuutit"
 "gui.setting.features.boosters" = "Ota henkilökohtaiset ja palvelinlaajuiset kumppanitehostimet käyttöön."
@@ -700,9 +710,9 @@
 "gui.setting.features.effects" = "Ota kumppanien juomavaikutukset käyttöön."
 "gui.setting.features.effects.name" = "Vaikutukset"
 "gui.setting.features.name" = "Ominaisuudet"
-"gui.setting.features.particles" = "Ota kumppanien partikkelitehosteet käyttöön."
-"gui.setting.features.particles.name" = "Partikkelit"
-"gui.setting.features.progression" = "Ota kumppanien tasot ja valinnaiset bonuspäivitykset käyttöön."
+"gui.setting.features.particles" = "Ota kumppanien hiukkastehosteet käyttöön."
+"gui.setting.features.particles.name" = "Hiukkaset"
+"gui.setting.features.progression" = "Ota kumppanien tasot ja valinnaiset bonusparannukset käyttöön."
 "gui.setting.features.progression.name" = "Eteneminen"
 "gui.setting.general" = "Pääkytkin, palvelimen kieli, päivitysilmoitukset ja kumppanirajat."
 "gui.setting.general.autoLoadCompanions" = "Lataa kumppanimääritykset companions-kansiosta, kun ajoympäristö käynnistyy."
@@ -717,7 +727,7 @@
 "gui.setting.general.companionLimits.perModel.headOnly" = "Pelkkä pää -kumppanien enimmäismäärä, jonka yksi pelaaja voi pitää käytössä kerralla; -1 poistaa rajan."
 "gui.setting.general.companionLimits.perModel.headOnly.name" = "Pelkkä pää"
 "gui.setting.general.companionLimits.perModel.name" = "Mallikohtainen"
-"gui.setting.general.enabled" = "Pääkytkin kumppanien visuaaleille ja pelibonuksille."
+"gui.setting.general.enabled" = "Pääkytkin kumppanien visuaalisille elementeille ja pelibonuksille."
 "gui.setting.general.enabled.name" = "Käytössä"
 "gui.setting.general.language" = "Palvelimen oletuskieli, joka tallennetaan suoraan muokattavaan languages/<locale>.toml-tiedostoon."
 "gui.setting.general.language.name" = "Kieli"
@@ -725,14 +735,14 @@
 "gui.setting.general.updateNotifications" = "Ilmoita operaattoreille ja pelaajille, joilla on bytecompanions.update, uudemmista GitHub-julkaisuista liittymisen yhteydessä."
 "gui.setting.general.updateNotifications.name" = "Päivitysilmoitukset"
 "gui.setting.hotReload" = "Asetus-, kumppani-, ominaisuus- ja kielitiedostojen automaattinen uudelleenlataus."
-"gui.setting.hotReload.cooldownMillis" = "Millisekunnit, jotka muuttuneen tiedoston on pysyttävä muuttumattomana ennen käyttöönottoa, vähintään 250 ja enintään 60000."
+"gui.setting.hotReload.cooldownMillis" = "Millisekunnit, jotka muuttuneen tiedoston on pysyttävä muuttumattomana ennen käyttöönottoa, 250–60000."
 "gui.setting.hotReload.cooldownMillis.name" = "Viive millisekunteina"
 "gui.setting.hotReload.enabled" = "Ota datakansion vakaat tiedostomuutokset käyttöön automaattisesti."
 "gui.setting.hotReload.enabled.name" = "Käytössä"
-"gui.setting.hotReload.name" = "Kuuma uudelleenlataus"
+"gui.setting.hotReload.name" = "Automaattinen uudelleenlataus"
 "gui.setting.hotReload.notifyOperators" = "Ilmoita paikalla oleville pelaajille, joilla on bytecompanions.config, kun automaattinen tiedoston uudelleenlataus onnistuu tai epäonnistuu."
 "gui.setting.hotReload.notifyOperators.name" = "Ilmoita operaattoreille"
-"gui.setting.hotReload.pollIntervalMillis" = "Millisekunnit tiedostotarkistusten välillä, vähintään 250 ja enintään 60000."
+"gui.setting.hotReload.pollIntervalMillis" = "Millisekunnit tiedostotarkistusten välillä, 250–60000."
 "gui.setting.hotReload.pollIntervalMillis.name" = "Tarkistusväli millisekunteina"
 "gui.setting.languages" = "Muokkaa palvelimen käännöksiä ja niiden muotoilua."
 "gui.setting.languages.name" = "Kielet"
@@ -744,11 +754,11 @@
 "gui.setting.metrics.enabled" = "Lähetä anonyymit ByteCompanions-käyttötilastot bStats-palveluun."
 "gui.setting.metrics.enabled.name" = "Käytössä"
 "gui.setting.metrics.name" = "Tilastot"
-"gui.setting.performance" = "Tick-tahti, katsojien seuranta ja partikkelirajat."
+"gui.setting.performance" = "Tick-tahti, katsojien seuranta ja hiukkasrajat."
 "gui.setting.performance.dispatchInteractEvent" = "Laukaise CompanionPlayerInteractEvent muille lisäosille, kun pelaaja napsauttaa kumppania."
 "gui.setting.performance.dispatchInteractEvent.name" = "Lähetä vuorovaikutustapahtuma"
-"gui.setting.performance.maximumParticleIntensity" = "Suurin partikkelivoimakkuus, jonka pelaajat voivat saada: FULL, REDUCED tai OFF."
-"gui.setting.performance.maximumParticleIntensity.name" = "Suurin partikkelivoimakkuus"
+"gui.setting.performance.maximumParticleIntensity" = "Suurin hiukkasvoimakkuus, jonka pelaajat voivat saada: FULL, REDUCED tai OFF."
+"gui.setting.performance.maximumParticleIntensity.name" = "Suurin hiukkasvoimakkuus"
 "gui.setting.performance.name" = "Suorituskyky"
 "gui.setting.performance.updateInterval" = "Tickit kumppanianimaatioiden päivitysten välillä, vähintään 1."
 "gui.setting.performance.updateInterval.name" = "Päivitysväli"
@@ -767,15 +777,15 @@
 "gui.setting.presentation.splashScreen" = "Tulosta ByteCompanions-aloituskuva, kun palvelut ovat valmiita."
 "gui.setting.presentation.splashScreen.name" = "Aloituskuva"
 "gui.setting.serverRules" = "Maailma- ja aluerajoitukset."
-"gui.setting.serverRules.bonusDisabledWorlds" = "Maailmojen nimet, joissa kumppanien attribuutit, vaikutukset, palkintobonukset ja automaattinen kumppani-XP ovat keskeytettyinä."
+"gui.setting.serverRules.bonusDisabledWorlds" = "Maailmojen nimet, joissa kumppanien attribuutit, juomavaikutukset, palkintobonukset ja automaattinen kumppanikokemus ovat pois käytöstä."
 "gui.setting.serverRules.bonusDisabledWorlds.name" = "Bonuksettomat maailmat"
-"gui.setting.serverRules.hiddenWorlds" = "Maailmojen nimet, joissa kumppanien visuaalit piilotetaan."
+"gui.setting.serverRules.hiddenWorlds" = "Maailmojen nimet, joissa kumppanit piilotetaan näkyvistä."
 "gui.setting.serverRules.hiddenWorlds.name" = "Piilotetut maailmat"
 "gui.setting.serverRules.name" = "Palvelinsäännöt"
 "gui.setting.serverRules.worldguard" = "Noudata bytecompanions-visuals- ja bytecompanions-bonuses-lippuja, kun WorldGuard on asennettu."
 "gui.setting.serverRules.worldguard.name" = "WorldGuard"
 "gui.setting.storage" = "Pelaajatietojen tallennustaustajärjestelmä ja yhteysvaranto."
-"gui.setting.storage.backend" = "Tallennustaustajärjestelmä pelaajien kumppaneille, kokoelmille, edistymiselle ja hiukkasvalinnoille: json, sqlite, h2 tai mysql."
+"gui.setting.storage.backend" = "Tallennustaustajärjestelmä pelaajien kumppaneille, kokoelmille, etenemiselle ja hiukkasvalinnoille: json, sqlite, h2 tai mysql."
 "gui.setting.storage.backend.name" = "Taustajärjestelmä"
 "gui.setting.storage.h2" = "Sulautetun H2-tietokannan sijainti."
 "gui.setting.storage.h2.directory" = "Hakemisto plugins/ByteCompanions-kansion alla, joka sisältää sulautetun tietokannan tiedostot."
@@ -789,7 +799,7 @@
 "gui.setting.storage.mysql.name" = "MySQL"
 "gui.setting.storage.mysql.password" = "Tietokannan salasana."
 "gui.setting.storage.mysql.password.name" = "Salasana"
-"gui.setting.storage.mysql.port" = "Tietokannan portti, vähintään 1 ja enintään 65535."
+"gui.setting.storage.mysql.port" = "Tietokannan portti, 1–65535."
 "gui.setting.storage.mysql.port.name" = "Portti"
 "gui.setting.storage.mysql.useSsl" = "Vaadi TLS tietokantayhteydelle."
 "gui.setting.storage.mysql.useSsl.name" = "Käytä SSL:ää"
@@ -803,6 +813,6 @@
 "gui.setting.storage.pool.maxLifetimeMillis.name" = "Enimmäiselinikä millisekunteina"
 "gui.setting.storage.pool.maxPoolSize" = "Samanaikaisten tietokantayhteyksien enimmäismäärä tässä varannossa."
 "gui.setting.storage.pool.maxPoolSize.name" = "Varannon enimmäiskoko"
-"gui.setting.storage.pool.minIdle" = "Avoinna pidettävät joutilaat yhteydet, vähintään 0 ja enintään maxPoolSize."
-"gui.setting.storage.pool.minIdle.name" = "Vähimmäismäärä joutilaita"
+"gui.setting.storage.pool.minIdle" = "Avoinna pidettävät joutilaat yhteydet, 0–maxPoolSize."
+"gui.setting.storage.pool.minIdle.name" = "Joutilaiden vähimmäismäärä"
 "gui.setting.storage.pool.name" = "Varanto"

@@ -475,9 +475,13 @@ final class RuntimeJarTest {
         List<?> nonEnglish = ((List<?>) locales.getMethod("all").invoke(null)).stream().filter(locale -> !locale.equals("en_US")).toList();
         assertEquals(17, nonEnglish.size());
         assertEquals(String.join(",", nonEnglish.stream().map(Object::toString).toList()), manifest.getProperty("locales"));
-        assertFalse(manifest.getProperty("revision").isBlank());
+        assertEquals("VolmitSoftware/ByteCompanions", manifest.getProperty("repository"));
+        assertFalse(manifest.getProperty("branch").isBlank());
+        assertEquals("platform/paper/src/main/resources/languages", manifest.getProperty("path"));
+        assertEquals(".toml", manifest.getProperty("extension"));
+        assertFalse(manifest.stringPropertyNames().stream().anyMatch(key -> key.equals("revision") || key.equals("mode") || key.startsWith("sha256.")));
         Map<?, ?> english = parseLanguage(resource("languages/en_US.toml"));
-        assertEquals(560, english.size());
+        assertEquals(562, english.size());
     }
 
     private static Map<?, ?> parseLanguage(String source) throws Exception {

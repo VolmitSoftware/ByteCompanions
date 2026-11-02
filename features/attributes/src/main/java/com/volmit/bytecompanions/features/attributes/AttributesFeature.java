@@ -161,6 +161,26 @@ public final class AttributesFeature {
         }
     }
 
+    // Bukkit saves attribute modifiers with the player, so a crash or an offline config edit can leave
+    // ours behind. Strip them all before the load event, which reapplies the ones still configured.
+    public static void removeOwnedModifiers(final @NotNull Player player, final @NotNull JavaPlugin plugin) {
+        final String namespace = plugin.getName().toLowerCase(Locale.ROOT);
+        for (final Attribute attribute : Registry.ATTRIBUTE) {
+            final AttributeInstance instance = player.getAttribute(attribute);
+            if (instance != null) {
+                removeNamespace(instance, namespace);
+            }
+        }
+    }
+
+    static void removeNamespace(AttributeInstance instance, String namespace) {
+        for (AttributeModifier modifier : List.copyOf(instance.getModifiers())) {
+            if (modifier.getKey().getNamespace().equals(namespace)) {
+                instance.removeModifier(modifier);
+            }
+        }
+    }
+
     private CompletableFuture<Void> clearPlayers() {
         List<CompletableFuture<Void>> cleanupTasks = new ArrayList<>();
         ConfigurationData current = this.configurationData;

@@ -22,7 +22,8 @@ class CompanionDebugReportTest {
         CompanionDebugReport report = new CompanionDebugReport(true, 3, "V26_1CompanionEntityFactory", "H2",
                 5, 1, features, 3, 20, 32, new CompanionDebugReport.RuntimeSnapshot(
                 new CompanionsTickScheduler.Snapshot(1, 2, 100, 4), 5, queues,
-                new EffectTrackingAnimation.TrafficSnapshot(10, 80, 20, 160), 1, "en_US", "config.toml (active runtime snapshot)"));
+                new EffectTrackingAnimation.TrafficSnapshot(10, 80, 20, 160), 1, "en_US", "VolmitSoftware/ByteCompanions@master",
+                "revision 2a342ed", "config.toml (active runtime snapshot)"));
         String captured = report.render();
         features.put("particles", false);
         features.put("effects", false);
@@ -38,6 +39,8 @@ class CompanionDebugReportTest {
         assertTrue(captured.contains("Particle packet deliveries: 160"));
         assertTrue(captured.contains("Particle budget: not configured"));
         assertTrue(captured.contains("Default language: en_US"));
+        assertTrue(captured.contains("Language source: VolmitSoftware/ByteCompanions@master"));
+        assertTrue(captured.contains("Language source state: revision 2a342ed"));
         assertFalse(captured.contains("jdbc:"));
         assertFalse(captured.contains("password"));
     }

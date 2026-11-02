@@ -73,11 +73,11 @@ permissions:
     description: Allows browsing personal boosters
     default: true
   bytecompanions.command.booster.start:
-    description: Allows starting an owned booster activation
-    default: true
+    description: Allows starting or queueing a server booster without a purchase
+    default: op
   bytecompanions.command.booster.cancel:
-    description: Allows cancelling an owned booster activation
-    default: true
+    description: Allows cancelling any player's or the server's booster activation
+    default: op
   bytecompanions.command.edit:
     description: Allows editing companion definitions and private previews
     default: op

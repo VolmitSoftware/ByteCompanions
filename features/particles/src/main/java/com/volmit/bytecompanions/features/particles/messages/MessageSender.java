@@ -27,6 +27,8 @@ public final class MessageSender {
         String key = switch (path) {
             case "general.no-permission" -> "errors.no-permission";
             case "general.persistence-failed" -> "errors.persistence-failed";
+            case "general.player-not-loaded" -> "errors.player-not-loaded";
+            case "general.inactive" -> "command.feedback.inactive";
             case "companion.not-equipped" -> "particles.companions.not-equipped";
             default -> "particles." + path;
         };

@@ -6,3 +6,4 @@ io/github/slimjar/downloader/URLDependencyDownloader.java
 io/github/slimjar/downloader/verify/ChecksumDependencyVerifier.java
 io/github/slimjar/downloader/output/ChanneledFileOutputWriter.java
 io/github/slimjar/exceptions/SlimJarException.java
+io/github/slimjar/app/builder/ApplicationBuilder.java

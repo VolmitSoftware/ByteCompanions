@@ -12,6 +12,8 @@ import java.util.HexFormat;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipFile;
@@ -19,6 +21,8 @@ import java.util.zip.ZipFile;
 import static org.junit.Assert.*;
 
 public class RuntimeProvenanceTest {
+    private static final Set<String> LOCAL_ADDITIONS = Set.of("io/github/slimjar/downloader/verify/PinnedDependencyVerifier.java");
+
     @Test
     public void unchangedSourcesMatchPinnedArchive() throws Exception {
         Path sources = Path.of(System.getProperty("slimjar.sourceDirectory"));
@@ -35,6 +39,13 @@ public class RuntimeProvenanceTest {
         }
         assertEquals(125, count);
         assertTrue(changed.toString(), changed.isEmpty());
+        try (Stream<Path> files = Files.walk(sources)) {
+            Set<String> additions = files.filter(path -> path.toString().endsWith(".java"))
+                    .map(path -> sources.relativize(path).toString().replace('\\', '/'))
+                    .filter(name -> !manifest.contains("\"" + name + "\""))
+                    .collect(Collectors.toSet());
+            assertEquals(LOCAL_ADDITIONS, additions);
+        }
         assertEquals("2.1.9", BuildConstants.VERSION);
         assertEquals("9.8", BuildConstants.ASM);
     }
@@ -67,7 +78,7 @@ public class RuntimeProvenanceTest {
     @Test
     public void publishedSourcesIncludeLoaderAgentAndProvenance() throws Exception {
         try (ZipFile archive = new ZipFile(System.getProperty("slimjar.sourcesArchive"))) {
-            assertEquals(125, archive.stream().filter(entry -> entry.getName().startsWith("io/github/slimjar/")
+            assertEquals(125 + LOCAL_ADDITIONS.size(), archive.stream().filter(entry -> entry.getName().startsWith("io/github/slimjar/")
                     && entry.getName().endsWith(".java")).count());
             assertNotNull(archive.getEntry("loader-agent/io/github/slimjar/injector/agent/ClassLoaderAgent.java"));
             for (String name : Set.of("UPSTREAM.md", "upstream-sources.json", "upstream-changes.txt", "LICENSE")) {

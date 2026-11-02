@@ -6,99 +6,100 @@
 # /bytecompanions language server edit he_IL
 #
 # === קידומת ===
-# runtime.prefix supplies the styled plugin name for {prefix}.
-# Remove {prefix} from a message to hide the plugin name for that message.
+# runtime.prefix מספק את שם התוסף המעוצב עבור {prefix}.
+# כדי להסתיר את שם התוסף בהודעה מסוימת, הסירו את {prefix} מאותה הודעה.
 #
 # === עיצוב ===
-# Colors and styles: &0-&f, &k-&r.
-# RGB colors: &#RRGGBB, &xRRGGBB, &x&R&R&G&G&B&B, [RRGGBB].
-# MiniMessage supports custom formatting such as <gold> and <gradient:#ffcc00:#ff9900>. Put a backslash before & or [ to display it literally.
+# צבעים וסגנונות: &0-&f, &k-&r.
+# צבעי RGB: &#RRGGBB, &xRRGGBB, &x&R&R&G&G&B&B, [RRGGBB].
+# MiniMessage תומך בעיצוב מותאם, כגון <gold> ו-<gradient:#ffcc00:#ff9900>. כדי להציג & או [ כפי שהם, הוסיפו לפניהם לוכסן הפוך.
 #
 # === משתנים ===
 # יש לשמור על שמות המשתנים ולהשתמש רק במשתנים הקיימים בכל הודעה.
-#   {action}  Requested action
-#   {actions}  Available actions
-#   {after}  Value after the change
-#   {amount}  Amount or count
-#   {argument}  Unexpected command argument
-#   {before}  Value before the change
-#   {bonus}  Bonus name
-#   {booster}  Booster identifier
-#   {category}  Category name
-#   {change}  Described change
-#   {channel}  Booster channel
-#   {choice}  Selected option
-#   {command}  Command path
-#   {companion}  Companion identifier
-#   {companions}  Companion identifiers
-#   {count}  Number of items
-#   {created}  Creation time
-#   {current}  Current value
-#   {definition}  Companion definition
-#   {detail}  Failure detail
-#   {effect}  Particle effect identifier
-#   {entry}  Entry label
-#   {feature}  Feature name
-#   {features}  Enabled features
-#   {field}  Studio field name
-#   {formation}  Formation name
-#   {group}  Message category name
-#   {hot_reload}  Hot reload state
-#   {index}  Position number
-#   {integrations}  Integration states
-#   {item}  Item name
-#   {items}  Item list
-#   {java}  Java major version
-#   {key}  Message or setting key
-#   {kind}  Transaction kind
-#   {language}  Active language
-#   {level}  Level number
-#   {limit}  Configured limit
-#   {line}  Message line number
-#   {locale}  Locale identifier
-#   {maximum}  Maximum accepted value
-#   {mode}  Combining rule
-#   {model}  Companion model
-#   {money}  Money amount
-#   {name}  Display name
-#   {new}  Installed rendered value
-#   {next}  Next value
-#   {old}  Previous rendered value
-#   {operation}  Bonus operation
-#   {page}  Current page number
-#   {pages}  Total page count
-#   {parameter}  Parameter name
-#   {path}  File path or setting path
-#   {percent}  Percentage value
-#   {permission}  Required permission
-#   {personal}  Personal locale when it differs
-#   {player}  Player name
-#   {players}  Loaded player count
-#   {plugin}  Plugin name
-#   {prefix}  Styled plugin name from runtime.prefix
-#   {provider}  Payment provider
-#   {range}  Supported Minecraft range
-#   {reason}  Failure reason
-#   {required}  Required amount
-#   {scheduler}  Scheduler implementation
-#   {seconds}  Duration in seconds
-#   {section}  Language editor section
-#   {setting}  Setting name
-#   {sources}  Bonus sources
-#   {status}  Status marker
-#   {step}  Adjustment step
-#   {target}  Selection target
-#   {tier}  Upgrade tier
-#   {time}  Duration text
-#   {transaction}  Transaction identifier
-#   {type}  Parameter type
-#   {url}  Public report URL
-#   {usage}  Command usage
-#   {value}  Current or raw value
-#   {variables}  Placeholders valid for the message
-#   {variant}  Appearance variant
-#   {version}  Plugin version
-#   {xp}  Companion experience
+#   {activation}  מזהה הפעלת המאיץ
+#   {added}  הודעות שנוספו בעדכון שפה
+#   {after}  הערך לאחר השינוי
+#   {amount}  כמות או מספר
+#   {argument}  ארגומנט פקודה לא צפוי
+#   {before}  הערך לפני השינוי
+#   {bonus}  שם הבונוס
+#   {booster}  מזהה המאיץ
+#   {category}  שם הקטגוריה
+#   {change}  תיאור השינוי
+#   {channel}  ערוץ המאיץ
+#   {choice}  האפשרות שנבחרה
+#   {command}  נתיב הפקודה
+#   {companion}  מזהה המלווה
+#   {companions}  מזהי המלווים
+#   {count}  מספר הפריטים
+#   {created}  זמן היצירה
+#   {current}  הערך הנוכחי
+#   {definition}  הגדרת המלווה
+#   {detail}  פרטי הכשל
+#   {effect}  מזהה אפקט החלקיקים
+#   {enabled}  מצב המלווים
+#   {feature}  שם התכונה
+#   {features}  התכונות המופעלות
+#   {field}  שם השדה בסדנה
+#   {formation}  שם המערך
+#   {group}  שם קטגוריית ההודעות
+#   {hot_reload}  מצב הטעינה החמה
+#   {index}  מספר המיקום
+#   {integrations}  מצבי השילובים
+#   {item}  שם הפריט
+#   {items}  רשימת הפריטים
+#   {java}  גרסת Java הראשית
+#   {kept}  עריכות מקומיות שנשמרו בעדכון שפה
+#   {key}  מפתח ההודעה או ההגדרה
+#   {kind}  סוג העסקה
+#   {language}  השפה הפעילה
+#   {level}  מספר הרמה
+#   {limit}  המגבלה שהוגדרה
+#   {line}  מספר השורה בהודעה
+#   {locale}  מזהה אזור השפה
+#   {maximum}  הערך המרבי המותר
+#   {mode}  כלל השילוב
+#   {model}  דגם המלווה
+#   {money}  סכום הכסף
+#   {name}  שם התצוגה
+#   {next}  הערך הבא
+#   {number}  מספר הרשומה ברשימה
+#   {operation}  פעולת הבונוס
+#   {page}  מספר העמוד הנוכחי
+#   {pages}  מספר העמודים הכולל
+#   {parameter}  שם הפרמטר
+#   {path}  נתיב קובץ או נתיב הגדרה
+#   {percent}  ערך באחוזים
+#   {permission}  ההרשאה הנדרשת
+#   {personal}  אזור השפה האישי, אם הוא שונה
+#   {player}  שם השחקן
+#   {players}  מספר השחקנים הטעונים
+#   {plugin}  שם התוסף
+#   {prefix}  שם התוסף המעוצב מ-runtime.prefix
+#   {provider}  ספק התשלום
+#   {range}  טווח Minecraft הנתמך
+#   {reason}  סיבת הכשל
+#   {remaining}  הזמן שנותר עד שתותר בדיקת השפות הבאה
+#   {required}  הכמות הנדרשת
+#   {scheduler}  מימוש המתזמן
+#   {seconds}  משך בשניות
+#   {section}  מקטע בעורך השפה
+#   {sources}  מקורות הבונוס
+#   {status}  סימן המצב
+#   {step}  צעד ההתאמה
+#   {target}  יעד הבחירה
+#   {tier}  דרגת השדרוג
+#   {time}  טקסט המשך
+#   {transaction}  מזהה העסקה
+#   {type}  סוג הפרמטר
+#   {updated}  הודעות ששונו בעדכון שפה
+#   {url}  כתובת הדוח הציבורית
+#   {usage}  שימוש בפקודה
+#   {value}  ערך נוכחי או גולמי
+#   {variables}  מצייני המקום התקפים בהודעה
+#   {variant}  גרסת המראה
+#   {version}  גרסת התוסף
+#   {xp}  ניסיון המלווה
 
 "runtime.prefix" = "<bold><gradient:#ffcc00:#ff9900>ByteCompanions</gradient></bold>"
 "gui.studio-review-change" = "<gold>שינוי {index}"
@@ -127,7 +128,7 @@
 "gui.studio-equipment" = "<aqua>ציוד וצבעים"
 "gui.studio-movement" = "<green>תנועה והנפשה"
 "gui.studio-particles" = "<light_purple>חלקיקים מובנים"
-"gui.studio-attributes" = "<aqua>בונוסים לתכונות"
+"gui.studio-attributes" = "<aqua>בונוסים למאפיינים"
 "gui.studio-effects" = "<light_purple>בונוסים של שיקויים"
 "gui.studio-buffs" = "<green>בונוסי ניסיון ותגמולים"
 "gui.studio-category-hint" = "<gray>בחרו הגדרה או הוסיפו תבנית."
@@ -136,7 +137,7 @@
 "gui.studio-value" = "<gray>הערך הנוכחי: <white>{value}"
 "gui.studio-edit-hint" = "<gray>לחצו לעריכת ההגדרה."
 "gui.studio-type" = "<gold>הזנת ערך"
-"gui.studio-type-hint" = "<gray>הזינו ערך מדויק באופן פרטי בצ'אט."
+"gui.studio-type-hint" = "<gray>הזינו ערך מדויק באופן פרטי בצ׳אט."
 "gui.studio-toggle" = "<gold>החלפת מצב ההגדרה"
 "gui.studio-toggle-hint" = "<gray>מעבר בין true ל-false."
 "gui.studio-increase" = "<green>הגדלה"
@@ -162,7 +163,7 @@
 "gui.studio-back" = "<gold>◀ חזרה"
 "gui.studio-back-hint" = "<gray>חזרה בלי לאבד את הטיוטה."
 "gui.studio-empty" = "<gray>אין עדיין הגדרות. הוסיפו תבנית כדי להתחיל."
-"studio.prompt" = "{prefix} <gold>הזינו {field} בצ'אט או כתבו <white>cancel</white>. עד 256 תווים; הזמן יפוג בעוד 60 שניות.</gold>"
+"studio.prompt" = "{prefix} <gold>הזינו {field} בצ׳אט או כתבו <white>cancel</white>. עד 256 תווים; הזמן יפוג בעוד 60 שניות.</gold>"
 "studio.cancelled" = "{prefix} <gray>ההזנה בוטלה או שפג הזמן; הטיוטה לא השתנתה.</gray>"
 "studio.failed" = "{prefix} <red>השינוי נדחה: {reason}</red>"
 "studio.preview" = "{prefix} <aqua>תצוגה מקדימה פרטית החלה לחמש דקות. חזרו באמצעות <white>/bytecompanions edit {companion}</white>. לא ניתנים בונוסים.</aqua>"
@@ -173,18 +174,18 @@
 "studio.saved" = "{prefix} <green>המלווה נשמר עבור כל השרת.</green>"
 "studio.restore-failed" = "{prefix} <yellow>המלווה נשמר, אך שחזור המלווים של השחקנים המחוברים נכשל. התחברו מחדש ובדקו את המסוף.</yellow>"
 "studio.discarded" = "{prefix} <gray>הטיוטה נמחקה. תוכן השרת לא השתנה.</gray>"
-"errors.no-permission" = "<red>אין לך הרשאה לבצע פעולה זו.</red>"
+"errors.no-permission" = "<red>אין לכם הרשאה לבצע פעולה זו.</red>"
 "errors.no-access-to-companion" = "<red>לא ניתן לצייד את המלווה הזה.</red>"
 "errors.companion-not-found" = "<red>לא קיים מלווה עם המזהה <white>{companion}</white>.</red>"
-"errors.no-companion-equipped" = "<gold>אין לך מלווה מצויד.</gold>"
+"errors.no-companion-equipped" = "<gold>אין לכם מלווה מצויד.</gold>"
 "errors.companion-already-equipped" = "<gold>המלווה הזה כבר מצויד.</gold>"
 "errors.companion-does-not-have-animations" = "<aqua>המלווה הזה אינו תומך בהנפשות.</aqua>"
 "errors.companion-is-exclusive" = "<red>המלווה הזה בלעדי ולא ניתן לצייד אותו.</red>"
-"errors.companions-limit-reached" = "<red>הגעת למספר המלווים המרבי המותר.</red>"
-"errors.companions-limit-per-model-reached" = "<red>הגעת למגבלת המלווים לדגם <white>{model}</white>.</red>"
-"errors.player-has-a-exclusive-companion" = "<red>כבר יש לך מלווה בלעדי מצויד.</red>"
-"success.companion-equipped" = "<green>ציידת את <white>{companion}</white>.</green>"
-"success.companion-unequipped" = "<green>המלווה שלך הוסר.</green>"
+"errors.companions-limit-reached" = "<red>הגעתם למספר המלווים המרבי המותר.</red>"
+"errors.companions-limit-per-model-reached" = "<red>הגעתם למגבלת המלווים לדגם <white>{model}</white>.</red>"
+"errors.player-has-a-exclusive-companion" = "<red>כבר יש לכם מלווה בלעדי מצויד.</red>"
+"success.companion-equipped" = "<green>ציידתם את <white>{companion}</white>.</green>"
+"success.companion-unequipped" = "<green>המלווה שלכם הוסר.</green>"
 "command.description.root" = "עזרה וניהול של {prefix}"
 "command.description.menu" = "עיון במלווים; לחיצה ימנית על מלווה מצויד פותחת את החלקיקים"
 "command.description.spawn" = "ציוד מלווה"
@@ -207,65 +208,65 @@
 "particles.help.menu" = "עיון באפקטים"
 "particles.help.equip" = "החלת אפקט"
 "particles.help.unequip" = "הסרת אפקט אחד או כל האפקטים"
-"particles.particle-effects.no-permission" = "<red>אין לך הרשאה להשתמש ב־<white>{effect}</white>.</red>"
+"particles.particle-effects.no-permission" = "<red>אין לכם הרשאה להשתמש ב־<white>{effect}</white>.</red>"
 "particles.particle-effects.equipped" = "<green>אפקט החלקיקים הופעל: <white>{effect}</white>.</green>"
 "particles.particle-effects.unequipped" = "<yellow>אפקט החלקיקים הוסר.</yellow>"
 "particles.particle-effects.not-found" = "<red>אפקט החלקיקים <white>{effect}</white> לא נמצא.</red>"
 "particles.particle-effects.invalid-id" = "<red>יש לספק מזהה תקין של אפקט חלקיקים.</red>"
 "particles.particle-effects.already-equipped" = "<red><white>{effect}</white> כבר מופעל.</red>"
-"particles.companions.not-equipped" = "<red>יש להפעיל מלווה תחילה.</red>"
+"particles.companions.not-equipped" = "<red>יש לצייד מלווה תחילה.</red>"
 "particles.companions.invalid-type-id" = "<red>יש לספק מזהה תקין של סוג מלווה.</red>"
-"errors.player-not-loaded" = "<red>נתוני המלווים שלך עדיין נטענים או שלא ניתן היה לטעון אותם. יש להתחבר מחדש או לפנות למנהל.</red>"
-"errors.persistence-failed" = "<red>הבחירה שלך השתנתה להפעלה זו, אך לא ניתן היה לשמור אותה. היא עשויה לחזור למצבה הקודם לאחר התחברות מחדש. יש להודיע למנהל.</red>"
+"errors.player-not-loaded" = "<red>נתוני המלווים שלכם עדיין נטענים או שלא ניתן היה לטעון אותם. התחברו מחדש או פנו למנהל.</red>"
+"errors.persistence-failed" = "<red>הבחירה שלכם השתנתה בחיבור הנוכחי, אך לא ניתן היה לשמור אותה. היא עשויה לחזור למצבה הקודם לאחר התחברות מחדש. אנא הודיעו למנהל.</red>"
 
 "gui.title.collection" = "<gold>אוסף המלווים"
 "gui.title.dashboard" = "<gold>לוח המלווה"
 "gui.title.particles" = "<gold>חלקיקי המלווה"
 "gui.title.bonuses" = "<gold>בונוסי המלווה"
 "gui.collection" = "<gold>📦 אוסף המלווים"
-"gui.collection-hint" = "<gray>בחר מלווה כדי לראות את האפשרויות שלו."
+"gui.collection-hint" = "<gray>בחרו מלווה כדי לראות את האפשרויות שלו."
 "gui.equipped" = "<green>✓ מצויד"
 "gui.available" = "<yellow>זמין"
-"gui.locked" = "<red>נעול: אין לך הרשאה."
-"gui.open-dashboard" = "<gray>לחץ כדי לפתוח את לוח המלווה הזה."
+"gui.locked" = "<red>נעול: אין לכם הרשאה."
+"gui.open-dashboard" = "<gray>לחצו כדי לפתוח את לוח המלווה הזה."
 "gui.empty" = "<yellow>אין מלווים"
 "gui.empty-hint" = "<gray>אין הגדרות מלווים זמינות."
 "gui.not-equipped" = "<yellow>לא מצויד"
-"gui.overview" = "<gray>נהל את המלווה באמצעות הכפתורים למטה."
-"gui.equip" = "<green>✓ צייד מלווה"
-"gui.equip-hint" = "<gray>זמן את המלווה הזה לצידך."
-"gui.unequip" = "<yellow>הסר מלווה"
-"gui.unequip-hint" = "<gray>שלח את המלווה לדרכו. תוכל לצייד אותו שוב."
+"gui.overview" = "<gray>נהלו את המלווה באמצעות הכפתורים למטה."
+"gui.equip" = "<green>✓ ציידו מלווה"
+"gui.equip-hint" = "<gray>זמנו את המלווה הזה לצידכם."
+"gui.unequip" = "<yellow>הסירו מלווה"
+"gui.unequip-hint" = "<gray>שחררו את המלווה. תוכלו לצייד אותו שוב."
 "gui.particles" = "<aqua>✦ חלקיקים"
-"gui.particles-hint" = "<gray>בחר אפקט חלקיקים למלווה הזה."
+"gui.particles-hint" = "<gray>בחרו אפקט חלקיקים למלווה הזה."
 "gui.disabled" = "<gray>מושבת בשרת הזה."
-"gui.equip-first" = "<yellow>צייד קודם את המלווה הזה."
+"gui.equip-first" = "<yellow>ציידו קודם את המלווה הזה."
 "gui.current-particle" = "<gray>אפקט החלקיקים שנבחר: <white>{effect}"
 "gui.none" = "ללא"
 "gui.bonuses" = "<gold>★ בונוסים והשפעות"
-"gui.bonuses-hint" = "<gray>צפה בבונוסים פעילים, בהשפעות שיקויים ובשילוב ביניהם."
-"gui.select-particle" = "<yellow>לחץ כדי לצייד את אפקט החלקיקים הזה."
-"gui.remove-particle" = "<yellow>הסר אפקט חלקיקים"
-"gui.remove-particle-hint" = "<gray>נקה את החלקיקים שנבחרו למלווה הזה."
+"gui.bonuses-hint" = "<gray>צפו בבונוסים פעילים, בהשפעות שיקויים ובשילוב ביניהם."
+"gui.select-particle" = "<yellow>לחצו כדי לבחור את אפקט החלקיקים הזה."
+"gui.remove-particle" = "<yellow>הסרת אפקט החלקיקים"
+"gui.remove-particle-hint" = "<gray>ניקוי החלקיקים שנבחרו למלווה הזה."
 "gui.back" = "<gold>◀ חזרה ללוח"
-"gui.back-hint" = "<gray>חזור לאפשרויות של המלווה הזה."
-"gui.close" = "<red>✖ סגור"
-"gui.close-hint" = "<gray>סגור את התפריט הזה."
+"gui.back-hint" = "<gray>חזרה לאפשרויות של המלווה הזה."
+"gui.close" = "<red>✖ סגירה"
+"gui.close-hint" = "<gray>סגירת התפריט הזה."
 "gui.previous" = "<yellow>◀ העמוד הקודם"
 "gui.next" = "<green>העמוד הבא ▶"
 "gui.page" = "<gray>עמוד {page} מתוך {pages}"
-"gui.loading" = "<yellow>נתוני המלווים שלך עדיין לא מוכנים. נסה שוב בקרוב."
-"gui.bonus-snapshot" = "<gray>הערכים בזמן הפתיחה. רענן כדי לבדוק שוב."
+"gui.loading" = "<yellow>נתוני המלווים שלכם עדיין לא מוכנים. נסו שוב בקרוב."
+"gui.bonus-snapshot" = "<gray>הערכים בזמן הפתיחה. רעננו כדי לבדוק שוב."
 "gui.no-bonuses" = "<yellow>לא הוגדרו בונוסים"
 "gui.no-bonuses-hint" = "<gray>למלווה הזה לא הוגדרו בונוסים או השפעות שיקויים."
-"gui.refresh" = "<aqua>רענן בונוסים"
-"gui.refresh-hint" = "<gray>עדכן את הערכים הנוכחיים ואת זמני ההמתנה."
-"gui.attribute" = "תכונה"
+"gui.refresh" = "<aqua>רענון בונוסים"
+"gui.refresh-hint" = "<gray>עדכון הערכים הנוכחיים וזמני ההמתנה."
+"gui.attribute" = "מאפיין"
 "gui.effect" = "שיקוי"
 "gui.buff" = "בונוס"
 "gui.bonus-name" = "<gold>{category}: <white>{name}"
 "gui.configured" = "<gray>מוגדר: <white>{operation} {value}"
-"gui.attribute-total" = "<gray>הסכום שלך, כולל מקורות אחרים: <white>{value}"
+"gui.attribute-total" = "<gray>הסכום שלכם, כולל מקורות אחרים: <white>{value}"
 "gui.effect-level" = "<gray>רמת השיקוי שהוגדרה: <white>{level}"
 "gui.stack-mode" = "<gray>כלל השילוב: <white>{mode}"
 "gui.resolved-level" = "<gray>רמת השיקוי מהמלווים: <white>{level}"
@@ -278,7 +279,7 @@
 "gui.cooldown-remaining" = "<yellow>מוכן בעוד {seconds}ש׳"
 "gui.excluded-sources" = "<gray>מטופל באמצעות בונוסים לפי מקור: <white>{sources}"
 "gui.contributors" = "<gray>מלווים תורמים: <white>{companions}"
-"gui.feature.attributes" = "<gray>תכונות"
+"gui.feature.attributes" = "<gray>מאפיינים"
 "gui.feature.effects" = "<gray>השפעות שיקויים"
 "gui.feature.buffs" = "<gray>בונוסים במשחק"
 "gui.status.active" = "<green>✓ פעיל"
@@ -289,78 +290,80 @@
 "gui.status.disabled" = "<gray>מושבת בשרת הזה"
 "gui.status.inactive" = "<gray>אינו מוחל כרגע"
 "gui.status.cooldown" = "<yellow>בזמן המתנה"
-"gui.operation.add_number" = "הוסף"
-"gui.operation.add_scalar" = "הוסף מכפיל בסיס"
-"gui.operation.multiply_scalar_1" = "הכפל ב־(1 + ערך)"
-"gui.operation.sum" = "הוסף"
-"gui.operation.multiply" = "הכפל ב־"
-"gui.operation.add_percent" = "הוסף אחוז"
-"gui.stack.sum" = "חבר מגברים"
+"gui.operation.add_number" = "הוספה"
+"gui.operation.add_scalar" = "הוספת מכפיל בסיס"
+"gui.operation.multiply_scalar_1" = "הכפלה ב־(1 + ערך)"
+"gui.operation.sum" = "הוספה"
+"gui.operation.multiply" = "הכפלה ב־"
+"gui.operation.add_percent" = "הוספת אחוז"
+"gui.stack.sum" = "חיבור עוצמות"
 "gui.stack.highest" = "העדיפות הגבוהה ביותר"
 "gui.target.all" = "כל היצורים"
 "gui.target.hostile" = "יצורים עוינים"
 "gui.target.passive" = "יצורים פסיביים"
 
-"command.description.upgrades" = "צפייה בשדרוגים לבן לוויה"
+"command.description.upgrades" = "צפייה בשדרוגים של מלווה"
 "command.description.boosts" = "צפייה במאיצים אישיים ולכל השרת"
-"command.description.progression" = "הענקת ניסיון לבן לוויה של שחקן מחובר"
+"command.description.progression" = "הענקת ניסיון מלווה לשחקן מחובר"
 "command.description.booster" = "הענקת הפעלות למאיצים; התחלה או ביטול של הפעלות"
 "command.description.transactions" = "בדיקה והסדרה של רכישות שלא הושלמו"
 "command.parameter.player" = "השם המדויק של השחקן המחובר"
-"command.parameter.xp" = "מספר שלם וחיובי של נקודות ניסיון לבן הלוויה"
+"command.parameter.xp" = "מספר שלם וחיובי של נקודות ניסיון מלווה"
 "command.parameter.booster" = "מזהה המאיץ שהוגדר"
 "command.parameter.count" = "מספר שלם וחיובי של הפעלות למאיץ"
 "command.parameter.activation" = "מזהה הפעלה פעילה או ממתינה בתור"
 "command.parameter.transaction" = "מזהה עסקת רכישה שלא הושלמה"
 "command.parameter.resolution" = "grant או cancel לאחר בדיקת רישומי התשלום"
-"command.progression.granted" = "<green>נשמרו <green>{amount}</green> נקודות ניסיון עבור <green>{companion}</green> של <green>{player}</green>."
-"command.progression.not-configured" = "<gold>לא הוגדרה התקדמות עבור <gold>{companion}</gold>."
-"command.progression.player-unavailable" = "<red><red>{player}</red> אינו מחובר."
-"command.progression.player-loading" = "<gold>נתוני ההתקדמות של <gold>{player}</gold> עדיין לא מוכנים. נסו שוב לאחר הטעינה."
-"command.progression.invalid-amount" = "<red>הזינו מספר שלם בין 1 ל־<red>{maximum}</red>."
-"command.booster.granted" = "<green>נשמרו <green>{amount}</green> הפעלות למאיץ <green>{booster}</green> עבור <green>{player}</green>."
-"command.booster.not-found" = "<red>לא קיים מאיץ עם המזהה <red>{booster}</red>."
-"command.booster.server-only" = "<red>פקודה זו מפעילה רק מאיצים לכל השרת."
-"command.transactions.count" = "<gold>רכישות שלא הוסדרו: <gold>{count}</gold>"
-"command.transactions.entry" = "<gray><yellow>{transaction}</yellow> שחקן: <gray>{player}</gray>; <gray>{kind}</gray>; בן לוויה: <gray>{companion}</gray>; הגדרה: <gray>{definition}</gray>; דרגה קודמת: <gray>{tier}</gray>; מצב: <gray>{status}</gray>; כסף: <gray>{money}</gray>; פריטים: <gray>{items}</gray>; ספק: <gray>{provider}</gray>; נוצר: <gray>{created}</gray>"
-"command.transactions.reference" = "<gray>מזהה עסקה או הפעלה: <white>{transaction}</white>"
-"command.transactions.reconciled" = "<gold>ההסדרה נשמרה. לא נגבו ולא הוחזרו כסף או פריטים באופן אוטומטי."
-"gui.title.upgrades" = "<gold>שדרוגי בן הלוויה"
+"command.progression.granted" = "<green>נשמרו {amount} נקודות ניסיון למלווה {companion} של {player}.</green>"
+"command.progression.not-configured" = "<gold>לא הוגדרה התקדמות עבור {companion}.</gold>"
+"command.progression.player-unavailable" = "<red>{player} אינו מחובר.</red>"
+"command.progression.player-loading" = "<gold>נתוני ההתקדמות של {player} עדיין לא מוכנים. נסו שוב לאחר הטעינה.</gold>"
+"command.progression.invalid-amount" = "<red>הזינו מספר שלם בין 1 ל־{maximum}.</red>"
+"command.booster.granted" = "<green>נשמרו {amount} הפעלות של המאיץ {booster} עבור {player}.</green>"
+"command.booster.not-found" = "<red>לא קיים מאיץ עם המזהה {booster}.</red>"
+"command.booster.server-only" = "<red>פקודה זו מפעילה רק מאיצים לכל השרת.</red>"
+"command.booster.started" = "<green>מאיץ השרת {booster} הופעל או נוסף לתור.</green>"
+"command.booster.cancelled" = "<green>הפעלת המאיץ {activation} בוטלה.</green>"
+"command.transactions.count" = "<gold>רכישות שלא הוסדרו: {count}</gold>"
+"command.transactions.entry" = "<yellow>{transaction}</yellow> <gray>שחקן: {player}; {kind}; מלווה: {companion}; הגדרה: {definition}; דרגה קודמת: {tier}; מצב: {status}; כסף: {money}; פריטים: {items}; ספק: {provider}; נוצר: {created}</gray>"
+"command.transactions.reference" = "<gray>מזהה עסקה או הפעלה: <white>{transaction}</white></gray>"
+"command.transactions.reconciled" = "<gold>ההסדרה נשמרה. לא נגבו ולא הוחזרו כסף או פריטים באופן אוטומטי.</gold>"
+"gui.title.upgrades" = "<gold>שדרוגי המלווה"
 "gui.title.purchase" = "<gold>אישור רכישה"
-"gui.title.boosts" = "<gold>מאיצים לבני לוויה"
+"gui.title.boosts" = "<gold>מאיצים למלווים"
 "gui.title.booster" = "<gold>פרטי המאיץ"
 "gui.title.active-boosts" = "<gold>האצות פעילות"
-"gui.upgrades" = "<gradient:#ffcf70:#ff9f43>★ שדרוגי בן הלוויה</gradient>"
-"gui.upgrades-hint" = "<gray>פתחו את בן הלוויה ושפרו את הבונוסים שלו."
+"gui.upgrades" = "<gradient:#ffcf70:#ff9f43>★ שדרוגי המלווה</gradient>"
+"gui.upgrades-hint" = "<gray>קדמו את המלווה שלכם ושפרו את הבונוסים שלו."
 "gui.boosts" = "<gradient:#ffe082:#ffb74d>⌛ מאיצים</gradient>"
 "gui.boosts-hint" = "<gray>צפו בהאצות אישיות ובהאצות לכל השרת."
-"gui.progress-level" = "<gold>★ רמה <white>{level}</white>"
-"gui.progress-xp" = "<gray>ניסיון בן הלוויה: <yellow>{xp}</yellow> / <white>{required}</white>"
-"gui.max-level" = "<green>✓ בן הלוויה ברמה המרבית"
-"gui.upgrade-tier" = "<gray>דרגת שדרוג: <gold>{tier}</gold> / <white>{maximum}</white>"
+"gui.progress-level" = "<gold>★ רמה <white>{level}"
+"gui.progress-xp" = "<gray>ניסיון המלווה: <yellow>{xp}</yellow> / <white>{required}"
+"gui.max-level" = "<green>✓ המלווה ברמה המרבית"
+"gui.upgrade-tier" = "<gray>דרגת שדרוג: <gold>{tier}</gold> / <white>{maximum}"
 "gui.max-tier" = "<green>✓ שודרג במלואו"
-"gui.upgrade-change" = "<gray><gray>{bonus}</gray>: <white>{current}</white> <gold>→</gold> <green>{next}</green>"
-"gui.required-level" = "<gray>רמת בן לוויה נדרשת: <yellow>{level}</yellow>"
+"gui.upgrade-change" = "<gray>{bonus}: <white>{current}</white> <gold>→</gold> <green>{next}"
+"gui.required-level" = "<gray>רמת מלווה נדרשת: <yellow>{level}"
 "gui.level-locked" = "<red>הדרישות אינן מתקיימות."
 "gui.upgrade-preview" = "<yellow>לחצו לצפייה בשדרוג."
 "gui.no-upgrades" = "<gold>לא הוגדרו שדרוגים"
-"gui.no-upgrades-hint" = "<gray>לבן לוויה זה אין מסלולי שדרוג."
+"gui.no-upgrades-hint" = "<gray>למלווה זה אין מסלולי שדרוג."
 "gui.confirm-purchase" = "<green>✓ אישור רכישה"
 "gui.confirm-purchase-hint" = "<gray>שלמו את המחיר המוצג והשלימו את הרכישה."
 "gui.cancel-purchase" = "<yellow>◀ ביטול"
 "gui.cancel-purchase-hint" = "<gray>חזרו בלי להוציא דבר."
-"gui.cost-free" = "<gray>מחיר: <green>חינם</green>"
-"gui.cost-money" = "<gray>כסף נדרש: <gold>{amount}</gold>"
-"gui.cost-item" = "<gray>פריטים נדרשים: <yellow>{amount}</yellow> × <yellow>{item}</yellow>"
+"gui.cost-free" = "<gray>מחיר: <green>חינם"
+"gui.cost-money" = "<gray>כסף נדרש: <gold>{amount}"
+"gui.cost-item" = "<gray>פריטים נדרשים: <yellow>{amount} × {item}"
 "gui.booster-open" = "<yellow>לחצו לצפייה באפשרויות הרכישה וההפעלה."
 "gui.booster-scope.personal" = "<aqua>האצה אישית <dark_gray>• <gray>רק עבורכם"
 "gui.booster-scope.server" = "<gold>האצת שרת <dark_gray>• <gray>לכל השחקנים בשרת הזה"
-"gui.booster-channel" = "<gray><gray>{channel}</gray>: +<green>{percent}</green>%"
-"gui.booster-duration" = "<gray>משך: <white>{time}</white>"
-"gui.booster-remaining" = "<gray>זמן שנותר: <yellow>{time}</yellow>"
+"gui.booster-channel" = "<gray>{channel}: <green>+{percent}%"
+"gui.booster-duration" = "<gray>משך: <white>{time}"
+"gui.booster-remaining" = "<gray>זמן שנותר: <yellow>{time}"
 "gui.booster-rule.queue" = "<gray>האצות חופפות ממתינות בתור."
 "gui.booster-rule.highest" = "<gray>ההאצה החזקה ביותר בכל תחום חלה."
-"gui.booster-credits" = "<gray>הפעלות בבעלותכם: <gold>{count}</gold>"
+"gui.booster-credits" = "<gray>הפעלות בבעלותכם: <gold>{count}"
 "gui.buy-booster" = "<green>קניית הפעלה אחת"
 "gui.buy-booster-hint" = "<gray>בדקו את המחיר לפני הרכישה."
 "gui.activate-booster" = "<gold>הפעלת מאיץ"
@@ -372,9 +375,9 @@
 "gui.active-boosts-hint" = "<gray>צפו בהאצות שלכם, באירועי השרת ובשיעורים המשולבים."
 "gui.booster-running" = "<green>✓ פעיל"
 "gui.booster-queued" = "<yellow>⌛ ממתין בתור"
-"gui.booster-total" = "<gray>סך ההאצה עבור <gray>{channel}</gray>: +<green>{percent}</green>%"
-"gui.booster-cap" = "<gray>האצה משולבת מרבית: +<white>{percent}</white>%"
-"gui.booster-applied" = "<gray>האצות אישיות ושל השרת: +<green>{percent}</green>% מהתגמול המקורי"
+"gui.booster-total" = "<gray>סך ההאצה עבור {channel}: <green>+{percent}%"
+"gui.booster-cap" = "<gray>האצה משולבת מרבית: <white>+{percent}%"
+"gui.booster-applied" = "<gray>האצות אישיות ושל השרת: <green>+{percent}% מהתגמול המקורי"
 "gui.no-active-boosts" = "<gold>אין האצות פעילות"
 "gui.no-active-boosts-hint" = "<gray>הפעילו מאיץ שבבעלותכם כדי להתחיל."
 "gui.back-boosts" = "<gold>◀ חזרה למאיצים"
@@ -393,7 +396,7 @@
 "progression.result.payment_rejected" = "<red>מערכת הכלכלה דחתה את התשלום."
 "progression.result.payment_unknown" = "<yellow>תוצאת התשלום אינה ודאית. מנהל חייב לבדוק אותה לפני ניסיון נוסף."
 "progression.result.persistence_failed" = "<red>לא ניתן היה לשמור את הרכישה. מנהל חייב לבדוק את רשומת העסקה."
-"progression.result.unknown_definition" = "<red>בן הלוויה, השדרוג או המאיץ הזה אינם זמינים עוד."
+"progression.result.unknown_definition" = "<red>המלווה, השדרוג או המאיץ הזה אינם זמינים עוד."
 "progression.result.no_credit" = "<red>אין בבעלותכם הפעלה למאיץ זה."
 "progression.result.disabled" = "<gray>השרת השבית את התכונה הזו."
 "progression.result.invalid_request" = "<red>הבקשה אינה תקינה. בדקו את עזרת הפקודה או פתחו מחדש את התפריט."
@@ -403,12 +406,12 @@
 "gui.setup" = "<gold>הגדרה ראשונית"
 "gui.setup-hint" = "<gray>התקנת מלווים התחלתיים ובחירת בונוסים לשרת."
 "gui.setup-cosmetic" = "<aqua>מלווים קוסמטיים"
-"gui.setup-cosmetic-hint" = "<gray>השבתת מאפיינים, בונוסים, אפקטים, שדרוגים ומאיצים."
+"gui.setup-cosmetic-hint" = "<gray>השבתת מאפיינים, בונוסים, השפעות, שדרוגים ומאיצים."
 "gui.setup-survival" = "<green>מלווים להישרדות"
-"gui.setup-survival-hint" = "<gray>הפעלת המאפיינים, הבונוסים ואפקטי השיקויים שהוגדרו."
-"gui.setup-common" = "<gray>מתקין מלווים התחלתיים חסרים ושומר את קובצי המלווים שלך."
+"gui.setup-survival-hint" = "<gray>הפעלת המאפיינים, הבונוסים והשפעות השיקויים שהוגדרו."
+"gui.setup-common" = "<gray>מתקין מלווים התחלתיים חסרים ושומר את קובצי המלווים שלכם."
 "gui.setup-costs" = "<gray>שדרוגים ומאיצים נשארים כבויים; חלקיקים מופעלים."
-"gui.setup-permissions" = "<gray>גישת השחקנים עדיין נקבעת לפי הגדרות ההרשאות שלך."
+"gui.setup-permissions" = "<gray>גישת השחקנים עדיין נקבעת לפי הגדרות ההרשאות שלכם."
 "gui.setup-preview" = "<gold>עיון במלווים"
 "gui.setup-preview-hint" = "<gray>ציוד מלווים התחלתיים ובדיקת חלקיקים ובונוסים."
 "gui.setup-confirm" = "<green>החלת ההגדרה"
@@ -422,13 +425,13 @@
 "setup.stale" = "{prefix} <gold>ההגדרות השתנו. יש לפתוח שוב את ההגדרה לפני ההחלה.</gold>"
 "command.description.collection" = "עיון וסינון באוסף"
 "command.description.outfits" = "ניהול הרכבי מלווים שמורים"
-"command.description.interact" = "פעולה עם מלווה מצויד"
+"command.description.interact" = "אינטראקציה עם מלווה מצויד"
 "gui.title.outfits" = "הרכבים שמורים"
 "gui.title.outfit" = "סקירת הרכב"
 "gui.title.outfit-delete" = "מחיקת הרכב"
 "gui.title.personalize" = "התאמה אישית של מלווה"
 "gui.title.variants" = "גרסאות מלווה"
-"gui.title.formation" = "מבנה מלווים"
+"gui.title.formation" = "מערך המלווים"
 "gui.title.interactions" = "פעולות מלווה"
 "gui.favorite" = "<gold>♡ הוספה למועדפים"
 "gui.favorite-on" = "<gold>♥ מועדף"
@@ -444,13 +447,13 @@
 "gui.outfit-apply" = "<green>שימוש בהרכב הזה"
 "gui.outfit-delete" = "<red>מחיקת הרכב"
 "gui.outfit-delete-confirm" = "<red>אישור מחיקה"
-"gui.outfit-count" = "<gray>מלווים: {count}"
+"gui.outfit-count" = "<gray>מלווים: <white>{count}"
 "gui.personalize" = "<gold>התאמה אישית"
 "gui.nickname" = "<gold>הגדרת שם"
 "gui.name-reset" = "<gray>איפוס שם"
 "gui.variants" = "<gold>גרסאות מורשות"
 "gui.default-choice" = "<gray>שימוש בברירת המחדל"
-"gui.formation" = "<gold>מבנה"
+"gui.formation" = "<gold>מערך"
 "gui.formation-line" = "<gold>שורה"
 "gui.formation-grid" = "<gold>רשת"
 "gui.formation-orbit" = "<gold>מסלול"
@@ -464,13 +467,13 @@
 "gui.action-call" = "<gold>בוא הנה"
 "gui.trial" = "<aqua>ניסיון פרטי"
 "gui.trial-stop" = "<gray>הפסקת ניסיון פרטי"
-"gui.trial-hint" = "<gray>רק לך הוא מוצג. {seconds} שניות; ללא בונוסים."
+"gui.trial-hint" = "<gray>רק אתם רואים אותו. {seconds} שניות; ללא בונוסים."
 "gui.choice-value" = "<white>{value}"
 "collection.trial-started" = "{prefix} <aqua>הניסיון הפרטי התחיל. הוא לא מעניק בונוסים."
-"collection.outfit-prompt" = "{prefix} <yellow>יש להזין בצ׳אט שם להרכב (1–32 אותיות, ספרות, _ או -), או cancel. פג תוקף אחרי 60 שניות."
-"collection.name-prompt" = "{prefix} <yellow>יש להזין בצ׳אט שם פשוט (עד 32 תווים), או cancel. פג תוקף אחרי 60 שניות."
+"collection.outfit-prompt" = "{prefix} <yellow>יש להזין בצ׳אט שם להרכב (1–32 אותיות, ספרות, _ או -), או cancel. התוקף יפוג בעוד 60 שניות."
+"collection.name-prompt" = "{prefix} <yellow>יש להזין בצ׳אט שם פשוט (עד 32 תווים), או cancel. התוקף יפוג בעוד 60 שניות."
 "collection.choose-equipped" = "{prefix} <yellow>יש לצייד מלווה תחילה. אם יש כמה, יש לציין את המזהה שלו."
-"collection.action-applied" = "{prefix} <green>המלווה שלך הגיב."
+"collection.action-applied" = "{prefix} <green>המלווה שלכם הגיב."
 "collection.cooldown" = "{prefix} <yellow>יש להמתין מעט לפני פעולה נוספת."
 "collection.rejected" = "{prefix} <red>לא ניתן להחיל את השינוי: {detail}"
 "collection.saved" = "{prefix} <green>האוסף נשמר."
@@ -480,39 +483,39 @@
 "gui.collection-operation-failed" = "{prefix} <red>לא ניתן להחיל את השינוי: {reason}"
 "gui.title.settings" = "<gold>הגדרות תצוגה"
 "gui.settings" = "<gold>הגדרות תצוגה"
-"gui.settings-hint" = "<gray>בחר אילו מלווים וחלקיקים לראות."
+"gui.settings-hint" = "<gray>בחרו אילו מלווים וחלקיקים תראו."
 "gui.settings-visibility" = "<aqua>מלווים"
 "gui.settings-visibility-all" = "<green>כל המלווים"
-"gui.settings-visibility-all-hint" = "<gray>הצג מלווים וקישוטים."
+"gui.settings-visibility-all-hint" = "<gray>הצגת מלווים וקישוטים."
 "gui.settings-visibility-own" = "<yellow>רק שלי"
-"gui.settings-visibility-own-hint" = "<gray>הצג רק את המלווים שלך."
-"gui.settings-visibility-none" = "<red>הסתר מלווים"
-"gui.settings-visibility-none-hint" = "<gray>הסתר מלווים וקישוטים מהתצוגה שלך."
+"gui.settings-visibility-own-hint" = "<gray>הצגת המלווים שלכם בלבד."
+"gui.settings-visibility-none" = "<red>הסתרת מלווים"
+"gui.settings-visibility-none-hint" = "<gray>הסתרת מלווים וקישוטים מהתצוגה שלכם."
 "gui.settings-particles" = "<aqua>חלקיקים"
 "gui.settings-particles-full" = "<green>מלא"
-"gui.settings-particles-full-hint" = "<gray>הצג כל תמונת חלקיקים."
+"gui.settings-particles-full-hint" = "<gray>הצגת כל תמונות החלקיקים."
 "gui.settings-particles-reduced" = "<yellow>מופחת"
-"gui.settings-particles-reduced-hint" = "<gray>הצג כל תמונת חלקיקים שנייה."
+"gui.settings-particles-reduced-hint" = "<gray>הצגת כל תמונת חלקיקים שנייה."
 "gui.settings-particles-off" = "<red>כבוי"
-"gui.settings-particles-off-hint" = "<gray>הסתר חלקיקים של מלווים."
+"gui.settings-particles-off-hint" = "<gray>הסתרת החלקיקים של המלווים."
 "gui.settings-server-limit" = "<gray>השרת עשוי להגביל את עוצמת החלקיקים."
-"command.description.settings" = "בחר נראות מלווים וחלקיקים"
+"command.description.settings" = "בחירת נראות המלווים והחלקיקים"
 "command.parameter.setting" = "הגדרה"
 "command.parameter.value" = "ערך"
 
 "collection.reason.equip-first" = "יש לצייד תחילה את המלווה הזה."
-"collection.reason.outfit-limit" = "הגעת למגבלה של {limit} ערכות."
-"collection.reason.outfit-unavailable" = "הערכה אינה זמינה."
+"collection.reason.outfit-limit" = "הגעתם למגבלה של {limit} הרכבים."
+"collection.reason.outfit-unavailable" = "ההרכב אינו זמין."
 "collection.reason.formation-order" = "המערך יכול להכיל רק מלווים מצוידים."
-"collection.reason.model-limit" = "הערכה חורגת ממגבלת הדגם שלך."
+"collection.reason.model-limit" = "ההרכב חורג ממגבלת הדגם שלכם."
 "collection.reason.personalization-locked" = "התאמה אישית נעולה."
 "collection.reason.particle-unavailable" = "אפקט החלקיקים אינו זמין."
 "collection.reason.particle-locked" = "אפקט החלקיקים נעול."
-"collection.reason.particle-remove-denied" = "אין לך אפשרות להסיר את אפקט החלקיקים הזה."
+"collection.reason.particle-remove-denied" = "אין לכם אפשרות להסיר את אפקט החלקיקים הזה."
 "collection.reason.nickname-invalid" = "השמות חייבים להיות טקסט פשוט באורך של עד 32 תווים."
 "collection.reason.formation-invalid" = "מערך לא מוכר: {formation}."
 "collection.reason.cosmetic-invalid" = "מזהה עיצוב לא תקין."
-"collection.reason.outfit-name-invalid" = "שמות ערכות חייבים להכיל 1–32 אותיות, מספרים, קווים תחתונים או מקפים."
+"collection.reason.outfit-name-invalid" = "שמות הרכבים חייבים להכיל 1–32 אותיות, ספרות, קווים תחתונים או מקפים."
 "collection.reason.variant-locked" = "גרסה נעולה: {variant}."
 "collection.reason.variant-unavailable" = "גרסה לא זמינה: {variant}."
 "collection.reason.cancelled" = "תוסף אחר ביטל את השינוי במלווה."
@@ -523,8 +526,8 @@
 "command.parameter.upload" = "העלאת הדוח כאשר העלאות ציבוריות מופעלות"
 "command.feedback.inactive" = "{prefix} <gray>זמן הריצה מופעל מחדש; נסו שוב בעוד רגע.</gray>"
 "command.status.header" = "זמן ריצה"
-"command.status.configuration" = "<gray>בני לוויה: {enabled} <dark_gray>|</dark_gray> שפה: <white>{language}</white> <dark_gray>|</dark_gray> טעינה אוטומטית: {hot_reload}</gray>"
-"command.status.runtime" = "<gray>הגדרות: <white>{count}</white> <dark_gray>|</dark_gray> שחקנים טעונים: <white>{players}</white> <dark_gray>|</dark_gray> בני לוויה מצוידים: <white>{companions}</white></gray>"
+"command.status.configuration" = "<gray>מלווים: {enabled} <dark_gray>|</dark_gray> שפה: <white>{language}</white> <dark_gray>|</dark_gray> טעינה חמה: {hot_reload}</gray>"
+"command.status.runtime" = "<gray>הגדרות: <white>{count}</white> <dark_gray>|</dark_gray> שחקנים טעונים: <white>{players}</white> <dark_gray>|</dark_gray> מלווים מצוידים: <white>{companions}</white></gray>"
 "command.status.features" = "<gray>תכונות: <white>{features}</white> <dark_gray>|</dark_gray> אחסון: <white>{value}</white></gray>"
 "command.status.integrations" = "<gray>שילובים: <white>{integrations}</white></gray>"
 "command.status.compatibility" = "<gray>Java <white>{java}</white> / Bukkit <white>{range}</white> <dark_gray>|</dark_gray> מתזמן: <white>{scheduler}</white> <dark_gray>|</dark_gray> מתאם: <white>{value}</white></gray>"
@@ -553,42 +556,49 @@
 "director.runtime.error.unexpected_argument" = "ארגומנט לא צפוי \"{argument}\". פרמטרים אופציונליים חייבים להינתן עם מפתח, לדוגמה seed=123"
 "director.runtime.error.unclosed_group" = "חסר סוגר \"]\" עבור הפרמטר {key}"
 "director.runtime.error.unknown_parameter" = "מפתח פרמטר לא ידוע: {key}"
-"language.menu.your_language" = "השפה שלך"
-"language.menu.reset_your_language" = "איפוס השפה שלך"
+"language.menu.your_language" = "השפה שלכם"
+"language.menu.reset_your_language" = "איפוס השפה שלכם"
 "language.menu.server_default" = "ברירת המחדל של השרת"
 "language.menu.edit_messages" = "עריכת הודעות השפה"
 "language.menu.use_server_default" = "שימוש בברירת המחדל של השרת"
 "language.menu.current" = "נוכחית: {locale}"
-"language.menu.current_with_personal" = "נוכחית: {locale} (שלך: {personal})"
-"language.menu.your_description" = "שנה רק את ההודעות שאתה רואה."
-"language.menu.reset_description" = "השתמש בשפת ברירת המחדל של השרת."
-"language.menu.server_description" = "שנה את שפת ברירת המחדל של השרת."
-"language.menu.edit_description" = "פתח את עורך ההודעות לכל שפה."
-"language.menu.select_description" = "לחץ כדי לבחור בשפה זו."
-"language.menu.remove_personal_description" = "הסר את בחירת השפה האישית שלך."
-"language.menu.no_controls" = "אין לך גישה להגדרות שפה."
+"language.menu.current_with_personal" = "נוכחית: {locale} (שלכם: {personal})"
+"language.menu.your_description" = "שינוי ההודעות שאתם רואים בלבד."
+"language.menu.reset_description" = "שימוש בשפת ברירת המחדל של השרת."
+"language.menu.server_description" = "שינוי שפת ברירת המחדל של השרת"
+"language.menu.edit_description" = "פתיחת עורך ההודעות לכל שפה."
+"language.menu.select_description" = "לחצו כדי לבחור בשפה זו."
+"language.menu.remove_personal_description" = "הסרת בחירת השפה האישית שלכם."
+"language.menu.no_controls" = "אין לכם גישה להגדרות שפה."
 "language.menu.command" = "פקודה: {command}"
 "language.menu.selected" = "נבחר"
 "language.menu.all-volmit-plugins" = "כל תוספי Volmit"
-"language.error.stopping" = "&cבחירת שפה אינה זמינה בזמן שהתוסף מפסיק."
-"language.error.editor-player-only" = "&cפתח את עורך השפה במשחק."
+"language.error.stopping" = "&cבחירת שפה אינה זמינה בזמן עצירת התוסף."
+"language.error.editor-player-only" = "&cפתחו את עורך השפה במשחק."
 "language.error.no-providers" = "&cאין ספקי שפה זמינים של Volmit."
 "language.error.numeric-page" = "&cיש להזין מספר עמוד."
 "language.error.personal-player-only" = "&cיש לבחור העדפות שפה של שחקן במשחק."
-"language.error.personal-permission" = "&cאין לך רשות לבחור את השפה שלך."
-"language.error.plugin-personal-permission" = "&cאין לך הרשאה לבחור שפה אישית עבור {plugin}."
-"language.error.plugin-server-permission" = "&cאין לך הרשאה לשנות את שפת השרת עבור {plugin}."
+"language.error.personal-permission" = "&cאין לכם הרשאה לבחור את השפה שלכם."
+"language.error.plugin-personal-permission" = "&cאין לכם הרשאה לבחור שפה אישית עבור {plugin}."
+"language.error.plugin-server-permission" = "&cאין לכם הרשאה לשנות את שפת השרת עבור {plugin}."
 "language.error.server-locale-required" = "&cיש לבחור קוד שפה כגון en_US כשפת ברירת המחדל של השרת."
 "language.error.unavailable-for-all" = "&cהשפה {locale} אינה זמינה לכל התוספים שנבחרו."
 "language.usage.editor" = "&7שימוש: /{command} language server edit [locale]"
-"language.usage.selection" = "&7שימוש: /{command} language self [locale|reset] or server [locale]"
+"language.usage.selection" = "&7שימוש: /{command} language self [locale|reset] או server [locale]"
 "language.usage.volmit-selection" = "&7שימוש: /volmit plugins languages [locale]"
+"language.usage.update" = "&7שימוש: /{command} language update"
 "language.selection.preparing" = "&7מכין את השפה {locale} עבור {target}..."
 "language.selection.save-failed" = "{plugin}: &cלא ניתן לשמור את בחירת השפה; יש לבדוק את מסוף השרת."
 "language.selection.english-fallback" = "{plugin}: &eהשפה {locale} אינה זמינה; נעשה שימוש באנגלית (en_US)."
-"language.selection.personal-selected" = "{plugin}: &7השפה שלך עכשיו {locale}."
-"language.selection.server-selected" = "{plugin}: &7שפת השרת עכשיו {locale}."
-"language.selection.server-default-selected" = "{plugin}: &7השפה שלך תואמת כעת לשפת ברירת המחדל של השרת."
+"language.selection.personal-selected" = "{plugin}: &7השפה שלכם היא כעת {locale}."
+"language.selection.server-selected" = "{plugin}: &7שפת השרת היא כעת {locale}."
+"language.selection.server-default-selected" = "{plugin}: &7השפה שלכם תואמת כעת לשפת ברירת המחדל של השרת."
+"language.update.checking" = "{plugin}: &7מתבצעת בדיקת שינויים במאגר השפות..."
+"language.update.unchanged" = "{plugin}: &7השפות המותקנות כבר תואמות למאגר."
+"language.update.applied" = "{plugin}: &7{locale} עודכן ({added} נוספו, {updated} שונו, {kept} עריכות מקומיות נשמרו)."
+"language.update.cooldown" = "{plugin}: &7מאגר השפות נבדק לאחרונה; נסו שוב בעוד {remaining}."
+"language.update.locale-failed" = "{plugin}: &c{locale} לא עודכן: {reason}"
+"language.update.failed" = "{plugin}: &cעדכון השפות נכשל: {reason}"
 "language.editor.title" = "{plugin} › {section}"
 "language.editor.loading" = "&7טוען הודעות עבור {locale}..."
 "language.editor.section.languages" = "שפות"
@@ -604,9 +614,9 @@
 "language.editor.input.too-long" = "&cהקלט יכול להכיל לכל היותר {maximum} תווים."
 "language.editor.input.unable-to-save" = "&cלא ניתן לשמור: {reason}"
 "language.editor.navigation.back" = "&eחזרה&r"
-"language.editor.navigation.close" = "&cסגור&r"
+"language.editor.navigation.close" = "&cסגירה&r"
 "language.editor.navigation.previous-page" = "&eהעמוד הקודם&r"
-"language.editor.navigation.next-page" = "&eדף הבא&r"
+"language.editor.navigation.next-page" = "&eהעמוד הבא&r"
 "language.editor.search.messages" = "חיפוש הודעות"
 "language.editor.search.messages-lore" = "לחיצה לחיפוש בכל ההודעות."
 "language.editor.search.clear" = "ניקוי החיפוש"
@@ -615,10 +625,10 @@
 "language.editor.message.edit-plural" = "&7לחיצה לעריכת צורת רבים.&r"
 "language.editor.message.edit-lines" = "&7לחיצה לעריכת שורות בודדות.&r"
 "language.editor.message.edit-chat" = "&7לחיצה לעריכה בצ׳אט.&r"
-"language.editor.locale.open" = "&8לחץ לפתוח את השפה.&r"
+"language.editor.locale.open" = "&8לחיצה לפתיחת השפה.&r"
 "language.editor.category.message-count" = "&7{count} הודעות&r"
-"language.editor.category.open" = "&8לחץ לפתוח קטגוריה זו.&r"
-"language.editor.error.no-permission" = "&cאין לך הרשאה לערוך את השפות של {plugin}."
+"language.editor.category.open" = "&8לחיצה לפתיחת הקטגוריה.&r"
+"language.editor.error.no-permission" = "&cאין לכם הרשאה לערוך את השפות של {plugin}."
 "language.editor.error.unable-to-edit" = "&cלא ניתן לערוך: {reason}"
 "language.editor.saved.summary" = "&7{locale} נשמרה. בחירות השפה לא השתנו."
 "language.editor.saved.change" = "&7{key}: הערך ״{before}״ הוחלף ב־״{after}״."
@@ -649,133 +659,133 @@
 "config.editor.page" = "עמוד {page} מתוך {pages}"
 "config.editor.entry" = "רשומה {number}"
 "config.editor.current" = "נוכחי: {value}"
-"config.editor.open" = "לחץ לפתיחת המקטע."
-"config.editor.toggle" = "לחץ להפעלה או לכיבוי."
-"config.editor.edit" = "לחץ להזנת ערך חדש בצ׳אט."
-"config.editor.prompt" = "הזן ערך חדש עבור {path}. הקלד cancel לחזרה."
-"config.editor.expired" = "פג תוקף הזנת ההגדרות."
-"config.editor.too-long" = "הזן עד {maximum} תווים."
+"config.editor.open" = "לחצו לפתיחת המקטע."
+"config.editor.toggle" = "לחצו כדי להחליף בין true ל-false."
+"config.editor.edit" = "לחצו להזנת ערך חדש בצ׳אט."
+"config.editor.prompt" = "הזינו ערך חדש עבור {path}. הקלידו cancel כדי לחזור."
+"config.editor.expired" = "זמן הזנת ההגדרות פג."
+"config.editor.too-long" = "הזינו עד {maximum} תווים."
 "config.editor.saving" = "שומר הגדרות..."
 "config.editor.saved" = "{path} נשמר. השינויים מוחלים אוטומטית."
 "config.editor.failed" = "לא ניתן לערוך הגדרות: {reason}"
 "config.editor.loading" = "טוען הגדרות..."
 "config.editor.empty" = "אין הגדרות במקטע זה."
-"config.editor.player-only" = "פתח את עורך ההגדרות בתוך המשחק."
-"config.editor.no-permission" = "אין לך הרשאה לערוך הגדרות אלה."
+"config.editor.player-only" = "פתחו את עורך ההגדרות בתוך המשחק."
+"config.editor.no-permission" = "אין לכם הרשאה לערוך הגדרות אלה."
 "config.editor.back" = "חזרה"
 "config.editor.previous" = "העמוד הקודם"
 "config.editor.next" = "העמוד הבא"
 "config.editor.refresh" = "רענון"
 "config.editor.close" = "סגירה"
 "config.editor.type.text" = "טקסט ללא מרכאות מסביב."
-"config.editor.type.integer" = "הזן מספר שלם."
-"config.editor.type.decimal" = "הזן מספר, כגון 0.25."
-"config.editor.type.list" = "השתמש ברשימת TOML, כגון [\"stone\", \"deepslate\"]."
+"config.editor.type.integer" = "הזינו מספר שלם."
+"config.editor.type.decimal" = "הזינו מספר, כגון 0.25."
+"config.editor.type.list" = "השתמשו ברשימת TOML, כגון [\"stone\", \"deepslate\"]."
 "config.editor.adjust" = "שמאל +{step}, ימין -{step}, Shift x10, Q להזנת ערך מדויק."
 
 "gui.config.title" = "הגדרות"
-"gui.setting.collections" = "אוספים אישיים, תלבושות, תקופות ניסיון ואישיות."
-"gui.setting.collections.idleReactions" = "אפשר תגובות סרק מזדמנות כאשר בן לוויה עומד במקום."
+"gui.setting.collections" = "אוספים אישיים, הרכבים, ניסיונות פרטיים ואישיות."
+"gui.setting.collections.idleReactions" = "מתן אפשרות לתגובות סרק מזדמנות כאשר מלווה עומד במקום."
 "gui.setting.collections.idleReactions.name" = "תגובות סרק"
-"gui.setting.collections.maximumOutfits" = "מספר התלבושות השמורות המרבי לכל שחקן, בין 1 ל-32."
-"gui.setting.collections.maximumOutfits.name" = "מספר תלבושות מרבי"
+"gui.setting.collections.maximumOutfits" = "המספר המרבי של הרכבים שמורים לכל שחקן, בין 1 ל-32."
+"gui.setting.collections.maximumOutfits.name" = "מספר הרכבים מרבי"
 "gui.setting.collections.name" = "אוספים"
-"gui.setting.collections.personalityEnabled" = "אפשר אינטראקציות ליטוף, נפנוף, ישיבה, המתנה וקריאה."
+"gui.setting.collections.personalityEnabled" = "מתן אפשרות לאינטראקציות ליטוף, נפנוף, ישיבה, הישארות וקריאה."
 "gui.setting.collections.personalityEnabled.name" = "אישיות מופעלת"
-"gui.setting.collections.trialSeconds" = "משך התצוגה המקדימה הפרטית של בן לוויה נעול, בין 5 ל-120 שניות."
+"gui.setting.collections.trialSeconds" = "משך התצוגה המקדימה הפרטית של מלווה נעול, בין 5 ל-120 שניות."
 "gui.setting.collections.trialSeconds.name" = "שניות ניסיון"
 "gui.setting.debug" = "העלאת דוחות אבחון."
 "gui.setting.debug.name" = "ניפוי באגים"
-"gui.setting.debug.uploadEnabled" = "אפשר לפקודה /bytecompanions debug dump upload=true לפרסם דוחות ב-mclo.gs לאחר שמירתם מקומית."
+"gui.setting.debug.uploadEnabled" = "מתן אפשרות לפקודה /bytecompanions debug dump upload=true לפרסם דוחות ב-mclo.gs לאחר שמירתם מקומית."
 "gui.setting.debug.uploadEnabled.name" = "העלאה מופעלת"
 "gui.setting.features" = "חבילות תכונות; חבילות מושבתות מסתירות את הפקודות שלהן ושומרות על המצב השמור."
-"gui.setting.features.attributes" = "הפעל משני מאפיינים של בני לוויה."
+"gui.setting.features.attributes" = "הפעלת משני מאפיינים של מלווים."
 "gui.setting.features.attributes.name" = "מאפיינים"
-"gui.setting.features.boosters" = "הפעל מאיצים אישיים ומאיצים לכל השרת לבני לוויה."
+"gui.setting.features.boosters" = "הפעלת מאיצים אישיים ומאיצים לכל השרת עבור מלווים."
 "gui.setting.features.boosters.name" = "מאיצים"
-"gui.setting.features.buffs" = "הפעל חיזוקים של בני לוויה כגון בונוסים לשלל ולניסיון."
-"gui.setting.features.buffs.name" = "חיזוקים"
-"gui.setting.features.decorations" = "הפעל בני לוויה דקורטיביים סטטיים."
+"gui.setting.features.buffs" = "הפעלת בונוסים של מלווים, כגון בונוסים לשלל ולניסיון."
+"gui.setting.features.buffs.name" = "בונוסים במשחק"
+"gui.setting.features.decorations" = "הפעלת מלווים דקורטיביים סטטיים."
 "gui.setting.features.decorations.name" = "קישוטים"
-"gui.setting.features.effects" = "הפעל אפקטי שיקויים של בני לוויה."
-"gui.setting.features.effects.name" = "אפקטים"
+"gui.setting.features.effects" = "הפעלת השפעות שיקויים של מלווים."
+"gui.setting.features.effects.name" = "השפעות"
 "gui.setting.features.name" = "תכונות"
-"gui.setting.features.particles" = "הפעל אפקטי חלקיקים של בני לוויה."
+"gui.setting.features.particles" = "הפעלת אפקטי חלקיקים של מלווים."
 "gui.setting.features.particles.name" = "חלקיקים"
-"gui.setting.features.progression" = "הפעל רמות של בני לוויה ושדרוגי בונוס אופציונליים."
+"gui.setting.features.progression" = "הפעלת רמות מלווים ושדרוגי בונוסים אופציונליים."
 "gui.setting.features.progression.name" = "התקדמות"
-"gui.setting.general" = "מתג ראשי, שפת השרת, הודעות עדכון ומגבלות בני לוויה."
-"gui.setting.general.autoLoadCompanions" = "טען את הגדרות בני הלוויה מתיקיית companions כאשר סביבת הריצה עולה."
-"gui.setting.general.autoLoadCompanions.name" = "טעינת בני לוויה אוטומטית"
-"gui.setting.general.companionLimits" = "מגבלות על מספר בני הלוויה ששחקן אחד יכול לצייד בו-זמנית."
-"gui.setting.general.companionLimits.maxTotalPerPlayer" = "מספר בני הלוויה המרבי ששחקן אחד יכול לצייד בו-זמנית; -1 מסיר את המגבלה."
+"gui.setting.general" = "מתג ראשי, שפת השרת, הודעות עדכון ומגבלות מלווים."
+"gui.setting.general.autoLoadCompanions" = "טעינת הגדרות המלווים מתיקיית companions כאשר סביבת הריצה עולה."
+"gui.setting.general.autoLoadCompanions.name" = "טעינה אוטומטית של מלווים"
+"gui.setting.general.companionLimits" = "מגבלות על מספר המלווים ששחקן אחד יכול לצייד בו-זמנית."
+"gui.setting.general.companionLimits.maxTotalPerPlayer" = "המספר המרבי של מלווים ששחקן אחד יכול לצייד בו-זמנית; -1 מסיר את המגבלה."
 "gui.setting.general.companionLimits.maxTotalPerPlayer.name" = "מקסימום כולל לשחקן"
-"gui.setting.general.companionLimits.name" = "מגבלות בני לוויה"
-"gui.setting.general.companionLimits.perModel" = "מגבלות נפרדות לכל דגם בן לוויה."
-"gui.setting.general.companionLimits.perModel.fullBody" = "מספר בני הלוויה בגוף מלא המרבי ששחקן אחד יכול לצייד בו-זמנית; -1 מסיר את המגבלה."
+"gui.setting.general.companionLimits.name" = "מגבלות מלווים"
+"gui.setting.general.companionLimits.perModel" = "מגבלות נפרדות לכל דגם מלווה."
+"gui.setting.general.companionLimits.perModel.fullBody" = "המספר המרבי של מלווים בגוף מלא ששחקן אחד יכול לצייד בו-זמנית; -1 מסיר את המגבלה."
 "gui.setting.general.companionLimits.perModel.fullBody.name" = "גוף מלא"
-"gui.setting.general.companionLimits.perModel.headOnly" = "מספר בני הלוויה בראש בלבד המרבי ששחקן אחד יכול לצייד בו-זמנית; -1 מסיר את המגבלה."
+"gui.setting.general.companionLimits.perModel.headOnly" = "המספר המרבי של מלווים של ראש בלבד ששחקן אחד יכול לצייד בו-זמנית; -1 מסיר את המגבלה."
 "gui.setting.general.companionLimits.perModel.headOnly.name" = "ראש בלבד"
 "gui.setting.general.companionLimits.perModel.name" = "לפי דגם"
-"gui.setting.general.enabled" = "מתג ראשי לוויזואליה של בני לוויה ולבונוסים במשחק."
+"gui.setting.general.enabled" = "מתג ראשי לוויזואליה של מלווים ולבונוסים במשחק."
 "gui.setting.general.enabled.name" = "מופעל"
 "gui.setting.general.language" = "שפת ברירת המחדל של השרת, השמורה בקובץ languages/<locale>.toml הניתן לעריכה ישירה."
 "gui.setting.general.language.name" = "שפה"
 "gui.setting.general.name" = "כללי"
-"gui.setting.general.updateNotifications" = "הודע למפעילים ולשחקנים בעלי bytecompanions.update על גרסאות GitHub חדשות יותר בעת ההצטרפות."
+"gui.setting.general.updateNotifications" = "הודעה למפעילים ולשחקנים בעלי ההרשאה bytecompanions.update על גרסאות GitHub חדשות יותר בעת ההצטרפות."
 "gui.setting.general.updateNotifications.name" = "הודעות עדכון"
-"gui.setting.hotReload" = "טעינה מחדש אוטומטית של קובצי הגדרות, בני לוויה, תכונות ושפה."
+"gui.setting.hotReload" = "טעינה מחדש אוטומטית של קובצי הגדרות, מלווים, תכונות ושפה."
 "gui.setting.hotReload.cooldownMillis" = "מספר אלפיות השנייה שקובץ ששונה חייב להישאר ללא שינוי לפני החלתו, בין 250 ל-60000."
 "gui.setting.hotReload.cooldownMillis.name" = "אלפיות שנייה להמתנה"
-"gui.setting.hotReload.enabled" = "החל אוטומטית שינויי קבצים יציבים תחת תיקיית הנתונים."
+"gui.setting.hotReload.enabled" = "החלה אוטומטית של שינויי קבצים יציבים תחת תיקיית הנתונים."
 "gui.setting.hotReload.enabled.name" = "מופעל"
 "gui.setting.hotReload.name" = "טעינה חמה"
-"gui.setting.hotReload.notifyOperators" = "הודע לשחקנים מחוברים בעלי bytecompanions.config כאשר טעינה מחדש אוטומטית של קובץ מצליחה או נכשלת."
-"gui.setting.hotReload.notifyOperators.name" = "הודע למפעילים"
+"gui.setting.hotReload.notifyOperators" = "הודעה לשחקנים מחוברים בעלי ההרשאה bytecompanions.config כאשר טעינה מחדש אוטומטית של קובץ מצליחה או נכשלת."
+"gui.setting.hotReload.notifyOperators.name" = "הודעה למפעילים"
 "gui.setting.hotReload.pollIntervalMillis" = "אלפיות השנייה בין סריקות קבצים, בין 250 ל-60000."
 "gui.setting.hotReload.pollIntervalMillis.name" = "אלפיות שנייה בין סריקות"
-"gui.setting.languages" = "ערוך את תרגומי השרת ואת העיצוב שלהם."
+"gui.setting.languages" = "עריכת תרגומי השרת והעיצוב שלהם."
 "gui.setting.languages.name" = "שפות"
 "gui.setting.menus" = "קיצורי דרך ללוח הבקרה."
 "gui.setting.menus.name" = "תפריטים"
-"gui.setting.menus.rightClickDashboard" = "פתח את לוח הבקרה של בן הלוויה כאשר הבעלים לוחץ עליו לחיצה ימנית ביד הראשית."
+"gui.setting.menus.rightClickDashboard" = "פתיחת לוח הבקרה של המלווה כאשר הבעלים לוחץ עליו לחיצה ימנית ביד הראשית."
 "gui.setting.menus.rightClickDashboard.name" = "לוח בקרה בלחיצה ימנית"
 "gui.setting.metrics" = "סטטיסטיקות שימוש אנונימיות."
-"gui.setting.metrics.enabled" = "שלח סטטיסטיקות שימוש אנונימיות של ByteCompanions אל bStats."
+"gui.setting.metrics.enabled" = "שליחת סטטיסטיקות שימוש אנונימיות של ByteCompanions אל bStats."
 "gui.setting.metrics.enabled.name" = "מופעל"
 "gui.setting.metrics.name" = "מדדים"
 "gui.setting.performance" = "קצב טיקים, מעקב צופים ומגבלות חלקיקים."
-"gui.setting.performance.dispatchInteractEvent" = "הפעל את CompanionPlayerInteractEvent עבור תוספים אחרים כאשר שחקן לוחץ על בן לוויה."
+"gui.setting.performance.dispatchInteractEvent" = "הפעלת CompanionPlayerInteractEvent עבור תוספים אחרים כאשר שחקן לוחץ על מלווה."
 "gui.setting.performance.dispatchInteractEvent.name" = "שליחת אירוע אינטראקציה"
 "gui.setting.performance.maximumParticleIntensity" = "עוצמת החלקיקים המרבית שהשחקנים יכולים לקבל: FULL, REDUCED או OFF."
 "gui.setting.performance.maximumParticleIntensity.name" = "עוצמת חלקיקים מרבית"
 "gui.setting.performance.name" = "ביצועים"
-"gui.setting.performance.updateInterval" = "טיקים בין עדכוני אנימציה של בני לוויה, לפחות 1."
+"gui.setting.performance.updateInterval" = "טיקים בין עדכוני ההנפשה של המלווים, לפחות 1."
 "gui.setting.performance.updateInterval.name" = "מרווח עדכון"
-"gui.setting.performance.viewDistance" = "מרחק בבלוקים שבתוכו שחקנים אחרים רואים בן לוויה, 0 ומעלה."
+"gui.setting.performance.viewDistance" = "מרחק בבלוקים שבתוכו שחקנים אחרים רואים מלווה, 0 ומעלה."
 "gui.setting.performance.viewDistance.name" = "מרחק ראייה"
 "gui.setting.performance.viewerRefreshDelay" = "טיקים בין בדיקות מרחק הצופים, לפחות 1."
 "gui.setting.performance.viewerRefreshDelay.name" = "השהיית רענון צופים"
-"gui.setting.presentation" = "מסך פתיחה בקונסולה, צלילי משוב לפקודות ועיצוב טקסט."
-"gui.setting.presentation.alternateSplashes" = "החלף את איור הפתיחה באחת היצירות החלופיות בהפעלה אחת מתוך עשר."
+"gui.setting.presentation" = "מסך פתיחה במסוף, צלילי משוב לפקודות ועיצוב טקסט."
+"gui.setting.presentation.alternateSplashes" = "החלפת איור הפתיחה באחת היצירות החלופיות בהפעלה אחת מתוך עשר."
 "gui.setting.presentation.alternateSplashes.name" = "מסכי פתיחה חלופיים"
-"gui.setting.presentation.commandSounds" = "השמע צליל הצלחה או כישלון קצר כאשר פקודה מדווחת על תוצאתה לשחקן."
+"gui.setting.presentation.commandSounds" = "השמעת צליל הצלחה או כישלון קצר כאשר פקודה מדווחת לשחקן על תוצאתה."
 "gui.setting.presentation.commandSounds.name" = "צלילי פקודות"
 "gui.setting.presentation.name" = "תצוגה"
-"gui.setting.presentation.serializer" = "פורמט הטקסט לשמות בני לוויה, תיאורים ותבניות פריטים: MINI_MESSAGE, LEGACY_AMPERSAND או PLAIN."
+"gui.setting.presentation.serializer" = "פורמט הטקסט לשמות מלווים, תיאורים ותבניות פריטים: MINI_MESSAGE, LEGACY_AMPERSAND או PLAIN."
 "gui.setting.presentation.serializer.name" = "סריאלייזר"
-"gui.setting.presentation.splashScreen" = "הדפס את מסך הפתיחה של ByteCompanions לאחר שהשירותים מוכנים."
+"gui.setting.presentation.splashScreen" = "הדפסת מסך הפתיחה של ByteCompanions לאחר שהשירותים מוכנים."
 "gui.setting.presentation.splashScreen.name" = "מסך פתיחה"
 "gui.setting.serverRules" = "הגבלות עולמות ואזורים."
-"gui.setting.serverRules.bonusDisabledWorlds" = "שמות עולמות שבהם מאפייני בני לוויה, אפקטים, בונוסי תגמול ונקודות ניסיון אוטומטיות לבני לוויה מושעים."
+"gui.setting.serverRules.bonusDisabledWorlds" = "שמות עולמות שבהם מאפייני מלווים, השפעות, בונוסי תגמול ונקודות ניסיון אוטומטיות למלווים מושהים."
 "gui.setting.serverRules.bonusDisabledWorlds.name" = "עולמות ללא בונוסים"
-"gui.setting.serverRules.hiddenWorlds" = "שמות עולמות שבהם הוויזואליה של בני לוויה מוסתרת."
+"gui.setting.serverRules.hiddenWorlds" = "שמות עולמות שבהם הוויזואליה של מלווים מוסתרת."
 "gui.setting.serverRules.hiddenWorlds.name" = "עולמות מוסתרים"
 "gui.setting.serverRules.name" = "חוקי שרת"
-"gui.setting.serverRules.worldguard" = "כבד את הדגלים bytecompanions-visuals ו-bytecompanions-bonuses כאשר WorldGuard מותקן."
+"gui.setting.serverRules.worldguard" = "כיבוד הדגלים bytecompanions-visuals ו-bytecompanions-bonuses כאשר WorldGuard מותקן."
 "gui.setting.serverRules.worldguard.name" = "WorldGuard"
 "gui.setting.storage" = "מנגנון אחסון נתוני השחקנים ומאגר החיבורים."
-"gui.setting.storage.backend" = "מנגנון אחסון לבני לוויה, אוספים, התקדמות ובחירות חלקיקים של שחקנים: json, sqlite, h2 או mysql."
+"gui.setting.storage.backend" = "מנגנון אחסון למלווים, לאוספים, להתקדמות ולבחירות החלקיקים של השחקנים: json, sqlite, h2 או mysql."
 "gui.setting.storage.backend.name" = "מנגנון אחסון"
 "gui.setting.storage.h2" = "מיקום מסד הנתונים המוטמע של H2."
 "gui.setting.storage.h2.directory" = "ספרייה תחת plugins/ByteCompanions שמכילה את קובצי מסד הנתונים המוטמע."
@@ -791,7 +801,7 @@
 "gui.setting.storage.mysql.password.name" = "סיסמה"
 "gui.setting.storage.mysql.port" = "פורט מסד הנתונים, בין 1 ל-65535."
 "gui.setting.storage.mysql.port.name" = "פורט"
-"gui.setting.storage.mysql.useSsl" = "דרוש TLS לחיבור למסד הנתונים."
+"gui.setting.storage.mysql.useSsl" = "דרישת TLS לחיבור למסד הנתונים."
 "gui.setting.storage.mysql.useSsl.name" = "שימוש ב-SSL"
 "gui.setting.storage.mysql.username" = "משתמש מסד הנתונים."
 "gui.setting.storage.mysql.username.name" = "שם משתמש"

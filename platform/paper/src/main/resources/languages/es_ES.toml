@@ -2,103 +2,104 @@
 #
 # === Editar el archivo ===
 # plugins/ByteCompanions/languages/es_ES.toml
-# Puede editar este archivo directamente. Los cambios locales se conservan; las entradas ausentes o no válidas usan el inglés incorporado.
+# Puedes editar este archivo directamente. Los cambios locales se conservan; las entradas que falten o no sean válidas usan el inglés integrado.
 # /bytecompanions language server edit es_ES
 #
 # === Prefijo ===
-# runtime.prefix supplies the styled plugin name for {prefix}.
-# Remove {prefix} from a message to hide the plugin name for that message.
+# runtime.prefix proporciona el nombre del plugin con formato para {prefix}.
+# Elimina {prefix} de un mensaje para ocultar el nombre del plugin en ese mensaje.
 #
 # === Formato ===
-# Colors and styles: &0-&f, &k-&r.
-# RGB colors: &#RRGGBB, &xRRGGBB, &x&R&R&G&G&B&B, [RRGGBB].
-# MiniMessage supports custom formatting such as <gold> and <gradient:#ffcc00:#ff9900>. Put a backslash before & or [ to display it literally.
+# Colores y estilos: &0-&f, &k-&r.
+# Colores RGB: &#RRGGBB, &xRRGGBB, &x&R&R&G&G&B&B, [RRGGBB].
+# MiniMessage admite formatos personalizados como <gold> y <gradient:#ffcc00:#ff9900>. Antepón una barra invertida a & o [ para mostrarlos literalmente.
 #
 # === Variables ===
-# Mantenga los nombres de las variables y use solo las que ya contiene cada mensaje.
-#   {action}  Requested action
-#   {actions}  Available actions
-#   {after}  Value after the change
-#   {amount}  Amount or count
-#   {argument}  Unexpected command argument
-#   {before}  Value before the change
-#   {bonus}  Bonus name
-#   {booster}  Booster identifier
-#   {category}  Category name
-#   {change}  Described change
-#   {channel}  Booster channel
-#   {choice}  Selected option
-#   {command}  Command path
-#   {companion}  Companion identifier
-#   {companions}  Companion identifiers
-#   {count}  Number of items
-#   {created}  Creation time
-#   {current}  Current value
-#   {definition}  Companion definition
-#   {detail}  Failure detail
-#   {effect}  Particle effect identifier
-#   {entry}  Entry label
-#   {feature}  Feature name
-#   {features}  Enabled features
-#   {field}  Studio field name
-#   {formation}  Formation name
-#   {group}  Message category name
-#   {hot_reload}  Hot reload state
-#   {index}  Position number
-#   {integrations}  Integration states
-#   {item}  Item name
-#   {items}  Item list
-#   {java}  Java major version
-#   {key}  Message or setting key
-#   {kind}  Transaction kind
-#   {language}  Active language
-#   {level}  Level number
-#   {limit}  Configured limit
-#   {line}  Message line number
-#   {locale}  Locale identifier
-#   {maximum}  Maximum accepted value
-#   {mode}  Combining rule
-#   {model}  Companion model
-#   {money}  Money amount
-#   {name}  Display name
-#   {new}  Installed rendered value
-#   {next}  Next value
-#   {old}  Previous rendered value
-#   {operation}  Bonus operation
-#   {page}  Current page number
-#   {pages}  Total page count
-#   {parameter}  Parameter name
-#   {path}  File path or setting path
-#   {percent}  Percentage value
-#   {permission}  Required permission
-#   {personal}  Personal locale when it differs
-#   {player}  Player name
-#   {players}  Loaded player count
-#   {plugin}  Plugin name
-#   {prefix}  Styled plugin name from runtime.prefix
-#   {provider}  Payment provider
-#   {range}  Supported Minecraft range
-#   {reason}  Failure reason
-#   {required}  Required amount
-#   {scheduler}  Scheduler implementation
-#   {seconds}  Duration in seconds
-#   {section}  Language editor section
-#   {setting}  Setting name
-#   {sources}  Bonus sources
-#   {status}  Status marker
-#   {step}  Adjustment step
-#   {target}  Selection target
-#   {tier}  Upgrade tier
-#   {time}  Duration text
-#   {transaction}  Transaction identifier
-#   {type}  Parameter type
-#   {url}  Public report URL
-#   {usage}  Command usage
-#   {value}  Current or raw value
-#   {variables}  Placeholders valid for the message
-#   {variant}  Appearance variant
-#   {version}  Plugin version
-#   {xp}  Companion experience
+# Conserva los nombres de las variables y usa solo las que ya contiene cada mensaje.
+#   {activation}  Identificador de la activación del potenciador
+#   {added}  Mensajes añadidos por una actualización de idioma
+#   {after}  Valor después del cambio
+#   {amount}  Cantidad o número
+#   {argument}  Argumento de comando inesperado
+#   {before}  Valor antes del cambio
+#   {bonus}  Nombre de la bonificación
+#   {booster}  Identificador del potenciador
+#   {category}  Nombre de la categoría
+#   {change}  Descripción del cambio
+#   {channel}  Canal del potenciador
+#   {choice}  Opción seleccionada
+#   {command}  Ruta del comando
+#   {companion}  Identificador del compañero
+#   {companions}  Identificadores de compañeros
+#   {count}  Número de elementos
+#   {created}  Fecha de creación
+#   {current}  Valor actual
+#   {definition}  Definición del compañero
+#   {detail}  Detalle del fallo
+#   {effect}  Identificador del efecto de partículas
+#   {enabled}  Estado de los compañeros
+#   {feature}  Nombre de la función
+#   {features}  Funciones activadas
+#   {field}  Nombre del campo del estudio
+#   {formation}  Nombre de la formación
+#   {group}  Nombre de la categoría de mensajes
+#   {hot_reload}  Estado de la recarga en caliente
+#   {index}  Número de posición
+#   {integrations}  Estado de las integraciones
+#   {item}  Nombre del objeto
+#   {items}  Lista de objetos
+#   {java}  Versión principal de Java
+#   {kept}  Ediciones locales conservadas por una actualización de idioma
+#   {key}  Clave del mensaje o del ajuste
+#   {kind}  Tipo de transacción
+#   {language}  Idioma activo
+#   {level}  Número de nivel
+#   {limit}  Límite configurado
+#   {line}  Número de línea del mensaje
+#   {locale}  Código de idioma
+#   {maximum}  Valor máximo aceptado
+#   {mode}  Regla de combinación
+#   {model}  Modelo del compañero
+#   {money}  Cantidad de dinero
+#   {name}  Nombre visible
+#   {next}  Valor siguiente
+#   {number}  Número de la entrada de la lista
+#   {operation}  Operación de la bonificación
+#   {page}  Número de página actual
+#   {pages}  Número total de páginas
+#   {parameter}  Nombre del parámetro
+#   {path}  Ruta del archivo o del ajuste
+#   {percent}  Valor porcentual
+#   {permission}  Permiso necesario
+#   {personal}  Idioma personal, si es distinto
+#   {player}  Nombre del jugador
+#   {players}  Número de jugadores cargados
+#   {plugin}  Nombre del plugin
+#   {prefix}  Nombre del plugin con formato de runtime.prefix
+#   {provider}  Proveedor de pagos
+#   {range}  Rango de versiones de Minecraft compatibles
+#   {reason}  Motivo del fallo
+#   {remaining}  Tiempo restante hasta la próxima comprobación de idiomas
+#   {required}  Cantidad necesaria
+#   {scheduler}  Implementación del planificador
+#   {seconds}  Duración en segundos
+#   {section}  Sección del editor de idiomas
+#   {sources}  Fuentes de bonificación
+#   {status}  Indicador de estado
+#   {step}  Paso de ajuste
+#   {target}  Destino de la selección
+#   {tier}  Rango de mejora
+#   {time}  Duración en texto
+#   {transaction}  Identificador de la transacción
+#   {type}  Tipo del parámetro
+#   {updated}  Mensajes cambiados por una actualización de idioma
+#   {url}  URL pública del informe
+#   {usage}  Uso del comando
+#   {value}  Valor actual o sin procesar
+#   {variables}  Variables válidas para el mensaje
+#   {variant}  Variante de aspecto
+#   {version}  Versión del plugin
+#   {xp}  Experiencia del compañero
 
 "runtime.prefix" = "<bold><gradient:#ffcc00:#ff9900>ByteCompanions</gradient></bold>"
 "gui.studio-review-change" = "<gold>Cambio {index}"
@@ -115,7 +116,7 @@
 "gui.title.studio" = "<gold>Estudio de compañeros"
 "gui.title.studio-fields" = "<gold>Editar compañero"
 "gui.title.studio-field" = "<gold>Editar ajuste"
-"gui.title.studio-presets" = "<gold>Elegir un preset"
+"gui.title.studio-presets" = "<gold>Elegir un preajuste"
 "gui.title.studio-confirm" = "<gold>Revisar cambios del compañero"
 "gui.studio" = "<gold>✎ Estudio de compañeros"
 "gui.studio-hint" = "<gray>Edita este compañero para todo el servidor."
@@ -130,7 +131,7 @@
 "gui.studio-attributes" = "<aqua>Bonificaciones de atributos"
 "gui.studio-effects" = "<light_purple>Bonificaciones de pociones"
 "gui.studio-buffs" = "<green>Bonificaciones de XP y recompensas"
-"gui.studio-category-hint" = "<gray>Elige un ajuste o añade un preset."
+"gui.studio-category-hint" = "<gray>Elige un ajuste o añade un preajuste."
 "gui.studio-disabled" = "<yellow>Esta función está desactivada; las bonificaciones guardadas siguen inactivas."
 "gui.studio-field" = "<gold>{field}"
 "gui.studio-value" = "<gray>Valor actual: <white>{value}"
@@ -138,15 +139,15 @@
 "gui.studio-type" = "<gold>Escribir un valor"
 "gui.studio-type-hint" = "<gray>Introduce un valor exacto en privado por el chat."
 "gui.studio-toggle" = "<gold>Alternar ajuste"
-"gui.studio-toggle-hint" = "<gray>Cambiar entre true y false."
+"gui.studio-toggle-hint" = "<gray>Alterna entre true y false."
 "gui.studio-increase" = "<green>Aumentar"
 "gui.studio-decrease" = "<gold>Reducir"
 "gui.studio-adjust-hint" = "<gray>Cambia el valor en {step}."
-"gui.studio-presets" = "<gold>Añadir o elegir un preset"
+"gui.studio-presets" = "<gold>Añadir o elegir un preajuste"
 "gui.studio-presets-hint" = "<gray>Revisa las opciones disponibles para esta sección."
 "gui.studio-choice" = "<aqua>{choice}"
 "gui.studio-choice-hint" = "<gray>Aplícalo al borrador; previsualiza antes de guardar."
-"gui.studio-particle-hint" = "<gray>Activa o desactiva este preset."
+"gui.studio-particle-hint" = "<gray>Activa o desactiva este preajuste."
 "gui.studio-preview" = "<aqua>Vista previa en el mundo"
 "gui.studio-preview-hint" = "<gray>Solo tú la ves; sin bonificaciones ni selecciones guardadas."
 "gui.studio-stop-preview" = "<gold>Detener vista previa"
@@ -156,16 +157,16 @@
 "gui.studio-apply-hint" = "<gray>Valida, guarda y recarga el plugin."
 "gui.studio-reload-hint" = "<yellow>Se cierran los otros editores; se restauran los compañeros conectados."
 "gui.studio-discard" = "<red>Descartar borrador"
-"gui.studio-discard-hint" = "<gray>Descarta los cambios sin guardar y detén la vista previa."
+"gui.studio-discard-hint" = "<gray>Descarta todos los cambios sin guardar y detén la vista previa."
 "gui.studio-reset" = "<gold>Restablecer borrador"
 "gui.studio-reset-hint" = "<gray>Vuelve a los valores que había al abrirlo."
 "gui.studio-back" = "<gold>◀ Volver"
 "gui.studio-back-hint" = "<gray>Vuelve sin perder el borrador."
-"gui.studio-empty" = "<gray>Aún no hay ajustes. Añade un preset para empezar."
+"gui.studio-empty" = "<gray>Aún no hay ajustes. Añade un preajuste para empezar."
 "studio.prompt" = "{prefix} <gold>Introduce {field} en el chat o escribe <white>cancel</white>. Máximo 256 caracteres; caduca en 60 segundos.</gold>"
 "studio.cancelled" = "{prefix} <gray>Entrada cancelada o caducada; el borrador no ha cambiado.</gray>"
 "studio.failed" = "{prefix} <red>Cambio rechazado: {reason}</red>"
-"studio.preview" = "{prefix} <aqua>Vista previa privada iniciada durante cinco minutos. Vuelve con <white>/bytecompanions edit {companion}</white>. No se otorgan bonificaciones.</aqua>"
+"studio.preview" = "{prefix} <aqua>Vista previa privada de cinco minutos iniciada. Vuelve con <white>/bytecompanions edit {companion}</white>. No se otorgan bonificaciones.</aqua>"
 "studio.retained" = "{prefix} <gray>Al cerrar el menú, el borrador se conserva durante 15 minutos de inactividad. Vuelve con <white>/bytecompanions edit</white>.</gray>"
 "studio.existing" = "{prefix} <yellow>Ya tienes un borrador de {companion}. Guárdalo o descártalo antes de editar otro compañero.</yellow>"
 "studio.expired" = "{prefix} <gray>Tu borrador de compañero inactivo se ha descartado.</gray>"
@@ -200,7 +201,7 @@
 "command.feedback.disabled" = "<gold>La función {feature} está desactivada.</gold>"
 "command.feedback.player-only" = "<red>Solo un jugador puede usar este comando.</red>"
 "command.feedback.companion-required" = "<red>Se requiere el nombre de un compañero.</red>"
-"command.feedback.failed" = "<red>No se pudo completar el comando. Consulta la consola.</red>"
+"command.feedback.failed" = "<red>No se pudo completar el comando. Consulta la consola para ver los detalles.</red>"
 "command.feedback.usage" = "<gold>Uso: {usage}</gold>"
 "command.feedback.version" = "<gradient:#ffcc00:#ff9900>{prefix} v{version}</gradient>"
 "particles.title" = "<gold>Partículas de compañeros</gold>"
@@ -310,17 +311,19 @@
 "command.parameter.xp" = "Cantidad entera positiva de XP de compañero"
 "command.parameter.booster" = "ID del potenciador configurado"
 "command.parameter.count" = "Número entero positivo de activaciones de potenciadores"
-"command.parameter.activation" = "ID de una activación en curso o en cola"
+"command.parameter.activation" = "ID de una activación de potenciador en curso o en cola"
 "command.parameter.transaction" = "ID de transacción de una compra sin resolver"
 "command.parameter.resolution" = "grant o cancel tras comprobar los pagos"
-"command.progression.granted" = "<green>Se guardaron {amount} XP para el compañero {companion} de {player}.</green>"
+"command.progression.granted" = "<green>Se guardaron {amount} XP de compañero para {companion} de {player}.</green>"
 "command.progression.not-configured" = "<gold>No hay progresión configurada para {companion}.</gold>"
 "command.progression.player-unavailable" = "<red>{player} no está conectado.</red>"
 "command.progression.player-loading" = "<gold>Los datos de progresión de {player} aún no están listos. Inténtalo cuando terminen de cargar.</gold>"
 "command.progression.invalid-amount" = "<red>Introduce un número entero de 1 a {maximum}.</red>"
-"command.booster.granted" = "<green>Se guardaron {amount} activaciones de {booster} para {player}.</green>"
+"command.booster.granted" = "<green>Se guardaron {amount} activaciones del potenciador {booster} para {player}.</green>"
 "command.booster.not-found" = "<red>No existe un potenciador con ID {booster}.</red>"
 "command.booster.server-only" = "<red>Este comando solo inicia potenciadores del servidor.</red>"
+"command.booster.started" = "<green>Potenciador del servidor {booster} iniciado o en cola.</green>"
+"command.booster.cancelled" = "<green>Activación de potenciador {activation} cancelada.</green>"
 "command.transactions.count" = "<gold>Compras sin resolver: {count}</gold>"
 "command.transactions.entry" = "<yellow>{transaction}</yellow> <gray>Jugador: {player}; {kind}; compañero: {companion}; definición: {definition}; rango anterior: {tier}; estado: {status}; dinero: {money}; objetos: {items}; proveedor: {provider}; creación: {created}</gray>"
 "command.transactions.reference" = "<gray>ID de transacción o activación: <white>{transaction}</white></gray>"
@@ -333,7 +336,7 @@
 "gui.upgrades" = "<gradient:#ffcf70:#ff9f43>★ Mejoras del compañero</gradient>"
 "gui.upgrades-hint" = "<gray>Haz progresar a tu compañero y mejora sus bonificaciones."
 "gui.boosts" = "<gradient:#ffe082:#ffb74d>⌛ Potenciadores</gradient>"
-"gui.boosts-hint" = "<gray>Ver potenciadores personales y para todo el servidor."
+"gui.boosts-hint" = "<gray>Consulta los potenciadores personales y de todo el servidor."
 "gui.progress-level" = "<gold>★ Nivel <white>{level}"
 "gui.progress-xp" = "<gray>XP del compañero: <yellow>{xp}</yellow> / <white>{required}"
 "gui.max-level" = "<green>✓ Nivel máximo del compañero"
@@ -348,7 +351,7 @@
 "gui.confirm-purchase" = "<green>✓ Confirmar compra"
 "gui.confirm-purchase-hint" = "<gray>Paga el coste indicado y completa esta compra."
 "gui.cancel-purchase" = "<yellow>◀ Cancelar"
-"gui.cancel-purchase-hint" = "<gray>Volver sin gastar nada."
+"gui.cancel-purchase-hint" = "<gray>Vuelve sin gastar nada."
 "gui.cost-free" = "<gray>Coste: <green>Gratis"
 "gui.cost-money" = "<gray>Dinero necesario: <gold>{amount}"
 "gui.cost-item" = "<gray>Objetos necesarios: <yellow>{amount} × {item}"
@@ -387,7 +390,7 @@
 "progression.result.stale" = "<yellow>Tu progreso ha cambiado. Abre de nuevo el menú para revisar la oferta actual."
 "progression.result.locked" = "<red>No cumples los requisitos de nivel o permisos para esta acción."
 "progression.result.max_level" = "<yellow>Esta mejora ya está en su rango máximo."
-"progression.result.insufficient_items" = "<red>Te faltan objetos normales requeridos. No se gastan objetos renombrados o modificados."
+"progression.result.insufficient_items" = "<red>No tienes todos los objetos normales requeridos. Los objetos con nombre o modificados no se gastan."
 "progression.result.economy_unavailable" = "<red>La economía del servidor no está disponible. No se solicitó ningún pago."
 "progression.result.insufficient_funds" = "<red>No tienes suficiente dinero para esta compra."
 "progression.result.payment_rejected" = "<red>La economía rechazó este pago."
@@ -398,7 +401,7 @@
 "progression.result.disabled" = "<gray>Esta función está desactivada en el servidor."
 "progression.result.invalid_request" = "<red>Esta solicitud no es válida. Consulta la ayuda de comandos o vuelve a abrir el menú."
 "command.description.setup" = "Configurar compañeros iniciales"
-"gui.title.setup" = "<gold>Configurar compañeros"
+"gui.title.setup" = "<gold>Configuración de compañeros"
 "gui.title.setup-confirm" = "<gold>Confirmar configuración"
 "gui.setup" = "<gold>Configuración inicial"
 "gui.setup-hint" = "<gray>Instala compañeros iniciales y elige bonificaciones del servidor."
@@ -417,7 +420,7 @@
 "gui.setup-cancel-hint" = "<gray>Vuelve sin aplicar cambios."
 "gui.setup-current" = "<gray>Compañeros cargados: {count}"
 "setup.applying" = "{prefix} <gold>Aplicando la configuración de compañeros...</gold>"
-"setup.applied" = "{prefix} <green>Configuración guardada. Abre <white>/bytecompanions menu</white> para elegir un compañero.</green>"
+"setup.applied" = "{prefix} <green>Configuración de compañeros guardada. Abre <white>/bytecompanions menu</white> para elegir un compañero.</green>"
 "setup.failed" = "{prefix} <red>No se pudo aplicar la configuración. Revisa la consola; los ajustes anteriores siguen activos.</red>"
 "setup.stale" = "{prefix} <gold>Los ajustes han cambiado. Vuelve a abrir la configuración antes de aplicarla.</gold>"
 "command.description.collection" = "Explorar y filtrar tu colección"
@@ -444,18 +447,18 @@
 "gui.outfit-apply" = "<green>Usar este conjunto"
 "gui.outfit-delete" = "<red>Eliminar conjunto"
 "gui.outfit-delete-confirm" = "<red>Confirmar eliminación"
-"gui.outfit-count" = "<gray>Compañeros: {count}"
+"gui.outfit-count" = "<gray>Compañeros: <white>{count}"
 "gui.personalize" = "<gold>Personalizar"
 "gui.nickname" = "<gold>Poner nombre"
 "gui.name-reset" = "<gray>Restablecer nombre"
-"gui.variants" = "<gold>Variantes permitidas"
+"gui.variants" = "<gold>Variantes aprobadas"
 "gui.default-choice" = "<gray>Usar predeterminado"
 "gui.formation" = "<gold>Formación"
 "gui.formation-line" = "<gold>Línea"
 "gui.formation-grid" = "<gold>Cuadrícula"
 "gui.formation-orbit" = "<gold>Órbita"
-"gui.formation-earlier" = "<gold>Mover adelante"
-"gui.formation-later" = "<gold>Mover atrás"
+"gui.formation-earlier" = "<gold>Mover antes"
+"gui.formation-later" = "<gold>Mover después"
 "gui.interactions" = "<gold>Acciones del compañero"
 "gui.action-pet" = "<gold>Acariciar"
 "gui.action-wave" = "<gold>Saludar"
@@ -467,8 +470,8 @@
 "gui.trial-hint" = "<gray>Solo tú lo ves. {seconds}s; sin bonificaciones."
 "gui.choice-value" = "<white>{value}"
 "collection.trial-started" = "{prefix} <aqua>Prueba privada iniciada. No otorga bonificaciones."
-"collection.outfit-prompt" = "{prefix} <yellow>Escribe un nombre de conjunto en el chat (1–32 letras, números, _ o -), o cancel. Caduca en 60 segundos."
-"collection.name-prompt" = "{prefix} <yellow>Escribe un nombre sencillo en el chat (hasta 32 caracteres), o cancel. Caduca en 60 segundos."
+"collection.outfit-prompt" = "{prefix} <yellow>Escribe un nombre de conjunto en el chat (1–32 letras, números, _ o -) o escribe cancel. Caduca en 60 segundos."
+"collection.name-prompt" = "{prefix} <yellow>Escribe un nombre sencillo en el chat (hasta 32 caracteres) o escribe cancel. Caduca en 60 segundos."
 "collection.choose-equipped" = "{prefix} <yellow>Equipa primero un compañero. Si tienes varios, indica su ID."
 "collection.action-applied" = "{prefix} <green>Tu compañero ha respondido."
 "collection.cooldown" = "{prefix} <yellow>Espera un momento antes de otra interacción."
@@ -503,7 +506,7 @@
 "collection.reason.equip-first" = "Equipa primero este compañero."
 "collection.reason.outfit-limit" = "Has alcanzado el límite de {limit} conjuntos."
 "collection.reason.outfit-unavailable" = "Este conjunto no está disponible."
-"collection.reason.formation-order" = "La formación solo puede incluir compañeros equipados."
+"collection.reason.formation-order" = "El orden de la formación debe contener compañeros equipados."
 "collection.reason.model-limit" = "El conjunto supera tu límite por modelo."
 "collection.reason.personalization-locked" = "La personalización está bloqueada."
 "collection.reason.particle-unavailable" = "Este efecto de partículas no está disponible."
@@ -518,22 +521,22 @@
 "collection.reason.cancelled" = "Otro plugin canceló este cambio de compañero."
 "collection.reason.save-failed" = "No se pudo guardar; se restauraron los ajustes anteriores cuando fue posible."
 "collection.reason.busy" = "Espera a que termine de guardarse el cambio anterior."
-"command.description.status" = "Mostrar el estado del tiempo de ejecución, las funciones y la compatibilidad"
+"command.description.status" = "Mostrar el estado del entorno de ejecución, las funciones y la compatibilidad"
 "command.description.debug_dump" = "Crear un informe de diagnóstico completo de {prefix}"
-"command.parameter.upload" = "Subir el informe cuando las subidas públicas estén habilitadas"
-"command.feedback.inactive" = "{prefix} <gray>El tiempo de ejecución se está reiniciando; inténtalo de nuevo en un momento.</gray>"
-"command.status.header" = "Tiempo de ejecución"
-"command.status.configuration" = "<gray>Compañeros: {enabled} <dark_gray>|</dark_gray> Idioma: <white>{language}</white> <dark_gray>|</dark_gray> Recarga automática: {hot_reload}</gray>"
+"command.parameter.upload" = "Subir el informe cuando las subidas públicas estén activadas"
+"command.feedback.inactive" = "{prefix} <gray>El entorno de ejecución se está reiniciando; inténtalo de nuevo en un momento.</gray>"
+"command.status.header" = "Entorno de ejecución"
+"command.status.configuration" = "<gray>Compañeros: {enabled} <dark_gray>|</dark_gray> Idioma: <white>{language}</white> <dark_gray>|</dark_gray> Recarga en caliente: {hot_reload}</gray>"
 "command.status.runtime" = "<gray>Definiciones: <white>{count}</white> <dark_gray>|</dark_gray> Jugadores cargados: <white>{players}</white> <dark_gray>|</dark_gray> Compañeros equipados: <white>{companions}</white></gray>"
 "command.status.features" = "<gray>Funciones: <white>{features}</white> <dark_gray>|</dark_gray> Almacenamiento: <white>{value}</white></gray>"
 "command.status.integrations" = "<gray>Integraciones: <white>{integrations}</white></gray>"
 "command.status.compatibility" = "<gray>Java <white>{java}</white> / Bukkit <white>{range}</white> <dark_gray>|</dark_gray> Planificador: <white>{scheduler}</white> <dark_gray>|</dark_gray> Adaptador: <white>{value}</white></gray>"
-"runtime.hot_reload.success" = "<green>Aplicados</green> <gray>los cambios de configuración e idioma.</gray>"
+"runtime.hot_reload.success" = "<green>Aplicados</green> <gray>los cambios en los archivos de configuración e idioma.</gray>"
 "runtime.hot_reload.failed" = "<red>Cambios de archivo rechazados; la última configuración válida sigue activa.</red>"
 "director.help.category" = "Categoría de comandos"
 "director.help.command_group" = "Grupo de comandos. Haz clic para abrir."
 "director.help.no_description" = "No se proporcionó ninguna descripción"
-"director.help.no_parameters" = "No hay parámetros. Haz clic para completar el comando."
+"director.help.no_parameters" = "No hay parámetros. Haz clic para rellenar el comando."
 "director.help.no_subcommands" = "No hay subcomandos en esta página."
 "director.help.parameters_hover" = "Pasa el cursor sobre los parámetros para saber más."
 "director.help.navigation.back" = "Atrás"
@@ -569,26 +572,33 @@
 "language.menu.no_controls" = "No tienes acceso a opciones de idioma."
 "language.menu.command" = "Comando: {command}"
 "language.menu.selected" = "seleccionado"
-"language.menu.all-volmit-plugins" = "Todos los plugins de Volmit"
+"language.menu.all-volmit-plugins" = "todos los plugins de Volmit"
 "language.error.stopping" = "&cNo se puede elegir un idioma mientras se detiene el plugin."
 "language.error.editor-player-only" = "&cAbre el editor de idiomas dentro del juego."
 "language.error.no-providers" = "&cNo hay proveedores de idiomas de Volmit disponibles."
 "language.error.numeric-page" = "&cIntroduce un número de página."
 "language.error.personal-player-only" = "&cEl idioma personal debe seleccionarse dentro del juego."
-"language.error.personal-permission" = "&cUsted no tiene permiso para seleccionar su idioma."
+"language.error.personal-permission" = "&cNo tienes permiso para seleccionar tu idioma."
 "language.error.plugin-personal-permission" = "&cNo tienes permiso para elegir tu idioma en {plugin}."
 "language.error.plugin-server-permission" = "&cNo tienes permiso para cambiar el idioma del servidor en {plugin}."
 "language.error.server-locale-required" = "&cElige un código como en_US para el idioma predeterminado del servidor."
 "language.error.unavailable-for-all" = "&cEl idioma {locale} no está disponible para todos los plugins seleccionados."
 "language.usage.editor" = "&7Uso: /{command} language server edit [locale]"
-"language.usage.selection" = "&7Uso: /{command} language self [locale|reset] or server [locale]"
+"language.usage.selection" = "&7Uso: /{command} language self [locale|reset] o server [locale]"
 "language.usage.volmit-selection" = "&7Uso: /volmit plugins languages [locale]"
+"language.usage.update" = "&7Uso: /{command} language update"
 "language.selection.preparing" = "&7Preparando el idioma {locale} para {target}..."
 "language.selection.save-failed" = "{plugin}: &cno se pudo guardar la selección de idioma; revisa la consola del servidor."
 "language.selection.english-fallback" = "{plugin}: &e{locale} no está disponible; se usará inglés (en_US)."
 "language.selection.personal-selected" = "{plugin}: &7tu idioma ahora es {locale}."
 "language.selection.server-selected" = "{plugin}: &7el idioma del servidor ahora es {locale}."
 "language.selection.server-default-selected" = "{plugin}: &7tu idioma ahora sigue el idioma predeterminado del servidor."
+"language.update.checking" = "{plugin}: &7comprobando cambios en el repositorio de idiomas..."
+"language.update.unchanged" = "{plugin}: &7los idiomas instalados ya coinciden con el repositorio."
+"language.update.applied" = "{plugin}: &7{locale} actualizado ({added} añadidos, {updated} cambiados, {kept} ediciones locales conservadas)."
+"language.update.cooldown" = "{plugin}: &7el repositorio de idiomas se comprobó hace poco; inténtalo de nuevo en {remaining}."
+"language.update.locale-failed" = "{plugin}: &c{locale} no se actualizó: {reason}"
+"language.update.failed" = "{plugin}: &cla actualización de idiomas ha fallado: {reason}"
 "language.editor.title" = "{plugin} › {section}"
 "language.editor.loading" = "&7Cargando los mensajes de {locale}..."
 "language.editor.section.languages" = "Idiomas"
@@ -598,7 +608,7 @@
 "language.editor.prompt.search" = "&7Busca una clave de mensaje o texto. Escribe cancel para volver."
 "language.editor.prompt.value" = "&7Escribe un nuevo valor para {key} en el chat."
 "language.editor.prompt.current" = "&7Valor actual: {value}"
-"language.editor.prompt.variables" = "&7Marcadores disponibles: {variables}"
+"language.editor.prompt.variables" = "&7Variables: {variables}"
 "language.editor.prompt.guidance" = "&7Usa \\n para saltos de línea, \\\\ para una barra invertida, o escribe cancel para volver."
 "language.editor.input.expired" = "&eSe agotó el tiempo de entrada del editor de idiomas."
 "language.editor.input.too-long" = "&cLa entrada debe tener como máximo {maximum} caracteres."
@@ -608,19 +618,19 @@
 "language.editor.navigation.previous-page" = "&ePágina anterior&r"
 "language.editor.navigation.next-page" = "&ePágina siguiente&r"
 "language.editor.search.messages" = "Buscar mensajes"
-"language.editor.search.messages-lore" = "Haga clic para buscar todos los mensajes."
+"language.editor.search.messages-lore" = "Haz clic para buscar todos los mensajes."
 "language.editor.search.clear" = "Borrar la búsqueda"
 "language.editor.message.current-value" = "&7Valor actual:&r"
 "language.editor.message.variables" = "&8{variables}&r"
 "language.editor.message.edit-plural" = "&7Haz clic para editar una forma plural.&r"
 "language.editor.message.edit-lines" = "&7Haz clic para editar cada línea.&r"
 "language.editor.message.edit-chat" = "&7Haz clic para editar en el chat.&r"
-"language.editor.locale.open" = "&8Haga clic para abrir este idioma.&r"
+"language.editor.locale.open" = "&8Haz clic para abrir este idioma.&r"
 "language.editor.category.message-count" = "&7{count} mensajes&r"
-"language.editor.category.open" = "&8Haga clic para abrir esta categoría.&r"
+"language.editor.category.open" = "&8Haz clic para abrir esta categoría.&r"
 "language.editor.error.no-permission" = "&cNo tienes permiso para editar los idiomas de {plugin}."
 "language.editor.error.unable-to-edit" = "&cNo se pudo editar: {reason}"
-"language.editor.saved.summary" = "&7Se guardó {locale}. Las selecciones de idioma no cambian."
+"language.editor.saved.summary" = "&7Se guardó {locale}. Las selecciones de idioma no han cambiado."
 "language.editor.saved.change" = "&7{key}: «{before}» se cambió por «{after}»."
 "language.editor.part.line" = "Línea {line}"
 "language.editor.value.none" = "Ninguno"
@@ -652,7 +662,7 @@
 "config.editor.open" = "Haz clic para abrir esta sección."
 "config.editor.toggle" = "Haz clic para activar o desactivar."
 "config.editor.edit" = "Haz clic para escribir un nuevo valor en el chat."
-"config.editor.prompt" = "Escribe un nuevo valor para {path}. Usa cancel para volver."
+"config.editor.prompt" = "Escribe un nuevo valor para {path}. Escribe cancel para volver."
 "config.editor.expired" = "La entrada de configuración caducó."
 "config.editor.too-long" = "Introduce como máximo {maximum} caracteres."
 "config.editor.saving" = "Guardando configuración..."
@@ -667,18 +677,18 @@
 "config.editor.next" = "Página siguiente"
 "config.editor.refresh" = "Actualizar"
 "config.editor.close" = "Cerrar"
-"config.editor.type.text" = "Texto sin comillas alrededor."
+"config.editor.type.text" = "Texto; no hace falta ponerlo entre comillas."
 "config.editor.type.integer" = "Introduce un número entero."
 "config.editor.type.decimal" = "Introduce un número, como 0.25."
 "config.editor.type.list" = "Usa una lista TOML, como [\"stone\", \"deepslate\"]."
-"config.editor.adjust" = "Izquierda +{step}, derecha -{step}, Mayús x10, Q para escribir un valor exacto."
+"config.editor.adjust" = "Clic izquierdo +{step}, clic derecho -{step}, Mayús x10, Q para escribir un valor exacto."
 
 "gui.config.title" = "Configuración"
-"gui.setting.collections" = "Colecciones personales, atuendos, pruebas y personalidad."
+"gui.setting.collections" = "Colecciones personales, conjuntos, pruebas y personalidad."
 "gui.setting.collections.idleReactions" = "Permitir reacciones ocasionales de inactividad mientras un compañero está quieto."
 "gui.setting.collections.idleReactions.name" = "Reacciones de inactividad"
-"gui.setting.collections.maximumOutfits" = "Máximo de atuendos guardados por jugador, de 1 a 32."
-"gui.setting.collections.maximumOutfits.name" = "Atuendos máximos"
+"gui.setting.collections.maximumOutfits" = "Máximo de conjuntos guardados por jugador, de 1 a 32."
+"gui.setting.collections.maximumOutfits.name" = "Máximo de conjuntos"
 "gui.setting.collections.name" = "Colecciones"
 "gui.setting.collections.personalityEnabled" = "Permitir las interacciones de acariciar, saludar, sentarse, quedarse y llamar."
 "gui.setting.collections.personalityEnabled.name" = "Personalidad activada"
@@ -693,8 +703,8 @@
 "gui.setting.features.attributes.name" = "Atributos"
 "gui.setting.features.boosters" = "Activar potenciadores de compañeros personales y para todo el servidor."
 "gui.setting.features.boosters.name" = "Potenciadores"
-"gui.setting.features.buffs" = "Activar mejoras de compañeros como bonificaciones de botín y experiencia."
-"gui.setting.features.buffs.name" = "Mejoras"
+"gui.setting.features.buffs" = "Activar las bonificaciones de los compañeros, como las de botín y experiencia."
+"gui.setting.features.buffs.name" = "Bonificaciones"
 "gui.setting.features.decorations" = "Activar compañeros decorativos estáticos."
 "gui.setting.features.decorations.name" = "Decoraciones"
 "gui.setting.features.effects" = "Activar efectos de poción de los compañeros."
@@ -719,14 +729,14 @@
 "gui.setting.general.companionLimits.perModel.name" = "Por modelo"
 "gui.setting.general.enabled" = "Interruptor principal de los visuales de compañeros y las bonificaciones de juego."
 "gui.setting.general.enabled.name" = "Activado"
-"gui.setting.general.language" = "Configuración regional predeterminada del servidor, guardada como el archivo editable directamente languages/<locale>.toml."
+"gui.setting.general.language" = "Idioma predeterminado del servidor, guardado como el archivo languages/<locale>.toml, editable directamente."
 "gui.setting.general.language.name" = "Idioma"
 "gui.setting.general.name" = "General"
 "gui.setting.general.updateNotifications" = "Notificar al entrar a los operadores y a los jugadores con bytecompanions.update sobre versiones más recientes en GitHub."
 "gui.setting.general.updateNotifications.name" = "Notificaciones de actualización"
 "gui.setting.hotReload" = "Recarga automática de los archivos de configuración, compañeros, funciones e idioma."
 "gui.setting.hotReload.cooldownMillis" = "Milisegundos que un archivo modificado debe permanecer sin cambios antes de aplicarse, de 250 a 60000."
-"gui.setting.hotReload.cooldownMillis.name" = "Enfriamiento en ms"
+"gui.setting.hotReload.cooldownMillis.name" = "Espera en ms"
 "gui.setting.hotReload.enabled" = "Aplicar automáticamente los cambios estables de archivos dentro de la carpeta de datos."
 "gui.setting.hotReload.enabled.name" = "Activado"
 "gui.setting.hotReload.name" = "Recarga en caliente"
@@ -744,7 +754,7 @@
 "gui.setting.metrics.enabled" = "Enviar estadísticas de uso anónimas de ByteCompanions a bStats."
 "gui.setting.metrics.enabled.name" = "Activado"
 "gui.setting.metrics.name" = "Métricas"
-"gui.setting.performance" = "Cadencia de ticks, seguimiento de espectadores y límites de partículas."
+"gui.setting.performance" = "Cadencia de ticks, seguimiento de observadores y límites de partículas."
 "gui.setting.performance.dispatchInteractEvent" = "Lanzar CompanionPlayerInteractEvent para otros plugins cuando un jugador hace clic en un compañero."
 "gui.setting.performance.dispatchInteractEvent.name" = "Emitir evento de interacción"
 "gui.setting.performance.maximumParticleIntensity" = "Intensidad máxima de partículas que pueden recibir los jugadores: FULL, REDUCED u OFF."
@@ -754,8 +764,8 @@
 "gui.setting.performance.updateInterval.name" = "Intervalo de actualización"
 "gui.setting.performance.viewDistance" = "Bloques dentro de los cuales otros jugadores ven un compañero, 0 o más."
 "gui.setting.performance.viewDistance.name" = "Distancia de visión"
-"gui.setting.performance.viewerRefreshDelay" = "Ticks entre comprobaciones de distancia de los espectadores, como mínimo 1."
-"gui.setting.performance.viewerRefreshDelay.name" = "Retardo de refresco de espectadores"
+"gui.setting.performance.viewerRefreshDelay" = "Ticks entre comprobaciones de distancia de los observadores, como mínimo 1."
+"gui.setting.performance.viewerRefreshDelay.name" = "Retardo de actualización de observadores"
 "gui.setting.presentation" = "Pantalla de inicio en consola, sonidos de respuesta de comandos y formato de texto."
 "gui.setting.presentation.alternateSplashes" = "Sustituir el arte de inicio por una de las piezas alternativas en uno de cada diez arranques."
 "gui.setting.presentation.alternateSplashes.name" = "Pantallas de inicio alternativas"
@@ -764,7 +774,7 @@
 "gui.setting.presentation.name" = "Presentación"
 "gui.setting.presentation.serializer" = "Formato de texto para nombres de compañeros, descripciones y plantillas de objetos: MINI_MESSAGE, LEGACY_AMPERSAND o PLAIN."
 "gui.setting.presentation.serializer.name" = "Serializador"
-"gui.setting.presentation.splashScreen" = "Mostrar la pantalla de inicio de ByteCompanions una vez que los servicios estén listos."
+"gui.setting.presentation.splashScreen" = "Mostrar en la consola la pantalla de inicio de ByteCompanions cuando los servicios estén listos."
 "gui.setting.presentation.splashScreen.name" = "Pantalla de inicio"
 "gui.setting.serverRules" = "Restricciones de mundos y regiones."
 "gui.setting.serverRules.bonusDisabledWorlds" = "Nombres de mundos donde se suspenden los atributos, efectos, bonificaciones de recompensa y XP automática de los compañeros."

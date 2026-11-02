@@ -1,32 +1,48 @@
 package com.volmit.bytecompanions.platform.paper.localization;
 
+import art.arcane.volmlib.util.localization.LanguageMeta;
+import art.arcane.volmlib.util.localization.LanguageUpstreamSync;
 import art.arcane.volmlib.util.localization.MessageArgs;
 import art.arcane.volmlib.util.localization.MessageValue;
 import art.arcane.volmlib.util.localization.PluginLanguageEditor;
 import art.arcane.volmlib.util.localization.TextValue;
+import art.arcane.volmlib.util.localization.TomlLanguageEditor;
 import art.arcane.volmlib.util.localization.TomlLanguageParser;
 import art.arcane.volmlib.util.localization.VolmitLocales;
 import com.volmit.bytecompanions.platform.paper.collection.CollectionFailure;
 import com.volmit.bytecompanions.platform.paper.collection.CompanionStyle;
 import com.volmit.bytecompanions.platform.paper.collection.Outfit;
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpServer;
 import org.bukkit.entity.Player;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.Duration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
@@ -233,6 +249,130 @@ class LanguageServiceTest {
         }
     }
 
+    @Test
+    void upstreamSyncInstallsMergesAndKeepsManualEditsAndCustomFiles() throws Exception {
+        LoopbackRepository repository = new LoopbackRepository();
+        repository.files.put(LoopbackRepository.REVISION_ONE + "/fr_FR",
+                "# fr v1\n\"errors.no-permission\" = \"Refus v1\"\n\"errors.no-companion-equipped\" = \"Aucun v1\"\n");
+        Path languagesDirectory = directory.resolve("languages");
+        Files.createDirectories(languagesDirectory);
+        String custom = "\"errors.no-permission\" = \"Arr, no\"\n\n[meta]\nname = \"Pirate Speak\"\nbase = \"fr_FR\"\n";
+        Files.writeString(languagesDirectory.resolve("pirate.toml"), custom);
+        UUID player = UUID.randomUUID();
+        try (LanguageService languages = repository.service(directory)) {
+            initialize(languages);
+            assertTrue(languages.installPending("fr_FR"));
+            assertTrue(languages.requestInstall("fr_FR").get(10, TimeUnit.SECONDS).contains("Refus v1"));
+            assertFalse(languages.installPending("fr_FR"));
+            assertTrue(Files.isRegularFile(languagesDirectory.resolve(".upstream/fr_FR.toml")));
+            assertTrue(Files.isRegularFile(languagesDirectory.resolve(".upstream/upstream.properties")));
+            languages.selections().selectPlayer(player, "fr_FR").get(10, TimeUnit.SECONDS);
+            MessageValue expected = languages.selections().snapshot(player).value(CompanionMessages.key("errors.no-permission"));
+            assertEquals(new TextValue("Refus v1"), expected);
+            languages.editorOptions().writer().write(new PluginLanguageEditor.Edit("fr_FR", "errors.no-permission", expected,
+                    new TextValue("Mon texte")));
+            repository.revision.set(LoopbackRepository.REVISION_TWO);
+            repository.files.put(LoopbackRepository.REVISION_TWO + "/fr_FR",
+                    "# fr v2\n\"errors.no-permission\" = \"Refus v2\"\n\"errors.no-companion-equipped\" = \"Aucun v2\"\n"
+                            + "\"errors.companion-already-equipped\" = \"Deja v2\"\n");
+
+            LanguageUpstreamSync.SyncReport report = languages.updateAction().update().get(10, TimeUnit.SECONDS);
+
+            assertTrue(report.failure().isEmpty());
+            assertEquals(List.of("fr_FR"), report.changedLocales());
+            assertEquals(List.of("errors.no-permission"), List.copyOf(report.merged().get("fr_FR").kept()));
+            assertEquals(List.of("errors.companion-already-equipped"), List.copyOf(report.merged().get("fr_FR").added()));
+            String merged = Files.readString(languages.languageFile("fr_FR"));
+            assertTrue(merged.startsWith("# fr v2\n"));
+            assertTrue(merged.contains("Mon texte") && merged.contains("Aucun v2") && merged.contains("Deja v2"));
+            assertFalse(merged.contains("Refus v2"));
+            assertTrue(Files.readString(languagesDirectory.resolve(".upstream/fr_FR.toml")).contains("Refus v2"));
+            assertEquals(new TextValue("Aucun v2"),
+                    languages.selections().snapshot(player).value(CompanionMessages.key("errors.no-companion-equipped")));
+            assertEquals(new TextValue("Mon texte"), languages.selections().snapshot(player).value(CompanionMessages.key("errors.no-permission")));
+            assertEquals(custom, Files.readString(languagesDirectory.resolve("pirate.toml")));
+            assertEquals(Optional.of(LoopbackRepository.REVISION_TWO), languages.upstreamStatus().orElseThrow().revision());
+            assertTrue(languages.sourceSummary().contains("revision 2222222"));
+
+            LanguageUpstreamSync.SyncReport unchanged = languages.updateAction().update().get(10, TimeUnit.SECONDS);
+
+            assertTrue(unchanged.unchanged());
+            assertTrue(unchanged.changedLocales().isEmpty());
+            assertEquals(merged, Files.readString(languages.languageFile("fr_FR")));
+        } finally {
+            repository.close();
+        }
+    }
+
+    @Test
+    void repeatedChecksInsideTheMinimumIntervalReportTheCooldown() throws Exception {
+        LoopbackRepository repository = new LoopbackRepository();
+        try (LanguageService languages = repository.service(directory, Duration.ofMinutes(5))) {
+            initialize(languages);
+            LanguageUpstreamSync.SyncReport first = languages.startUpstreamCheck().get(10, TimeUnit.SECONDS);
+            LanguageUpstreamSync.SyncReport second = languages.updateAction().update().get(10, TimeUnit.SECONDS);
+
+            assertTrue(first.failure().isEmpty());
+            assertFalse(first.coolingDown());
+            assertTrue(second.coolingDown());
+            assertEquals(1, repository.apiRequests.get());
+        } finally {
+            repository.close();
+        }
+    }
+
+    @Test
+    void customLocaleMetaProvidesDisplayNameAndResolvesItsBaseBeforeEnglish() throws Exception {
+        UUID player = UUID.randomUUID();
+        try (LanguageService languages = service()) {
+            initialize(languages);
+            Files.writeString(languages.languageFile("de_DE"), "\"errors.no-companion-equipped\" = \"Kein Begleiter\"\n");
+            Files.writeString(languages.languageFile("de_AT"), "\"errors.no-permission\" = \"Oida, nein\"\n\n"
+                    + "[meta]\nname = \"Österreichisch\"\nbase = \"de_DE\"\n");
+            languages.refreshSelections();
+
+            assertTrue(languages.availableLocales().contains("de_AT"));
+            assertEquals("Österreichisch", languages.displayNames().displayName("de_AT"));
+            assertNull(languages.displayNames().displayName("de_DE"));
+            languages.selections().selectPlayer(player, "de_AT").get(10, TimeUnit.SECONDS);
+            assertEquals(new TextValue("Oida, nein"), languages.selections().snapshot(player).value(CompanionMessages.key("errors.no-permission")));
+            assertEquals(new TextValue("Kein Begleiter"),
+                    languages.selections().snapshot(player).value(CompanionMessages.key("errors.no-companion-equipped")));
+            assertEquals(CompanionMessages.key("errors.companion-already-equipped").englishValue(),
+                    languages.selections().snapshot(player).value(CompanionMessages.key("errors.companion-already-equipped")));
+
+            languages.prepare("pirate");
+            String generated = Files.readString(languages.languageFile("pirate"));
+            LanguageMeta meta = LanguageMeta.parse(generated);
+
+            assertEquals(Optional.of("pirate"), meta.name());
+            assertEquals(Optional.of("en_US"), meta.base());
+            assertEquals(CompanionMessages.catalog().ids(), TomlLanguageParser.parseValidText(generated, CompanionMessages.catalog()).keySet());
+            assertTrue(languages.availableLocales().contains("pirate"));
+        }
+    }
+
+    @Test
+    void englishReferenceGainsNewCatalogKeysWhileKeepingEdits() throws Exception {
+        try (LanguageService first = service()) {
+            first.prepare("en_US");
+        }
+        Path english = directory.resolve("languages/en_US.toml");
+        Path sidecar = directory.resolve("languages/.upstream/en_US.toml");
+        String olderReference = TomlLanguageEditor.remove(Files.readString(sidecar), "errors.player-not-loaded").content();
+        Files.writeString(sidecar, olderReference);
+        Files.writeString(english, TomlLanguageEditor.upsertText(olderReference, "errors.no-permission", "Edited denial").content());
+        try (LanguageService languages = service()) {
+            languages.install(languages.prepare("en_US"));
+            Map<String, String> values = TomlLanguageParser.parseText(Files.readString(english));
+
+            assertTrue(values.containsKey("errors.player-not-loaded"));
+            assertEquals("Edited denial", values.get("errors.no-permission"));
+            assertEquals("Edited denial", languages.render(null, CompanionMessages.key("errors.no-permission")).plain());
+            assertTrue(Files.readString(sidecar).contains("player-not-loaded"));
+        }
+    }
+
     private LanguageService service() throws java.io.IOException {
         Path languages = directory.resolve("languages");
         Files.createDirectories(languages);
@@ -257,5 +397,65 @@ class LanguageServiceTest {
             languages.install(prepared);
             languages.refreshSelections();
         });
+    }
+
+    private static final class LoopbackRepository {
+        private static final String REVISION_ONE = "1111111111111111111111111111111111111111";
+        private static final String REVISION_TWO = "2222222222222222222222222222222222222222";
+
+        private final HttpServer server;
+        private final AtomicReference<String> revision = new AtomicReference<>(REVISION_ONE);
+        private final AtomicInteger apiRequests = new AtomicInteger();
+        private final Map<String, String> files = new ConcurrentHashMap<>();
+
+        private LoopbackRepository() throws IOException {
+            server = HttpServer.create(new InetSocketAddress("127.0.0.1", 0), 0);
+            server.createContext("/api/", this::api);
+            server.createContext("/raw/", this::raw);
+            server.start();
+        }
+
+        private LanguageService service(Path dataFolder) {
+            return service(dataFolder, Duration.ZERO);
+        }
+
+        private LanguageService service(Path dataFolder, Duration minimumCheckInterval) {
+            URI root = URI.create("http://127.0.0.1:" + server.getAddress().getPort() + "/");
+            return new LanguageService(dataFolder.toFile(), Logger.getAnonymousLogger(), root.resolve("api/"), root.resolve("raw/"),
+                    minimumCheckInterval);
+        }
+
+        private void close() {
+            server.stop(0);
+        }
+
+        private void api(HttpExchange exchange) throws IOException {
+            apiRequests.incrementAndGet();
+            String etag = "\"" + revision.get() + "\"";
+            if (etag.equals(exchange.getRequestHeaders().getFirst("If-None-Match"))) {
+                exchange.sendResponseHeaders(304, -1);
+                exchange.close();
+                return;
+            }
+            exchange.getResponseHeaders().set("ETag", etag);
+            byte[] response = ("[{\"sha\":\"" + revision.get() + "\"}]").getBytes(StandardCharsets.UTF_8);
+            exchange.sendResponseHeaders(200, response.length);
+            exchange.getResponseBody().write(response);
+            exchange.close();
+        }
+
+        private void raw(HttpExchange exchange) throws IOException {
+            String[] parts = exchange.getRequestURI().getPath().split("/");
+            String content = files.get(parts[4] + "/" + parts[parts.length - 1].replace(".toml", ""));
+            if (content == null) {
+                exchange.sendResponseHeaders(404, -1);
+                exchange.close();
+                return;
+            }
+            byte[] response = content.getBytes(StandardCharsets.UTF_8);
+            exchange.sendResponseHeaders(200, response.length);
+            exchange.getResponseBody().write(response);
+            exchange.close();
+        }
     }
 }

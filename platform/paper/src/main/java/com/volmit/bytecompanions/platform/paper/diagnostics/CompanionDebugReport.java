@@ -31,6 +31,8 @@ public record CompanionDebugReport(boolean active, long generation, String adapt
         report.append("View distance (blocks): ").append(viewDistance).append('\n');
         report.append("Configuration source: ").append(runtime.configurationSource()).append('\n');
         report.append("Default language: ").append(runtime.defaultLanguage()).append('\n');
+        report.append("Language source: ").append(runtime.languageSource()).append('\n');
+        report.append("Language source state: ").append(runtime.languageSourceState()).append('\n');
         report.append("Active decorations: ").append(runtime.activeDecorations()).append('\n');
         report.append("Player load failures: ").append(runtime.loadFailures()).append('\n');
         if (runtime.ticks() == null) {
@@ -64,7 +66,8 @@ public record CompanionDebugReport(boolean active, long generation, String adapt
     public record RuntimeSnapshot(CompanionsTickScheduler.Snapshot ticks, long loadFailures,
                                   Map<String, KeyedTaskQueue.Snapshot> storageQueues,
                                   EffectTrackingAnimation.TrafficSnapshot particles, int activeDecorations,
-                                  String defaultLanguage, String configurationSource) {
+                                  String defaultLanguage, String languageSource, String languageSourceState,
+                                  String configurationSource) {
         public RuntimeSnapshot {
             storageQueues = Map.copyOf(storageQueues);
         }

@@ -6,105 +6,106 @@
 # /bytecompanions language server edit ja-JP
 #
 # === 接頭辞 ===
-# runtime.prefix supplies the styled plugin name for {prefix}.
-# Remove {prefix} from a message to hide the plugin name for that message.
+# runtime.prefix は {prefix} に入る書式付きのプラグイン名を指定します。
+# メッセージから {prefix} を削除すると、そのメッセージではプラグイン名が表示されなくなります。
 #
 # === 書式 ===
-# Colors and styles: &0-&f, &k-&r.
-# RGB colors: &#RRGGBB, &xRRGGBB, &x&R&R&G&G&B&B, [RRGGBB].
-# MiniMessage supports custom formatting such as <gold> and <gradient:#ffcc00:#ff9900>. Put a backslash before & or [ to display it literally.
+# 色と装飾：&0-&f、&k-&r。
+# RGB カラー：&#RRGGBB、&xRRGGBB、&x&R&R&G&G&B&B、[RRGGBB]。
+# MiniMessage では <gold> や <gradient:#ffcc00:#ff9900> などの独自の書式を使用できます。& または [ の前にバックスラッシュを付けると、その文字をそのまま表示します。
 #
 # === 変数 ===
 # 変数名を変更せず、各メッセージに元からある変数だけを使用してください。
-#   {action}  Requested action
-#   {actions}  Available actions
-#   {after}  Value after the change
-#   {amount}  Amount or count
-#   {argument}  Unexpected command argument
-#   {before}  Value before the change
-#   {bonus}  Bonus name
-#   {booster}  Booster identifier
-#   {category}  Category name
-#   {change}  Described change
-#   {channel}  Booster channel
-#   {choice}  Selected option
-#   {command}  Command path
-#   {companion}  Companion identifier
-#   {companions}  Companion identifiers
-#   {count}  Number of items
-#   {created}  Creation time
-#   {current}  Current value
-#   {definition}  Companion definition
-#   {detail}  Failure detail
-#   {effect}  Particle effect identifier
-#   {entry}  Entry label
-#   {feature}  Feature name
-#   {features}  Enabled features
-#   {field}  Studio field name
-#   {formation}  Formation name
-#   {group}  Message category name
-#   {hot_reload}  Hot reload state
-#   {index}  Position number
-#   {integrations}  Integration states
-#   {item}  Item name
-#   {items}  Item list
-#   {java}  Java major version
-#   {key}  Message or setting key
-#   {kind}  Transaction kind
-#   {language}  Active language
-#   {level}  Level number
-#   {limit}  Configured limit
-#   {line}  Message line number
-#   {locale}  Locale identifier
-#   {maximum}  Maximum accepted value
-#   {mode}  Combining rule
-#   {model}  Companion model
-#   {money}  Money amount
-#   {name}  Display name
-#   {new}  Installed rendered value
-#   {next}  Next value
-#   {old}  Previous rendered value
-#   {operation}  Bonus operation
-#   {page}  Current page number
-#   {pages}  Total page count
-#   {parameter}  Parameter name
-#   {path}  File path or setting path
-#   {percent}  Percentage value
-#   {permission}  Required permission
-#   {personal}  Personal locale when it differs
-#   {player}  Player name
-#   {players}  Loaded player count
-#   {plugin}  Plugin name
-#   {prefix}  Styled plugin name from runtime.prefix
-#   {provider}  Payment provider
-#   {range}  Supported Minecraft range
-#   {reason}  Failure reason
-#   {required}  Required amount
-#   {scheduler}  Scheduler implementation
-#   {seconds}  Duration in seconds
-#   {section}  Language editor section
-#   {setting}  Setting name
-#   {sources}  Bonus sources
-#   {status}  Status marker
-#   {step}  Adjustment step
-#   {target}  Selection target
-#   {tier}  Upgrade tier
-#   {time}  Duration text
-#   {transaction}  Transaction identifier
-#   {type}  Parameter type
-#   {url}  Public report URL
-#   {usage}  Command usage
-#   {value}  Current or raw value
-#   {variables}  Placeholders valid for the message
-#   {variant}  Appearance variant
-#   {version}  Plugin version
-#   {xp}  Companion experience
+#   {activation}  ブースターの起動の識別子
+#   {added}  言語更新で追加されたメッセージ
+#   {after}  変更後の値
+#   {amount}  量または数
+#   {argument}  予期しないコマンド引数
+#   {before}  変更前の値
+#   {bonus}  ボーナス名
+#   {booster}  ブースターの識別子
+#   {category}  カテゴリ名
+#   {change}  変更内容の説明
+#   {channel}  ブースターのチャンネル
+#   {choice}  選択した項目
+#   {command}  コマンドのパス
+#   {companion}  コンパニオンの識別子
+#   {companions}  コンパニオンの識別子の一覧
+#   {count}  項目の数
+#   {created}  作成日時
+#   {current}  現在の値
+#   {definition}  コンパニオンの定義
+#   {detail}  失敗の詳細
+#   {effect}  パーティクル効果の識別子
+#   {enabled}  コンパニオンの有効状態
+#   {feature}  機能名
+#   {features}  有効な機能
+#   {field}  工房の項目名
+#   {formation}  隊形名
+#   {group}  メッセージのカテゴリ名
+#   {hot_reload}  ホットリロードの状態
+#   {index}  位置番号
+#   {integrations}  連携の状態
+#   {item}  アイテム名
+#   {items}  アイテムの一覧
+#   {java}  Java のメジャーバージョン
+#   {kept}  言語更新で保持されたローカル編集
+#   {key}  メッセージまたは設定のキー
+#   {kind}  取引の種類
+#   {language}  使用中の言語
+#   {level}  レベルの数値
+#   {limit}  設定された上限
+#   {line}  メッセージの行番号
+#   {locale}  ロケール識別子
+#   {maximum}  許容される最大値
+#   {mode}  組み合わせルール
+#   {model}  コンパニオンのモデル
+#   {money}  金額
+#   {name}  表示名
+#   {next}  次の値
+#   {number}  リスト項目の番号
+#   {operation}  ボーナスの演算
+#   {page}  現在のページ番号
+#   {pages}  総ページ数
+#   {parameter}  パラメーター名
+#   {path}  ファイルパスまたは設定パス
+#   {percent}  パーセント値
+#   {permission}  必要な権限
+#   {personal}  サーバーのデフォルトと異なる場合の個人ロケール
+#   {player}  プレイヤー名
+#   {players}  読み込み済みのプレイヤー数
+#   {plugin}  プラグイン名
+#   {prefix}  runtime.prefix の書式付きプラグイン名
+#   {provider}  支払いプロバイダー
+#   {range}  対応する Minecraft のバージョン範囲
+#   {reason}  失敗の理由
+#   {remaining}  次回の言語確認が可能になるまでの時間
+#   {required}  必要な量
+#   {scheduler}  スケジューラーの実装
+#   {seconds}  秒単位の時間
+#   {section}  言語エディターのセクション
+#   {sources}  ボーナスの発生源
+#   {status}  状態マーク
+#   {step}  調整の刻み幅
+#   {target}  選択の対象
+#   {tier}  強化段階
+#   {time}  時間の表記
+#   {transaction}  取引の識別子
+#   {type}  パラメーターの型
+#   {updated}  言語更新で変更されたメッセージ
+#   {url}  公開レポートの URL
+#   {usage}  コマンドの使い方
+#   {value}  現在値または入力値
+#   {variables}  このメッセージで使える変数
+#   {variant}  外見のバリエーション
+#   {version}  プラグインのバージョン
+#   {xp}  コンパニオンXP
 
 "runtime.prefix" = "<bold><gradient:#ffcc00:#ff9900>ByteCompanions</gradient></bold>"
 "gui.studio-review-change" = "<gold>変更 {index}"
 "gui.studio-duplicate" = "<aqua>新しいコンパニオンとしてコピー"
 "gui.studio-duplicate-hint" = "<gray>新しいIDに下書きをコピーします。元の定義は変更しません。"
-"studio.duplicate-prompt" = "{prefix} <gold>新しいIDを入力してください。小文字、数字、アンダースコア、ハイフンの1～64文字です。<white>cancel</white> で戻れます。</gold>"
+"studio.duplicate-prompt" = "{prefix} <gold>新しいコンパニオンIDを入力してください。小文字、数字、アンダースコア、ハイフンの1～64文字です。<white>cancel</white> で戻れます。</gold>"
 "gui.studio-remove" = "<red>このボーナスを削除"
 "gui.studio-remove-hint" = "<gray>このボーナスの項目全体を下書きから削除します。"
 "studio.too-long" = "{prefix} <yellow>入力が長すぎます。256文字以内にしてください。下書きは変更されていません。</yellow>"
@@ -116,7 +117,7 @@
 "gui.title.studio-fields" = "<gold>コンパニオンを編集"
 "gui.title.studio-field" = "<gold>設定を編集"
 "gui.title.studio-presets" = "<gold>プリセットを選択"
-"gui.title.studio-confirm" = "<gold>変更内容を確認"
+"gui.title.studio-confirm" = "<gold>コンパニオンの変更を確認"
 "gui.studio" = "<gold>✎ コンパニオン工房"
 "gui.studio-hint" = "<gray>サーバー全体のこのコンパニオンを編集します。"
 "gui.studio-heading" = "<gold>✎ {companion}"
@@ -152,7 +153,7 @@
 "gui.studio-stop-preview" = "<gold>プレビューを終了"
 "gui.studio-save" = "<green>確認して保存"
 "gui.studio-save-hint" = "<gray>サーバーの内容を置き換える前に下書きを確認します。"
-"gui.studio-apply" = "<green>全員に適用して保存"
+"gui.studio-apply" = "<green>全員向けに保存"
 "gui.studio-apply-hint" = "<gray>検証・保存後、プラグインを再読み込みします。"
 "gui.studio-reload-hint" = "<yellow>他の編集画面を閉じ、オンラインのコンパニオンを復元します。"
 "gui.studio-discard" = "<red>下書きを破棄"
@@ -186,7 +187,7 @@
 "success.companion-equipped" = "<green><white>{companion}</white> を装備しました。</green>"
 "success.companion-unequipped" = "<green>コンパニオンの装備を解除しました。</green>"
 "command.description.root" = "{prefix} のヘルプと管理"
-"command.description.menu" = "コンパニオンを閲覧します。装備中のものを右クリックするとパーティクルを開きます"
+"command.description.menu" = "コンパニオンを閲覧。装備中のコンパニオンを右クリックするとパーティクルを開きます"
 "command.description.spawn" = "コンパニオンを装備する"
 "command.description.despawn" = "1体またはすべてのコンパニオンを外す"
 "command.description.debug" = "{prefix} の診断ツール"
@@ -204,38 +205,38 @@
 "command.feedback.usage" = "<gold>使用方法: {usage}</gold>"
 "command.feedback.version" = "<gradient:#ffcc00:#ff9900>{prefix} v{version}</gradient>"
 "particles.title" = "<gold>コンパニオンのパーティクル</gold>"
-"particles.help.menu" = "エフェクトを一覧表示"
-"particles.help.equip" = "エフェクトを適用"
-"particles.help.unequip" = "エフェクトを1つまたはすべて解除"
+"particles.help.menu" = "パーティクル効果を一覧表示"
+"particles.help.equip" = "パーティクル効果を適用"
+"particles.help.unequip" = "パーティクル効果を1つまたはすべて解除"
 "particles.particle-effects.no-permission" = "<red><white>{effect}</white> を使用する権限がありません。</red>"
-"particles.particle-effects.equipped" = "<green>パーティクルエフェクトを装備しました：<white>{effect}</white>。</green>"
-"particles.particle-effects.unequipped" = "<yellow>パーティクルエフェクトを解除しました。</yellow>"
-"particles.particle-effects.not-found" = "<red>パーティクルエフェクト <white>{effect}</white> が見つかりません。</red>"
-"particles.particle-effects.invalid-id" = "<red>有効なパーティクルエフェクトIDを指定してください。</red>"
+"particles.particle-effects.equipped" = "<green>パーティクル効果を装備しました：<white>{effect}</white>。</green>"
+"particles.particle-effects.unequipped" = "<yellow>パーティクル効果を解除しました。</yellow>"
+"particles.particle-effects.not-found" = "<red>パーティクル効果 <white>{effect}</white> が見つかりません。</red>"
+"particles.particle-effects.invalid-id" = "<red>有効なパーティクル効果IDを指定してください。</red>"
 "particles.particle-effects.already-equipped" = "<red><white>{effect}</white> はすでに装備されています。</red>"
 "particles.companions.not-equipped" = "<red>先にコンパニオンを装備してください。</red>"
 "particles.companions.invalid-type-id" = "<red>有効なコンパニオンタイプIDを指定してください。</red>"
 "errors.player-not-loaded" = "<red>コンパニオンのデータを読み込み中、または読み込みに失敗しました。再接続するか、管理者に連絡してください。</red>"
 "errors.persistence-failed" = "<red>このセッションの選択は変更されましたが、保存できませんでした。再接続すると元に戻る可能性があります。管理者に連絡してください。</red>"
 
-"gui.title.collection" = "<gold>コンパニオン一覧"
-"gui.title.dashboard" = "<gold>コンパニオン管理"
+"gui.title.collection" = "<gold>コンパニオンコレクション"
+"gui.title.dashboard" = "<gold>コンパニオンダッシュボード"
 "gui.title.particles" = "<gold>コンパニオンのパーティクル"
 "gui.title.bonuses" = "<gold>コンパニオンのボーナス"
-"gui.collection" = "<gold>📦 コンパニオン一覧"
+"gui.collection" = "<gold>📦 コンパニオンコレクション"
 "gui.collection-hint" = "<gray>コンパニオンを選んで設定を確認します。"
 "gui.equipped" = "<green>✓ 装備中"
 "gui.available" = "<yellow>利用可能"
 "gui.locked" = "<red>ロック中：権限がありません。"
-"gui.open-dashboard" = "<gray>クリックしてこのコンパニオンの管理画面を開きます。"
+"gui.open-dashboard" = "<gray>クリックしてこのコンパニオンのダッシュボードを開きます。"
 "gui.empty" = "<yellow>コンパニオンなし"
 "gui.empty-hint" = "<gray>利用できるコンパニオン定義がありません。"
 "gui.not-equipped" = "<yellow>未装備"
 "gui.overview" = "<gray>下のボタンでこのコンパニオンを管理します。"
 "gui.equip" = "<green>✓ コンパニオンを装備"
 "gui.equip-hint" = "<gray>このコンパニオンをそばに呼び出します。"
-"gui.unequip" = "<yellow>コンパニオンを解除"
-"gui.unequip-hint" = "<gray>このコンパニオンを戻します。再び装備できます。"
+"gui.unequip" = "<yellow>コンパニオンの装備を解除"
+"gui.unequip-hint" = "<gray>このコンパニオンを外します。再び装備できます。"
 "gui.particles" = "<aqua>✦ パーティクル"
 "gui.particles-hint" = "<gray>このコンパニオンのパーティクル効果を選びます。"
 "gui.disabled" = "<gray>このサーバーでは無効です。"
@@ -243,11 +244,11 @@
 "gui.current-particle" = "<gray>選択中のパーティクル：<white>{effect}"
 "gui.none" = "なし"
 "gui.bonuses" = "<gold>★ ボーナスと効果"
-"gui.bonuses-hint" = "<gray>有効なボーナス、ポーション効果、重ね合わせを確認します。"
+"gui.bonuses-hint" = "<gray>有効なボーナス、ポーション効果、重ね掛けを確認します。"
 "gui.select-particle" = "<yellow>クリックしてこのパーティクル効果を装備します。"
 "gui.remove-particle" = "<yellow>パーティクル効果を解除"
 "gui.remove-particle-hint" = "<gray>このコンパニオンの選択中のパーティクルを解除します。"
-"gui.back" = "<gold>◀ 管理画面に戻る"
+"gui.back" = "<gold>◀ ダッシュボードに戻る"
 "gui.back-hint" = "<gray>このコンパニオンの設定に戻ります。"
 "gui.close" = "<red>✖ 閉じる"
 "gui.close-hint" = "<gray>このメニューを閉じます。"
@@ -265,7 +266,7 @@
 "gui.buff" = "ボーナス"
 "gui.bonus-name" = "<gold>{category}：<white>{name}"
 "gui.configured" = "<gray>設定値：<white>{operation} {value}"
-"gui.attribute-total" = "<gray>他の発生源を含む合計：<white>{value}"
+"gui.attribute-total" = "<gray>他の要因を含む合計：<white>{value}"
 "gui.effect-level" = "<gray>設定されたポーションレベル：<white>{level}"
 "gui.stack-mode" = "<gray>組み合わせルール：<white>{mode}"
 "gui.resolved-level" = "<gray>コンパニオンのポーションレベル：<white>{level}"
@@ -313,18 +314,20 @@
 "command.parameter.activation" = "稼働中または待機中のブースター起動ID"
 "command.parameter.transaction" = "未処理の購入取引ID"
 "command.parameter.resolution" = "支払い記録の確認後に grant または cancel"
-"command.progression.granted" = "<green><green>{player}</green>の<green>{companion}</green>に<green>{amount}</green>コンパニオンXPを保存しました。"
-"command.progression.not-configured" = "<gold><gold>{companion}</gold>の成長設定がありません。"
-"command.progression.player-unavailable" = "<red><red>{player}</red>はオンラインではありません。"
-"command.progression.player-loading" = "<gold><gold>{player}</gold>の成長データはまだ読み込み中です。完了後に再試行してください。"
-"command.progression.invalid-amount" = "<red>1から<red>{maximum}</red>までの整数を入力してください。"
-"command.booster.granted" = "<green><green>{player}</green>に<green>{booster}</green>の使用回数<green>{amount}</green>回を保存しました。"
-"command.booster.not-found" = "<red>IDが<red>{booster}</red>のブースターはありません。"
-"command.booster.server-only" = "<red>このコマンドはサーバー用ブースターのみ起動します。"
-"command.transactions.count" = "<gold>未処理の購入: <gold>{count}</gold>"
-"command.transactions.entry" = "<gray><yellow>{transaction}</yellow> プレイヤー: <gray>{player}</gray>; <gray>{kind}</gray>; コンパニオン: <gray>{companion}</gray>; 設定: <gray>{definition}</gray>; 以前の段階: <gray>{tier}</gray>; 状態: <gray>{status}</gray>; 金額: <gray>{money}</gray>; アイテム: <gray>{items}</gray>; 提供元: <gray>{provider}</gray>; 作成日時: <gray>{created}</gray>"
-"command.transactions.reference" = "<gray>取引または起動ID: <white>{transaction}</white>"
-"command.transactions.reconciled" = "<gold>処理結果を保存しました。お金やアイテムの自動引き落とし・返却は行っていません。"
+"command.progression.granted" = "<green>{player}の{companion}にコンパニオンXPを{amount}保存しました。</green>"
+"command.progression.not-configured" = "<gold>{companion}には成長設定がありません。</gold>"
+"command.progression.player-unavailable" = "<red>{player}はオンラインではありません。</red>"
+"command.progression.player-loading" = "<gold>{player}の成長データはまだ準備できていません。読み込み後に再試行してください。</gold>"
+"command.progression.invalid-amount" = "<red>1から{maximum}までの整数を入力してください。</red>"
+"command.booster.granted" = "<green>{player}に{booster}ブースターの使用回数を{amount}回分保存しました。</green>"
+"command.booster.not-found" = "<red>ID {booster} のブースターは存在しません。</red>"
+"command.booster.server-only" = "<red>このコマンドで起動できるのはサーバーブースターのみです。</red>"
+"command.booster.started" = "<green>サーバーブースター {booster} を開始、または待機列に追加しました。</green>"
+"command.booster.cancelled" = "<green>ブースターの起動 {activation} を取り消しました。</green>"
+"command.transactions.count" = "<gold>未処理の購入: {count}</gold>"
+"command.transactions.entry" = "<yellow>{transaction}</yellow> <gray>プレイヤー: {player}; {kind}; コンパニオン: {companion}; 定義: {definition}; 以前の段階: {tier}; 状態: {status}; 金額: {money}; アイテム: {items}; 提供元: {provider}; 作成日時: {created}</gray>"
+"command.transactions.reference" = "<gray>取引または起動ID: <white>{transaction}</white></gray>"
+"command.transactions.reconciled" = "<gold>処理結果を保存しました。お金やアイテムの自動引き落とし・返金は行っていません。</gold>"
 "gui.title.upgrades" = "<gold>コンパニオンの強化"
 "gui.title.purchase" = "<gold>購入の確認"
 "gui.title.boosts" = "<gold>コンパニオンブースター"
@@ -334,33 +337,33 @@
 "gui.upgrades-hint" = "<gray>コンパニオンを育ててボーナスを強化します。"
 "gui.boosts" = "<gradient:#ffe082:#ffb74d>⌛ ブースター</gradient>"
 "gui.boosts-hint" = "<gray>個人用とサーバー全体のブーストを確認します。"
-"gui.progress-level" = "<gold>★ レベル <white>{level}</white>"
-"gui.progress-xp" = "<gray>コンパニオンXP: <yellow>{xp}</yellow> / <white>{required}</white>"
+"gui.progress-level" = "<gold>★ レベル <white>{level}"
+"gui.progress-xp" = "<gray>コンパニオンXP: <yellow>{xp}</yellow> / <white>{required}"
 "gui.max-level" = "<green>✓ コンパニオンは最大レベルです"
-"gui.upgrade-tier" = "<gray>強化段階: <gold>{tier}</gold> / <white>{maximum}</white>"
-"gui.max-tier" = "<green>✓ 強化済み・最大段階"
-"gui.upgrade-change" = "<gray><gray>{bonus}</gray>: <white>{current}</white> <gold>→</gold> <green>{next}</green>"
-"gui.required-level" = "<gray>必要なコンパニオンレベル: <yellow>{level}</yellow>"
+"gui.upgrade-tier" = "<gray>強化段階: <gold>{tier}</gold> / <white>{maximum}"
+"gui.max-tier" = "<green>✓ 最大まで強化済み"
+"gui.upgrade-change" = "<gray>{bonus}: <white>{current}</white> <gold>→</gold> <green>{next}"
+"gui.required-level" = "<gray>必要なコンパニオンレベル: <yellow>{level}"
 "gui.level-locked" = "<red>条件を満たしていません。"
 "gui.upgrade-preview" = "<yellow>クリックして強化内容を確認します。"
 "gui.no-upgrades" = "<gold>強化が設定されていません"
-"gui.no-upgrades-hint" = "<gray>このコンパニオンには強化コースがありません。"
+"gui.no-upgrades-hint" = "<gray>このコンパニオンには強化項目がありません。"
 "gui.confirm-purchase" = "<green>✓ 購入を確定"
 "gui.confirm-purchase-hint" = "<gray>表示された費用を支払い、購入を完了します。"
 "gui.cancel-purchase" = "<yellow>◀ キャンセル"
 "gui.cancel-purchase-hint" = "<gray>何も消費せずに戻ります。"
-"gui.cost-free" = "<gray>費用: <green>無料</green>"
-"gui.cost-money" = "<gray>必要金額: <gold>{amount}</gold>"
-"gui.cost-item" = "<gray>必要アイテム: <yellow>{amount}</yellow> × <yellow>{item}</yellow>"
+"gui.cost-free" = "<gray>費用: <green>無料"
+"gui.cost-money" = "<gray>必要金額: <gold>{amount}"
+"gui.cost-item" = "<gray>必要アイテム: <yellow>{amount} × {item}"
 "gui.booster-open" = "<yellow>クリックして購入・起動方法を確認します。"
 "gui.booster-scope.personal" = "<aqua>個人ブースト <dark_gray>• <gray>自分だけ"
 "gui.booster-scope.server" = "<gold>サーバーブースト <dark_gray>• <gray>このサーバーの全員"
-"gui.booster-channel" = "<gray><gray>{channel}</gray>: +<green>{percent}</green>%"
-"gui.booster-duration" = "<gray>持続時間: <white>{time}</white>"
-"gui.booster-remaining" = "<gray>残り時間: <yellow>{time}</yellow>"
+"gui.booster-channel" = "<gray>{channel}: <green>+{percent}%"
+"gui.booster-duration" = "<gray>持続時間: <white>{time}"
+"gui.booster-remaining" = "<gray>残り時間: <yellow>{time}"
 "gui.booster-rule.queue" = "<gray>重複するブーストは順番待ちになります。"
 "gui.booster-rule.highest" = "<gray>各対象範囲で最も強いブーストが適用されます。"
-"gui.booster-credits" = "<gray>所持する使用回数: <gold>{count}</gold>"
+"gui.booster-credits" = "<gray>所持する使用回数: <gold>{count}"
 "gui.buy-booster" = "<green>使用回数を1回購入"
 "gui.buy-booster-hint" = "<gray>購入前に費用を確認してください。"
 "gui.activate-booster" = "<gold>ブースターを起動"
@@ -372,9 +375,9 @@
 "gui.active-boosts-hint" = "<gray>自分のブースト、サーバーのイベント、合計効果を確認します。"
 "gui.booster-running" = "<green>✓ 稼働中"
 "gui.booster-queued" = "<yellow>⌛ 待機中"
-"gui.booster-total" = "<gray><gray>{channel}</gray>のブースト合計: +<green>{percent}</green>%"
-"gui.booster-cap" = "<gray>ブースト合計の上限: +<white>{percent}</white>%"
-"gui.booster-applied" = "<gray>個人＋サーバーのブースト: 元の報酬の+<green>{percent}</green>%"
+"gui.booster-total" = "<gray>{channel}のブースター合計: <green>+{percent}%"
+"gui.booster-cap" = "<gray>ブースター合計の上限: <white>+{percent}%"
+"gui.booster-applied" = "<gray>個人＋サーバーのブースト: <green>元の報酬の+{percent}%"
 "gui.no-active-boosts" = "<gold>有効なブーストはありません"
 "gui.no-active-boosts-hint" = "<gray>所持するブースターを起動してください。"
 "gui.back-boosts" = "<gold>◀ ブースター一覧に戻る"
@@ -397,46 +400,46 @@
 "progression.result.no_credit" = "<red>このブースターの使用回数を持っていません。"
 "progression.result.disabled" = "<gray>この機能はサーバーで無効になっています。"
 "progression.result.invalid_request" = "<red>無効な要求です。コマンドのヘルプを確認するか、メニューを開き直してください。"
-"command.description.setup" = "初期コンパニオンを設定する"
-"gui.title.setup" = "<gold>コンパニオン設定"
-"gui.title.setup-confirm" = "<gold>設定の確認"
-"gui.setup" = "<gold>初期設定"
+"command.description.setup" = "初期コンパニオンをセットアップする"
+"gui.title.setup" = "<gold>コンパニオンのセットアップ"
+"gui.title.setup-confirm" = "<gold>セットアップの確認"
+"gui.setup" = "<gold>初期セットアップ"
 "gui.setup-hint" = "<gray>初期コンパニオンを追加し、サーバーのボーナスを選びます。"
 "gui.setup-cosmetic" = "<aqua>見た目のみのコンパニオン"
-"gui.setup-cosmetic-hint" = "<gray>属性、バフ、効果、アップグレード、ブースターを無効にします。"
+"gui.setup-cosmetic-hint" = "<gray>属性、バフ、効果、強化、ブースターを無効にします。"
 "gui.setup-survival" = "<green>サバイバル用コンパニオン"
 "gui.setup-survival-hint" = "<gray>設定済みの属性、バフ、ポーション効果を有効にします。"
 "gui.setup-common" = "<gray>不足している初期コンパニオンを追加し、既存のコンパニオンファイルは保持します。"
-"gui.setup-costs" = "<gray>アップグレードとブースターは無効のまま、パーティクルを有効にします。"
+"gui.setup-costs" = "<gray>強化とブースターは無効のまま、パーティクルは有効になります。"
 "gui.setup-permissions" = "<gray>プレイヤーの利用可否には引き続き権限設定が適用されます。"
 "gui.setup-preview" = "<gold>コンパニオンを見る"
 "gui.setup-preview-hint" = "<gray>初期コンパニオンを装備し、パーティクルやボーナスを確認します。"
-"gui.setup-confirm" = "<green>設定を適用"
+"gui.setup-confirm" = "<green>セットアップを適用"
 "gui.setup-confirm-hint" = "<gray>このプロファイルをプラグイン全体に適用して再読み込みします。"
-"gui.setup-cancel" = "<gold>設定に戻る"
+"gui.setup-cancel" = "<gold>セットアップに戻る"
 "gui.setup-cancel-hint" = "<gray>変更を適用せずに戻ります。"
 "gui.setup-current" = "<gray>読み込み済みコンパニオン: {count}"
-"setup.applying" = "{prefix} <gold>コンパニオン設定を適用中...</gold>"
-"setup.applied" = "{prefix} <green>コンパニオン設定を保存しました。<white>/bytecompanions menu</white>でコンパニオンを選んでください。</green>"
-"setup.failed" = "{prefix} <red>設定を適用できませんでした。コンソールを確認してください。以前の設定は有効のままです。</red>"
-"setup.stale" = "{prefix} <gold>設定が変更されました。設定画面を開き直してから適用してください。</gold>"
+"setup.applying" = "{prefix} <gold>コンパニオンのセットアップを適用中...</gold>"
+"setup.applied" = "{prefix} <green>コンパニオンのセットアップを保存しました。<white>/bytecompanions menu</white> でコンパニオンを選んでください。</green>"
+"setup.failed" = "{prefix} <red>セットアップを適用できませんでした。コンソールを確認してください。以前の設定は有効のままです。</red>"
+"setup.stale" = "{prefix} <gold>設定が変更されました。セットアップを開き直してから適用してください。</gold>"
 "command.description.collection" = "コレクションを閲覧・絞り込み"
-"command.description.outfits" = "保存した仲間セットを管理"
-"command.description.interact" = "装備中の仲間とふれあう"
+"command.description.outfits" = "保存したセットを管理"
+"command.description.interact" = "装備中のコンパニオンとふれあう"
 "gui.title.outfits" = "保存したセット"
 "gui.title.outfit" = "セットの確認"
 "gui.title.outfit-delete" = "セットの削除"
-"gui.title.personalize" = "仲間のカスタマイズ"
-"gui.title.variants" = "仲間のバリエーション"
-"gui.title.formation" = "仲間の隊形"
-"gui.title.interactions" = "仲間とのふれあい"
+"gui.title.personalize" = "コンパニオンのカスタマイズ"
+"gui.title.variants" = "コンパニオンのバリエーション"
+"gui.title.formation" = "コンパニオンの隊形"
+"gui.title.interactions" = "コンパニオンとのふれあい"
 "gui.favorite" = "<gold>♡ お気に入りに追加"
 "gui.favorite-on" = "<gold>♥ お気に入り"
 "gui.favorites-only" = "<gold>♥ お気に入りのみ"
 "gui.selected" = "<green>選択中"
-"gui.filter-all" = "<gold>対象：すべて"
-"gui.filter-owned" = "<green>対象：所有済み"
-"gui.filter-locked" = "<gray>対象：未解放"
+"gui.filter-all" = "<gold>アクセス：すべて"
+"gui.filter-owned" = "<green>アクセス：所有済み"
+"gui.filter-locked" = "<gray>アクセス：ロック中"
 "gui.category" = "<gold>カテゴリ"
 "gui.category-all" = "<gray>すべてのカテゴリ"
 "gui.outfits" = "<gold>保存したセット"
@@ -444,19 +447,19 @@
 "gui.outfit-apply" = "<green>このセットを使う"
 "gui.outfit-delete" = "<red>セットを削除"
 "gui.outfit-delete-confirm" = "<red>削除を確定"
-"gui.outfit-count" = "<gray>仲間の数：{count}"
+"gui.outfit-count" = "<gray>コンパニオン数：<white>{count}"
 "gui.personalize" = "<gold>カスタマイズ"
 "gui.nickname" = "<gold>名前を付ける"
 "gui.name-reset" = "<gray>名前をリセット"
 "gui.variants" = "<gold>許可されたバリエーション"
-"gui.default-choice" = "<gray>標準に戻す"
+"gui.default-choice" = "<gray>デフォルトを使用"
 "gui.formation" = "<gold>隊形"
 "gui.formation-line" = "<gold>一列"
 "gui.formation-grid" = "<gold>格子"
 "gui.formation-orbit" = "<gold>周回"
 "gui.formation-earlier" = "<gold>前へ移動"
 "gui.formation-later" = "<gold>後ろへ移動"
-"gui.interactions" = "<gold>仲間の動作"
+"gui.interactions" = "<gold>コンパニオンの動作"
 "gui.action-pet" = "<gold>なでる"
 "gui.action-wave" = "<gold>手を振る"
 "gui.action-sit" = "<gold>座る"
@@ -467,10 +470,10 @@
 "gui.trial-hint" = "<gray>自分だけに表示。{seconds}秒、ボーナスなし。"
 "gui.choice-value" = "<white>{value}"
 "collection.trial-started" = "{prefix} <aqua>自分だけのお試しを開始しました。ボーナスは付与されません。"
-"collection.outfit-prompt" = "{prefix} <yellow>セット名をチャットで入力（1～32文字の英数字、_、-）、または cancel。60秒で終了します。"
-"collection.name-prompt" = "{prefix} <yellow>名前をチャットで入力（装飾なし、32文字以内）、または cancel。60秒で終了します。"
-"collection.choose-equipped" = "{prefix} <yellow>先に仲間を装備してください。複数いる場合はIDを指定してください。"
-"collection.action-applied" = "{prefix} <green>仲間が反応しました。"
+"collection.outfit-prompt" = "{prefix} <yellow>セット名をチャットで入力（1～32文字の英数字、_、-）、または cancel。60秒で期限切れになります。"
+"collection.name-prompt" = "{prefix} <yellow>名前をチャットで入力（装飾なし、32文字以内）、または cancel。60秒で期限切れになります。"
+"collection.choose-equipped" = "{prefix} <yellow>先にコンパニオンを装備してください。複数装備している場合はIDを指定してください。"
+"collection.action-applied" = "{prefix} <green>コンパニオンが反応しました。"
 "collection.cooldown" = "{prefix} <yellow>次のふれあいまで少しお待ちください。"
 "collection.rejected" = "{prefix} <red>変更を適用できませんでした：{detail}"
 "collection.saved" = "{prefix} <green>コレクションを保存しました。"
@@ -486,16 +489,16 @@
 "gui.settings-visibility-all-hint" = "<gray>コンパニオンと装飾を表示します。"
 "gui.settings-visibility-own" = "<yellow>自分のみ"
 "gui.settings-visibility-own-hint" = "<gray>自分のコンパニオンだけを表示します。"
-"gui.settings-visibility-none" = "<red>非表示"
+"gui.settings-visibility-none" = "<red>コンパニオンを非表示"
 "gui.settings-visibility-none-hint" = "<gray>コンパニオンと装飾を自分の画面で非表示にします。"
 "gui.settings-particles" = "<aqua>パーティクル"
 "gui.settings-particles-full" = "<green>すべて"
 "gui.settings-particles-full-hint" = "<gray>すべてのパーティクルフレームを表示します。"
-"gui.settings-particles-reduced" = "<yellow>軽減"
+"gui.settings-particles-reduced" = "<yellow>低減"
 "gui.settings-particles-reduced-hint" = "<gray>パーティクルフレームを1つおきに表示します。"
 "gui.settings-particles-off" = "<red>オフ"
 "gui.settings-particles-off-hint" = "<gray>コンパニオンのパーティクルを非表示にします。"
-"gui.settings-server-limit" = "<gray>サーバーがパーティクルの量を制限する場合があります。"
+"gui.settings-server-limit" = "<gray>サーバーがパーティクルの強度を制限する場合があります。"
 "command.description.settings" = "コンパニオンとパーティクルの表示を選択"
 "command.parameter.setting" = "設定"
 "command.parameter.value" = "値"
@@ -503,14 +506,14 @@
 "collection.reason.equip-first" = "先にこのコンパニオンを装備してください。"
 "collection.reason.outfit-limit" = "セット数の上限 {limit} に達しています。"
 "collection.reason.outfit-unavailable" = "このセットは利用できません。"
-"collection.reason.formation-order" = "隊列には装備中のコンパニオンのみ指定できます。"
+"collection.reason.formation-order" = "隊形の順序には装備中のコンパニオンを指定する必要があります。"
 "collection.reason.model-limit" = "セットがモデル別の上限を超えています。"
 "collection.reason.personalization-locked" = "カスタマイズはロックされています。"
 "collection.reason.particle-unavailable" = "このパーティクル効果は利用できません。"
 "collection.reason.particle-locked" = "このパーティクル効果はロックされています。"
-"collection.reason.particle-remove-denied" = "このパーティクル効果を解除する権限がありません。"
+"collection.reason.particle-remove-denied" = "このパーティクル効果は解除できません。"
 "collection.reason.nickname-invalid" = "名前は装飾なしのテキストで32文字以内にしてください。"
-"collection.reason.formation-invalid" = "不明な隊列: {formation}。"
+"collection.reason.formation-invalid" = "不明な隊形: {formation}。"
 "collection.reason.cosmetic-invalid" = "外見の識別子が無効です。"
 "collection.reason.outfit-name-invalid" = "セット名は1～32文字の英数字、アンダースコア、ハイフンで指定してください。"
 "collection.reason.variant-locked" = "ロックされたバリエーション: {variant}。"
@@ -523,35 +526,35 @@
 "command.parameter.upload" = "公開アップロードが有効な場合にレポートをアップロードする"
 "command.feedback.inactive" = "{prefix} <gray>ランタイムを再起動しています。しばらくしてからもう一度お試しください。</gray>"
 "command.status.header" = "ランタイム"
-"command.status.configuration" = "<gray>コンパニオン: {enabled} <dark_gray>|</dark_gray> 言語: <white>{language}</white> <dark_gray>|</dark_gray> 自動リロード: {hot_reload}</gray>"
+"command.status.configuration" = "<gray>コンパニオン: {enabled} <dark_gray>|</dark_gray> 言語: <white>{language}</white> <dark_gray>|</dark_gray> ホットリロード: {hot_reload}</gray>"
 "command.status.runtime" = "<gray>定義: <white>{count}</white> <dark_gray>|</dark_gray> 読み込み済みプレイヤー: <white>{players}</white> <dark_gray>|</dark_gray> 装備中のコンパニオン: <white>{companions}</white></gray>"
 "command.status.features" = "<gray>機能: <white>{features}</white> <dark_gray>|</dark_gray> ストレージ: <white>{value}</white></gray>"
 "command.status.integrations" = "<gray>連携: <white>{integrations}</white></gray>"
 "command.status.compatibility" = "<gray>Java <white>{java}</white> / Bukkit <white>{range}</white> <dark_gray>|</dark_gray> スケジューラー: <white>{scheduler}</white> <dark_gray>|</dark_gray> アダプター: <white>{value}</white></gray>"
-"runtime.hot_reload.success" = "<green>適用しました:</green> <gray>設定ファイルと言語ファイルの変更。</gray>"
+"runtime.hot_reload.success" = "<gray>設定ファイルと言語ファイルの変更を</gray><green>適用しました。</green>"
 "runtime.hot_reload.failed" = "<red>ファイルの変更を拒否しました。最後に有効だった設定が引き続き適用されます。</red>"
 "director.help.category" = "コマンド分類"
 "director.help.command_group" = "コマンドグループ。クリックして開きます。"
 "director.help.no_description" = "説明はありません"
 "director.help.no_parameters" = "パラメーターはありません。クリックしてコマンドを入力します。"
 "director.help.no_subcommands" = "このページにサブコマンドはありません。"
-"director.help.parameters_hover" = "パラメータにカーソルを合わせると詳細が表示されます。"
+"director.help.parameters_hover" = "パラメーターにカーソルを合わせると詳細が表示されます。"
 "director.help.navigation.back" = "戻る"
 "director.help.navigation.page" = "ページ"
 "director.help.navigation.next.hover" = "次のページ"
 "director.help.navigation.parent.hover" = "親コマンドグループに戻る"
 "director.help.navigation.previous.hover" = "前のページ"
-"director.help.parameter.default" = "未指定の場合は \"{value}\" になります。"
-"director.help.parameter.optional" = "このパラメータは任意です。"
-"director.help.parameter.required" = "このパラメータは必須です。"
-"director.help.parameter.type" = "このパラメータの型は {type} です。"
-"director.runtime.error.conversion_failed" = "\"{value}\" を {parameter} 用の {type} に変換できません"
+"director.help.parameter.default" = "未指定の場合は「{value}」になります。"
+"director.help.parameter.optional" = "このパラメーターは任意です。"
+"director.help.parameter.required" = "このパラメーターは必須です。"
+"director.help.parameter.type" = "このパラメーターの型は {type} です。"
+"director.runtime.error.conversion_failed" = "「{value}」を {parameter} 用の {type} に変換できません"
 "director.runtime.error.default_parse_failed" = "パラメーター {parameter} のデフォルト値を解析できません"
 "director.runtime.error.execution_failed" = "コマンド {command} の実行に失敗しました: {reason}"
 "director.runtime.error.invalid_origin" = "この実行元からはコマンドを実行できません。"
-"director.runtime.error.missing_argument" = "引数 \"{parameter}\" ({type}) が必要です"
-"director.runtime.error.unclosed_group" = "パラメータ {key} の閉じかっこ \"]\" がありません"
-"director.runtime.error.unexpected_argument" = "予期しない引数 \"{argument}\"。オプションのパラメーターはキー付きで指定してください。例: seed=123"
+"director.runtime.error.missing_argument" = "引数「{parameter}」({type}) がありません"
+"director.runtime.error.unclosed_group" = "パラメーター {key} の閉じかっこ「]」がありません"
+"director.runtime.error.unexpected_argument" = "予期しない引数「{argument}」。任意のパラメーターはキー付きで指定してください。例: seed=123"
 "director.runtime.error.unknown_parameter" = "不明なパラメーターキー: {key}"
 "language.menu.your_language" = "あなたの言語"
 "language.menu.reset_your_language" = "自分の言語をリセット"
@@ -560,7 +563,7 @@
 "language.menu.use_server_default" = "サーバーのデフォルトを使用"
 "language.menu.current" = "現在: {locale}"
 "language.menu.current_with_personal" = "現在: {locale} (あなた: {personal})"
-"language.menu.your_description" = "表示されるメッセージだけを変更します。"
+"language.menu.your_description" = "自分に表示されるメッセージだけを変更します。"
 "language.menu.reset_description" = "サーバーのデフォルト言語を使用します。"
 "language.menu.server_description" = "サーバーのデフォルト言語を変更します。"
 "language.menu.edit_description" = "言語ごとのメッセージエディターを開きます。"
@@ -581,14 +584,21 @@
 "language.error.server-locale-required" = "&cサーバーの既定の言語としてen_USなどの言語コードを選択してください。"
 "language.error.unavailable-for-all" = "&c選択したすべてのプラグインで言語{locale}を利用できるわけではありません。"
 "language.usage.editor" = "&7使い方: /{command} language server edit [locale]"
-"language.usage.selection" = "&7使い方: /{command} language self [locale|reset] or server [locale]"
+"language.usage.selection" = "&7使い方: /{command} language self [locale|reset] または server [locale]"
 "language.usage.volmit-selection" = "&7使い方: /volmit plugins languages [locale]"
+"language.usage.update" = "&7使い方: /{command} language update"
 "language.selection.preparing" = "&7{target}の言語{locale}を準備しています..."
 "language.selection.save-failed" = "{plugin}: &c言語の選択を保存できませんでした。サーバーコンソールを確認してください。"
 "language.selection.english-fallback" = "{plugin}: &e{locale}は利用できないため、英語（en_US）を使用します。"
 "language.selection.personal-selected" = "{plugin}: &7個人言語を{locale}に変更しました。"
 "language.selection.server-selected" = "{plugin}: &7サーバー言語を{locale}に変更しました。"
 "language.selection.server-default-selected" = "{plugin}: &7個人言語はサーバーの既定の言語に従うようになりました。"
+"language.update.checking" = "{plugin}: &7言語リポジトリの変更を確認しています…"
+"language.update.unchanged" = "{plugin}: &7インストール済みの言語はすでにリポジトリと一致しています。"
+"language.update.applied" = "{plugin}: &7{locale}を更新しました（追加 {added}、変更 {updated}、保持したローカル編集 {kept}）。"
+"language.update.cooldown" = "{plugin}: &7言語リポジトリは最近確認されたばかりです。{remaining}後にもう一度お試しください。"
+"language.update.locale-failed" = "{plugin}: &c{locale}は更新されませんでした：{reason}"
+"language.update.failed" = "{plugin}: &c言語の更新に失敗しました：{reason}"
 "language.editor.title" = "{plugin} › {section}"
 "language.editor.loading" = "&7{locale}のメッセージを読み込んでいます..."
 "language.editor.section.languages" = "言語"
@@ -617,12 +627,12 @@
 "language.editor.message.edit-chat" = "&7クリックしてチャットで編集します。&r"
 "language.editor.locale.open" = "&8クリックしてこの言語を開きます。&r"
 "language.editor.category.message-count" = "&7{count}件のメッセージ&r"
-"language.editor.category.open" = "&8クリックしてこのグループを開きます。&r"
+"language.editor.category.open" = "&8クリックしてこのカテゴリを開きます。&r"
 "language.editor.error.no-permission" = "&c{plugin}の言語を編集する権限がありません。"
 "language.editor.error.unable-to-edit" = "&c編集できませんでした: {reason}"
 "language.editor.saved.summary" = "&7{locale}を保存しました。言語の選択は変更されていません。"
 "language.editor.saved.change" = "&7{key}: 「{before}」を「{after}」に変更しました。"
-"language.editor.part.line" = "行{line}"
+"language.editor.part.line" = "{line}行目"
 "language.editor.value.none" = "なし"
 "language.editor.value.empty" = "(空)"
 "debug.error.missing-permission" = "&c権限がありません: {permission}"
@@ -650,7 +660,7 @@
 "config.editor.entry" = "項目 {number}"
 "config.editor.current" = "現在: {value}"
 "config.editor.open" = "クリックでこの項目を開きます。"
-"config.editor.toggle" = "クリックで有効と無効を切り替えます。"
+"config.editor.toggle" = "クリックで true と false を切り替えます。"
 "config.editor.edit" = "クリックでチャットに新しい値を入力します。"
 "config.editor.prompt" = "{path} の値を入力してください。cancel で戻ります。"
 "config.editor.expired" = "設定入力の時間切れです。"
@@ -667,20 +677,20 @@
 "config.editor.next" = "次のページ"
 "config.editor.refresh" = "更新"
 "config.editor.close" = "閉じる"
-"config.editor.type.text" = "引用符で囲まずに入力してください。"
+"config.editor.type.text" = "テキスト。引用符で囲む必要はありません。"
 "config.editor.type.integer" = "整数を入力してください。"
 "config.editor.type.decimal" = "0.25 のような数値を入力してください。"
 "config.editor.type.list" = "[\"stone\", \"deepslate\"] のような TOML リストを使ってください。"
 "config.editor.adjust" = "左クリック +{step}、右クリック -{step}、Shift で10倍、Q で値を直接入力。"
 
 "gui.config.title" = "設定"
-"gui.setting.collections" = "個人のコレクション、衣装、お試し、パーソナリティ。"
+"gui.setting.collections" = "個人のコレクション、セット、お試し、パーソナリティ。"
 "gui.setting.collections.idleReactions" = "コンパニオンが静止しているときに、時折アイドル反応を行うことを許可します。"
 "gui.setting.collections.idleReactions.name" = "アイドル反応"
-"gui.setting.collections.maximumOutfits" = "プレイヤーごとに保存できる衣装の上限で、1 から 32 までです。"
-"gui.setting.collections.maximumOutfits.name" = "衣装の上限"
+"gui.setting.collections.maximumOutfits" = "プレイヤーごとに保存できるセットの上限で、1 から 32 までです。"
+"gui.setting.collections.maximumOutfits.name" = "セットの上限"
 "gui.setting.collections.name" = "コレクション"
-"gui.setting.collections.personalityEnabled" = "なでる、手を振る、座る、待て、呼ぶの各操作を許可します。"
+"gui.setting.collections.personalityEnabled" = "なでる、手を振る、座る、待て、おいでの各操作を許可します。"
 "gui.setting.collections.personalityEnabled.name" = "パーソナリティ有効"
 "gui.setting.collections.trialSeconds" = "ロック中のコンパニオンを非公開でプレビューできる時間で、5 から 120 秒までです。"
 "gui.setting.collections.trialSeconds.name" = "お試し秒数"
@@ -702,8 +712,8 @@
 "gui.setting.features.name" = "機能"
 "gui.setting.features.particles" = "コンパニオンのパーティクル効果を有効にします。"
 "gui.setting.features.particles.name" = "パーティクル"
-"gui.setting.features.progression" = "コンパニオンのレベルと任意のボーナスアップグレードを有効にします。"
-"gui.setting.features.progression.name" = "進行"
+"gui.setting.features.progression" = "コンパニオンのレベルと任意のボーナス強化を有効にします。"
+"gui.setting.features.progression.name" = "成長"
 "gui.setting.general" = "マスタースイッチ、サーバー言語、更新通知、コンパニオンの上限。"
 "gui.setting.general.autoLoadCompanions" = "ランタイム起動時に companions フォルダーからコンパニオン定義を読み込みます。"
 "gui.setting.general.autoLoadCompanions.name" = "コンパニオンの自動読み込み"
@@ -735,7 +745,7 @@
 "gui.setting.hotReload.pollIntervalMillis" = "ファイルスキャンの間隔のミリ秒数で、250 から 60000 までです。"
 "gui.setting.hotReload.pollIntervalMillis.name" = "ポーリング間隔 (ミリ秒)"
 "gui.setting.languages" = "サーバーの翻訳とその書式を編集します。"
-"gui.setting.languages.name" = "言語ファイル"
+"gui.setting.languages.name" = "言語"
 "gui.setting.menus" = "ダッシュボードのショートカット。"
 "gui.setting.menus.name" = "メニュー"
 "gui.setting.menus.rightClickDashboard" = "所有者がメインハンドでコンパニオンを右クリックしたときに、コンパニオンダッシュボードを開きます。"
@@ -767,7 +777,7 @@
 "gui.setting.presentation.splashScreen" = "サービスの準備が整った後に ByteCompanions の起動スプラッシュを表示します。"
 "gui.setting.presentation.splashScreen.name" = "スプラッシュ画面"
 "gui.setting.serverRules" = "ワールドとリージョンの制限。"
-"gui.setting.serverRules.bonusDisabledWorlds" = "コンパニオンの属性、効果、報酬ボーナス、自動コンパニオン XP を停止するワールド名。"
+"gui.setting.serverRules.bonusDisabledWorlds" = "コンパニオンの属性、効果、報酬ボーナス、自動コンパニオンXPを停止するワールド名。"
 "gui.setting.serverRules.bonusDisabledWorlds.name" = "ボーナス無効ワールド"
 "gui.setting.serverRules.hiddenWorlds" = "コンパニオンの表示を隠すワールド名。"
 "gui.setting.serverRules.hiddenWorlds.name" = "非表示ワールド"
@@ -775,7 +785,7 @@
 "gui.setting.serverRules.worldguard" = "WorldGuard がインストールされている場合に、bytecompanions-visuals と bytecompanions-bonuses のフラグに従います。"
 "gui.setting.serverRules.worldguard.name" = "WorldGuard"
 "gui.setting.storage" = "プレイヤーデータのストレージバックエンドと接続プール。"
-"gui.setting.storage.backend" = "プレイヤーのコンパニオン、コレクション、進行状況、パーティクル選択のストレージバックエンドで、json、sqlite、h2、mysql のいずれかです。"
+"gui.setting.storage.backend" = "プレイヤーのコンパニオン、コレクション、成長データ、パーティクル選択のストレージバックエンドで、json、sqlite、h2、mysql のいずれかです。"
 "gui.setting.storage.backend.name" = "バックエンド"
 "gui.setting.storage.h2" = "組み込み H2 データベースの場所。"
 "gui.setting.storage.h2.directory" = "組み込みデータベースファイルを格納する plugins/ByteCompanions 配下のディレクトリ。"

@@ -6,99 +6,100 @@
 # /bytecompanions language server edit vi_VI
 #
 # === Tiền tố ===
-# runtime.prefix supplies the styled plugin name for {prefix}.
-# Remove {prefix} from a message to hide the plugin name for that message.
+# runtime.prefix cung cấp tên plugin có định dạng cho {prefix}.
+# Xóa {prefix} khỏi một thông báo để ẩn tên plugin trong thông báo đó.
 #
 # === Định dạng ===
-# Colors and styles: &0-&f, &k-&r.
-# RGB colors: &#RRGGBB, &xRRGGBB, &x&R&R&G&G&B&B, [RRGGBB].
-# MiniMessage supports custom formatting such as <gold> and <gradient:#ffcc00:#ff9900>. Put a backslash before & or [ to display it literally.
+# Màu và kiểu chữ: &0-&f, &k-&r.
+# Màu RGB: &#RRGGBB, &xRRGGBB, &x&R&R&G&G&B&B, [RRGGBB].
+# MiniMessage hỗ trợ định dạng tùy chỉnh như <gold> và <gradient:#ffcc00:#ff9900>. Thêm dấu gạch chéo ngược trước & hoặc [ để hiển thị nguyên ký tự đó.
 #
 # === Biến ===
 # Giữ nguyên tên biến và chỉ dùng những biến có sẵn trong từng thông báo.
-#   {action}  Requested action
-#   {actions}  Available actions
-#   {after}  Value after the change
-#   {amount}  Amount or count
-#   {argument}  Unexpected command argument
-#   {before}  Value before the change
-#   {bonus}  Bonus name
-#   {booster}  Booster identifier
-#   {category}  Category name
-#   {change}  Described change
-#   {channel}  Booster channel
-#   {choice}  Selected option
-#   {command}  Command path
-#   {companion}  Companion identifier
-#   {companions}  Companion identifiers
-#   {count}  Number of items
-#   {created}  Creation time
-#   {current}  Current value
-#   {definition}  Companion definition
-#   {detail}  Failure detail
-#   {effect}  Particle effect identifier
-#   {entry}  Entry label
-#   {feature}  Feature name
-#   {features}  Enabled features
-#   {field}  Studio field name
-#   {formation}  Formation name
-#   {group}  Message category name
-#   {hot_reload}  Hot reload state
-#   {index}  Position number
-#   {integrations}  Integration states
-#   {item}  Item name
-#   {items}  Item list
-#   {java}  Java major version
-#   {key}  Message or setting key
-#   {kind}  Transaction kind
-#   {language}  Active language
-#   {level}  Level number
-#   {limit}  Configured limit
-#   {line}  Message line number
-#   {locale}  Locale identifier
-#   {maximum}  Maximum accepted value
-#   {mode}  Combining rule
-#   {model}  Companion model
-#   {money}  Money amount
-#   {name}  Display name
-#   {new}  Installed rendered value
-#   {next}  Next value
-#   {old}  Previous rendered value
-#   {operation}  Bonus operation
-#   {page}  Current page number
-#   {pages}  Total page count
-#   {parameter}  Parameter name
-#   {path}  File path or setting path
-#   {percent}  Percentage value
-#   {permission}  Required permission
-#   {personal}  Personal locale when it differs
-#   {player}  Player name
-#   {players}  Loaded player count
-#   {plugin}  Plugin name
-#   {prefix}  Styled plugin name from runtime.prefix
-#   {provider}  Payment provider
-#   {range}  Supported Minecraft range
-#   {reason}  Failure reason
-#   {required}  Required amount
-#   {scheduler}  Scheduler implementation
-#   {seconds}  Duration in seconds
-#   {section}  Language editor section
-#   {setting}  Setting name
-#   {sources}  Bonus sources
-#   {status}  Status marker
-#   {step}  Adjustment step
-#   {target}  Selection target
-#   {tier}  Upgrade tier
-#   {time}  Duration text
-#   {transaction}  Transaction identifier
-#   {type}  Parameter type
-#   {url}  Public report URL
-#   {usage}  Command usage
-#   {value}  Current or raw value
-#   {variables}  Placeholders valid for the message
-#   {variant}  Appearance variant
-#   {version}  Plugin version
-#   {xp}  Companion experience
+#   {activation}  Mã định danh lượt kích hoạt bộ tăng thưởng
+#   {added}  Thông báo được thêm bởi bản cập nhật ngôn ngữ
+#   {after}  Giá trị sau khi thay đổi
+#   {amount}  Số lượng
+#   {argument}  Đối số lệnh ngoài dự kiến
+#   {before}  Giá trị trước khi thay đổi
+#   {bonus}  Tên mức thưởng
+#   {booster}  Mã định danh bộ tăng thưởng
+#   {category}  Tên danh mục
+#   {change}  Mô tả thay đổi
+#   {channel}  Kênh của bộ tăng thưởng
+#   {choice}  Tùy chọn đã chọn
+#   {command}  Đường dẫn lệnh
+#   {companion}  Mã định danh bạn đồng hành
+#   {companions}  Các mã định danh bạn đồng hành
+#   {count}  Số mục
+#   {created}  Thời điểm tạo
+#   {current}  Giá trị hiện tại
+#   {definition}  Định nghĩa bạn đồng hành
+#   {detail}  Chi tiết lỗi
+#   {effect}  Mã định danh hiệu ứng hạt
+#   {enabled}  Trạng thái bật của bạn đồng hành
+#   {feature}  Tên tính năng
+#   {features}  Các tính năng đang bật
+#   {field}  Tên trường trong xưởng
+#   {formation}  Tên đội hình
+#   {group}  Tên danh mục thông báo
+#   {hot_reload}  Trạng thái tải lại tức thời
+#   {index}  Số thứ tự vị trí
+#   {integrations}  Trạng thái tích hợp
+#   {item}  Tên vật phẩm
+#   {items}  Danh sách vật phẩm
+#   {java}  Phiên bản chính của Java
+#   {kept}  Chỉnh sửa cục bộ được giữ lại sau bản cập nhật ngôn ngữ
+#   {key}  Khóa thông báo hoặc cài đặt
+#   {kind}  Loại giao dịch
+#   {language}  Ngôn ngữ đang dùng
+#   {level}  Số cấp
+#   {limit}  Giới hạn đã cấu hình
+#   {line}  Số dòng của thông báo
+#   {locale}  Mã vùng
+#   {maximum}  Giá trị tối đa được chấp nhận
+#   {mode}  Quy tắc kết hợp
+#   {model}  Mô hình bạn đồng hành
+#   {money}  Số tiền
+#   {name}  Tên hiển thị
+#   {next}  Giá trị tiếp theo
+#   {number}  Số thứ tự mục trong danh sách
+#   {operation}  Phép tính của mức thưởng
+#   {page}  Số trang hiện tại
+#   {pages}  Tổng số trang
+#   {parameter}  Tên tham số
+#   {path}  Đường dẫn tệp hoặc đường dẫn cài đặt
+#   {percent}  Giá trị phần trăm
+#   {permission}  Quyền cần có
+#   {personal}  Mã vùng cá nhân khi khác với mặc định của máy chủ
+#   {player}  Tên người chơi
+#   {players}  Số người chơi đã tải
+#   {plugin}  Tên plugin
+#   {prefix}  Tên plugin có định dạng từ runtime.prefix
+#   {provider}  Nhà cung cấp thanh toán
+#   {range}  Phạm vi phiên bản Minecraft được hỗ trợ
+#   {reason}  Lý do thất bại
+#   {remaining}  Thời gian còn lại đến lần kiểm tra ngôn ngữ tiếp theo
+#   {required}  Số lượng yêu cầu
+#   {scheduler}  Bộ lập lịch đang dùng
+#   {seconds}  Thời lượng tính bằng giây
+#   {section}  Mục của trình chỉnh sửa ngôn ngữ
+#   {sources}  Nguồn thưởng
+#   {status}  Dấu trạng thái
+#   {step}  Bước điều chỉnh
+#   {target}  Đối tượng được chọn
+#   {tier}  Bậc nâng cấp
+#   {time}  Văn bản thời lượng
+#   {transaction}  Mã định danh giao dịch
+#   {type}  Kiểu tham số
+#   {updated}  Thông báo được thay đổi bởi bản cập nhật ngôn ngữ
+#   {url}  URL công khai của báo cáo
+#   {usage}  Cách dùng lệnh
+#   {value}  Giá trị hiện tại hoặc thô
+#   {variables}  Biến dùng được trong thông báo
+#   {variant}  Biến thể ngoại hình
+#   {version}  Phiên bản plugin
+#   {xp}  Kinh nghiệm bạn đồng hành
 
 "runtime.prefix" = "<bold><gradient:#ffcc00:#ff9900>ByteCompanions</gradient></bold>"
 "gui.studio-review-change" = "<gold>Thay đổi {index}"
@@ -114,9 +115,9 @@
 "command.description.edit" = "Chỉnh sửa định nghĩa bạn đồng hành"
 "gui.title.studio" = "<gold>Xưởng bạn đồng hành"
 "gui.title.studio-fields" = "<gold>Chỉnh sửa bạn đồng hành"
-"gui.title.studio-field" = "<gold>Chỉnh sửa thiết lập"
+"gui.title.studio-field" = "<gold>Chỉnh sửa cài đặt"
 "gui.title.studio-presets" = "<gold>Chọn mẫu có sẵn"
-"gui.title.studio-confirm" = "<gold>Xem lại thay đổi"
+"gui.title.studio-confirm" = "<gold>Xem lại thay đổi bạn đồng hành"
 "gui.studio" = "<gold>✎ Xưởng bạn đồng hành"
 "gui.studio-hint" = "<gray>Chỉnh sửa bạn đồng hành này cho toàn máy chủ."
 "gui.studio-heading" = "<gold>✎ {companion}"
@@ -126,18 +127,18 @@
 "gui.studio-appearance" = "<gold>Ngoại hình và tên"
 "gui.studio-equipment" = "<aqua>Trang bị và màu sắc"
 "gui.studio-movement" = "<green>Chuyển động và hoạt ảnh"
-"gui.studio-particles" = "<light_purple>Hạt có sẵn"
+"gui.studio-particles" = "<light_purple>Hạt tích hợp"
 "gui.studio-attributes" = "<aqua>Thưởng thuộc tính"
 "gui.studio-effects" = "<light_purple>Thưởng hiệu ứng thuốc"
-"gui.studio-buffs" = "<green>Thưởng XP và phần thưởng"
-"gui.studio-category-hint" = "<gray>Chọn thiết lập hoặc thêm mẫu có sẵn."
+"gui.studio-buffs" = "<green>Thưởng kinh nghiệm và phần thưởng"
+"gui.studio-category-hint" = "<gray>Chọn một cài đặt hoặc thêm mẫu có sẵn."
 "gui.studio-disabled" = "<yellow>Tính năng này đang tắt; các mức thưởng đã lưu vẫn không có hiệu lực."
 "gui.studio-field" = "<gold>{field}"
 "gui.studio-value" = "<gray>Giá trị hiện tại: <white>{value}"
-"gui.studio-edit-hint" = "<gray>Nhấp để chỉnh sửa thiết lập này."
+"gui.studio-edit-hint" = "<gray>Nhấp để chỉnh sửa cài đặt này."
 "gui.studio-type" = "<gold>Nhập giá trị"
 "gui.studio-type-hint" = "<gray>Nhập riêng một giá trị chính xác trong chat."
-"gui.studio-toggle" = "<gold>Bật/tắt thiết lập"
+"gui.studio-toggle" = "<gold>Bật/tắt cài đặt"
 "gui.studio-toggle-hint" = "<gray>Chuyển giữa true và false."
 "gui.studio-increase" = "<green>Tăng"
 "gui.studio-decrease" = "<gold>Giảm"
@@ -161,7 +162,7 @@
 "gui.studio-reset-hint" = "<gray>Trở về các giá trị lúc mở bản nháp."
 "gui.studio-back" = "<gold>◀ Quay lại"
 "gui.studio-back-hint" = "<gray>Quay lại mà không mất bản nháp."
-"gui.studio-empty" = "<gray>Chưa có thiết lập. Thêm mẫu để bắt đầu."
+"gui.studio-empty" = "<gray>Chưa có cài đặt. Thêm mẫu có sẵn để bắt đầu."
 "studio.prompt" = "{prefix} <gold>Nhập {field} trong chat hoặc gõ <white>cancel</white>. Tối đa 256 ký tự; hết hạn sau 60 giây.</gold>"
 "studio.cancelled" = "{prefix} <gray>Đã hủy hoặc hết thời gian nhập; bản nháp không đổi.</gray>"
 "studio.failed" = "{prefix} <red>Thay đổi bị từ chối: {reason}</red>"
@@ -181,12 +182,12 @@
 "errors.companion-does-not-have-animations" = "<aqua>Bạn đồng hành này không hỗ trợ hoạt ảnh.</aqua>"
 "errors.companion-is-exclusive" = "<red>Bạn đồng hành này là loại độc quyền và không thể trang bị.</red>"
 "errors.companions-limit-reached" = "<red>Bạn đã đạt số bạn đồng hành tối đa cho phép.</red>"
-"errors.companions-limit-per-model-reached" = "<red>Bạn đã đạt giới hạn bạn đồng hành cho mẫu <white>{model}</white>.</red>"
+"errors.companions-limit-per-model-reached" = "<red>Bạn đã đạt giới hạn bạn đồng hành cho mô hình <white>{model}</white>.</red>"
 "errors.player-has-a-exclusive-companion" = "<red>Bạn đã trang bị một bạn đồng hành độc quyền.</red>"
 "success.companion-equipped" = "<green>Bạn đã trang bị <white>{companion}</white>.</green>"
 "success.companion-unequipped" = "<green>Đã bỏ trang bị bạn đồng hành của bạn.</green>"
 "command.description.root" = "Trợ giúp và quản trị {prefix}"
-"command.description.menu" = "Duyệt bạn đồng hành; nhấp chuột phải vào bạn đang trang bị để mở hạt"
+"command.description.menu" = "Duyệt bạn đồng hành; nhấp chuột phải vào bạn đồng hành đang trang bị để mở menu hạt"
 "command.description.spawn" = "Trang bị một bạn đồng hành"
 "command.description.despawn" = "Gỡ một hoặc tất cả bạn đồng hành"
 "command.description.debug" = "Công cụ chẩn đoán {prefix}"
@@ -219,7 +220,7 @@
 "errors.persistence-failed" = "<red>Lựa chọn của bạn đã thay đổi trong phiên này nhưng không lưu được. Lựa chọn có thể trở về trạng thái cũ khi kết nối lại. Hãy báo cho quản trị viên.</red>"
 
 "gui.title.collection" = "<gold>Bộ sưu tập bạn đồng hành"
-"gui.title.dashboard" = "<gold>Bảng bạn đồng hành"
+"gui.title.dashboard" = "<gold>Bảng quản lý bạn đồng hành"
 "gui.title.particles" = "<gold>Hạt của bạn đồng hành"
 "gui.title.bonuses" = "<gold>Thưởng của bạn đồng hành"
 "gui.collection" = "<gold>📦 Bộ sưu tập bạn đồng hành"
@@ -227,7 +228,7 @@
 "gui.equipped" = "<green>✓ Đã trang bị"
 "gui.available" = "<yellow>Có thể dùng"
 "gui.locked" = "<red>Đã khóa: bạn không có quyền."
-"gui.open-dashboard" = "<gray>Nhấp để mở bảng của bạn đồng hành này."
+"gui.open-dashboard" = "<gray>Nhấp để mở bảng quản lý của bạn đồng hành này."
 "gui.empty" = "<yellow>Không có bạn đồng hành"
 "gui.empty-hint" = "<gray>Không có định nghĩa bạn đồng hành nào khả dụng."
 "gui.not-equipped" = "<yellow>Chưa trang bị"
@@ -247,14 +248,14 @@
 "gui.select-particle" = "<yellow>Nhấp để trang bị hiệu ứng hạt này."
 "gui.remove-particle" = "<yellow>Gỡ hiệu ứng hạt"
 "gui.remove-particle-hint" = "<gray>Xóa các hạt đã chọn của bạn đồng hành này."
-"gui.back" = "<gold>◀ Quay lại bảng"
+"gui.back" = "<gold>◀ Quay lại bảng quản lý"
 "gui.back-hint" = "<gray>Trở lại các tùy chọn của bạn đồng hành này."
 "gui.close" = "<red>✖ Đóng"
-"gui.close-hint" = "<gray>Đóng trình đơn này."
+"gui.close-hint" = "<gray>Đóng menu này."
 "gui.previous" = "<yellow>◀ Trang trước"
 "gui.next" = "<green>Trang sau ▶"
 "gui.page" = "<gray>Trang {page} trên {pages}"
-"gui.loading" = "<yellow>Dữ liệu bạn đồng hành chưa sẵn sàng. Hãy thử lại sau ít phút."
+"gui.loading" = "<yellow>Dữ liệu bạn đồng hành chưa sẵn sàng. Hãy thử lại sau giây lát."
 "gui.bonus-snapshot" = "<gray>Giá trị tại lúc mở. Làm mới để kiểm tra lại."
 "gui.no-bonuses" = "<yellow>Chưa cấu hình thưởng"
 "gui.no-bonuses-hint" = "<gray>Bạn đồng hành này chưa được cấu hình thưởng hay hiệu ứng thuốc."
@@ -274,8 +275,8 @@
 "gui.winner" = "<gray>Bạn đồng hành được ưu tiên: <white>{companion}"
 "gui.winning-value" = "<gray>Quy tắc áp dụng: <white>{operation} {value}"
 "gui.applies-to" = "<gray>Áp dụng cho: <white>{target}"
-"gui.cooldown" = "<gray>Thời gian hồi: <white>{seconds}giây"
-"gui.cooldown-remaining" = "<yellow>Sẵn sàng sau {seconds}giây"
+"gui.cooldown" = "<gray>Thời gian hồi: <white>{seconds} giây"
+"gui.cooldown-remaining" = "<yellow>Sẵn sàng sau {seconds} giây"
 "gui.excluded-sources" = "<gray>Được xử lý bởi thưởng theo nguồn: <white>{sources}"
 "gui.contributors" = "<gray>Bạn đồng hành đóng góp: <white>{companions}"
 "gui.feature.attributes" = "<gray>Thuộc tính"
@@ -290,11 +291,11 @@
 "gui.status.inactive" = "<gray>Hiện chưa được áp dụng"
 "gui.status.cooldown" = "<yellow>Đang hồi"
 "gui.operation.add_number" = "Cộng"
-"gui.operation.add_scalar" = "Thêm hệ số nhân cơ sở"
+"gui.operation.add_scalar" = "Cộng hệ số nhân cơ sở"
 "gui.operation.multiply_scalar_1" = "Nhân với (1 + giá trị)"
 "gui.operation.sum" = "Cộng"
 "gui.operation.multiply" = "Nhân với"
-"gui.operation.add_percent" = "Thêm phần trăm"
+"gui.operation.add_percent" = "Cộng phần trăm"
 "gui.stack.sum" = "Cộng các mức khuếch đại"
 "gui.stack.highest" = "Mức ưu tiên cao nhất"
 "gui.target.all" = "Tất cả sinh vật"
@@ -302,45 +303,47 @@
 "gui.target.passive" = "Sinh vật thụ động"
 
 "command.description.upgrades" = "Xem nâng cấp cho bạn đồng hành"
-"command.description.boosts" = "Xem vật phẩm tăng thưởng cá nhân và toàn máy chủ"
-"command.description.progression" = "Trao kinh nghiệm đồng hành cho người chơi trực tuyến"
-"command.description.booster" = "Trao lượt kích hoạt; bắt đầu hoặc hủy kích hoạt"
+"command.description.boosts" = "Xem bộ tăng thưởng cá nhân và toàn máy chủ"
+"command.description.progression" = "Trao kinh nghiệm bạn đồng hành cho người chơi trực tuyến"
+"command.description.booster" = "Trao lượt kích hoạt bộ tăng thưởng; bắt đầu hoặc hủy lượt kích hoạt"
 "command.description.transactions" = "Xem và xử lý giao dịch mua chưa giải quyết"
 "command.parameter.player" = "Tên chính xác của người chơi trực tuyến"
-"command.parameter.xp" = "Số nguyên dương chỉ lượng kinh nghiệm đồng hành"
-"command.parameter.booster" = "ID vật phẩm tăng thưởng đã cấu hình"
-"command.parameter.count" = "Số nguyên dương chỉ số lượt kích hoạt"
-"command.parameter.activation" = "ID lượt kích hoạt đang chạy hoặc trong hàng đợi"
+"command.parameter.xp" = "Số nguyên dương chỉ lượng kinh nghiệm bạn đồng hành"
+"command.parameter.booster" = "ID bộ tăng thưởng đã cấu hình"
+"command.parameter.count" = "Số nguyên dương chỉ số lượt kích hoạt bộ tăng thưởng"
+"command.parameter.activation" = "ID lượt kích hoạt bộ tăng thưởng đang chạy hoặc trong hàng đợi"
 "command.parameter.transaction" = "ID giao dịch mua chưa giải quyết"
 "command.parameter.resolution" = "grant hoặc cancel sau khi kiểm tra hồ sơ thanh toán"
-"command.progression.granted" = "<green>Đã lưu <green>{amount}</green> kinh nghiệm cho <green>{companion}</green> của <green>{player}</green>."
-"command.progression.not-configured" = "<gold>Chưa cấu hình tiến trình cho <gold>{companion}</gold>."
-"command.progression.player-unavailable" = "<red><red>{player}</red> không trực tuyến."
-"command.progression.player-loading" = "<gold>Dữ liệu tiến trình của <gold>{player}</gold> chưa sẵn sàng. Hãy thử lại sau khi tải xong."
-"command.progression.invalid-amount" = "<red>Nhập số nguyên từ 1 đến <red>{maximum}</red>."
-"command.booster.granted" = "<green>Đã lưu <green>{amount}</green> lượt kích hoạt <green>{booster}</green> cho <green>{player}</green>."
-"command.booster.not-found" = "<red>Không có vật phẩm tăng thưởng với ID <red>{booster}</red>."
-"command.booster.server-only" = "<red>Lệnh này chỉ bắt đầu tăng thưởng toàn máy chủ."
-"command.transactions.count" = "<gold>Giao dịch chưa giải quyết: <gold>{count}</gold>"
-"command.transactions.entry" = "<gray><yellow>{transaction}</yellow> Người chơi: <gray>{player}</gray>; <gray>{kind}</gray>; đồng hành: <gray>{companion}</gray>; định nghĩa: <gray>{definition}</gray>; bậc trước: <gray>{tier}</gray>; trạng thái: <gray>{status}</gray>; tiền: <gray>{money}</gray>; vật phẩm: <gray>{items}</gray>; nhà cung cấp: <gray>{provider}</gray>; tạo lúc: <gray>{created}</gray>"
-"command.transactions.reference" = "<gray>ID giao dịch hoặc kích hoạt: <white>{transaction}</white>"
-"command.transactions.reconciled" = "<gold>Đã lưu kết quả xử lý. Không tự động trừ hoặc hoàn lại tiền hay vật phẩm."
-"gui.title.upgrades" = "<gold>Nâng cấp đồng hành"
+"command.progression.granted" = "<green>Đã lưu {amount} kinh nghiệm bạn đồng hành cho {companion} của {player}.</green>"
+"command.progression.not-configured" = "<gold>Chưa cấu hình tiến trình cho {companion}.</gold>"
+"command.progression.player-unavailable" = "<red>{player} không trực tuyến.</red>"
+"command.progression.player-loading" = "<gold>Dữ liệu tiến trình của {player} chưa sẵn sàng. Hãy thử lại sau khi tải xong.</gold>"
+"command.progression.invalid-amount" = "<red>Nhập số nguyên từ 1 đến {maximum}.</red>"
+"command.booster.granted" = "<green>Đã lưu {amount} lượt kích hoạt bộ tăng thưởng {booster} cho {player}.</green>"
+"command.booster.not-found" = "<red>Không có bộ tăng thưởng nào với ID {booster}.</red>"
+"command.booster.server-only" = "<red>Lệnh này chỉ bắt đầu bộ tăng thưởng máy chủ.</red>"
+"command.booster.started" = "<green>Đã bắt đầu hoặc xếp hàng bộ tăng thưởng máy chủ {booster}.</green>"
+"command.booster.cancelled" = "<green>Đã hủy lượt kích hoạt bộ tăng thưởng {activation}.</green>"
+"command.transactions.count" = "<gold>Giao dịch mua chưa giải quyết: {count}</gold>"
+"command.transactions.entry" = "<yellow>{transaction}</yellow> <gray>Người chơi: {player}; {kind}; bạn đồng hành: {companion}; định nghĩa: {definition}; bậc trước: {tier}; trạng thái: {status}; tiền: {money}; vật phẩm: {items}; nhà cung cấp: {provider}; tạo lúc: {created}</gray>"
+"command.transactions.reference" = "<gray>ID giao dịch hoặc kích hoạt: <white>{transaction}</white></gray>"
+"command.transactions.reconciled" = "<gold>Đã lưu kết quả đối soát. Không có tiền hay vật phẩm nào được tự động trừ hoặc hoàn lại.</gold>"
+"gui.title.upgrades" = "<gold>Nâng cấp bạn đồng hành"
 "gui.title.purchase" = "<gold>Xác nhận mua"
-"gui.title.boosts" = "<gold>Vật phẩm tăng thưởng đồng hành"
-"gui.title.booster" = "<gold>Chi tiết tăng thưởng"
+"gui.title.boosts" = "<gold>Bộ tăng thưởng bạn đồng hành"
+"gui.title.booster" = "<gold>Chi tiết bộ tăng thưởng"
 "gui.title.active-boosts" = "<gold>Tăng thưởng đang hoạt động"
-"gui.upgrades" = "<gradient:#ffcf70:#ff9f43>★ Nâng cấp đồng hành</gradient>"
-"gui.upgrades-hint" = "<gray>Phát triển bạn đồng hành và cải thiện phần thưởng."
-"gui.boosts" = "<gradient:#ffe082:#ffb74d>⌛ Vật phẩm tăng thưởng</gradient>"
+"gui.upgrades" = "<gradient:#ffcf70:#ff9f43>★ Nâng cấp bạn đồng hành</gradient>"
+"gui.upgrades-hint" = "<gray>Phát triển bạn đồng hành và cải thiện các mức thưởng của nó."
+"gui.boosts" = "<gradient:#ffe082:#ffb74d>⌛ Bộ tăng thưởng</gradient>"
 "gui.boosts-hint" = "<gray>Xem tăng thưởng cá nhân và toàn máy chủ."
-"gui.progress-level" = "<gold>★ Cấp <white>{level}</white>"
-"gui.progress-xp" = "<gray>Kinh nghiệm đồng hành: <yellow>{xp}</yellow> / <white>{required}</white>"
+"gui.progress-level" = "<gold>★ Cấp <white>{level}"
+"gui.progress-xp" = "<gray>Kinh nghiệm bạn đồng hành: <yellow>{xp}</yellow> / <white>{required}"
 "gui.max-level" = "<green>✓ Bạn đồng hành đã đạt cấp tối đa"
-"gui.upgrade-tier" = "<gray>Bậc nâng cấp: <gold>{tier}</gold> / <white>{maximum}</white>"
+"gui.upgrade-tier" = "<gray>Bậc nâng cấp: <gold>{tier}</gold> / <white>{maximum}"
 "gui.max-tier" = "<green>✓ Đã nâng cấp tối đa"
-"gui.upgrade-change" = "<gray><gray>{bonus}</gray>: <white>{current}</white> <gold>→</gold> <green>{next}</green>"
-"gui.required-level" = "<gray>Cấp đồng hành yêu cầu: <yellow>{level}</yellow>"
+"gui.upgrade-change" = "<gray>{bonus}: <white>{current}</white> <gold>→</gold> <green>{next}"
+"gui.required-level" = "<gray>Cấp bạn đồng hành yêu cầu: <yellow>{level}"
 "gui.level-locked" = "<red>Chưa đáp ứng yêu cầu."
 "gui.upgrade-preview" = "<yellow>Nhấp để xem nâng cấp này."
 "gui.no-upgrades" = "<gold>Chưa cấu hình nâng cấp"
@@ -349,36 +352,36 @@
 "gui.confirm-purchase-hint" = "<gray>Trả chi phí đã hiển thị và hoàn tất giao dịch mua."
 "gui.cancel-purchase" = "<yellow>◀ Hủy"
 "gui.cancel-purchase-hint" = "<gray>Quay lại mà không tiêu tốn gì."
-"gui.cost-free" = "<gray>Chi phí: <green>Miễn phí</green>"
-"gui.cost-money" = "<gray>Tiền yêu cầu: <gold>{amount}</gold>"
-"gui.cost-item" = "<gray>Vật phẩm yêu cầu: <yellow>{amount}</yellow> × <yellow>{item}</yellow>"
+"gui.cost-free" = "<gray>Chi phí: <green>Miễn phí"
+"gui.cost-money" = "<gray>Tiền yêu cầu: <gold>{amount}"
+"gui.cost-item" = "<gray>Vật phẩm yêu cầu: <yellow>{amount} × {item}"
 "gui.booster-open" = "<yellow>Nhấp để xem tùy chọn mua và kích hoạt."
 "gui.booster-scope.personal" = "<aqua>Tăng thưởng cá nhân <dark_gray>• <gray>Chỉ dành cho bạn"
 "gui.booster-scope.server" = "<gold>Tăng thưởng máy chủ <dark_gray>• <gray>Mọi người trên máy chủ này"
-"gui.booster-channel" = "<gray><gray>{channel}</gray>: +<green>{percent}</green>%"
-"gui.booster-duration" = "<gray>Thời lượng: <white>{time}</white>"
-"gui.booster-remaining" = "<gray>Thời gian còn lại: <yellow>{time}</yellow>"
+"gui.booster-channel" = "<gray>{channel}: <green>+{percent}%"
+"gui.booster-duration" = "<gray>Thời lượng: <white>{time}"
+"gui.booster-remaining" = "<gray>Thời gian còn lại: <yellow>{time}"
 "gui.booster-rule.queue" = "<gray>Các tăng thưởng trùng thời gian sẽ chờ trong hàng đợi."
 "gui.booster-rule.highest" = "<gray>Áp dụng tăng thưởng mạnh nhất trong mỗi phạm vi."
-"gui.booster-credits" = "<gray>Lượt kích hoạt đang có: <gold>{count}</gold>"
+"gui.booster-credits" = "<gray>Lượt kích hoạt đang có: <gold>{count}"
 "gui.buy-booster" = "<green>Mua một lượt kích hoạt"
 "gui.buy-booster-hint" = "<gray>Xem chi phí trước khi mua."
-"gui.activate-booster" = "<gold>Kích hoạt tăng thưởng"
+"gui.activate-booster" = "<gold>Kích hoạt bộ tăng thưởng"
 "gui.activate-booster-hint" = "<gray>Dùng một lượt kích hoạt đang có. Áp dụng quy tắc trùng thời gian."
-"gui.no-booster-credit" = "<gray>Bạn không có lượt kích hoạt cho tăng thưởng này."
-"gui.no-boosters" = "<gold>Chưa cấu hình vật phẩm tăng thưởng"
-"gui.no-boosters-hint" = "<gray>Máy chủ này chưa có định nghĩa tăng thưởng."
+"gui.no-booster-credit" = "<gray>Bạn không có lượt kích hoạt cho bộ tăng thưởng này."
+"gui.no-boosters" = "<gold>Chưa cấu hình bộ tăng thưởng"
+"gui.no-boosters-hint" = "<gray>Máy chủ này chưa có định nghĩa bộ tăng thưởng."
 "gui.active-boosts" = "<aqua>⌛ Tăng thưởng đang chạy và hàng đợi"
 "gui.active-boosts-hint" = "<gray>Xem tăng thưởng của bạn, sự kiện máy chủ và tỷ lệ cộng gộp."
 "gui.booster-running" = "<green>✓ Đang chạy"
 "gui.booster-queued" = "<yellow>⌛ Trong hàng đợi"
-"gui.booster-total" = "<gray>Tổng tăng thưởng <gray>{channel}</gray>: +<green>{percent}</green>%"
-"gui.booster-cap" = "<gray>Tổng tăng thưởng tối đa: +<white>{percent}</white>%"
-"gui.booster-applied" = "<gray>Tăng thưởng cá nhân + máy chủ: +<green>{percent}</green>% phần thưởng gốc"
+"gui.booster-total" = "<gray>Tổng bộ tăng thưởng {channel}: <green>+{percent}%"
+"gui.booster-cap" = "<gray>Tổng bộ tăng thưởng tối đa: <white>+{percent}%"
+"gui.booster-applied" = "<gray>Tăng thưởng cá nhân + máy chủ: <green>+{percent}% phần thưởng gốc"
 "gui.no-active-boosts" = "<gold>Không có tăng thưởng đang hoạt động"
-"gui.no-active-boosts-hint" = "<gray>Kích hoạt tăng thưởng đang có để bắt đầu."
-"gui.back-boosts" = "<gold>◀ Quay lại danh sách tăng thưởng"
-"gui.back-boosts-hint" = "<gray>Xem vật phẩm tăng thưởng và lượt kích hoạt đang có."
+"gui.no-active-boosts-hint" = "<gray>Kích hoạt một bộ tăng thưởng đang có để bắt đầu."
+"gui.back-boosts" = "<gold>◀ Quay lại bộ tăng thưởng"
+"gui.back-boosts-hint" = "<gray>Xem bộ tăng thưởng và lượt kích hoạt đang có."
 "gui.purchase-busy" = "<yellow>Giao dịch mua đang chờ hoặc cần quản trị viên kiểm tra."
 "gui.purchase-failed" = "<red>Không thể hoàn tất thao tác. Hãy nhờ quản trị viên kiểm tra nhật ký giao dịch."
 "progression.result.success" = "<green>✓ Đã lưu thành công."
@@ -393,8 +396,8 @@
 "progression.result.payment_rejected" = "<red>Hệ thống kinh tế đã từ chối thanh toán."
 "progression.result.payment_unknown" = "<yellow>Kết quả thanh toán chưa rõ. Quản trị viên phải kiểm tra trước khi bạn thử lại."
 "progression.result.persistence_failed" = "<red>Không thể lưu giao dịch mua. Quản trị viên phải kiểm tra hồ sơ giao dịch."
-"progression.result.unknown_definition" = "<red>Bạn đồng hành, nâng cấp hoặc tăng thưởng này không còn khả dụng."
-"progression.result.no_credit" = "<red>Bạn không có lượt kích hoạt cho tăng thưởng này."
+"progression.result.unknown_definition" = "<red>Bạn đồng hành, nâng cấp hoặc bộ tăng thưởng này không còn khả dụng."
+"progression.result.no_credit" = "<red>Bạn không có lượt kích hoạt cho bộ tăng thưởng này."
 "progression.result.disabled" = "<gray>Máy chủ đã tắt tính năng này."
 "progression.result.invalid_request" = "<red>Yêu cầu không hợp lệ. Xem trợ giúp lệnh hoặc mở lại menu."
 "command.description.setup" = "Thiết lập bạn đồng hành khởi đầu"
@@ -403,16 +406,16 @@
 "gui.setup" = "<gold>Thiết lập ban đầu"
 "gui.setup-hint" = "<gray>Cài bạn đồng hành khởi đầu và chọn thưởng cho máy chủ."
 "gui.setup-cosmetic" = "<aqua>Bạn đồng hành trang trí"
-"gui.setup-cosmetic-hint" = "<gray>Tắt thuộc tính, thưởng, hiệu ứng, nâng cấp và bộ tăng cường."
+"gui.setup-cosmetic-hint" = "<gray>Tắt thuộc tính, buff, hiệu ứng, nâng cấp và bộ tăng thưởng."
 "gui.setup-survival" = "<green>Bạn đồng hành sinh tồn"
-"gui.setup-survival-hint" = "<gray>Bật thuộc tính, thưởng và hiệu ứng thuốc đã cấu hình."
+"gui.setup-survival-hint" = "<gray>Bật thuộc tính, buff và hiệu ứng thuốc đã cấu hình."
 "gui.setup-common" = "<gray>Cài các bạn đồng hành khởi đầu còn thiếu; giữ nguyên tệp bạn đồng hành của bạn."
-"gui.setup-costs" = "<gray>Nâng cấp và bộ tăng cường vẫn tắt; hạt được bật."
+"gui.setup-costs" = "<gray>Nâng cấp và bộ tăng thưởng vẫn tắt; hạt được bật."
 "gui.setup-permissions" = "<gray>Quyền truy cập của người chơi vẫn theo thiết lập phân quyền của bạn."
 "gui.setup-preview" = "<gold>Xem bạn đồng hành"
 "gui.setup-preview-hint" = "<gray>Trang bị bạn đồng hành khởi đầu và xem hạt cùng các phần thưởng."
 "gui.setup-confirm" = "<green>Áp dụng thiết lập"
-"gui.setup-confirm-hint" = "<gray>Áp dụng cấu hình này cho toàn bộ plugin và tải lại."
+"gui.setup-confirm-hint" = "<gray>Áp dụng hồ sơ này cho toàn bộ plugin và tải lại."
 "gui.setup-cancel" = "<gold>Quay lại thiết lập"
 "gui.setup-cancel-hint" = "<gray>Quay lại mà không áp dụng thay đổi."
 "gui.setup-current" = "<gray>Bạn đồng hành đã tải: {count}"
@@ -421,11 +424,11 @@
 "setup.failed" = "{prefix} <red>Không thể áp dụng thiết lập. Kiểm tra bảng điều khiển; thiết lập cũ vẫn hoạt động.</red>"
 "setup.stale" = "{prefix} <gold>Thiết lập đã thay đổi. Mở lại màn hình thiết lập trước khi áp dụng.</gold>"
 "command.description.collection" = "Duyệt và lọc bộ sưu tập"
-"command.description.outfits" = "Quản lý đội bạn đồng hành đã lưu"
+"command.description.outfits" = "Quản lý trang phục bạn đồng hành đã lưu"
 "command.description.interact" = "Tương tác với bạn đồng hành đang trang bị"
-"gui.title.outfits" = "Đội đã lưu"
-"gui.title.outfit" = "Xem đội"
-"gui.title.outfit-delete" = "Xóa đội"
+"gui.title.outfits" = "Trang phục đã lưu"
+"gui.title.outfit" = "Xem lại trang phục"
+"gui.title.outfit-delete" = "Xóa trang phục"
 "gui.title.personalize" = "Tùy chỉnh bạn đồng hành"
 "gui.title.variants" = "Biến thể bạn đồng hành"
 "gui.title.formation" = "Đội hình bạn đồng hành"
@@ -439,12 +442,12 @@
 "gui.filter-locked" = "<gray>Truy cập: bị khóa"
 "gui.category" = "<gold>Danh mục"
 "gui.category-all" = "<gray>Tất cả danh mục"
-"gui.outfits" = "<gold>Đội đã lưu"
-"gui.outfit-save" = "<green>Lưu đội hiện tại"
-"gui.outfit-apply" = "<green>Dùng đội này"
-"gui.outfit-delete" = "<red>Xóa đội"
+"gui.outfits" = "<gold>Trang phục đã lưu"
+"gui.outfit-save" = "<green>Lưu trang phục hiện tại"
+"gui.outfit-apply" = "<green>Mặc trang phục này"
+"gui.outfit-delete" = "<red>Xóa trang phục"
 "gui.outfit-delete-confirm" = "<red>Xác nhận xóa"
-"gui.outfit-count" = "<gray>Bạn đồng hành: {count}"
+"gui.outfit-count" = "<gray>Bạn đồng hành: <white>{count}"
 "gui.personalize" = "<gold>Tùy chỉnh"
 "gui.nickname" = "<gold>Đặt tên"
 "gui.name-reset" = "<gray>Đặt lại tên"
@@ -456,20 +459,20 @@
 "gui.formation-orbit" = "<gold>Quỹ đạo"
 "gui.formation-earlier" = "<gold>Chuyển lên trước"
 "gui.formation-later" = "<gold>Chuyển về sau"
-"gui.interactions" = "<gold>Hành động"
+"gui.interactions" = "<gold>Hành động bạn đồng hành"
 "gui.action-pet" = "<gold>Vuốt ve"
 "gui.action-wave" = "<gold>Vẫy tay"
 "gui.action-sit" = "<gold>Ngồi"
-"gui.action-stay" = "<gold>Ở lại"
+"gui.action-stay" = "<gold>Ở yên"
 "gui.action-call" = "<gold>Đến đây"
 "gui.trial" = "<aqua>Thử riêng tư"
 "gui.trial-stop" = "<gray>Dừng thử riêng tư"
-"gui.trial-hint" = "<gray>Chỉ bạn nhìn thấy. {seconds}s; không có thưởng."
+"gui.trial-hint" = "<gray>Chỉ bạn nhìn thấy. {seconds} giây; không có thưởng."
 "gui.choice-value" = "<white>{value}"
 "collection.trial-started" = "{prefix} <aqua>Đã bắt đầu thử riêng tư. Không nhận được thưởng."
-"collection.outfit-prompt" = "{prefix} <yellow>Nhập tên đội trong chat (1–32 chữ cái, số, _ hoặc -), hoặc cancel. Hết hạn sau 60 giây."
+"collection.outfit-prompt" = "{prefix} <yellow>Nhập tên trang phục trong chat (1–32 chữ cái, số, _ hoặc -), hoặc cancel. Hết hạn sau 60 giây."
 "collection.name-prompt" = "{prefix} <yellow>Nhập tên thuần trong chat (tối đa 32 ký tự), hoặc cancel. Hết hạn sau 60 giây."
-"collection.choose-equipped" = "{prefix} <yellow>Hãy trang bị bạn đồng hành trước. Nếu có nhiều, hãy chỉ định ID."
+"collection.choose-equipped" = "{prefix} <yellow>Hãy trang bị bạn đồng hành trước. Nếu đang trang bị nhiều, hãy ghi kèm ID."
 "collection.action-applied" = "{prefix} <green>Bạn đồng hành đã phản hồi."
 "collection.cooldown" = "{prefix} <yellow>Chờ một chút trước khi tương tác tiếp."
 "collection.rejected" = "{prefix} <red>Không thể áp dụng thay đổi: {detail}"
@@ -495,24 +498,24 @@
 "gui.settings-particles-reduced-hint" = "<gray>Hiển thị cách một khung hình hạt."
 "gui.settings-particles-off" = "<red>Tắt"
 "gui.settings-particles-off-hint" = "<gray>Ẩn hạt của bạn đồng hành."
-"gui.settings-server-limit" = "<gray>Máy chủ có thể giới hạn mức hiển thị hạt."
+"gui.settings-server-limit" = "<gray>Máy chủ có thể giới hạn cường độ hạt."
 "command.description.settings" = "Chọn hiển thị bạn đồng hành và hạt"
 "command.parameter.setting" = "Cài đặt"
 "command.parameter.value" = "Giá trị"
 
 "collection.reason.equip-first" = "Hãy trang bị bạn đồng hành này trước."
-"collection.reason.outfit-limit" = "Bạn đã đạt giới hạn {limit} bộ."
-"collection.reason.outfit-unavailable" = "Bộ này không khả dụng."
-"collection.reason.formation-order" = "Đội hình chỉ được chứa bạn đồng hành đang trang bị."
-"collection.reason.model-limit" = "Bộ này vượt quá giới hạn loại mô hình."
-"collection.reason.personalization-locked" = "Tùy chỉnh cá nhân đang bị khóa."
+"collection.reason.outfit-limit" = "Bạn đã đạt giới hạn {limit} trang phục."
+"collection.reason.outfit-unavailable" = "Trang phục không khả dụng."
+"collection.reason.formation-order" = "Thứ tự đội hình phải chứa bạn đồng hành đang trang bị."
+"collection.reason.model-limit" = "Trang phục vượt quá giới hạn mô hình của bạn."
+"collection.reason.personalization-locked" = "Tùy chỉnh đang bị khóa."
 "collection.reason.particle-unavailable" = "Hiệu ứng hạt này không khả dụng."
 "collection.reason.particle-locked" = "Hiệu ứng hạt này đang bị khóa."
 "collection.reason.particle-remove-denied" = "Bạn không thể gỡ hiệu ứng hạt này."
 "collection.reason.nickname-invalid" = "Tên phải là văn bản thuần, tối đa 32 ký tự."
 "collection.reason.formation-invalid" = "Đội hình không xác định: {formation}."
 "collection.reason.cosmetic-invalid" = "Mã ngoại hình không hợp lệ."
-"collection.reason.outfit-name-invalid" = "Tên bộ dùng 1–32 chữ cái, chữ số, dấu gạch dưới hoặc gạch nối."
+"collection.reason.outfit-name-invalid" = "Tên trang phục dùng 1–32 chữ cái, chữ số, dấu gạch dưới hoặc gạch nối."
 "collection.reason.variant-locked" = "Biến thể bị khóa: {variant}."
 "collection.reason.variant-unavailable" = "Biến thể không khả dụng: {variant}."
 "collection.reason.cancelled" = "Một plugin khác đã hủy thay đổi bạn đồng hành này."
@@ -523,7 +526,7 @@
 "command.parameter.upload" = "Tải báo cáo lên khi cho phép tải lên công khai"
 "command.feedback.inactive" = "{prefix} <gray>Thời gian chạy đang khởi động lại; hãy thử lại sau giây lát.</gray>"
 "command.status.header" = "Thời gian chạy"
-"command.status.configuration" = "<gray>Bạn đồng hành: {enabled} <dark_gray>|</dark_gray> Ngôn ngữ: <white>{language}</white> <dark_gray>|</dark_gray> Tự động tải lại: {hot_reload}</gray>"
+"command.status.configuration" = "<gray>Bạn đồng hành: {enabled} <dark_gray>|</dark_gray> Ngôn ngữ: <white>{language}</white> <dark_gray>|</dark_gray> Tải lại tức thời: {hot_reload}</gray>"
 "command.status.runtime" = "<gray>Định nghĩa: <white>{count}</white> <dark_gray>|</dark_gray> Người chơi đã tải: <white>{players}</white> <dark_gray>|</dark_gray> Bạn đồng hành đang trang bị: <white>{companions}</white></gray>"
 "command.status.features" = "<gray>Tính năng: <white>{features}</white> <dark_gray>|</dark_gray> Lưu trữ: <white>{value}</white></gray>"
 "command.status.integrations" = "<gray>Tích hợp: <white>{integrations}</white></gray>"
@@ -541,17 +544,17 @@
 "director.help.navigation.next.hover" = "Trang sau"
 "director.help.navigation.parent.hover" = "Quay lại nhóm lệnh cha"
 "director.help.navigation.previous.hover" = "Trang trước"
-"director.help.parameter.default" = "Mặc định là \"{value}\" nếu không được chỉ định."
+"director.help.parameter.default" = "Mặc định là “{value}” nếu không được chỉ định."
 "director.help.parameter.optional" = "Tham số này là tùy chọn."
 "director.help.parameter.required" = "Tham số này là bắt buộc."
 "director.help.parameter.type" = "Tham số này có kiểu {type}."
-"director.runtime.error.conversion_failed" = "Không thể chuyển \"{value}\" thành {type} cho {parameter}"
+"director.runtime.error.conversion_failed" = "Không thể chuyển “{value}” thành {type} cho {parameter}"
 "director.runtime.error.default_parse_failed" = "Không thể phân tích giá trị mặc định của tham số {parameter}"
 "director.runtime.error.execution_failed" = "Không thể thực thi lệnh {command}: {reason}"
 "director.runtime.error.invalid_origin" = "Không thể chạy lệnh này từ nguồn này."
-"director.runtime.error.missing_argument" = "Thiếu đối số \"{parameter}\" ({type})"
-"director.runtime.error.unexpected_argument" = "Đối số không mong đợi \"{argument}\". Các tham số tùy chọn phải được chỉ định bằng khóa, ví dụ seed=123"
-"director.runtime.error.unclosed_group" = "Thiếu dấu \"]\" đóng cho tham số {key}"
+"director.runtime.error.missing_argument" = "Thiếu đối số “{parameter}” ({type})"
+"director.runtime.error.unexpected_argument" = "Đối số không mong đợi “{argument}”. Các tham số tùy chọn phải được chỉ định bằng khóa, ví dụ seed=123"
+"director.runtime.error.unclosed_group" = "Thiếu dấu “]” đóng cho tham số {key}"
 "director.runtime.error.unknown_parameter" = "Khóa tham số không xác định: {key}"
 "language.menu.your_language" = "Ngôn ngữ của bạn"
 "language.menu.reset_your_language" = "Đặt lại ngôn ngữ của bạn"
@@ -566,12 +569,12 @@
 "language.menu.edit_description" = "Mở trình chỉnh sửa thông báo cho từng ngôn ngữ."
 "language.menu.select_description" = "Nhấp để chọn ngôn ngữ này."
 "language.menu.remove_personal_description" = "Xóa lựa chọn ngôn ngữ cá nhân của bạn."
-"language.menu.no_controls" = "Bạn không có quyền dùng các tùy chọn ngôn ngữ."
-"language.menu.command" = "Câu lệnh: {command}"
+"language.menu.no_controls" = "Không có tùy chọn ngôn ngữ nào khả dụng cho bạn."
+"language.menu.command" = "Lệnh: {command}"
 "language.menu.selected" = "Đã chọn"
 "language.menu.all-volmit-plugins" = "Tất cả plugin Volmit"
-"language.error.stopping" = "&cKhông có khả năng chọn ngôn ngữ trong khi bổ sung đang dừng."
-"language.error.editor-player-only" = "&cMở trình soạn thảo ngôn ngữ trong trò chơi."
+"language.error.stopping" = "&cKhông thể chọn ngôn ngữ trong khi plugin đang dừng."
+"language.error.editor-player-only" = "&cHãy mở trình chỉnh sửa ngôn ngữ trong trò chơi."
 "language.error.no-providers" = "&cKhông có nhà cung cấp ngôn ngữ Volmit nào khả dụng."
 "language.error.numeric-page" = "&cNhập số trang bằng chữ số."
 "language.error.personal-player-only" = "&cBạn phải chọn ngôn ngữ cá nhân trong trò chơi."
@@ -581,22 +584,29 @@
 "language.error.server-locale-required" = "&cChọn mã ngôn ngữ như en_US làm ngôn ngữ mặc định của máy chủ."
 "language.error.unavailable-for-all" = "&cNgôn ngữ {locale} không khả dụng cho tất cả plugin đã chọn."
 "language.usage.editor" = "&7Cách dùng: /{command} language server edit [locale]"
-"language.usage.selection" = "&7Cách dùng: /{command} language self [locale|reset] or server [locale]"
+"language.usage.selection" = "&7Cách dùng: /{command} language self [locale|reset] hoặc server [locale]"
 "language.usage.volmit-selection" = "&7Cách dùng: /volmit plugins languages [locale]"
+"language.usage.update" = "&7Cách dùng: /{command} language update"
 "language.selection.preparing" = "&7Đang chuẩn bị ngôn ngữ {locale} cho {target}..."
 "language.selection.save-failed" = "{plugin}: &ckhông thể lưu lựa chọn ngôn ngữ; hãy kiểm tra bảng điều khiển máy chủ."
 "language.selection.english-fallback" = "{plugin}: &e{locale} không khả dụng; sẽ dùng tiếng Anh (en_US)."
 "language.selection.personal-selected" = "{plugin}: &7ngôn ngữ của bạn hiện là {locale}."
 "language.selection.server-selected" = "{plugin}: &7ngôn ngữ máy chủ hiện là {locale}."
 "language.selection.server-default-selected" = "{plugin}: &7ngôn ngữ của bạn hiện theo ngôn ngữ mặc định của máy chủ."
+"language.update.checking" = "{plugin}: &7Đang kiểm tra thay đổi trong kho ngôn ngữ..."
+"language.update.unchanged" = "{plugin}: &7Các ngôn ngữ đã cài đặt đã khớp với kho."
+"language.update.applied" = "{plugin}: &7Đã cập nhật {locale} ({added} được thêm, {updated} được thay đổi, giữ lại {kept} chỉnh sửa cục bộ)."
+"language.update.cooldown" = "{plugin}: &7Kho ngôn ngữ vừa được kiểm tra; hãy thử lại sau {remaining}."
+"language.update.locale-failed" = "{plugin}: &c{locale} chưa được cập nhật: {reason}"
+"language.update.failed" = "{plugin}: &cCập nhật ngôn ngữ thất bại: {reason}"
 "language.editor.title" = "{plugin} › {section}"
-"language.editor.loading" = "&7Đang tải tin nhắn cho {locale}..."
+"language.editor.loading" = "&7Đang tải thông báo của {locale}..."
 "language.editor.section.languages" = "Ngôn ngữ"
 "language.editor.section.search" = "Tìm kiếm"
 "language.editor.section.search-title" = "{locale} / Tìm kiếm"
 "language.editor.section.group-title" = "{locale} / {group}"
-"language.editor.prompt.search" = "&7Tìm khóa hoặc nội dung tin nhắn. Nhập cancel để quay lại."
-"language.editor.prompt.value" = "&7Nhập giá trị mới cho {key} trong trò chuyện."
+"language.editor.prompt.search" = "&7Tìm khóa hoặc nội dung thông báo. Nhập cancel để quay lại."
+"language.editor.prompt.value" = "&7Nhập giá trị mới cho {key} trong chat."
 "language.editor.prompt.current" = "&7Giá trị hiện tại: {value}"
 "language.editor.prompt.variables" = "&7Biến: {variables}"
 "language.editor.prompt.guidance" = "&7Dùng \\n để xuống dòng, \\\\ để nhập dấu gạch chéo ngược, hoặc nhập cancel để quay lại."
@@ -606,18 +616,18 @@
 "language.editor.navigation.back" = "&eQuay lại&r"
 "language.editor.navigation.close" = "&cĐóng&r"
 "language.editor.navigation.previous-page" = "&eTrang trước&r"
-"language.editor.navigation.next-page" = "&eTrang kế&r"
-"language.editor.search.messages" = "Tìm tin nhắn"
-"language.editor.search.messages-lore" = "Nhấn vào để tìm kiếm mọi tin nhắn."
+"language.editor.navigation.next-page" = "&eTrang sau&r"
+"language.editor.search.messages" = "Tìm thông báo"
+"language.editor.search.messages-lore" = "Nhấp để tìm trong mọi thông báo."
 "language.editor.search.clear" = "Xóa tìm kiếm"
-"language.editor.message.current-value" = "&7Giá trị hiện có:&r"
+"language.editor.message.current-value" = "&7Giá trị hiện tại:&r"
 "language.editor.message.variables" = "&8{variables}&r"
 "language.editor.message.edit-plural" = "&7Nhấp để chỉnh sửa một dạng số nhiều.&r"
 "language.editor.message.edit-lines" = "&7Nhấp để chỉnh sửa từng dòng.&r"
-"language.editor.message.edit-chat" = "&7Nhấp để chỉnh sửa trong trò chuyện.&r"
-"language.editor.locale.open" = "&8Nhấn vào để mở ngôn ngữ này.&r"
-"language.editor.category.message-count" = "&7{count} tin nhắn&r"
-"language.editor.category.open" = "&8Nhấn vào để mở phân loại này.&r"
+"language.editor.message.edit-chat" = "&7Nhấp để chỉnh sửa trong chat.&r"
+"language.editor.locale.open" = "&8Nhấp để mở ngôn ngữ này.&r"
+"language.editor.category.message-count" = "&7{count} thông báo&r"
+"language.editor.category.open" = "&8Nhấp để mở danh mục này.&r"
 "language.editor.error.no-permission" = "&cBạn không có quyền chỉnh sửa ngôn ngữ của {plugin}."
 "language.editor.error.unable-to-edit" = "&cKhông thể chỉnh sửa: {reason}"
 "language.editor.saved.summary" = "&7Đã lưu {locale}. Các lựa chọn ngôn ngữ không thay đổi."
@@ -650,24 +660,24 @@
 "config.editor.entry" = "Mục {number}"
 "config.editor.current" = "Hiện tại: {value}"
 "config.editor.open" = "Nhấp để mở mục này."
-"config.editor.toggle" = "Nhấp để bật hoặc tắt."
+"config.editor.toggle" = "Nhấp để chuyển giữa true và false."
 "config.editor.edit" = "Nhấp để nhập giá trị mới trong chat."
-"config.editor.prompt" = "Nhập giá trị cho {path}. Gõ cancel để quay lại."
+"config.editor.prompt" = "Nhập giá trị mới cho {path}. Gõ cancel để quay lại."
 "config.editor.expired" = "Đã hết thời gian nhập cấu hình."
 "config.editor.too-long" = "Nhập tối đa {maximum} ký tự."
 "config.editor.saving" = "Đang lưu cấu hình..."
 "config.editor.saved" = "Đã lưu {path}. Thay đổi tự động áp dụng."
-"config.editor.failed" = "Không thể sửa cấu hình: {reason}"
+"config.editor.failed" = "Không thể chỉnh sửa cấu hình: {reason}"
 "config.editor.loading" = "Đang tải cấu hình..."
 "config.editor.empty" = "Mục này không có cài đặt."
-"config.editor.player-only" = "Mở trình sửa cấu hình trong trò chơi."
-"config.editor.no-permission" = "Bạn không có quyền sửa cấu hình này."
+"config.editor.player-only" = "Mở trình chỉnh sửa cấu hình trong trò chơi."
+"config.editor.no-permission" = "Bạn không có quyền chỉnh sửa cấu hình này."
 "config.editor.back" = "Quay lại"
 "config.editor.previous" = "Trang trước"
 "config.editor.next" = "Trang sau"
 "config.editor.refresh" = "Làm mới"
 "config.editor.close" = "Đóng"
-"config.editor.type.text" = "Văn bản không cần dấu ngoặc kép bao quanh."
+"config.editor.type.text" = "Văn bản; không cần dấu ngoặc kép bao quanh."
 "config.editor.type.integer" = "Nhập một số nguyên."
 "config.editor.type.decimal" = "Nhập một số, ví dụ 0.25."
 "config.editor.type.list" = "Dùng danh sách TOML, ví dụ [\"stone\", \"deepslate\"]."
@@ -675,84 +685,84 @@
 
 "gui.config.title" = "Cấu hình"
 "gui.setting.collections" = "Bộ sưu tập cá nhân, trang phục, dùng thử và tính cách."
-"gui.setting.collections.idleReactions" = "Cho phép thỉnh thoảng có phản ứng rảnh rỗi khi đồng hành đứng yên."
+"gui.setting.collections.idleReactions" = "Cho phép thỉnh thoảng có phản ứng rảnh rỗi khi bạn đồng hành đứng yên."
 "gui.setting.collections.idleReactions.name" = "Phản ứng rảnh rỗi"
 "gui.setting.collections.maximumOutfits" = "Số trang phục đã lưu tối đa cho mỗi người chơi, từ 1 đến 32."
 "gui.setting.collections.maximumOutfits.name" = "Số trang phục tối đa"
 "gui.setting.collections.name" = "Bộ sưu tập"
 "gui.setting.collections.personalityEnabled" = "Cho phép các tương tác vuốt ve, vẫy tay, ngồi, ở yên và gọi."
 "gui.setting.collections.personalityEnabled.name" = "Bật tính cách"
-"gui.setting.collections.trialSeconds" = "Thời lượng xem trước riêng tư của đồng hành bị khóa, từ 5 đến 120 giây."
+"gui.setting.collections.trialSeconds" = "Thời lượng xem trước riêng tư bạn đồng hành bị khóa, từ 5 đến 120 giây."
 "gui.setting.collections.trialSeconds.name" = "Số giây dùng thử"
 "gui.setting.debug" = "Tải lên báo cáo chẩn đoán."
 "gui.setting.debug.name" = "Gỡ lỗi"
 "gui.setting.debug.uploadEnabled" = "Cho phép /bytecompanions debug dump upload=true đăng báo cáo lên mclo.gs sau khi đã lưu cục bộ."
 "gui.setting.debug.uploadEnabled.name" = "Bật tải lên"
 "gui.setting.features" = "Các gói tính năng; gói bị tắt sẽ ẩn lệnh của mình và giữ nguyên trạng thái đã lưu."
-"gui.setting.features.attributes" = "Bật bộ điều chỉnh thuộc tính của đồng hành."
+"gui.setting.features.attributes" = "Bật bộ điều chỉnh thuộc tính của bạn đồng hành."
 "gui.setting.features.attributes.name" = "Thuộc tính"
-"gui.setting.features.boosters" = "Bật bộ tăng cường đồng hành cá nhân và toàn máy chủ."
-"gui.setting.features.boosters.name" = "Bộ tăng cường"
-"gui.setting.features.buffs" = "Bật các buff của đồng hành như thưởng vật phẩm rơi và kinh nghiệm."
+"gui.setting.features.boosters" = "Bật bộ tăng thưởng bạn đồng hành cá nhân và toàn máy chủ."
+"gui.setting.features.boosters.name" = "Bộ tăng thưởng"
+"gui.setting.features.buffs" = "Bật các buff của bạn đồng hành như thưởng vật phẩm rơi và kinh nghiệm."
 "gui.setting.features.buffs.name" = "Buff"
-"gui.setting.features.decorations" = "Bật đồng hành trang trí tĩnh."
+"gui.setting.features.decorations" = "Bật bạn đồng hành trang trí tĩnh."
 "gui.setting.features.decorations.name" = "Trang trí"
-"gui.setting.features.effects" = "Bật hiệu ứng thuốc của đồng hành."
+"gui.setting.features.effects" = "Bật hiệu ứng thuốc của bạn đồng hành."
 "gui.setting.features.effects.name" = "Hiệu ứng"
 "gui.setting.features.name" = "Tính năng"
-"gui.setting.features.particles" = "Bật hiệu ứng hạt của đồng hành."
+"gui.setting.features.particles" = "Bật hiệu ứng hạt của bạn đồng hành."
 "gui.setting.features.particles.name" = "Hạt"
-"gui.setting.features.progression" = "Bật cấp độ đồng hành và nâng cấp thưởng tùy chọn."
+"gui.setting.features.progression" = "Bật cấp độ bạn đồng hành và nâng cấp thưởng tùy chọn."
 "gui.setting.features.progression.name" = "Tiến trình"
-"gui.setting.general" = "Công tắc chính, ngôn ngữ máy chủ, thông báo cập nhật và giới hạn đồng hành."
-"gui.setting.general.autoLoadCompanions" = "Tải các định nghĩa đồng hành từ thư mục companions khi môi trường chạy khởi động."
-"gui.setting.general.autoLoadCompanions.name" = "Tự động tải đồng hành"
-"gui.setting.general.companionLimits" = "Giới hạn số đồng hành một người chơi có thể trang bị cùng lúc."
-"gui.setting.general.companionLimits.maxTotalPerPlayer" = "Số đồng hành tối đa một người chơi có thể trang bị cùng lúc; -1 bỏ giới hạn."
+"gui.setting.general" = "Công tắc chính, ngôn ngữ máy chủ, thông báo cập nhật và giới hạn bạn đồng hành."
+"gui.setting.general.autoLoadCompanions" = "Tải các định nghĩa bạn đồng hành từ thư mục companions khi thời gian chạy khởi động."
+"gui.setting.general.autoLoadCompanions.name" = "Tự động tải bạn đồng hành"
+"gui.setting.general.companionLimits" = "Giới hạn số bạn đồng hành một người chơi có thể trang bị cùng lúc."
+"gui.setting.general.companionLimits.maxTotalPerPlayer" = "Số bạn đồng hành tối đa một người chơi có thể trang bị cùng lúc; -1 bỏ giới hạn."
 "gui.setting.general.companionLimits.maxTotalPerPlayer.name" = "Tổng tối đa mỗi người chơi"
-"gui.setting.general.companionLimits.name" = "Giới hạn đồng hành"
-"gui.setting.general.companionLimits.perModel" = "Giới hạn riêng cho từng mẫu đồng hành."
-"gui.setting.general.companionLimits.perModel.fullBody" = "Số đồng hành toàn thân tối đa một người chơi có thể trang bị cùng lúc; -1 bỏ giới hạn."
+"gui.setting.general.companionLimits.name" = "Giới hạn bạn đồng hành"
+"gui.setting.general.companionLimits.perModel" = "Giới hạn riêng cho từng mô hình bạn đồng hành."
+"gui.setting.general.companionLimits.perModel.fullBody" = "Số bạn đồng hành toàn thân tối đa một người chơi có thể trang bị cùng lúc; -1 bỏ giới hạn."
 "gui.setting.general.companionLimits.perModel.fullBody.name" = "Toàn thân"
-"gui.setting.general.companionLimits.perModel.headOnly" = "Số đồng hành chỉ có đầu tối đa một người chơi có thể trang bị cùng lúc; -1 bỏ giới hạn."
+"gui.setting.general.companionLimits.perModel.headOnly" = "Số bạn đồng hành chỉ có đầu tối đa một người chơi có thể trang bị cùng lúc; -1 bỏ giới hạn."
 "gui.setting.general.companionLimits.perModel.headOnly.name" = "Chỉ có đầu"
-"gui.setting.general.companionLimits.perModel.name" = "Theo mẫu"
-"gui.setting.general.enabled" = "Công tắc chính cho hình ảnh đồng hành và thưởng trong trò chơi."
+"gui.setting.general.companionLimits.perModel.name" = "Theo mô hình"
+"gui.setting.general.enabled" = "Công tắc chính cho hình ảnh bạn đồng hành và thưởng trong trò chơi."
 "gui.setting.general.enabled.name" = "Đã bật"
 "gui.setting.general.language" = "Ngôn ngữ mặc định của máy chủ, lưu dưới dạng tệp languages/<locale>.toml có thể chỉnh sửa trực tiếp."
 "gui.setting.general.language.name" = "Ngôn ngữ"
 "gui.setting.general.name" = "Chung"
 "gui.setting.general.updateNotifications" = "Thông báo cho quản trị viên và người chơi có bytecompanions.update về bản phát hành GitHub mới hơn khi tham gia."
 "gui.setting.general.updateNotifications.name" = "Thông báo cập nhật"
-"gui.setting.hotReload" = "Tự động tải lại tệp cấu hình, đồng hành, tính năng và ngôn ngữ."
+"gui.setting.hotReload" = "Tự động tải lại tệp cấu hình, bạn đồng hành, tính năng và ngôn ngữ."
 "gui.setting.hotReload.cooldownMillis" = "Số mili giây một tệp đã thay đổi phải giữ nguyên trước khi được áp dụng, từ 250 đến 60000."
 "gui.setting.hotReload.cooldownMillis.name" = "Mili giây chờ"
 "gui.setting.hotReload.enabled" = "Tự động áp dụng các thay đổi tệp ổn định trong thư mục dữ liệu."
 "gui.setting.hotReload.enabled.name" = "Đã bật"
-"gui.setting.hotReload.name" = "Tải lại nóng"
+"gui.setting.hotReload.name" = "Tải lại tức thời"
 "gui.setting.hotReload.notifyOperators" = "Thông báo cho người chơi trực tuyến có bytecompanions.config khi tải lại tệp tự động thành công hoặc thất bại."
 "gui.setting.hotReload.notifyOperators.name" = "Thông báo quản trị viên"
 "gui.setting.hotReload.pollIntervalMillis" = "Số mili giây giữa các lần quét tệp, từ 250 đến 60000."
 "gui.setting.hotReload.pollIntervalMillis.name" = "Mili giây giữa các lần quét"
 "gui.setting.languages" = "Chỉnh sửa bản dịch của máy chủ và định dạng của chúng."
-"gui.setting.languages.name" = "Các ngôn ngữ"
-"gui.setting.menus" = "Lối tắt bảng điều khiển."
-"gui.setting.menus.name" = "Trình đơn"
-"gui.setting.menus.rightClickDashboard" = "Mở bảng điều khiển đồng hành khi chủ sở hữu nhấp chuột phải vào nó bằng tay chính."
-"gui.setting.menus.rightClickDashboard.name" = "Bảng điều khiển khi nhấp phải"
+"gui.setting.languages.name" = "Ngôn ngữ"
+"gui.setting.menus" = "Lối tắt bảng quản lý."
+"gui.setting.menus.name" = "Menu"
+"gui.setting.menus.rightClickDashboard" = "Mở bảng quản lý bạn đồng hành khi chủ sở hữu nhấp chuột phải vào nó bằng tay chính."
+"gui.setting.menus.rightClickDashboard.name" = "Bảng quản lý khi nhấp phải"
 "gui.setting.metrics" = "Thống kê sử dụng ẩn danh."
 "gui.setting.metrics.enabled" = "Gửi thống kê sử dụng ByteCompanions ẩn danh đến bStats."
 "gui.setting.metrics.enabled.name" = "Đã bật"
 "gui.setting.metrics.name" = "Số liệu"
 "gui.setting.performance" = "Nhịp tick, theo dõi người xem và giới hạn hạt."
-"gui.setting.performance.dispatchInteractEvent" = "Kích hoạt CompanionPlayerInteractEvent cho các plugin khác khi người chơi nhấp vào đồng hành."
+"gui.setting.performance.dispatchInteractEvent" = "Kích hoạt CompanionPlayerInteractEvent cho các plugin khác khi người chơi nhấp vào bạn đồng hành."
 "gui.setting.performance.dispatchInteractEvent.name" = "Phát sự kiện tương tác"
 "gui.setting.performance.maximumParticleIntensity" = "Cường độ hạt tối đa người chơi có thể nhận: FULL, REDUCED hoặc OFF."
 "gui.setting.performance.maximumParticleIntensity.name" = "Cường độ hạt tối đa"
 "gui.setting.performance.name" = "Hiệu năng"
-"gui.setting.performance.updateInterval" = "Số tick giữa các lần cập nhật hoạt ảnh đồng hành, ít nhất 1."
+"gui.setting.performance.updateInterval" = "Số tick giữa các lần cập nhật hoạt ảnh bạn đồng hành, ít nhất 1."
 "gui.setting.performance.updateInterval.name" = "Khoảng cập nhật"
-"gui.setting.performance.viewDistance" = "Khoảng cách tính bằng khối mà người chơi khác nhìn thấy đồng hành, 0 trở lên."
+"gui.setting.performance.viewDistance" = "Khoảng cách tính bằng khối mà người chơi khác nhìn thấy bạn đồng hành, 0 trở lên."
 "gui.setting.performance.viewDistance.name" = "Khoảng cách nhìn"
 "gui.setting.performance.viewerRefreshDelay" = "Số tick giữa các lần kiểm tra khoảng cách người xem, ít nhất 1."
 "gui.setting.performance.viewerRefreshDelay.name" = "Độ trễ làm mới người xem"
@@ -762,14 +772,14 @@
 "gui.setting.presentation.commandSounds" = "Phát âm thanh thành công hoặc thất bại ngắn khi lệnh báo kết quả cho người chơi."
 "gui.setting.presentation.commandSounds.name" = "Âm thanh lệnh"
 "gui.setting.presentation.name" = "Trình bày"
-"gui.setting.presentation.serializer" = "Định dạng văn bản cho tên đồng hành, mô tả và bản thiết kế vật phẩm: MINI_MESSAGE, LEGACY_AMPERSAND hoặc PLAIN."
+"gui.setting.presentation.serializer" = "Định dạng văn bản cho tên bạn đồng hành, mô tả và bản thiết kế vật phẩm: MINI_MESSAGE, LEGACY_AMPERSAND hoặc PLAIN."
 "gui.setting.presentation.serializer.name" = "Bộ tuần tự hóa"
 "gui.setting.presentation.splashScreen" = "In màn hình chào khởi động của ByteCompanions sau khi các dịch vụ sẵn sàng."
 "gui.setting.presentation.splashScreen.name" = "Màn hình chào"
 "gui.setting.serverRules" = "Hạn chế theo thế giới và khu vực."
-"gui.setting.serverRules.bonusDisabledWorlds" = "Tên các thế giới mà thuộc tính, hiệu ứng, thưởng phần thưởng và XP đồng hành tự động bị tạm dừng."
+"gui.setting.serverRules.bonusDisabledWorlds" = "Tên các thế giới nơi thuộc tính, hiệu ứng, thưởng phần thưởng và kinh nghiệm tự động của bạn đồng hành bị tạm dừng."
 "gui.setting.serverRules.bonusDisabledWorlds.name" = "Thế giới tắt thưởng"
-"gui.setting.serverRules.hiddenWorlds" = "Tên các thế giới mà hình ảnh đồng hành bị ẩn."
+"gui.setting.serverRules.hiddenWorlds" = "Tên các thế giới nơi hình ảnh bạn đồng hành bị ẩn."
 "gui.setting.serverRules.hiddenWorlds.name" = "Thế giới ẩn"
 "gui.setting.serverRules.name" = "Quy tắc máy chủ"
 "gui.setting.serverRules.worldguard" = "Tuân theo cờ bytecompanions-visuals và bytecompanions-bonuses khi WorldGuard được cài đặt."
@@ -785,7 +795,7 @@
 "gui.setting.storage.mysql.database" = "Tên cơ sở dữ liệu."
 "gui.setting.storage.mysql.database.name" = "Cơ sở dữ liệu"
 "gui.setting.storage.mysql.host" = "Tên máy chủ hoặc địa chỉ của cơ sở dữ liệu."
-"gui.setting.storage.mysql.host.name" = "Máy chủ"
+"gui.setting.storage.mysql.host.name" = "Địa chỉ máy chủ"
 "gui.setting.storage.mysql.name" = "MySQL"
 "gui.setting.storage.mysql.password" = "Mật khẩu cơ sở dữ liệu."
 "gui.setting.storage.mysql.password.name" = "Mật khẩu"

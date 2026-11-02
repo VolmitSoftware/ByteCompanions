@@ -6,7 +6,7 @@ import art.arcane.volmlib.util.config.TomlCodec;
 import art.arcane.volmlib.util.config.TomlDocumentEditor;
 import art.arcane.volmlib.util.hotload.ConfigHotloadEngine;
 import art.arcane.volmlib.util.io.AtomicFileIO;
-import art.arcane.volmlib.util.localization.VolmitLocales;
+import art.arcane.volmlib.util.localization.LanguageDirectory;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
@@ -540,7 +540,8 @@ public final class ConfigService implements AutoCloseable {
         }
         require(Set.of("MINI_MESSAGE", "LEGACY_AMPERSAND", "PLAIN").contains(configuration.serializer().toUpperCase(Locale.ROOT)),
                 "presentation.serializer", "must be MINI_MESSAGE, LEGACY_AMPERSAND or PLAIN");
-        require(VolmitLocales.all().contains(configuration.general().language()), "general.language", "must be a supported Volmit locale");
+        require(LanguageDirectory.LOCALE_PATTERN.matcher(configuration.general().language()).matches(), "general.language",
+                "must be a locale id of 2 to 32 letters, digits, underscores, or hyphens");
         Configuration.HotReloadConfig hotReload = configuration.hotReload();
         require(hotReload.pollIntervalMillis() >= 250 && hotReload.pollIntervalMillis() <= 60000,
                 "hotReload.pollIntervalMillis", "must be between 250 and 60000");

@@ -5,7 +5,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import com.volmit.bytecompanions.api.access.ByteCompanions;
 import com.volmit.bytecompanions.api.companion.*;
 import com.volmit.bytecompanions.api.result.EquipCompanionResult;
 import com.volmit.bytecompanions.api.result.UnequipCompanionResult;
@@ -51,7 +50,7 @@ public final class CompanionPlayerManager {
     }
 
     public boolean isSpawned(final @NotNull Player player, final @NotNull String resolvedId) {
-        return ByteCompanions.getAPI().getCompanionPlayer(player.getUniqueId())
+        return this.userManager.find(player)
                 .map(companionPlayer -> companionPlayer.hasCompanion(resolvedId))
                 .orElse(false);
     }
@@ -187,7 +186,7 @@ public final class CompanionPlayerManager {
     }
 
     public void despawn(final @NotNull Player player) {
-        final CompanionPlayer companionPlayer = ByteCompanions.getAPI().getCompanionPlayerOrNull(player.getUniqueId());
+        final CompanionPlayer companionPlayer = this.userManager.find(player).orElse(null);
         if (companionPlayer == null) {
             return;
         }

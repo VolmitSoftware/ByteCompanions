@@ -6,11 +6,13 @@ import java.util.Objects;
 
 /**
  * Holds the global singleton instance of {@link ByteCompanions}.
- * Managed internally by the plugin — external code should never call set/reset.
+ * Only the holder of the {@link Registration} returned by {@link #register(ByteCompanions)} can remove it,
+ * so another plugin cannot reset the provider.
  */
 public final class ByteCompanionsProvider {
 
     private static volatile ByteCompanions instance;
+    private static Registration owner;
 
     private ByteCompanionsProvider() {
         throw new UnsupportedOperationException("This class cannot be instantiated.");
@@ -20,21 +22,33 @@ public final class ByteCompanionsProvider {
         return Objects.requireNonNull(instance, "ByteCompanions API is not available yet. Is the plugin enabled?");
     }
 
-    public static void setInstance(final @NotNull ByteCompanions api) {
+    public static synchronized @NotNull Registration register(final @NotNull ByteCompanions api) {
         Objects.requireNonNull(api, "API instance must not be null.");
         if (instance != null) {
             throw new IllegalStateException("ByteCompanionsAPIProvider instance is already set.");
         }
-
+        owner = new Registration();
         instance = api;
+        return owner;
     }
 
     public static boolean hasInstance() {
         return instance != null;
     }
 
-    public static void resetInstance() {
-        instance = null;
+    public static final class Registration {
+
+        private Registration() {
+        }
+
+        public void unregister() {
+            synchronized (ByteCompanionsProvider.class) {
+                if (owner == this) {
+                    owner = null;
+                    instance = null;
+                }
+            }
+        }
     }
 
 }

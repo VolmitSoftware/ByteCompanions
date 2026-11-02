@@ -84,6 +84,7 @@ class CompanionSelectionRecoveryTest {
     private boolean cancelEquip;
     private Field serverField;
     private Object previousServer;
+    private ByteCompanionsProvider.Registration registration;
 
     @BeforeEach
     void open() throws Exception {
@@ -158,7 +159,7 @@ class CompanionSelectionRecoveryTest {
         manager = new CompanionPlayerManager(plugin, new DefaultUserManager(players, null), companions,
                 new MessageDispatcher(new LanguageService(directory.toFile(), logger), () -> false), null,
                 trackedStorage, new Configuration.CompanionLimits());
-        ByteCompanionsProvider.setInstance(proxy(ByteCompanions.class, (method, arguments) -> {
+        registration = ByteCompanionsProvider.register(proxy(ByteCompanions.class, (method, arguments) -> {
             if (method.equals("getCompanionPlayerOrNull")) return players.getByUniqueId((UUID) arguments[0]);
             throw new AssertionError(method);
         }));
@@ -172,7 +173,7 @@ class CompanionSelectionRecoveryTest {
         } finally {
             if (executor != null) executor.shutdown();
             if (source != null) source.close();
-            ByteCompanionsProvider.resetInstance();
+            if (registration != null) registration.unregister();
             if (serverField != null) serverField.set(null, previousServer);
         }
     }

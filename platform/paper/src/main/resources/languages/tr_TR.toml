@@ -6,108 +6,109 @@
 # /bytecompanions language server edit tr_TR
 #
 # === Önek ===
-# runtime.prefix supplies the styled plugin name for {prefix}.
-# Remove {prefix} from a message to hide the plugin name for that message.
+# runtime.prefix, {prefix} için biçimlendirilmiş eklenti adını sağlar.
+# Bir mesajda eklenti adını gizlemek için o mesajdan {prefix} değişkenini kaldırın.
 #
 # === Biçimlendirme ===
-# Colors and styles: &0-&f, &k-&r.
-# RGB colors: &#RRGGBB, &xRRGGBB, &x&R&R&G&G&B&B, [RRGGBB].
-# MiniMessage supports custom formatting such as <gold> and <gradient:#ffcc00:#ff9900>. Put a backslash before & or [ to display it literally.
+# Renkler ve stiller: &0-&f, &k-&r.
+# RGB renkleri: &#RRGGBB, &xRRGGBB, &x&R&R&G&G&B&B, [RRGGBB].
+# MiniMessage, <gold> ve <gradient:#ffcc00:#ff9900> gibi özel biçimlendirmeleri destekler. & veya [ karakterini olduğu gibi göstermek için önüne ters eğik çizgi koyun.
 #
 # === Değişkenler ===
 # Değişken adlarını değiştirmeyin ve yalnızca ilgili iletinin değişkenlerini kullanın.
-#   {action}  Requested action
-#   {actions}  Available actions
-#   {after}  Value after the change
-#   {amount}  Amount or count
-#   {argument}  Unexpected command argument
-#   {before}  Value before the change
-#   {bonus}  Bonus name
-#   {booster}  Booster identifier
-#   {category}  Category name
-#   {change}  Described change
-#   {channel}  Booster channel
-#   {choice}  Selected option
-#   {command}  Command path
-#   {companion}  Companion identifier
-#   {companions}  Companion identifiers
-#   {count}  Number of items
-#   {created}  Creation time
-#   {current}  Current value
-#   {definition}  Companion definition
-#   {detail}  Failure detail
-#   {effect}  Particle effect identifier
-#   {entry}  Entry label
-#   {feature}  Feature name
-#   {features}  Enabled features
-#   {field}  Studio field name
-#   {formation}  Formation name
-#   {group}  Message category name
-#   {hot_reload}  Hot reload state
-#   {index}  Position number
-#   {integrations}  Integration states
-#   {item}  Item name
-#   {items}  Item list
-#   {java}  Java major version
-#   {key}  Message or setting key
-#   {kind}  Transaction kind
-#   {language}  Active language
-#   {level}  Level number
-#   {limit}  Configured limit
-#   {line}  Message line number
-#   {locale}  Locale identifier
-#   {maximum}  Maximum accepted value
-#   {mode}  Combining rule
-#   {model}  Companion model
-#   {money}  Money amount
-#   {name}  Display name
-#   {new}  Installed rendered value
-#   {next}  Next value
-#   {old}  Previous rendered value
-#   {operation}  Bonus operation
-#   {page}  Current page number
-#   {pages}  Total page count
-#   {parameter}  Parameter name
-#   {path}  File path or setting path
-#   {percent}  Percentage value
-#   {permission}  Required permission
-#   {personal}  Personal locale when it differs
-#   {player}  Player name
-#   {players}  Loaded player count
-#   {plugin}  Plugin name
-#   {prefix}  Styled plugin name from runtime.prefix
-#   {provider}  Payment provider
-#   {range}  Supported Minecraft range
-#   {reason}  Failure reason
-#   {required}  Required amount
-#   {scheduler}  Scheduler implementation
-#   {seconds}  Duration in seconds
-#   {section}  Language editor section
-#   {setting}  Setting name
-#   {sources}  Bonus sources
-#   {status}  Status marker
-#   {step}  Adjustment step
-#   {target}  Selection target
-#   {tier}  Upgrade tier
-#   {time}  Duration text
-#   {transaction}  Transaction identifier
-#   {type}  Parameter type
-#   {url}  Public report URL
-#   {usage}  Command usage
-#   {value}  Current or raw value
-#   {variables}  Placeholders valid for the message
-#   {variant}  Appearance variant
-#   {version}  Plugin version
-#   {xp}  Companion experience
+#   {activation}  Güçlendirici etkinleştirme kimliği
+#   {added}  Dil güncellemesiyle eklenen mesajlar
+#   {after}  Değişiklik sonrasındaki değer
+#   {amount}  Miktar veya sayı
+#   {argument}  Beklenmeyen komut argümanı
+#   {before}  Değişiklik öncesindeki değer
+#   {bonus}  Bonus adı
+#   {booster}  Güçlendirici kimliği
+#   {category}  Kategori adı
+#   {change}  Açıklanan değişiklik
+#   {channel}  Güçlendirici kanalı
+#   {choice}  Seçilen seçenek
+#   {command}  Komut yolu
+#   {companion}  Yoldaş kimliği
+#   {companions}  Yoldaş kimlikleri
+#   {count}  Öğe sayısı
+#   {created}  Oluşturma zamanı
+#   {current}  Geçerli değer
+#   {definition}  Yoldaş tanımı
+#   {detail}  Hata ayrıntısı
+#   {effect}  Parçacık efekti kimliği
+#   {enabled}  Yoldaşların etkinlik durumu
+#   {feature}  Özellik adı
+#   {features}  Etkin özellikler
+#   {field}  Stüdyo alanının adı
+#   {formation}  Dizilim adı
+#   {group}  Mesaj kategorisinin adı
+#   {hot_reload}  Canlı yeniden yükleme durumu
+#   {index}  Sıra numarası
+#   {integrations}  Entegrasyon durumları
+#   {item}  Eşya adı
+#   {items}  Eşya listesi
+#   {java}  Java ana sürümü
+#   {kept}  Dil güncellemesinde korunan yerel düzenlemeler
+#   {key}  Mesaj veya ayar anahtarı
+#   {kind}  İşlem türü
+#   {language}  Etkin dil
+#   {level}  Seviye numarası
+#   {limit}  Yapılandırılmış sınır
+#   {line}  Mesaj satır numarası
+#   {locale}  Yerel ayar kimliği
+#   {maximum}  İzin verilen en büyük değer
+#   {mode}  Birleştirme kuralı
+#   {model}  Yoldaş modeli
+#   {money}  Para miktarı
+#   {name}  Görünen ad
+#   {next}  Sonraki değer
+#   {number}  Liste girdisi numarası
+#   {operation}  Bonus işlemi
+#   {page}  Geçerli sayfa numarası
+#   {pages}  Toplam sayfa sayısı
+#   {parameter}  Parametre adı
+#   {path}  Dosya yolu veya ayar yolu
+#   {percent}  Yüzde değeri
+#   {permission}  Gerekli izin
+#   {personal}  Farklıysa kişisel yerel ayar
+#   {player}  Oyuncu adı
+#   {players}  Yüklenen oyuncu sayısı
+#   {plugin}  Eklenti adı
+#   {prefix}  runtime.prefix değerinden gelen biçimlendirilmiş eklenti adı
+#   {provider}  Ödeme sağlayıcısı
+#   {range}  Desteklenen Minecraft aralığı
+#   {reason}  Hata nedeni
+#   {remaining}  Bir sonraki dil denetimine kalan süre
+#   {required}  Gereken miktar
+#   {scheduler}  Zamanlayıcı uygulaması
+#   {seconds}  Saniye cinsinden süre
+#   {section}  Dil düzenleyicisi bölümü
+#   {sources}  Bonus kaynakları
+#   {status}  Durum işareti
+#   {step}  Ayarlama adımı
+#   {target}  Seçim hedefi
+#   {tier}  Geliştirme kademesi
+#   {time}  Süre metni
+#   {transaction}  İşlem kimliği
+#   {type}  Parametre türü
+#   {updated}  Dil güncellemesiyle değiştirilen mesajlar
+#   {url}  Herkese açık rapor URL'si
+#   {usage}  Komut kullanımı
+#   {value}  Geçerli veya ham değer
+#   {variables}  Mesajda geçerli yer tutucular
+#   {variant}  Görünüm çeşidi
+#   {version}  Eklenti sürümü
+#   {xp}  Yoldaş deneyimi
 
 "runtime.prefix" = "<bold><gradient:#ffcc00:#ff9900>ByteCompanions</gradient></bold>"
 "gui.studio-review-change" = "<gold>Değişiklik {index}"
 "gui.studio-duplicate" = "<aqua>Yeni yoldaş olarak kopyala"
-"gui.studio-duplicate-hint" = "<gray>Taslağı yeni bir kimliğe kopyala; aslı değişmez."
-"studio.duplicate-prompt" = "{prefix} <gold>Yeni yoldaş kimliği gir: 1 ila 64 küçük harf, rakam, alt çizgi veya kısa çizgi. Dönmek için <white>cancel</white> yaz.</gold>"
+"gui.studio-duplicate-hint" = "<gray>Taslağı yeni bir kimliğe kopyalayın; aslı değişmeden kalır."
+"studio.duplicate-prompt" = "{prefix} <gold>Yeni bir yoldaş kimliği girin: 1 ila 64 küçük harf, rakam, alt çizgi veya kısa çizgi. Geri dönmek için <white>cancel</white> yazın.</gold>"
 "gui.studio-remove" = "<red>Bu bonusu kaldır"
-"gui.studio-remove-hint" = "<gray>Bonus kaydının tamamını bu taslaktan kaldır."
-"studio.too-long" = "{prefix} <yellow>Giriş çok uzun. En fazla 256 karakter kullan; taslak değişmedi.</yellow>"
+"gui.studio-remove-hint" = "<gray>Bonus kaydının tamamını bu taslaktan kaldırın."
+"studio.too-long" = "{prefix} <yellow>Giriş çok uzun. En fazla 256 karakter kullanın; taslağınız değişmedi.</yellow>"
 "gui.studio-selected" = "<green>✓ Bu taslağa dahil"
 "gui.studio-unselected" = "<gray>Bu taslağa dahil değil"
 "gui.studio-change" = "<gray>{change}"
@@ -118,7 +119,7 @@
 "gui.title.studio-presets" = "<gold>Hazır Ayar Seç"
 "gui.title.studio-confirm" = "<gold>Yoldaş Değişikliklerini İncele"
 "gui.studio" = "<gold>✎ Yoldaş Stüdyosu"
-"gui.studio-hint" = "<gray>Bu yoldaşı tüm sunucu için düzenle."
+"gui.studio-hint" = "<gray>Bu yoldaşı tüm sunucu için düzenleyin."
 "gui.studio-heading" = "<gold>✎ {companion}"
 "gui.studio-draft" = "<yellow>Kaydedilmemiş taslak • Değişiklikler kaydettikten sonra uygulanır."
 "gui.studio-unchanged" = "<gray>Kaydedilmemiş değişiklik yok."
@@ -129,62 +130,62 @@
 "gui.studio-particles" = "<light_purple>Yerleşik Parçacıklar"
 "gui.studio-attributes" = "<aqua>Nitelik Bonusları"
 "gui.studio-effects" = "<light_purple>İksir Bonusları"
-"gui.studio-buffs" = "<green>XP ve Ödül Bonusları"
-"gui.studio-category-hint" = "<gray>Bir ayar seç veya hazır ayar ekle."
+"gui.studio-buffs" = "<green>Deneyim ve Ödül Bonusları"
+"gui.studio-category-hint" = "<gray>Bir ayar seçin veya hazır ayar ekleyin."
 "gui.studio-disabled" = "<yellow>Bu özellik kapalı; kaydedilen bonuslar etkinleşmez."
 "gui.studio-field" = "<gold>{field}"
 "gui.studio-value" = "<gray>Geçerli değer: <white>{value}"
-"gui.studio-edit-hint" = "<gray>Bu ayarı düzenlemek için tıkla."
+"gui.studio-edit-hint" = "<gray>Bu ayarı düzenlemek için tıklayın."
 "gui.studio-type" = "<gold>Değer gir"
-"gui.studio-type-hint" = "<gray>Sohbete özel olarak tam bir değer gir."
+"gui.studio-type-hint" = "<gray>Tam değeri sohbete girin; yalnızca siz görürsünüz."
 "gui.studio-toggle" = "<gold>Ayarı değiştir"
-"gui.studio-toggle-hint" = "<gray>true ve false arasında geçiş yap."
+"gui.studio-toggle-hint" = "<gray>true ve false arasında geçiş yapın."
 "gui.studio-increase" = "<green>Artır"
 "gui.studio-decrease" = "<gold>Azalt"
-"gui.studio-adjust-hint" = "<gray>Değeri {step} kadar değiştir."
+"gui.studio-adjust-hint" = "<gray>Değeri {step} kadar değiştirin."
 "gui.studio-presets" = "<gold>Hazır ayar ekle veya seç"
-"gui.studio-presets-hint" = "<gray>Bu bölümdeki seçenekleri incele."
+"gui.studio-presets-hint" = "<gray>Bu bölümdeki seçenekleri inceleyin."
 "gui.studio-choice" = "<aqua>{choice}"
-"gui.studio-choice-hint" = "<gray>Taslağa uygula; kaydetmeden önce önizle."
-"gui.studio-particle-hint" = "<gray>Bu hazır ayarı aç veya kapat."
+"gui.studio-choice-hint" = "<gray>Taslağınıza uygulayın; kaydetmeden önce önizleyin."
+"gui.studio-particle-hint" = "<gray>Bu hazır ayarı açın veya kapatın."
 "gui.studio-preview" = "<aqua>Dünyada önizle"
-"gui.studio-preview-hint" = "<gray>Yalnızca sen görürsün; bonus veya kayıtlı seçim yok."
+"gui.studio-preview-hint" = "<gray>Yalnızca siz görürsünüz; bonus veya kayıtlı seçim yok."
 "gui.studio-stop-preview" = "<gold>Önizlemeyi durdur"
 "gui.studio-save" = "<green>İncele ve Kaydet"
-"gui.studio-save-hint" = "<gray>Sunucu içeriğini değiştirmeden önce taslağı incele."
+"gui.studio-save-hint" = "<gray>Sunucu içeriğini değiştirmeden önce taslağınızı inceleyin."
 "gui.studio-apply" = "<green>Herkes için kaydet"
 "gui.studio-apply-hint" = "<gray>Doğrular, kaydeder ve eklentiyi yeniden yükler."
 "gui.studio-reload-hint" = "<yellow>Diğer düzenleyiciler kapanır; çevrimiçi yoldaşlar geri yüklenir."
 "gui.studio-discard" = "<red>Taslağı sil"
-"gui.studio-discard-hint" = "<gray>Kaydedilmemiş düzenlemeleri sil ve önizlemeyi durdur."
+"gui.studio-discard-hint" = "<gray>Kaydedilmemiş tüm düzenlemeleri silin ve önizlemeyi durdurun."
 "gui.studio-reset" = "<gold>Taslağı sıfırla"
-"gui.studio-reset-hint" = "<gray>Açılış anındaki değerlere dön."
+"gui.studio-reset-hint" = "<gray>Açtığınız andaki değerlere dönün."
 "gui.studio-back" = "<gold>◀ Geri"
-"gui.studio-back-hint" = "<gray>Taslağı kaybetmeden geri dön."
-"gui.studio-empty" = "<gray>Henüz ayar yok. Başlamak için hazır ayar ekle."
-"studio.prompt" = "{prefix} <gold>Sohbete {field} gir veya <white>cancel</white> yaz. En fazla 256 karakter; 60 saniye sonra süresi dolar.</gold>"
-"studio.cancelled" = "{prefix} <gray>Giriş iptal edildi veya süresi doldu; taslak değişmedi.</gray>"
+"gui.studio-back-hint" = "<gray>Taslağınızı kaybetmeden geri dönün."
+"gui.studio-empty" = "<gray>Henüz ayar yok. Başlamak için bir hazır ayar ekleyin."
+"studio.prompt" = "{prefix} <gold>Sohbete {field} girin veya <white>cancel</white> yazın. En fazla 256 karakter; 60 saniye sonra süresi dolar.</gold>"
+"studio.cancelled" = "{prefix} <gray>Giriş iptal edildi veya süresi doldu; taslağınız değişmedi.</gray>"
 "studio.failed" = "{prefix} <red>Değişiklik reddedildi: {reason}</red>"
-"studio.preview" = "{prefix} <aqua>Beş dakikalık özel önizleme başladı. Dönmek için <white>/bytecompanions edit {companion}</white> kullan. Bonus verilmez.</aqua>"
-"studio.retained" = "{prefix} <gray>Menüyü kapattığında taslak 15 dakika hareketsizlik boyunca korunur. <white>/bytecompanions edit</white> ile geri dön.</gray>"
-"studio.existing" = "{prefix} <yellow>{companion} için zaten bir taslağın var. Başka bir yoldaşı düzenlemeden önce kaydet veya sil.</yellow>"
-"studio.expired" = "{prefix} <gray>Etkin olmayan yoldaş taslağın silindi.</gray>"
+"studio.preview" = "{prefix} <aqua>Beş dakikalık özel önizleme başladı. Geri dönmek için <white>/bytecompanions edit {companion}</white> kullanın. Bonus verilmez.</aqua>"
+"studio.retained" = "{prefix} <gray>Menüyü kapattığınızda taslağınız 15 dakikalık hareketsizlik boyunca saklanır. <white>/bytecompanions edit</white> ile geri dönün.</gray>"
+"studio.existing" = "{prefix} <yellow>{companion} için zaten bir taslağınız var. Başka bir yoldaşı düzenlemeden önce kaydedin veya silin.</yellow>"
+"studio.expired" = "{prefix} <gray>Etkin olmayan yoldaş taslağınız silindi.</gray>"
 "studio.saving" = "{prefix} <gold>Yoldaş kaydediliyor ve yeniden yükleniyor...</gold>"
 "studio.saved" = "{prefix} <green>Yoldaş tüm sunucu için kaydedildi.</green>"
-"studio.restore-failed" = "{prefix} <yellow>Yoldaş kaydedildi, ancak çevrimiçi yoldaşlar geri yüklenemedi. Yeniden bağlan ve konsolu kontrol et.</yellow>"
+"studio.restore-failed" = "{prefix} <yellow>Yoldaş kaydedildi, ancak çevrimiçi yoldaşlar geri yüklenemedi. Yeniden bağlanın ve konsolu kontrol edin.</yellow>"
 "studio.discarded" = "{prefix} <gray>Taslak silindi. Sunucu içeriği değişmedi.</gray>"
-"errors.no-permission" = "<red>Bu işlemi yapmak için iznin yok.</red>"
-"errors.no-access-to-companion" = "<red>Bu yoldaşı kuşanamazsın.</red>"
+"errors.no-permission" = "<red>Bu işlemi yapmak için izniniz yok.</red>"
+"errors.no-access-to-companion" = "<red>Bu yoldaşı kuşanamazsınız.</red>"
 "errors.companion-not-found" = "<red><white>{companion}</white> kimliğine sahip bir yoldaş yok.</red>"
-"errors.no-companion-equipped" = "<gold>Kuşanılmış bir yoldaşın yok.</gold>"
-"errors.companion-already-equipped" = "<gold>Bu yoldaşı zaten kuşandın.</gold>"
+"errors.no-companion-equipped" = "<gold>Kuşanılmış bir yoldaşınız yok.</gold>"
+"errors.companion-already-equipped" = "<gold>Bu yoldaşı zaten kuşandınız.</gold>"
 "errors.companion-does-not-have-animations" = "<aqua>Bu yoldaş animasyonları desteklemiyor.</aqua>"
 "errors.companion-is-exclusive" = "<red>Bu yoldaş özeldir ve kuşanılamaz.</red>"
-"errors.companions-limit-reached" = "<red>İzin verilen en fazla yoldaş sayısına ulaştın.</red>"
-"errors.companions-limit-per-model-reached" = "<red><white>{model}</white> modeli için yoldaş sınırına ulaştın.</red>"
-"errors.player-has-a-exclusive-companion" = "<red>Zaten özel bir yoldaş kuşandın.</red>"
-"success.companion-equipped" = "<green><white>{companion}</white> yoldaşını kuşandın.</green>"
-"success.companion-unequipped" = "<green>Yoldaşın çıkarıldı.</green>"
+"errors.companions-limit-reached" = "<red>İzin verilen en fazla yoldaş sayısına ulaştınız.</red>"
+"errors.companions-limit-per-model-reached" = "<red><white>{model}</white> modeli için yoldaş sınırına ulaştınız.</red>"
+"errors.player-has-a-exclusive-companion" = "<red>Zaten özel bir yoldaş kuşandınız.</red>"
+"success.companion-equipped" = "<green><white>{companion}</white> yoldaşını kuşandınız.</green>"
+"success.companion-unequipped" = "<green>Yoldaşınız çıkarıldı.</green>"
 "command.description.root" = "{prefix} yardımı ve yönetimi"
 "command.description.menu" = "Yoldaşlara göz at; parçacıklar için kuşanılmış yoldaşa sağ tıkla"
 "command.description.spawn" = "Bir yoldaş kuşan"
@@ -200,72 +201,72 @@
 "command.feedback.disabled" = "<gold>{feature} özelliği devre dışı.</gold>"
 "command.feedback.player-only" = "<red>Bu komutu yalnızca oyuncular kullanabilir.</red>"
 "command.feedback.companion-required" = "<red>Bir yoldaş adı gerekli.</red>"
-"command.feedback.failed" = "<red>Komut tamamlanamadı. Ayrıntılar için konsola bak.</red>"
+"command.feedback.failed" = "<red>Komut tamamlanamadı. Ayrıntılar için konsola bakın.</red>"
 "command.feedback.usage" = "<gold>Kullanım: {usage}</gold>"
 "command.feedback.version" = "<gradient:#ffcc00:#ff9900>{prefix} v{version}</gradient>"
 "particles.title" = "<gold>Yoldaş parçacıkları</gold>"
 "particles.help.menu" = "Efektlere göz at"
 "particles.help.equip" = "Bir efekt uygula"
 "particles.help.unequip" = "Bir veya tüm efektleri kaldır"
-"particles.particle-effects.no-permission" = "<red><white>{effect}</white> efektini kullanma iznin yok.</red>"
+"particles.particle-effects.no-permission" = "<red><white>{effect}</white> efektini kullanma izniniz yok.</red>"
 "particles.particle-effects.equipped" = "<green>Parçacık efekti kuşanıldı: <white>{effect}</white>.</green>"
 "particles.particle-effects.unequipped" = "<yellow>Parçacık efekti çıkarıldı.</yellow>"
 "particles.particle-effects.not-found" = "<red><white>{effect}</white> parçacık efekti bulunamadı.</red>"
-"particles.particle-effects.invalid-id" = "<red>Geçerli bir parçacık efekti kimliği belirtmelisin.</red>"
+"particles.particle-effects.invalid-id" = "<red>Geçerli bir parçacık efekti kimliği belirtmelisiniz.</red>"
 "particles.particle-effects.already-equipped" = "<red><white>{effect}</white> zaten kuşanılmış.</red>"
-"particles.companions.not-equipped" = "<red>Önce bir yoldaş kuşanmalısın.</red>"
-"particles.companions.invalid-type-id" = "<red>Geçerli bir yoldaş türü kimliği belirtmelisin.</red>"
-"errors.player-not-loaded" = "<red>Yoldaş verilerin hâlâ yükleniyor veya yüklenemedi. Yeniden bağlan ya da bir yöneticiye danış.</red>"
-"errors.persistence-failed" = "<red>Seçimin bu oturum için değişti ancak kaydedilemedi. Yeniden bağlandığında eski hâline dönebilir. Lütfen bir yöneticiye bildir.</red>"
+"particles.companions.not-equipped" = "<red>Önce bir yoldaş kuşanmalısınız.</red>"
+"particles.companions.invalid-type-id" = "<red>Geçerli bir yoldaş türü kimliği belirtmelisiniz.</red>"
+"errors.player-not-loaded" = "<red>Yoldaş verileriniz hâlâ yükleniyor veya yüklenemedi. Yeniden bağlanın ya da bir yöneticiye başvurun.</red>"
+"errors.persistence-failed" = "<red>Seçiminiz bu oturum için değişti ancak kaydedilemedi. Yeniden bağlandığınızda eski hâline dönebilir. Lütfen bir yöneticiye bildirin.</red>"
 
 "gui.title.collection" = "<gold>Yoldaş koleksiyonu"
 "gui.title.dashboard" = "<gold>Yoldaş paneli"
 "gui.title.particles" = "<gold>Yoldaş parçacıkları"
 "gui.title.bonuses" = "<gold>Yoldaş bonusları"
 "gui.collection" = "<gold>📦 Yoldaş koleksiyonu"
-"gui.collection-hint" = "<gray>Seçeneklerini görmek için bir yoldaş seç."
+"gui.collection-hint" = "<gray>Seçeneklerini görmek için bir yoldaş seçin."
 "gui.equipped" = "<green>✓ Kuşanıldı"
 "gui.available" = "<yellow>Kullanılabilir"
-"gui.locked" = "<red>Kilitli: iznin yok."
-"gui.open-dashboard" = "<gray>Bu yoldaşın panelini açmak için tıkla."
+"gui.locked" = "<red>Kilitli: izniniz yok."
+"gui.open-dashboard" = "<gray>Bu yoldaşın panelini açmak için tıklayın."
 "gui.empty" = "<yellow>Yoldaş yok"
 "gui.empty-hint" = "<gray>Kullanılabilir yoldaş tanımı yok."
 "gui.not-equipped" = "<yellow>Kuşanılmadı"
-"gui.overview" = "<gray>Bu yoldaşı aşağıdaki düğmelerle yönet."
+"gui.overview" = "<gray>Bu yoldaşı aşağıdaki düğmelerle yönetin."
 "gui.equip" = "<green>✓ Yoldaşı kuşan"
-"gui.equip-hint" = "<gray>Bu yoldaşı yanına çağır."
-"gui.unequip" = "<yellow>Yoldaşı kaldır"
-"gui.unequip-hint" = "<gray>Bu yoldaşı gönder. Daha sonra tekrar kuşanabilirsin."
+"gui.equip-hint" = "<gray>Bu yoldaşı yanınıza çağırın."
+"gui.unequip" = "<yellow>Yoldaşı çıkar"
+"gui.unequip-hint" = "<gray>Bu yoldaşı gönderin. Daha sonra tekrar kuşanabilirsiniz."
 "gui.particles" = "<aqua>✦ Parçacıklar"
-"gui.particles-hint" = "<gray>Bu yoldaş için bir parçacık efekti seç."
+"gui.particles-hint" = "<gray>Bu yoldaş için bir parçacık efekti seçin."
 "gui.disabled" = "<gray>Bu sunucuda devre dışı."
-"gui.equip-first" = "<yellow>Önce bu yoldaşı kuşan."
+"gui.equip-first" = "<yellow>Önce bu yoldaşı kuşanın."
 "gui.current-particle" = "<gray>Seçili parçacık: <white>{effect}"
 "gui.none" = "Yok"
 "gui.bonuses" = "<gold>★ Bonuslar ve etkiler"
-"gui.bonuses-hint" = "<gray>Etkin bonusları, iksir etkilerini ve birleşimlerini gör."
-"gui.select-particle" = "<yellow>Bu parçacık efektini kuşanmak için tıkla."
+"gui.bonuses-hint" = "<gray>Etkin bonusları, iksir etkilerini ve birleşimlerini görün."
+"gui.select-particle" = "<yellow>Bu parçacık efektini kuşanmak için tıklayın."
 "gui.remove-particle" = "<yellow>Parçacık efektini kaldır"
-"gui.remove-particle-hint" = "<gray>Bu yoldaşın seçili parçacıklarını temizle."
+"gui.remove-particle-hint" = "<gray>Bu yoldaşın seçili parçacıklarını temizleyin."
 "gui.back" = "<gold>◀ Panele dön"
-"gui.back-hint" = "<gray>Bu yoldaşın seçeneklerine dön."
+"gui.back-hint" = "<gray>Bu yoldaşın seçeneklerine dönün."
 "gui.close" = "<red>✖ Kapat"
-"gui.close-hint" = "<gray>Bu menüyü kapat."
+"gui.close-hint" = "<gray>Bu menüyü kapatın."
 "gui.previous" = "<yellow>◀ Önceki sayfa"
 "gui.next" = "<green>Sonraki sayfa ▶"
 "gui.page" = "<gray>Sayfa {page} / {pages}"
-"gui.loading" = "<yellow>Yoldaş verilerin henüz hazır değil. Biraz sonra tekrar dene."
-"gui.bonus-snapshot" = "<gray>Açılış anındaki değerler. Tekrar kontrol etmek için yenile."
+"gui.loading" = "<yellow>Yoldaş verileriniz henüz hazır değil. Biraz sonra tekrar deneyin."
+"gui.bonus-snapshot" = "<gray>Açılış anındaki değerler. Tekrar kontrol etmek için yenileyin."
 "gui.no-bonuses" = "<yellow>Ayarlanmış bonus yok"
 "gui.no-bonuses-hint" = "<gray>Bu yoldaş için ayarlanmış bonus veya iksir etkisi yok."
 "gui.refresh" = "<aqua>Bonusları yenile"
-"gui.refresh-hint" = "<gray>Güncel değerleri ve bekleme sürelerini yenile."
-"gui.attribute" = "Özellik"
+"gui.refresh-hint" = "<gray>Güncel değerleri ve bekleme sürelerini yenileyin."
+"gui.attribute" = "Nitelik"
 "gui.effect" = "İksir"
 "gui.buff" = "Bonus"
 "gui.bonus-name" = "<gold>{category}: <white>{name}"
 "gui.configured" = "<gray>Ayarlanan: <white>{operation} {value}"
-"gui.attribute-total" = "<gray>Diğer kaynaklar dahil toplamın: <white>{value}"
+"gui.attribute-total" = "<gray>Diğer kaynaklar dahil toplamınız: <white>{value}"
 "gui.effect-level" = "<gray>Ayarlanan iksir seviyesi: <white>{level}"
 "gui.stack-mode" = "<gray>Birleştirme kuralı: <white>{mode}"
 "gui.resolved-level" = "<gray>Yoldaş iksir seviyesi: <white>{level}"
@@ -278,14 +279,14 @@
 "gui.cooldown-remaining" = "<yellow>{seconds}sn sonra hazır"
 "gui.excluded-sources" = "<gray>Kaynak bonuslarıyla işlenen: <white>{sources}"
 "gui.contributors" = "<gray>Katkıda bulunan yoldaşlar: <white>{companions}"
-"gui.feature.attributes" = "<gray>Özellikler"
+"gui.feature.attributes" = "<gray>Nitelikler"
 "gui.feature.effects" = "<gray>İksir etkileri"
 "gui.feature.buffs" = "<gray>Oyun bonusları"
 "gui.status.active" = "<green>✓ Etkin"
 "gui.status.stacked" = "<green>✓ Diğer yoldaşlarla birleştirildi"
 "gui.status.overridden" = "<yellow>Başka bir yoldaş kuralı tarafından geçersiz kılındı"
 "gui.status.external_override" = "<yellow>Başka bir etki veya değiştiriciyle değiştirildi"
-"gui.status.not_equipped" = "<gray>Etkin değil: yoldaş kuşanılmadı"
+"gui.status.not_equipped" = "<gray>Etkin değil: yoldaş kuşanılmamış"
 "gui.status.disabled" = "<gray>Bu sunucuda devre dışı"
 "gui.status.inactive" = "<gray>Şu anda uygulanmıyor"
 "gui.status.cooldown" = "<yellow>Bekleme süresinde"
@@ -313,18 +314,20 @@
 "command.parameter.activation" = "Etkin veya sıradaki güçlendirici etkinleştirme kimliği"
 "command.parameter.transaction" = "Sonuçlanmamış satın alım işleminin kimliği"
 "command.parameter.resolution" = "Ödeme kayıtlarını kontrol ettikten sonra grant veya cancel"
-"command.progression.granted" = "<green><green>{player}</green> adlı oyuncunun <green>{companion}</green> yoldaşı için <green>{amount}</green> deneyim kaydedildi."
-"command.progression.not-configured" = "<gold><gold>{companion}</gold> için ilerleme yapılandırılmamış."
-"command.progression.player-unavailable" = "<red><red>{player}</red> çevrimiçi değil."
-"command.progression.player-loading" = "<gold><gold>{player}</gold> adlı oyuncunun ilerleme verileri hazır değil. Yüklendikten sonra tekrar deneyin."
-"command.progression.invalid-amount" = "<red>1 ile <red>{maximum}</red> arasında bir tam sayı girin."
-"command.booster.granted" = "<green><green>{player}</green> için <green>{amount}</green> adet <green>{booster}</green> kullanım hakkı kaydedildi."
-"command.booster.not-found" = "<red><red>{booster}</red> kimlikli güçlendirici yok."
-"command.booster.server-only" = "<red>Bu komut yalnızca sunucu güçlendiricilerini başlatır."
-"command.transactions.count" = "<gold>Sonuçlanmamış satın alımlar: <gold>{count}</gold>"
-"command.transactions.entry" = "<gray><yellow>{transaction}</yellow> Oyuncu: <gray>{player}</gray>; <gray>{kind}</gray>; yoldaş: <gray>{companion}</gray>; tanım: <gray>{definition}</gray>; önceki kademe: <gray>{tier}</gray>; durum: <gray>{status}</gray>; para: <gray>{money}</gray>; eşyalar: <gray>{items}</gray>; sağlayıcı: <gray>{provider}</gray>; oluşturulma: <gray>{created}</gray>"
-"command.transactions.reference" = "<gray>İşlem veya etkinleştirme kimliği: <white>{transaction}</white>"
-"command.transactions.reconciled" = "<gold>Çözüm kaydedildi. Para veya eşyalar otomatik olarak alınmadı ya da iade edilmedi."
+"command.progression.granted" = "<green>{player} adlı oyuncunun {companion} yoldaşı için {amount} yoldaş deneyimi kaydedildi.</green>"
+"command.progression.not-configured" = "<gold>{companion} için ilerleme yapılandırılmamış.</gold>"
+"command.progression.player-unavailable" = "<red>{player} çevrimiçi değil.</red>"
+"command.progression.player-loading" = "<gold>{player} adlı oyuncunun ilerleme verileri hazır değil. Yüklendikten sonra tekrar deneyin.</gold>"
+"command.progression.invalid-amount" = "<red>1 ile {maximum} arasında bir tam sayı girin.</red>"
+"command.booster.granted" = "<green>{player} için {amount} adet {booster} güçlendirici kullanım hakkı kaydedildi.</green>"
+"command.booster.not-found" = "<red>{booster} kimlikli güçlendirici yok.</red>"
+"command.booster.server-only" = "<red>Bu komut yalnızca sunucu güçlendiricilerini başlatır.</red>"
+"command.booster.started" = "<green>{booster} sunucu güçlendiricisi başlatıldı veya sıraya alındı.</green>"
+"command.booster.cancelled" = "<green>{activation} güçlendirici etkinleştirmesi iptal edildi.</green>"
+"command.transactions.count" = "<gold>Sonuçlanmamış satın alımlar: {count}</gold>"
+"command.transactions.entry" = "<yellow>{transaction}</yellow> <gray>Oyuncu: {player}; {kind}; yoldaş: {companion}; tanım: {definition}; önceki kademe: {tier}; durum: {status}; para: {money}; eşyalar: {items}; sağlayıcı: {provider}; oluşturulma: {created}</gray>"
+"command.transactions.reference" = "<gray>İşlem veya etkinleştirme kimliği: <white>{transaction}</white></gray>"
+"command.transactions.reconciled" = "<gold>Mutabakat kaydedildi. Para veya eşyalar otomatik olarak alınmadı ya da iade edilmedi.</gold>"
 "gui.title.upgrades" = "<gold>Yoldaş Geliştirmeleri"
 "gui.title.purchase" = "<gold>Satın Alımı Onayla"
 "gui.title.boosts" = "<gold>Yoldaş Güçlendiricileri"
@@ -334,13 +337,13 @@
 "gui.upgrades-hint" = "<gray>Yoldaşınızı büyütün ve bonuslarını geliştirin."
 "gui.boosts" = "<gradient:#ffe082:#ffb74d>⌛ Güçlendiriciler</gradient>"
 "gui.boosts-hint" = "<gray>Kişisel ve sunucu genelindeki güçlendirmeleri inceleyin."
-"gui.progress-level" = "<gold>★ Seviye <white>{level}</white>"
-"gui.progress-xp" = "<gray>Yoldaş deneyimi: <yellow>{xp}</yellow> / <white>{required}</white>"
+"gui.progress-level" = "<gold>★ Seviye <white>{level}"
+"gui.progress-xp" = "<gray>Yoldaş deneyimi: <yellow>{xp}</yellow> / <white>{required}"
 "gui.max-level" = "<green>✓ Yoldaş en yüksek seviyede"
-"gui.upgrade-tier" = "<gray>Geliştirme kademesi: <gold>{tier}</gold> / <white>{maximum}</white>"
+"gui.upgrade-tier" = "<gray>Geliştirme kademesi: <gold>{tier}</gold> / <white>{maximum}"
 "gui.max-tier" = "<green>✓ Tamamen geliştirildi"
-"gui.upgrade-change" = "<gray><gray>{bonus}</gray>: <white>{current}</white> <gold>→</gold> <green>{next}</green>"
-"gui.required-level" = "<gray>Gereken yoldaş seviyesi: <yellow>{level}</yellow>"
+"gui.upgrade-change" = "<gray>{bonus}: <white>{current}</white> <gold>→</gold> <green>{next}"
+"gui.required-level" = "<gray>Gereken yoldaş seviyesi: <yellow>{level}"
 "gui.level-locked" = "<red>Gereksinimler karşılanmıyor."
 "gui.upgrade-preview" = "<yellow>Bu geliştirmeyi incelemek için tıklayın."
 "gui.no-upgrades" = "<gold>Geliştirme yapılandırılmamış"
@@ -349,18 +352,18 @@
 "gui.confirm-purchase-hint" = "<gray>Belirtilen bedeli ödeyerek satın alımı tamamlayın."
 "gui.cancel-purchase" = "<yellow>◀ İptal"
 "gui.cancel-purchase-hint" = "<gray>Hiçbir şey harcamadan geri dönün."
-"gui.cost-free" = "<gray>Bedel: <green>Ücretsiz</green>"
-"gui.cost-money" = "<gray>Gereken para: <gold>{amount}</gold>"
-"gui.cost-item" = "<gray>Gereken eşyalar: <yellow>{amount}</yellow> × <yellow>{item}</yellow>"
+"gui.cost-free" = "<gray>Bedel: <green>Ücretsiz"
+"gui.cost-money" = "<gray>Gereken para: <gold>{amount}"
+"gui.cost-item" = "<gray>Gereken eşyalar: <yellow>{amount} × {item}"
 "gui.booster-open" = "<yellow>Satın alma ve etkinleştirme seçenekleri için tıklayın."
 "gui.booster-scope.personal" = "<aqua>Kişisel güçlendirme <dark_gray>• <gray>Yalnızca siz"
 "gui.booster-scope.server" = "<gold>Sunucu güçlendirmesi <dark_gray>• <gray>Bu sunucudaki herkes"
-"gui.booster-channel" = "<gray><gray>{channel}</gray>: +<green>{percent}</green>%"
-"gui.booster-duration" = "<gray>Süre: <white>{time}</white>"
-"gui.booster-remaining" = "<gray>Kalan süre: <yellow>{time}</yellow>"
+"gui.booster-channel" = "<gray>{channel}: <green>+%{percent}"
+"gui.booster-duration" = "<gray>Süre: <white>{time}"
+"gui.booster-remaining" = "<gray>Kalan süre: <yellow>{time}"
 "gui.booster-rule.queue" = "<gray>Çakışan güçlendirmeler sırada bekler."
 "gui.booster-rule.highest" = "<gray>Her kapsamda en güçlü güçlendirme uygulanır."
-"gui.booster-credits" = "<gray>Sahip olunan kullanım hakkı: <gold>{count}</gold>"
+"gui.booster-credits" = "<gray>Sahip olunan kullanım hakkı: <gold>{count}"
 "gui.buy-booster" = "<green>Bir Kullanım Hakkı Satın Al"
 "gui.buy-booster-hint" = "<gray>Satın almadan önce bedeli inceleyin."
 "gui.activate-booster" = "<gold>Güçlendiriciyi Etkinleştir"
@@ -372,9 +375,9 @@
 "gui.active-boosts-hint" = "<gray>Güçlendirmelerinizi, sunucu etkinliklerini ve toplam oranları görün."
 "gui.booster-running" = "<green>✓ Çalışıyor"
 "gui.booster-queued" = "<yellow>⌛ Sırada"
-"gui.booster-total" = "<gray><gray>{channel}</gray> toplam güçlendirmesi: +<green>{percent}</green>%"
-"gui.booster-cap" = "<gray>En yüksek toplam güçlendirme: +<white>{percent}</white>%"
-"gui.booster-applied" = "<gray>Kişisel + sunucu güçlendirmeleri: özgün ödülün +<green>{percent}</green>% kadarı"
+"gui.booster-total" = "<gray>{channel} güçlendirici toplamı: <green>+%{percent}"
+"gui.booster-cap" = "<gray>En yüksek toplam güçlendirme: <white>+%{percent}"
+"gui.booster-applied" = "<gray>Kişisel + sunucu güçlendirmeleri: <green>özgün ödüle +%{percent}"
 "gui.no-active-boosts" = "<gold>Etkin güçlendirme yok"
 "gui.no-active-boosts-hint" = "<gray>Başlamak için sahip olduğunuz bir güçlendiriciyi etkinleştirin."
 "gui.back-boosts" = "<gold>◀ Güçlendiricilere Dön"
@@ -401,26 +404,26 @@
 "gui.title.setup" = "<gold>Yoldaş Ayarları"
 "gui.title.setup-confirm" = "<gold>Ayarları Onayla"
 "gui.setup" = "<gold>Başlangıç ayarları"
-"gui.setup-hint" = "<gray>Başlangıç yoldaşlarını kur ve sunucu bonuslarını seç."
+"gui.setup-hint" = "<gray>Başlangıç yoldaşlarını kurun ve sunucu bonuslarını seçin."
 "gui.setup-cosmetic" = "<aqua>Kozmetik yoldaşlar"
-"gui.setup-cosmetic-hint" = "<gray>Nitelikleri, bonusları, efektleri, geliştirmeleri ve güçlendiricileri kapat."
+"gui.setup-cosmetic-hint" = "<gray>Nitelikleri, bonusları, iksir etkilerini, geliştirmeleri ve güçlendiricileri kapatır."
 "gui.setup-survival" = "<green>Hayatta kalma yoldaşları"
-"gui.setup-survival-hint" = "<gray>Yapılandırılmış nitelikleri, bonusları ve iksir etkilerini aç."
-"gui.setup-common" = "<gray>Eksik başlangıç yoldaşlarını kurar; yoldaş dosyalarını korur."
+"gui.setup-survival-hint" = "<gray>Yapılandırılmış nitelikleri, bonusları ve iksir etkilerini açar."
+"gui.setup-common" = "<gray>Eksik başlangıç yoldaşlarını kurar; yoldaş dosyalarınızı korur."
 "gui.setup-costs" = "<gray>Geliştirmeler ve güçlendiriciler kapalı kalır; parçacıklar açılır."
 "gui.setup-permissions" = "<gray>Oyuncu erişimi mevcut izin ayarlarını kullanmaya devam eder."
 "gui.setup-preview" = "<gold>Yoldaşlara göz at"
-"gui.setup-preview-hint" = "<gray>Başlangıç yoldaşlarını kuşan; parçacıkları ve bonusları incele."
+"gui.setup-preview-hint" = "<gray>Başlangıç yoldaşlarını kuşanın; parçacıkları ve bonusları inceleyin."
 "gui.setup-confirm" = "<green>Ayarları uygula"
 "gui.setup-confirm-hint" = "<gray>Bu profili tüm eklentiye uygular ve eklentiyi yeniden yükler."
 "gui.setup-cancel" = "<gold>Ayarlara dön"
-"gui.setup-cancel-hint" = "<gray>Değişiklikleri uygulamadan geri dön."
+"gui.setup-cancel-hint" = "<gray>Değişiklikleri uygulamadan geri dönün."
 "gui.setup-current" = "<gray>Yüklenen yoldaşlar: {count}"
 "setup.applying" = "{prefix} <gold>Yoldaş ayarları uygulanıyor...</gold>"
-"setup.applied" = "{prefix} <green>Yoldaş ayarları kaydedildi. Yoldaş seçmek için <white>/bytecompanions menu</white> aç.</green>"
-"setup.failed" = "{prefix} <red>Ayarlar uygulanamadı. Konsolu kontrol et; önceki ayarlar etkin kalır.</red>"
-"setup.stale" = "{prefix} <gold>Ayarlar değişti. Uygulamadan önce ayarları yeniden aç.</gold>"
-"command.description.collection" = "Koleksiyonunu incele ve filtrele"
+"setup.applied" = "{prefix} <green>Yoldaş ayarları kaydedildi. Yoldaş seçmek için <white>/bytecompanions menu</white> komutunu kullanın.</green>"
+"setup.failed" = "{prefix} <red>Ayarlar uygulanamadı. Konsolu kontrol edin; önceki ayarlar etkin kalır.</red>"
+"setup.stale" = "{prefix} <gold>Ayarlar değişti. Uygulamadan önce ayarları yeniden açın.</gold>"
+"command.description.collection" = "Koleksiyonu incele ve filtrele"
 "command.description.outfits" = "Kaydedilmiş yoldaş takımlarını yönet"
 "command.description.interact" = "Kuşanılmış yoldaşla etkileşime gir"
 "gui.title.outfits" = "Kaydedilmiş takımlar"
@@ -444,7 +447,7 @@
 "gui.outfit-apply" = "<green>Bu takımı kullan"
 "gui.outfit-delete" = "<red>Takımı sil"
 "gui.outfit-delete-confirm" = "<red>Silmeyi onayla"
-"gui.outfit-count" = "<gray>Yoldaşlar: {count}"
+"gui.outfit-count" = "<gray>Yoldaşlar: <white>{count}"
 "gui.personalize" = "<gold>Kişiselleştir"
 "gui.nickname" = "<gold>İsim belirle"
 "gui.name-reset" = "<gray>İsmi sıfırla"
@@ -464,30 +467,30 @@
 "gui.action-call" = "<gold>Buraya gel"
 "gui.trial" = "<aqua>Özel olarak dene"
 "gui.trial-stop" = "<gray>Özel denemeyi durdur"
-"gui.trial-hint" = "<gray>Yalnızca sen görürsün. {seconds}sn; bonus yok."
+"gui.trial-hint" = "<gray>Yalnızca siz görürsünüz. {seconds}sn; bonus yok."
 "gui.choice-value" = "<white>{value}"
 "collection.trial-started" = "{prefix} <aqua>Özel deneme başladı. Bonus vermez."
-"collection.outfit-prompt" = "{prefix} <yellow>Sohbete takım adı yaz (1–32 harf, rakam, _ veya -) ya da cancel. Süre 60 saniye."
-"collection.name-prompt" = "{prefix} <yellow>Sohbete düz bir isim yaz (en fazla 32 karakter) ya da cancel. Süre 60 saniye."
-"collection.choose-equipped" = "{prefix} <yellow>Önce bir yoldaş kuşan. Birden fazlaysa kimliğini belirt."
-"collection.action-applied" = "{prefix} <green>Yoldaşın karşılık verdi."
-"collection.cooldown" = "{prefix} <yellow>Yeni bir etkileşimden önce biraz bekle."
+"collection.outfit-prompt" = "{prefix} <yellow>Sohbete bir takım adı yazın (1–32 harf, rakam, _ veya -) ya da cancel yazın. Süre 60 saniye."
+"collection.name-prompt" = "{prefix} <yellow>Sohbete düz bir ad yazın (en fazla 32 karakter) ya da cancel yazın. Süre 60 saniye."
+"collection.choose-equipped" = "{prefix} <yellow>Önce bir yoldaş kuşanın. Birden fazla yoldaş kuşandıysanız kimliğini belirtin."
+"collection.action-applied" = "{prefix} <green>Yoldaşınız karşılık verdi."
+"collection.cooldown" = "{prefix} <yellow>Yeni bir etkileşimden önce biraz bekleyin."
 "collection.rejected" = "{prefix} <red>Bu değişiklik uygulanamadı: {detail}"
 "collection.saved" = "{prefix} <green>Koleksiyon kaydedildi."
-"collection.working" = "{prefix} <yellow>Önceki değişikliğin hâlâ kaydediliyor."
-"collection.too-long" = "{prefix} <red>En fazla 32 karakter kullan."
+"collection.working" = "{prefix} <yellow>Önceki değişikliğiniz hâlâ kaydediliyor."
+"collection.too-long" = "{prefix} <red>En fazla 32 karakter kullanın."
 "collection.input-expired" = "{prefix} <gray>Girdi süresi doldu. Hiçbir şey değiştirilmedi."
 "gui.collection-operation-failed" = "{prefix} <red>Bu değişiklik uygulanamadı: {reason}"
 "gui.title.settings" = "<gold>Görünüm ayarları"
 "gui.settings" = "<gold>Görünüm ayarları"
-"gui.settings-hint" = "<gray>Hangi yoldaşları ve parçacıkları göreceğini seç."
+"gui.settings-hint" = "<gray>Hangi yoldaşları ve parçacıkları göreceğinizi seçin."
 "gui.settings-visibility" = "<aqua>Yoldaşlar"
 "gui.settings-visibility-all" = "<green>Tüm yoldaşlar"
 "gui.settings-visibility-all-hint" = "<gray>Yoldaşları ve süslemeleri göster."
 "gui.settings-visibility-own" = "<yellow>Yalnızca benimkiler"
-"gui.settings-visibility-own-hint" = "<gray>Yalnızca kendi yoldaşlarını göster."
+"gui.settings-visibility-own-hint" = "<gray>Yalnızca kendi yoldaşlarınızı göster."
 "gui.settings-visibility-none" = "<red>Yoldaşları gizle"
-"gui.settings-visibility-none-hint" = "<gray>Yoldaşları ve süslemeleri kendi görünümünden gizle."
+"gui.settings-visibility-none-hint" = "<gray>Yoldaşları ve süslemeleri görünümünüzden gizle."
 "gui.settings-particles" = "<aqua>Parçacıklar"
 "gui.settings-particles-full" = "<green>Tam"
 "gui.settings-particles-full-hint" = "<gray>Her parçacık karesini göster."
@@ -500,30 +503,30 @@
 "command.parameter.setting" = "Ayar"
 "command.parameter.value" = "Değer"
 
-"collection.reason.equip-first" = "Önce bu yoldaşı kuşan."
-"collection.reason.outfit-limit" = "{limit} takım sınırına ulaştın."
+"collection.reason.equip-first" = "Önce bu yoldaşı kuşanın."
+"collection.reason.outfit-limit" = "{limit} takım sınırına ulaştınız."
 "collection.reason.outfit-unavailable" = "Bu takım kullanılamıyor."
 "collection.reason.formation-order" = "Dizilim yalnızca kuşanılmış yoldaşları içerebilir."
 "collection.reason.model-limit" = "Takım, model sınırını aşıyor."
 "collection.reason.personalization-locked" = "Kişiselleştirme kilitli."
 "collection.reason.particle-unavailable" = "Bu parçacık efekti kullanılamıyor."
 "collection.reason.particle-locked" = "Bu parçacık efekti kilitli."
-"collection.reason.particle-remove-denied" = "Bu parçacık efektini kaldıramazsın."
+"collection.reason.particle-remove-denied" = "Bu parçacık efektini kaldıramazsınız."
 "collection.reason.nickname-invalid" = "Adlar en fazla 32 karakterlik düz metin olmalıdır."
 "collection.reason.formation-invalid" = "Bilinmeyen dizilim: {formation}."
 "collection.reason.cosmetic-invalid" = "Geçersiz görünüm kimliği."
 "collection.reason.outfit-name-invalid" = "Takım adları 1–32 harf, rakam, alt çizgi veya kısa çizgi içermelidir."
-"collection.reason.variant-locked" = "Kilitli varyant: {variant}."
-"collection.reason.variant-unavailable" = "Kullanılamayan varyant: {variant}."
+"collection.reason.variant-locked" = "Kilitli çeşit: {variant}."
+"collection.reason.variant-unavailable" = "Kullanılamayan çeşit: {variant}."
 "collection.reason.cancelled" = "Başka bir eklenti bu yoldaş değişikliğini iptal etti."
 "collection.reason.save-failed" = "Kaydedilemedi; önceki ayarlar mümkün olduğunca geri yüklendi."
-"collection.reason.busy" = "Önceki değişikliğinin kaydedilmesini bekle."
+"collection.reason.busy" = "Önceki değişikliğinizin kaydedilmesini bekleyin."
 "command.description.status" = "Çalışma zamanı, özellik ve uyumluluk durumunu göster"
 "command.description.debug_dump" = "Kapsamlı bir {prefix} tanılama raporu oluştur"
 "command.parameter.upload" = "Herkese açık yüklemeler etkinken raporu yükle"
 "command.feedback.inactive" = "{prefix} <gray>Çalışma zamanı yeniden başlatılıyor; birazdan tekrar deneyin.</gray>"
 "command.status.header" = "Çalışma zamanı"
-"command.status.configuration" = "<gray>Yoldaşlar: {enabled} <dark_gray>|</dark_gray> Dil: <white>{language}</white> <dark_gray>|</dark_gray> Otomatik yeniden yükleme: {hot_reload}</gray>"
+"command.status.configuration" = "<gray>Yoldaşlar: {enabled} <dark_gray>|</dark_gray> Dil: <white>{language}</white> <dark_gray>|</dark_gray> Canlı yeniden yükleme: {hot_reload}</gray>"
 "command.status.runtime" = "<gray>Tanımlar: <white>{count}</white> <dark_gray>|</dark_gray> Yüklenen oyuncular: <white>{players}</white> <dark_gray>|</dark_gray> Kuşanılan yoldaşlar: <white>{companions}</white></gray>"
 "command.status.features" = "<gray>Özellikler: <white>{features}</white> <dark_gray>|</dark_gray> Depolama: <white>{value}</white></gray>"
 "command.status.integrations" = "<gray>Entegrasyonlar: <white>{integrations}</white></gray>"
@@ -570,8 +573,8 @@
 "language.menu.command" = "Komut: {command}"
 "language.menu.selected" = "Seçili"
 "language.menu.all-volmit-plugins" = "Tüm Volmit eklentileri"
-"language.error.stopping" = "&cDil seçimi, eklenti durdurulduğunda kullanılamaz."
-"language.error.editor-player-only" = "&cOyundaki dil editörü açın."
+"language.error.stopping" = "&cEklenti durdurulurken dil seçimi kullanılamaz."
+"language.error.editor-player-only" = "&cDil düzenleyicisini oyun içinde açın."
 "language.error.no-providers" = "&cKullanılabilir Volmit dil sağlayıcısı yok."
 "language.error.numeric-page" = "&cSayfa numarasını rakamla girin."
 "language.error.personal-player-only" = "&cOyuncu dili tercihleri oyunda seçilmelidir."
@@ -581,14 +584,21 @@
 "language.error.server-locale-required" = "&cSunucunun varsayılan dili için en_US gibi bir dil kodu seçin."
 "language.error.unavailable-for-all" = "&c{locale} dili, seçilen eklentilerin tümünde kullanılamıyor."
 "language.usage.editor" = "&7Kullanım: /{command} language server edit [locale]"
-"language.usage.selection" = "&7Kullanım: /{command} language self [locale|reset] or server [locale]"
+"language.usage.selection" = "&7Kullanım: /{command} language self [locale|reset] veya server [locale]"
 "language.usage.volmit-selection" = "&7Kullanım: /volmit plugins languages [locale]"
+"language.usage.update" = "&7Kullanım: /{command} language update"
 "language.selection.preparing" = "&7{target} için {locale} dili hazırlanıyor..."
 "language.selection.save-failed" = "{plugin}: &cdil seçimi kaydedilemedi; sunucu konsolunu kontrol edin."
 "language.selection.english-fallback" = "{plugin}: &e{locale} kullanılamıyor; İngilizce (en_US) kullanılıyor."
-"language.selection.personal-selected" = "{plugin}: &7Diliniz şimdi {locale}."
-"language.selection.server-selected" = "{plugin}: &7sunucu dili şimdi {locale}."
-"language.selection.server-default-selected" = "{plugin}: &7diliniz artık sunucunun varsayılan dilini kullanıyor."
+"language.selection.personal-selected" = "{plugin}: &7Diliniz artık {locale}."
+"language.selection.server-selected" = "{plugin}: &7Sunucu dili artık {locale}."
+"language.selection.server-default-selected" = "{plugin}: &7Diliniz artık sunucunun varsayılan dilini kullanıyor."
+"language.update.checking" = "{plugin}: &7Dil deposundaki değişiklikler denetleniyor..."
+"language.update.unchanged" = "{plugin}: &7Yüklü diller zaten depoyla eşleşiyor."
+"language.update.applied" = "{plugin}: &7{locale} güncellendi ({added} eklendi, {updated} değiştirildi, {kept} yerel düzenleme korundu)."
+"language.update.cooldown" = "{plugin}: &7Dil deposu kısa süre önce denetlendi; {remaining} sonra yeniden deneyin."
+"language.update.locale-failed" = "{plugin}: &c{locale} güncellenmedi: {reason}"
+"language.update.failed" = "{plugin}: &cDil güncellemesi başarısız oldu: {reason}"
 "language.editor.title" = "{plugin} › {section}"
 "language.editor.loading" = "&7{locale} mesajları yükleniyor..."
 "language.editor.section.languages" = "Diller"
@@ -605,14 +615,14 @@
 "language.editor.input.unable-to-save" = "&cKaydedilemedi: {reason}"
 "language.editor.navigation.back" = "&eGeri&r"
 "language.editor.navigation.close" = "&cKapat&r"
-"language.editor.navigation.previous-page" = "&eÖnceki Sayfa&r"
+"language.editor.navigation.previous-page" = "&eÖnceki sayfa&r"
 "language.editor.navigation.next-page" = "&eSonraki sayfa&r"
 "language.editor.search.messages" = "Mesajları ara"
 "language.editor.search.messages-lore" = "Tüm mesajları aramak için tıklayın."
 "language.editor.search.clear" = "Aramayı temizle"
-"language.editor.message.current-value" = "&7Mevcut Değer:&r"
+"language.editor.message.current-value" = "&7Geçerli değer:&r"
 "language.editor.message.variables" = "&8{variables}&r"
-"language.editor.message.edit-plural" = "&7Bir çoğul biçimini düzenlemek için tıklayın.&r"
+"language.editor.message.edit-plural" = "&7Çoğul biçimini düzenlemek için tıklayın.&r"
 "language.editor.message.edit-lines" = "&7Satırları ayrı ayrı düzenlemek için tıklayın.&r"
 "language.editor.message.edit-chat" = "&7Sohbette düzenlemek için tıklayın.&r"
 "language.editor.locale.open" = "&8Bu dili açmak için tıklayın.&r"
@@ -649,36 +659,36 @@
 "config.editor.page" = "Sayfa {page}/{pages}"
 "config.editor.entry" = "Girdi {number}"
 "config.editor.current" = "Geçerli: {value}"
-"config.editor.open" = "Bu bölümü açmak için tıkla."
-"config.editor.toggle" = "Açmak veya kapatmak için tıkla."
-"config.editor.edit" = "Sohbette yeni değer girmek için tıkla."
-"config.editor.prompt" = "{path} için yeni değer gir. Dönmek için cancel yaz."
+"config.editor.open" = "Bu bölümü açmak için tıklayın."
+"config.editor.toggle" = "true ve false arasında geçiş yapmak için tıklayın."
+"config.editor.edit" = "Sohbete yeni bir değer girmek için tıklayın."
+"config.editor.prompt" = "{path} için yeni bir değer girin. Geri dönmek için cancel yazın."
 "config.editor.expired" = "Yapılandırma girişinin süresi doldu."
-"config.editor.too-long" = "En fazla {maximum} karakter gir."
+"config.editor.too-long" = "En fazla {maximum} karakter girin."
 "config.editor.saving" = "Yapılandırma kaydediliyor..."
 "config.editor.saved" = "{path} kaydedildi. Değişiklikler otomatik uygulanır."
 "config.editor.failed" = "Yapılandırma düzenlenemedi: {reason}"
 "config.editor.loading" = "Yapılandırma yükleniyor..."
 "config.editor.empty" = "Bu bölümde ayar yok."
-"config.editor.player-only" = "Yapılandırma düzenleyicisini oyun içinde aç."
-"config.editor.no-permission" = "Bu yapılandırmayı düzenleme iznin yok."
+"config.editor.player-only" = "Yapılandırma düzenleyicisini oyun içinde açın."
+"config.editor.no-permission" = "Bu yapılandırmayı düzenleme izniniz yok."
 "config.editor.back" = "Geri"
 "config.editor.previous" = "Önceki sayfa"
 "config.editor.next" = "Sonraki sayfa"
 "config.editor.refresh" = "Yenile"
 "config.editor.close" = "Kapat"
 "config.editor.type.text" = "Dış tırnak işaretleri olmadan metin."
-"config.editor.type.integer" = "Bir tam sayı gir."
-"config.editor.type.decimal" = "0.25 gibi bir sayı gir."
-"config.editor.type.list" = "[\"stone\", \"deepslate\"] gibi bir TOML listesi kullan."
+"config.editor.type.integer" = "Bir tam sayı girin."
+"config.editor.type.decimal" = "0.25 gibi bir sayı girin."
+"config.editor.type.list" = "[\"stone\", \"deepslate\"] gibi bir TOML listesi kullanın."
 "config.editor.adjust" = "Sol +{step}, sağ -{step}, Shift x10, kesin değer girmek için Q."
 
 "gui.config.title" = "Yapılandırma"
-"gui.setting.collections" = "Kişisel koleksiyonlar, kıyafetler, deneme süreleri ve kişilik."
+"gui.setting.collections" = "Kişisel koleksiyonlar, takımlar, denemeler ve kişilik."
 "gui.setting.collections.idleReactions" = "Bir yoldaş hareketsizken ara sıra boşta tepkilerine izin ver."
 "gui.setting.collections.idleReactions.name" = "Boşta tepkileri"
-"gui.setting.collections.maximumOutfits" = "Oyuncu başına kaydedilen en fazla kıyafet sayısı, 1 ile 32 arası."
-"gui.setting.collections.maximumOutfits.name" = "En fazla kıyafet"
+"gui.setting.collections.maximumOutfits" = "Oyuncu başına kaydedilebilecek en fazla takım sayısı, 1 ile 32 arası."
+"gui.setting.collections.maximumOutfits.name" = "En fazla takım"
 "gui.setting.collections.name" = "Koleksiyonlar"
 "gui.setting.collections.personalityEnabled" = "Sevme, el sallama, oturma, bekleme ve çağırma etkileşimlerine izin ver."
 "gui.setting.collections.personalityEnabled.name" = "Kişilik etkin"
@@ -689,12 +699,12 @@
 "gui.setting.debug.uploadEnabled" = "/bytecompanions debug dump upload=true komutunun raporları yerel olarak kaydettikten sonra mclo.gs adresinde yayımlamasına izin ver."
 "gui.setting.debug.uploadEnabled.name" = "Yükleme etkin"
 "gui.setting.features" = "Özellik paketleri; devre dışı paketler komutlarını gizler ve kayıtlı durumlarını korur."
-"gui.setting.features.attributes" = "Yoldaş öznitelik değiştiricilerini etkinleştir."
-"gui.setting.features.attributes.name" = "Öznitelikler"
+"gui.setting.features.attributes" = "Yoldaş nitelik değiştiricilerini etkinleştir."
+"gui.setting.features.attributes.name" = "Nitelikler"
 "gui.setting.features.boosters" = "Kişisel ve sunucu geneli yoldaş güçlendiricilerini etkinleştir."
 "gui.setting.features.boosters.name" = "Güçlendiriciler"
-"gui.setting.features.buffs" = "Düşen eşya ve deneyim bonusları gibi yoldaş takviyelerini etkinleştir."
-"gui.setting.features.buffs.name" = "Takviyeler"
+"gui.setting.features.buffs" = "Düşen eşya ve deneyim bonusları gibi yoldaş oyun bonuslarını etkinleştir."
+"gui.setting.features.buffs.name" = "Oyun bonusları"
 "gui.setting.features.decorations" = "Sabit dekorasyon yoldaşlarını etkinleştir."
 "gui.setting.features.decorations.name" = "Dekorasyonlar"
 "gui.setting.features.effects" = "Yoldaş iksir etkilerini etkinleştir."
@@ -702,7 +712,7 @@
 "gui.setting.features.name" = "Özellikler"
 "gui.setting.features.particles" = "Yoldaş parçacık efektlerini etkinleştir."
 "gui.setting.features.particles.name" = "Parçacıklar"
-"gui.setting.features.progression" = "Yoldaş seviyelerini ve isteğe bağlı bonus yükseltmelerini etkinleştir."
+"gui.setting.features.progression" = "Yoldaş seviyelerini ve isteğe bağlı bonus geliştirmelerini etkinleştir."
 "gui.setting.features.progression.name" = "İlerleme"
 "gui.setting.general" = "Ana anahtar, sunucu dili, güncelleme bildirimleri ve yoldaş sınırları."
 "gui.setting.general.autoLoadCompanions" = "Çalışma zamanı başladığında yoldaş tanımlarını companions klasöründen yükle."
@@ -729,17 +739,17 @@
 "gui.setting.hotReload.cooldownMillis.name" = "Bekleme milisaniyesi"
 "gui.setting.hotReload.enabled" = "Veri klasöründeki kararlı dosya değişikliklerini otomatik olarak uygula."
 "gui.setting.hotReload.enabled.name" = "Etkin"
-"gui.setting.hotReload.name" = "Anında yeniden yükleme"
+"gui.setting.hotReload.name" = "Canlı yeniden yükleme"
 "gui.setting.hotReload.notifyOperators" = "Otomatik bir dosya yeniden yüklemesi başarılı veya başarısız olduğunda bytecompanions.config iznine sahip çevrimiçi oyuncuları bilgilendir."
 "gui.setting.hotReload.notifyOperators.name" = "Operatörleri bilgilendir"
 "gui.setting.hotReload.pollIntervalMillis" = "Dosya taramaları arasındaki milisaniye, 250 ile 60000 arası."
 "gui.setting.hotReload.pollIntervalMillis.name" = "Tarama aralığı milisaniyesi"
 "gui.setting.languages" = "Sunucu çevirilerini ve biçimlendirmelerini düzenle."
 "gui.setting.languages.name" = "Diller"
-"gui.setting.menus" = "Pano kısayolları."
+"gui.setting.menus" = "Panel kısayolları."
 "gui.setting.menus.name" = "Menüler"
-"gui.setting.menus.rightClickDashboard" = "Sahibi ana eliyle sağ tıkladığında yoldaş panosunu aç."
-"gui.setting.menus.rightClickDashboard.name" = "Sağ tıkla pano"
+"gui.setting.menus.rightClickDashboard" = "Sahibi yoldaşa ana eliyle sağ tıkladığında yoldaş panelini aç."
+"gui.setting.menus.rightClickDashboard.name" = "Sağ tıkla panel aç"
 "gui.setting.metrics" = "Anonim kullanım istatistikleri."
 "gui.setting.metrics.enabled" = "Anonim ByteCompanions kullanım istatistiklerini bStats hizmetine gönder."
 "gui.setting.metrics.enabled.name" = "Etkin"
@@ -767,7 +777,7 @@
 "gui.setting.presentation.splashScreen" = "Hizmetler hazır olduktan sonra ByteCompanions açılış görselini yazdır."
 "gui.setting.presentation.splashScreen.name" = "Açılış ekranı"
 "gui.setting.serverRules" = "Dünya ve bölge kısıtlamaları."
-"gui.setting.serverRules.bonusDisabledWorlds" = "Yoldaş özniteliklerinin, etkilerinin, ödül bonuslarının ve otomatik yoldaş deneyiminin askıya alındığı dünya adları."
+"gui.setting.serverRules.bonusDisabledWorlds" = "Yoldaş niteliklerinin, etkilerinin, ödül bonuslarının ve otomatik yoldaş deneyiminin askıya alındığı dünya adları."
 "gui.setting.serverRules.bonusDisabledWorlds.name" = "Bonusu kapalı dünyalar"
 "gui.setting.serverRules.hiddenWorlds" = "Yoldaş görsellerinin gizlendiği dünya adları."
 "gui.setting.serverRules.hiddenWorlds.name" = "Gizli dünyalar"

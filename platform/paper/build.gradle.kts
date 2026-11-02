@@ -5,6 +5,7 @@ import art.arcane.volmit.packaging.VerifyNativeClassBoundary
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import io.github.slimjar.SlimJarExtension
 import io.github.slimjar.resolver.data.Dependency
+import io.github.slimjar.resolver.data.DependencyData
 import io.github.slimjar.resolver.reader.dependency.DependencyReader
 import io.github.slimjar.resolver.reader.resolution.PreResolutionDataReader
 import io.github.slimjar.task.SlimJarTask
@@ -12,6 +13,8 @@ import io.github.slimjar.util.Serialization.writeList
 import io.papermc.paperweight.userdev.PaperweightUserExtension
 import java.io.DataInputStream
 import java.io.DataOutputStream
+import java.security.MessageDigest
+import java.util.HexFormat
 import java.util.Properties
 import java.util.zip.ZipEntry
 import java.util.zip.ZipFile
@@ -79,12 +82,35 @@ val bundledLocales = listOf(
     "en_US", "de_DE", "es_ES", "fi_FI", "fr_FR", "he_IL", "it_IT", "ja-JP", "ko_KR",
     "lt_LT", "nl_NL", "pl_PL", "pt_PT", "ru_RU", "tr_TR", "vi_VI", "zh_CN", "zh_TW"
 )
-val languageSourceReference: String = providers.gradleProperty("languageSourceReference").orElse("master").get()
+val languageSourceRepository: String = providers.gradleProperty("languageSourceRepository").orElse("VolmitSoftware/ByteCompanions").get()
+val languageSourceBranch: String = providers.gradleProperty("languageSourceBranch").orElse(providers.provider {
+    try {
+        val process = ProcessBuilder("git", "symbolic-ref", "--short", "refs/remotes/origin/HEAD")
+            .directory(rootProject.projectDir)
+            .redirectErrorStream(true)
+            .start()
+        val output = process.inputStream.bufferedReader().readText().trim()
+        if (process.waitFor() == 0 && output.startsWith("origin/")) output.removePrefix("origin/") else "master"
+    } catch (exception: java.io.IOException) {
+        "master"
+    }
+}).get()
+check(Regex("[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+").matches(languageSourceRepository)) {
+    "languageSourceRepository must be a GitHub owner/repository"
+}
+check(Regex("[A-Za-z0-9][A-Za-z0-9._/-]{0,127}").matches(languageSourceBranch) && !languageSourceBranch.contains("..")) {
+    "languageSourceBranch must be a Git branch name"
+}
+val languageSourcePath = "platform/paper/src/main/resources/languages"
+val languageSourceLocales = bundledLocales.filter { it != "en_US" }.joinToString(",")
 val languageResources = listOf("languages/en_US.toml")
 val languageSourceManifest = tasks.register<WriteProperties>("generateLanguageSourceManifest") {
     destinationFile.set(layout.buildDirectory.file("generated/language-source/bytecompanions-language-source.properties"))
-    property("revision", languageSourceReference)
-    property("locales", bundledLocales.filter { it != "en_US" }.joinToString(","))
+    property("repository", languageSourceRepository)
+    property("branch", languageSourceBranch)
+    property("path", languageSourcePath)
+    property("extension", ".toml")
+    property("locales", languageSourceLocales)
 }
 sourceSets.main {
     features.forEach { java.srcDir(rootProject.file("features/$it/src/main/java")) }
@@ -98,6 +124,60 @@ val runtimeLibraryTest = configurations.create("runtimeLibraryTest") {
     isCanBeConsumed = false
     isCanBeResolved = true
     extendsFrom(configurations.getByName("slimApi"))
+}
+
+// SlimJar downloads its own relocator before any library, so its jars need pins too.
+val slimjarBootstrap = configurations.create("slimjarBootstrap") {
+    isCanBeConsumed = false
+    isCanBeResolved = true
+    isTransitive = false
+}
+dependencies {
+    slimjarBootstrap("de.crazydev22.slimjar:jar-relocator:2.1.9")
+    slimjarBootstrap("org.ow2.asm:asm:9.8")
+    slimjarBootstrap("org.ow2.asm:asm-commons:9.8")
+}
+
+val libraryRepository = "https://repo.maven.apache.org/maven2/"
+tasks.named<SlimJarTask>("slimJar") {
+    inputs.files(runtimeLibraryTest, slimjarBootstrap)
+    doLast {
+        val dataFile = outputDirectory.resolve("slimjar.dat")
+        val metadata = dataFile.inputStream().use(DependencyReader.DEFAULT::read)
+        check(metadata.mirrors().isEmpty()) { "Library mirrors are not supported: ${metadata.mirrors()}" }
+        val central = metadata.repositories().filter { it.url().toString() == libraryRepository }.distinct()
+        check(central.size == 1) { "Library metadata must list $libraryRepository: ${metadata.repositories()}" }
+        DataOutputStream(dataFile.outputStream().buffered()).use { output ->
+            DependencyData(metadata.mirrors(), central, metadata.dependencies(), metadata.relocations()).write(output)
+        }
+
+        val resolutions = outputDirectory.resolve("slimjar-resolutions.dat").inputStream().use(PreResolutionDataReader.DEFAULT::read)
+        resolutions.forEach { (dependency, resolution) ->
+            check(resolution.repository().url().toString() == libraryRepository
+                    && resolution.dependencyURL().toString().startsWith(libraryRepository)
+                    && (resolution.checksumURL()?.toString()?.startsWith(libraryRepository) ?: true)) {
+                "Library $dependency does not resolve from $libraryRepository"
+            }
+        }
+
+        val artifacts = (runtimeLibraryTest.resolvedConfiguration.resolvedArtifacts + slimjarBootstrap.resolvedConfiguration.resolvedArtifacts)
+            .filter { it.type == "jar" && it.classifier == null }
+            .associateBy { "${it.moduleVersion.id.group}:${it.name}:${it.moduleVersion.id.version}" }
+        val pins = sortedMapOf<String, String>()
+        fun pin(key: String) {
+            val file = checkNotNull(artifacts[key]) { "No resolved jar to pin for library $key" }.file
+            pins[key] = HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(file.readBytes()))
+        }
+        fun collect(dependency: Dependency) {
+            if (resolutions[dependency.toString()]?.aggregator() != true) {
+                pin("${dependency.groupId()}:${dependency.artifactId()}:${dependency.version()}")
+            }
+            dependency.transitive().forEach(::collect)
+        }
+        metadata.dependencies().forEach(::collect)
+        listOf("de.crazydev22.slimjar:jar-relocator:2.1.9", "org.ow2.asm:asm:9.8", "org.ow2.asm:asm-commons:9.8").forEach(::pin)
+        outputDirectory.resolve("slimjar-checksums.txt").writeText(pins.entries.joinToString("") { "${it.key} ${it.value}\n" })
+    }
 }
 
 dependencies {
@@ -321,7 +401,7 @@ extensions.configure<PluginPackagingExtension> {
         prunePrefixes = listOf("com/volmit/bytecompanions/libs/volmlib/")
         requiredEntries = listOf(
             "plugin.yml", "bytecompanions-build.properties", "bytecompanions-language-source.properties",
-            "slimjar.dat", "slimjar-resolutions.dat",
+            "slimjar.dat", "slimjar-resolutions.dat", "slimjar-checksums.txt",
             "com/volmit/bytecompanions/platform/paper/PaperPlugin.class",
             "com/volmit/bytecompanions/platform/paper/configuration/ConfigService.class",
             "com/volmit/bytecompanions/platform/paper/localization/LanguageService.class",
@@ -385,7 +465,7 @@ val verifyJava25Artifact = tasks.register("verifyJava25Artifact") {
         ZipFile(artifact).use { jar ->
             val entries = jar.entries().asSequence().map { it.name }.toSet()
             val required = listOf(
-                "plugin.yml", "bytecompanions-build.properties", "slimjar.dat", "slimjar-resolutions.dat",
+                "plugin.yml", "bytecompanions-build.properties", "slimjar.dat", "slimjar-resolutions.dat", "slimjar-checksums.txt",
                 "features/particles/icons.toml",
                 "features/progression/config.toml",
                 "com/volmit/bytecompanions/platform/paper/ui/dashboard/CompanionMenus.class",
@@ -436,9 +516,15 @@ val verifyJava25Artifact = tasks.register("verifyJava25Artifact") {
             val languageManifest = Properties().also { properties ->
                 jar.getInputStream(jar.getEntry("bytecompanions-language-source.properties")).use { properties.load(it) }
             }
-            check(languageManifest.getProperty("revision") == languageSourceReference
-                    && languageManifest.getProperty("locales") == bundledLocales.filter { it != "en_US" }.joinToString(",")) {
+            check(languageManifest.getProperty("repository") == languageSourceRepository
+                    && languageManifest.getProperty("branch") == languageSourceBranch
+                    && languageManifest.getProperty("path") == languageSourcePath
+                    && languageManifest.getProperty("extension") == ".toml"
+                    && languageManifest.getProperty("locales") == languageSourceLocales) {
                 "Language source manifest does not match the build source set"
+            }
+            check(languageManifest.stringPropertyNames().none { it == "revision" || it == "mode" || it.startsWith("sha256.") }) {
+                "Language source manifest must track the repository branch, not a pinned revision"
             }
             for (entry in entries.filter { it.endsWith(".class") }) {
                 DataInputStream(jar.getInputStream(jar.getEntry(entry))).use { input ->
@@ -463,6 +549,14 @@ val verifyJava25Artifact = tasks.register("verifyJava25Artifact") {
             val resolutionMetadata = jar.getInputStream(jar.getEntry("slimjar-resolutions.dat")).use {
                 PreResolutionDataReader.DEFAULT.read(it)
             }
+            check(libraryMetadata.repositories().map { it.url().toString() } == listOf(libraryRepository)) {
+                "Runtime libraries must come only from $libraryRepository"
+            }
+            val pinnedLibraries = jar.getInputStream(jar.getEntry("slimjar-checksums.txt")).use { it.readBytes().toString(Charsets.UTF_8) }
+                .lines().filter { it.isNotBlank() }.map { it.substringBefore(' ') }.toSet()
+            val unpinned = allDependencies.filter { resolutionMetadata[it.toString()]?.aggregator() != true }
+                .map { "${it.groupId()}:${it.artifactId()}:${it.version()}" }.filter { it !in pinnedLibraries }
+            check(unpinned.isEmpty()) { "Runtime libraries without a pinned SHA-256: $unpinned" }
             val dependencyKeys = allDependencies.map { it.toString() }.toSet()
             check(dependencyKeys.containsAll(resolutionMetadata.keys)) {
                 "Dependency resolution metadata contains libraries outside the runtime dependency graph"

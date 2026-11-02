@@ -6,99 +6,100 @@
 # /bytecompanions language server edit ru_RU
 #
 # === Префикс ===
-# runtime.prefix supplies the styled plugin name for {prefix}.
-# Remove {prefix} from a message to hide the plugin name for that message.
+# runtime.prefix задаёт оформленное имя плагина для {prefix}.
+# Удалите {prefix} из сообщения, чтобы скрыть имя плагина в этом сообщении.
 #
 # === Форматирование ===
-# Colors and styles: &0-&f, &k-&r.
-# RGB colors: &#RRGGBB, &xRRGGBB, &x&R&R&G&G&B&B, [RRGGBB].
-# MiniMessage supports custom formatting such as <gold> and <gradient:#ffcc00:#ff9900>. Put a backslash before & or [ to display it literally.
+# Цвета и стили: &0-&f, &k-&r.
+# Цвета RGB: &#RRGGBB, &xRRGGBB, &x&R&R&G&G&B&B, [RRGGBB].
+# MiniMessage поддерживает собственное оформление, например <gold> и <gradient:#ffcc00:#ff9900>. Чтобы показать & или [ как обычный символ, поставьте перед ним обратную косую черту.
 #
 # === Переменные ===
 # Не меняйте имена переменных и используйте только переменные исходного сообщения.
-#   {action}  Requested action
-#   {actions}  Available actions
-#   {after}  Value after the change
-#   {amount}  Amount or count
-#   {argument}  Unexpected command argument
-#   {before}  Value before the change
-#   {bonus}  Bonus name
-#   {booster}  Booster identifier
-#   {category}  Category name
-#   {change}  Described change
-#   {channel}  Booster channel
-#   {choice}  Selected option
-#   {command}  Command path
-#   {companion}  Companion identifier
-#   {companions}  Companion identifiers
-#   {count}  Number of items
-#   {created}  Creation time
-#   {current}  Current value
-#   {definition}  Companion definition
-#   {detail}  Failure detail
-#   {effect}  Particle effect identifier
-#   {entry}  Entry label
-#   {feature}  Feature name
-#   {features}  Enabled features
-#   {field}  Studio field name
-#   {formation}  Formation name
-#   {group}  Message category name
-#   {hot_reload}  Hot reload state
-#   {index}  Position number
-#   {integrations}  Integration states
-#   {item}  Item name
-#   {items}  Item list
-#   {java}  Java major version
-#   {key}  Message or setting key
-#   {kind}  Transaction kind
-#   {language}  Active language
-#   {level}  Level number
-#   {limit}  Configured limit
-#   {line}  Message line number
-#   {locale}  Locale identifier
-#   {maximum}  Maximum accepted value
-#   {mode}  Combining rule
-#   {model}  Companion model
-#   {money}  Money amount
-#   {name}  Display name
-#   {new}  Installed rendered value
-#   {next}  Next value
-#   {old}  Previous rendered value
-#   {operation}  Bonus operation
-#   {page}  Current page number
-#   {pages}  Total page count
-#   {parameter}  Parameter name
-#   {path}  File path or setting path
-#   {percent}  Percentage value
-#   {permission}  Required permission
-#   {personal}  Personal locale when it differs
-#   {player}  Player name
-#   {players}  Loaded player count
-#   {plugin}  Plugin name
-#   {prefix}  Styled plugin name from runtime.prefix
-#   {provider}  Payment provider
-#   {range}  Supported Minecraft range
-#   {reason}  Failure reason
-#   {required}  Required amount
-#   {scheduler}  Scheduler implementation
-#   {seconds}  Duration in seconds
-#   {section}  Language editor section
-#   {setting}  Setting name
-#   {sources}  Bonus sources
-#   {status}  Status marker
-#   {step}  Adjustment step
-#   {target}  Selection target
-#   {tier}  Upgrade tier
-#   {time}  Duration text
-#   {transaction}  Transaction identifier
-#   {type}  Parameter type
-#   {url}  Public report URL
-#   {usage}  Command usage
-#   {value}  Current or raw value
-#   {variables}  Placeholders valid for the message
-#   {variant}  Appearance variant
-#   {version}  Plugin version
-#   {xp}  Companion experience
+#   {activation}  идентификатор активации усилителя
+#   {added}  число сообщений, добавленных обновлением языка
+#   {after}  значение после изменения
+#   {amount}  количество или число
+#   {argument}  неожиданный аргумент команды
+#   {before}  значение до изменения
+#   {bonus}  название бонуса
+#   {booster}  идентификатор усилителя
+#   {category}  название категории
+#   {change}  описание изменения
+#   {channel}  канал усилителя
+#   {choice}  выбранный вариант
+#   {command}  путь команды
+#   {companion}  идентификатор спутника
+#   {companions}  идентификаторы спутников
+#   {count}  количество элементов
+#   {created}  время создания
+#   {current}  текущее значение
+#   {definition}  определение спутника
+#   {detail}  подробности ошибки
+#   {effect}  идентификатор эффекта частиц
+#   {enabled}  состояние спутников
+#   {feature}  название функции
+#   {features}  включённые функции
+#   {field}  название поля студии
+#   {formation}  название построения
+#   {group}  название категории сообщений
+#   {hot_reload}  состояние горячей перезагрузки
+#   {index}  порядковый номер
+#   {integrations}  состояние интеграций
+#   {item}  название предмета
+#   {items}  список предметов
+#   {java}  основная версия Java
+#   {kept}  локальные правки, сохранённые при обновлении языка
+#   {key}  ключ сообщения или настройки
+#   {kind}  тип операции
+#   {language}  активный язык
+#   {level}  номер уровня
+#   {limit}  настроенный лимит
+#   {line}  номер строки сообщения
+#   {locale}  код языка
+#   {maximum}  максимально допустимое значение
+#   {mode}  правило объединения
+#   {model}  модель спутника
+#   {money}  сумма денег
+#   {name}  отображаемое имя
+#   {next}  следующее значение
+#   {number}  номер записи в списке
+#   {operation}  операция бонуса
+#   {page}  номер текущей страницы
+#   {pages}  общее число страниц
+#   {parameter}  имя параметра
+#   {path}  путь к файлу или настройке
+#   {percent}  значение в процентах
+#   {permission}  необходимое разрешение
+#   {personal}  личный код языка, если он отличается
+#   {player}  имя игрока
+#   {players}  число загруженных игроков
+#   {plugin}  название плагина
+#   {prefix}  оформленное имя плагина из runtime.prefix
+#   {provider}  платёжный провайдер
+#   {range}  поддерживаемый диапазон версий Minecraft
+#   {reason}  причина ошибки
+#   {remaining}  время до следующей разрешённой проверки языков
+#   {required}  требуемое количество
+#   {scheduler}  реализация планировщика
+#   {seconds}  длительность в секундах
+#   {section}  раздел редактора языка
+#   {sources}  источники бонусов
+#   {status}  метка состояния
+#   {step}  шаг изменения
+#   {target}  цель выбора
+#   {tier}  ступень улучшения
+#   {time}  текст длительности
+#   {transaction}  идентификатор операции
+#   {type}  тип параметра
+#   {updated}  число сообщений, изменённых обновлением языка
+#   {url}  публичный URL отчёта
+#   {usage}  синтаксис команды
+#   {value}  текущее или исходное значение
+#   {variables}  допустимые переменные сообщения
+#   {variant}  вариант внешнего вида
+#   {version}  версия плагина
+#   {xp}  опыт спутника
 
 "runtime.prefix" = "<bold><gradient:#ffcc00:#ff9900>ByteCompanions</gradient></bold>"
 "gui.studio-review-change" = "<gold>Изменение {index}"
@@ -136,7 +137,7 @@
 "gui.studio-value" = "<gray>Текущее значение: <white>{value}"
 "gui.studio-edit-hint" = "<gray>Нажмите, чтобы изменить эту настройку."
 "gui.studio-type" = "<gold>Ввести значение"
-"gui.studio-type-hint" = "<gray>Введите точное значение в приватном режиме чата."
+"gui.studio-type-hint" = "<gray>Введите точное значение в чат; другие игроки его не увидят."
 "gui.studio-toggle" = "<gold>Переключить настройку"
 "gui.studio-toggle-hint" = "<gray>Переключить между true и false."
 "gui.studio-increase" = "<green>Увеличить"
@@ -213,9 +214,9 @@
 "particles.particle-effects.not-found" = "<red>Эффект частиц <white>{effect}</white> не найден.</red>"
 "particles.particle-effects.invalid-id" = "<red>Укажите действительный ID эффекта частиц.</red>"
 "particles.particle-effects.already-equipped" = "<red><white>{effect}</white> уже установлен.</red>"
-"particles.companions.not-equipped" = "<red>Сначала выберите спутника.</red>"
+"particles.companions.not-equipped" = "<red>Сначала экипируйте спутника.</red>"
 "particles.companions.invalid-type-id" = "<red>Укажите действительный ID типа спутника.</red>"
-"errors.player-not-loaded" = "<red>Данные ваших компаньонов ещё загружаются или не удалось их загрузить. Перезайдите или обратитесь к администратору.</red>"
+"errors.player-not-loaded" = "<red>Данные ваших спутников ещё загружаются или их не удалось загрузить. Перезайдите или обратитесь к администратору.</red>"
 "errors.persistence-failed" = "<red>Выбор изменён для текущего сеанса, но сохранить его не удалось. После повторного входа он может вернуться к прежнему состоянию. Сообщите администратору.</red>"
 
 "gui.title.collection" = "<gold>Коллекция спутников"
@@ -224,22 +225,22 @@
 "gui.title.bonuses" = "<gold>Бонусы спутника"
 "gui.collection" = "<gold>📦 Коллекция спутников"
 "gui.collection-hint" = "<gray>Выберите спутника, чтобы увидеть его настройки."
-"gui.equipped" = "<green>✓ Выбран"
+"gui.equipped" = "<green>✓ Экипирован"
 "gui.available" = "<yellow>Доступен"
 "gui.locked" = "<red>Заблокировано: у вас нет разрешения."
 "gui.open-dashboard" = "<gray>Нажмите, чтобы открыть панель этого спутника."
 "gui.empty" = "<yellow>Нет спутников"
-"gui.empty-hint" = "<gray>Нет доступных описаний спутников."
-"gui.not-equipped" = "<yellow>Не выбран"
+"gui.empty-hint" = "<gray>Нет доступных определений спутников."
+"gui.not-equipped" = "<yellow>Не экипирован"
 "gui.overview" = "<gray>Управляйте спутником с помощью кнопок ниже."
-"gui.equip" = "<green>✓ Выбрать спутника"
+"gui.equip" = "<green>✓ Экипировать спутника"
 "gui.equip-hint" = "<gray>Призовите этого спутника к себе."
-"gui.unequip" = "<yellow>Убрать спутника"
-"gui.unequip-hint" = "<gray>Отпустите спутника. Его можно выбрать снова."
+"gui.unequip" = "<yellow>Снять спутника"
+"gui.unequip-hint" = "<gray>Отпустите спутника. Его можно экипировать снова."
 "gui.particles" = "<aqua>✦ Частицы"
 "gui.particles-hint" = "<gray>Выберите эффект частиц для этого спутника."
 "gui.disabled" = "<gray>Отключено на этом сервере."
-"gui.equip-first" = "<yellow>Сначала выберите этого спутника."
+"gui.equip-first" = "<yellow>Сначала экипируйте этого спутника."
 "gui.current-particle" = "<gray>Выбранные частицы: <white>{effect}"
 "gui.none" = "Нет"
 "gui.bonuses" = "<gold>★ Бонусы и эффекты"
@@ -285,7 +286,7 @@
 "gui.status.stacked" = "<green>✓ Объединено с другими спутниками"
 "gui.status.overridden" = "<yellow>Переопределено правилом другого спутника"
 "gui.status.external_override" = "<yellow>Заменено другим эффектом или модификатором"
-"gui.status.not_equipped" = "<gray>Неактивно: спутник не выбран"
+"gui.status.not_equipped" = "<gray>Неактивно: спутник не экипирован"
 "gui.status.disabled" = "<gray>Отключено на этом сервере"
 "gui.status.inactive" = "<gray>Сейчас не применяется"
 "gui.status.cooldown" = "<yellow>Восстанавливается"
@@ -295,7 +296,7 @@
 "gui.operation.sum" = "Добавить"
 "gui.operation.multiply" = "Умножить на"
 "gui.operation.add_percent" = "Добавить процент"
-"gui.stack.sum" = "Сложить усилители"
+"gui.stack.sum" = "Сложить уровни эффектов"
 "gui.stack.highest" = "Наивысший приоритет"
 "gui.target.all" = "Все существа"
 "gui.target.hostile" = "Враждебные существа"
@@ -310,21 +311,23 @@
 "command.parameter.xp" = "Положительное целое количество опыта спутника"
 "command.parameter.booster" = "ID настроенного усилителя"
 "command.parameter.count" = "Положительное целое число активаций усилителя"
-"command.parameter.activation" = "ID действующей или ожидающей активации"
+"command.parameter.activation" = "ID активной или ожидающей в очереди активации усилителя"
 "command.parameter.transaction" = "ID неурегулированной операции покупки"
 "command.parameter.resolution" = "grant или cancel после проверки записей платежей"
-"command.progression.granted" = "<green>Сохранено <green>{amount}</green> опыта для спутника <green>{companion}</green> игрока <green>{player}</green>."
-"command.progression.not-configured" = "<gold>Для <gold>{companion}</gold> не настроено развитие."
-"command.progression.player-unavailable" = "<red>Игрок <red>{player}</red> не в сети."
-"command.progression.player-loading" = "<gold>Данные развития игрока <gold>{player}</gold> ещё не готовы. Повторите после загрузки."
-"command.progression.invalid-amount" = "<red>Введите целое число от 1 до <red>{maximum}</red>."
-"command.booster.granted" = "<green>Для игрока <green>{player}</green> сохранено <green>{amount}</green> активаций усилителя <green>{booster}</green>."
-"command.booster.not-found" = "<red>Усилитель с ID <red>{booster}</red> не существует."
-"command.booster.server-only" = "<red>Эта команда запускает только серверные усилители."
-"command.transactions.count" = "<gold>Неурегулированные покупки: <gold>{count}</gold>"
-"command.transactions.entry" = "<gray><yellow>{transaction}</yellow> Игрок: <gray>{player}</gray>; <gray>{kind}</gray>; спутник: <gray>{companion}</gray>; определение: <gray>{definition}</gray>; прежняя ступень: <gray>{tier}</gray>; состояние: <gray>{status}</gray>; деньги: <gray>{money}</gray>; предметы: <gray>{items}</gray>; провайдер: <gray>{provider}</gray>; создано: <gray>{created}</gray>"
-"command.transactions.reference" = "<gray>ID операции или активации: <white>{transaction}</white>"
-"command.transactions.reconciled" = "<gold>Результат урегулирования сохранён. Деньги и предметы не списывались и не возвращались автоматически."
+"command.progression.granted" = "<green>Сохранено {amount} опыта спутника {companion} игрока {player}.</green>"
+"command.progression.not-configured" = "<gold>Для спутника {companion} не настроено развитие.</gold>"
+"command.progression.player-unavailable" = "<red>Игрок {player} не в сети.</red>"
+"command.progression.player-loading" = "<gold>Данные развития игрока {player} ещё не готовы. Повторите попытку после загрузки.</gold>"
+"command.progression.invalid-amount" = "<red>Введите целое число от 1 до {maximum}.</red>"
+"command.booster.granted" = "<green>Для игрока {player} сохранено {amount} активаций усилителя {booster}.</green>"
+"command.booster.not-found" = "<red>Усилитель с ID {booster} не существует.</red>"
+"command.booster.server-only" = "<red>Эта команда запускает только серверные усилители.</red>"
+"command.booster.started" = "<green>Серверный усилитель {booster} запущен или поставлен в очередь.</green>"
+"command.booster.cancelled" = "<green>Активация усилителя {activation} отменена.</green>"
+"command.transactions.count" = "<gold>Неурегулированные покупки: {count}</gold>"
+"command.transactions.entry" = "<yellow>{transaction}</yellow> <gray>Игрок: {player}; {kind}; спутник: {companion}; определение: {definition}; прежняя ступень: {tier}; состояние: {status}; деньги: {money}; предметы: {items}; провайдер: {provider}; создано: {created}</gray>"
+"command.transactions.reference" = "<gray>ID операции или активации: <white>{transaction}</white></gray>"
+"command.transactions.reconciled" = "<gold>Результат урегулирования сохранён. Деньги и предметы не списывались и не возвращались автоматически.</gold>"
 "gui.title.upgrades" = "<gold>Улучшения спутника"
 "gui.title.purchase" = "<gold>Подтверждение покупки"
 "gui.title.boosts" = "<gold>Усилители спутников"
@@ -334,13 +337,13 @@
 "gui.upgrades-hint" = "<gray>Развивайте спутника и улучшайте его бонусы."
 "gui.boosts" = "<gradient:#ffe082:#ffb74d>⌛ Усилители</gradient>"
 "gui.boosts-hint" = "<gray>Просмотрите личные усиления и усиления всего сервера."
-"gui.progress-level" = "<gold>★ Уровень <white>{level}</white>"
-"gui.progress-xp" = "<gray>Опыт спутника: <yellow>{xp}</yellow> / <white>{required}</white>"
+"gui.progress-level" = "<gold>★ Уровень <white>{level}"
+"gui.progress-xp" = "<gray>Опыт спутника: <yellow>{xp}</yellow> / <white>{required}"
 "gui.max-level" = "<green>✓ Максимальный уровень спутника"
-"gui.upgrade-tier" = "<gray>Ступень улучшения: <gold>{tier}</gold> / <white>{maximum}</white>"
+"gui.upgrade-tier" = "<gray>Ступень улучшения: <gold>{tier}</gold> / <white>{maximum}"
 "gui.max-tier" = "<green>✓ Полностью улучшено"
-"gui.upgrade-change" = "<gray><gray>{bonus}</gray>: <white>{current}</white> <gold>→</gold> <green>{next}</green>"
-"gui.required-level" = "<gray>Требуемый уровень спутника: <yellow>{level}</yellow>"
+"gui.upgrade-change" = "<gray>{bonus}: <white>{current}</white> <gold>→</gold> <green>{next}"
+"gui.required-level" = "<gray>Требуемый уровень спутника: <yellow>{level}"
 "gui.level-locked" = "<red>Требования не выполнены."
 "gui.upgrade-preview" = "<yellow>Нажмите, чтобы проверить улучшение."
 "gui.no-upgrades" = "<gold>Улучшения не настроены"
@@ -349,18 +352,18 @@
 "gui.confirm-purchase-hint" = "<gray>Оплатите указанную стоимость и завершите покупку."
 "gui.cancel-purchase" = "<yellow>◀ Отмена"
 "gui.cancel-purchase-hint" = "<gray>Вернуться, ничего не потратив."
-"gui.cost-free" = "<gray>Стоимость: <green>Бесплатно</green>"
-"gui.cost-money" = "<gray>Требуемая сумма: <gold>{amount}</gold>"
-"gui.cost-item" = "<gray>Требуемые предметы: <yellow>{amount}</yellow> × <yellow>{item}</yellow>"
+"gui.cost-free" = "<gray>Стоимость: <green>Бесплатно"
+"gui.cost-money" = "<gray>Требуемая сумма: <gold>{amount}"
+"gui.cost-item" = "<gray>Требуемые предметы: <yellow>{amount} × {item}"
 "gui.booster-open" = "<yellow>Нажмите, чтобы просмотреть варианты покупки и активации."
 "gui.booster-scope.personal" = "<aqua>Личное усиление <dark_gray>• <gray>Только для вас"
 "gui.booster-scope.server" = "<gold>Серверное усиление <dark_gray>• <gray>Для всех на этом сервере"
-"gui.booster-channel" = "<gray><gray>{channel}</gray>: +<green>{percent}</green>%"
-"gui.booster-duration" = "<gray>Длительность: <white>{time}</white>"
-"gui.booster-remaining" = "<gray>Осталось времени: <yellow>{time}</yellow>"
+"gui.booster-channel" = "<gray>{channel}: <green>+{percent}%"
+"gui.booster-duration" = "<gray>Длительность: <white>{time}"
+"gui.booster-remaining" = "<gray>Осталось времени: <yellow>{time}"
 "gui.booster-rule.queue" = "<gray>Перекрывающиеся усиления ожидают в очереди."
 "gui.booster-rule.highest" = "<gray>В каждой области действия применяется самое сильное усиление."
-"gui.booster-credits" = "<gray>Имеющиеся активации: <gold>{count}</gold>"
+"gui.booster-credits" = "<gray>Имеющиеся активации: <gold>{count}"
 "gui.buy-booster" = "<green>Купить одну активацию"
 "gui.buy-booster-hint" = "<gray>Проверьте стоимость перед покупкой."
 "gui.activate-booster" = "<gold>Активировать усилитель"
@@ -372,9 +375,9 @@
 "gui.active-boosts-hint" = "<gray>Просмотрите свои усиления, события сервера и суммарные значения."
 "gui.booster-running" = "<green>✓ Действует"
 "gui.booster-queued" = "<yellow>⌛ В очереди"
-"gui.booster-total" = "<gray>Суммарное усиление <gray>{channel}</gray>: +<green>{percent}</green>%"
-"gui.booster-cap" = "<gray>Максимальное суммарное усиление: +<white>{percent}</white>%"
-"gui.booster-applied" = "<gray>Личные и серверные усиления: +<green>{percent}</green>% исходной награды"
+"gui.booster-total" = "<gray>Суммарное усиление {channel}: <green>+{percent}%"
+"gui.booster-cap" = "<gray>Максимальное суммарное усиление: <white>+{percent}%"
+"gui.booster-applied" = "<gray>Личные и серверные усиления: <green>+{percent}% от исходной награды"
 "gui.no-active-boosts" = "<gold>Нет активных усилений"
 "gui.no-active-boosts-hint" = "<gray>Активируйте имеющийся усилитель, чтобы начать."
 "gui.back-boosts" = "<gold>◀ Назад к усилителям"
@@ -397,32 +400,32 @@
 "progression.result.no_credit" = "<red>У вас нет активации этого усилителя."
 "progression.result.disabled" = "<gray>Эта функция отключена на сервере."
 "progression.result.invalid_request" = "<red>Недопустимый запрос. Проверьте справку команды или заново откройте меню."
-"command.description.setup" = "Настроить стартовых компаньонов"
-"gui.title.setup" = "<gold>Настройка компаньонов"
+"command.description.setup" = "Настроить стартовых спутников"
+"gui.title.setup" = "<gold>Настройка спутников"
 "gui.title.setup-confirm" = "<gold>Подтвердить настройку"
 "gui.setup" = "<gold>Начальная настройка"
-"gui.setup-hint" = "<gray>Установите стартовых компаньонов и выберите бонусы сервера."
-"gui.setup-cosmetic" = "<aqua>Декоративные компаньоны"
+"gui.setup-hint" = "<gray>Установите стартовых спутников и выберите бонусы сервера."
+"gui.setup-cosmetic" = "<aqua>Декоративные спутники"
 "gui.setup-cosmetic-hint" = "<gray>Отключить атрибуты, бонусы, эффекты, улучшения и усилители."
-"gui.setup-survival" = "<green>Компаньоны для выживания"
+"gui.setup-survival" = "<green>Спутники для выживания"
 "gui.setup-survival-hint" = "<gray>Включить настроенные атрибуты, бонусы и эффекты зелий."
-"gui.setup-common" = "<gray>Добавляет недостающих стартовых компаньонов; сохраняет ваши файлы компаньонов."
+"gui.setup-common" = "<gray>Добавляет недостающих стартовых спутников; сохраняет ваши файлы спутников."
 "gui.setup-costs" = "<gray>Улучшения и усилители остаются выключенными; частицы включаются."
 "gui.setup-permissions" = "<gray>Доступ игроков по-прежнему зависит от ваших настроек прав."
-"gui.setup-preview" = "<gold>Просмотр компаньонов"
-"gui.setup-preview-hint" = "<gray>Выберите стартовых компаньонов и посмотрите их частицы и бонусы."
+"gui.setup-preview" = "<gold>Просмотр спутников"
+"gui.setup-preview-hint" = "<gray>Экипируйте стартовых спутников и посмотрите их частицы и бонусы."
 "gui.setup-confirm" = "<green>Применить настройки"
 "gui.setup-confirm-hint" = "<gray>Применяет этот профиль ко всему плагину и перезагружает его."
 "gui.setup-cancel" = "<gold>Назад к настройке"
 "gui.setup-cancel-hint" = "<gray>Вернуться без применения изменений."
-"gui.setup-current" = "<gray>Загружено компаньонов: {count}"
-"setup.applying" = "{prefix} <gold>Применение настроек компаньонов...</gold>"
-"setup.applied" = "{prefix} <green>Настройки компаньонов сохранены. Откройте <white>/bytecompanions menu</white>, чтобы выбрать компаньона.</green>"
+"gui.setup-current" = "<gray>Загружено спутников: {count}"
+"setup.applying" = "{prefix} <gold>Применение настроек спутников...</gold>"
+"setup.applied" = "{prefix} <green>Настройки спутников сохранены. Откройте <white>/bytecompanions menu</white>, чтобы выбрать спутника.</green>"
 "setup.failed" = "{prefix} <red>Не удалось применить настройки. Проверьте консоль; прежние настройки остаются активными.</red>"
 "setup.stale" = "{prefix} <gold>Настройки изменились. Откройте настройку заново перед применением.</gold>"
 "command.description.collection" = "Просмотр и фильтрация коллекции"
 "command.description.outfits" = "Управление сохранёнными наборами спутников"
-"command.description.interact" = "Взаимодействие с выбранным спутником"
+"command.description.interact" = "Взаимодействие с экипированным спутником"
 "gui.title.outfits" = "Сохранённые наборы"
 "gui.title.outfit" = "Просмотр набора"
 "gui.title.outfit-delete" = "Удалить набор"
@@ -444,7 +447,7 @@
 "gui.outfit-apply" = "<green>Применить этот набор"
 "gui.outfit-delete" = "<red>Удалить набор"
 "gui.outfit-delete-confirm" = "<red>Подтвердить удаление"
-"gui.outfit-count" = "<gray>Спутники: {count}"
+"gui.outfit-count" = "<gray>Спутники: <white>{count}"
 "gui.personalize" = "<gold>Настроить"
 "gui.nickname" = "<gold>Задать имя"
 "gui.name-reset" = "<gray>Сбросить имя"
@@ -469,7 +472,7 @@
 "collection.trial-started" = "{prefix} <aqua>Личный просмотр начат. Он не даёт бонусов."
 "collection.outfit-prompt" = "{prefix} <yellow>Введите название набора в чат (1–32 буквы, цифры, _ или -) либо cancel. Истекает через 60 секунд."
 "collection.name-prompt" = "{prefix} <yellow>Введите простое имя в чат (до 32 символов) либо cancel. Истекает через 60 секунд."
-"collection.choose-equipped" = "{prefix} <yellow>Сначала выберите спутника. Если их несколько, укажите его ID."
+"collection.choose-equipped" = "{prefix} <yellow>Сначала экипируйте спутника. Если экипировано несколько, укажите его ID."
 "collection.action-applied" = "{prefix} <green>Ваш спутник отреагировал."
 "collection.cooldown" = "{prefix} <yellow>Подождите немного перед следующим действием."
 "collection.rejected" = "{prefix} <red>Не удалось применить изменение: {detail}"
@@ -491,7 +494,7 @@
 "gui.settings-particles" = "<aqua>Частицы"
 "gui.settings-particles-full" = "<green>Полные"
 "gui.settings-particles-full-hint" = "<gray>Показывать каждый кадр частиц."
-"gui.settings-particles-reduced" = "<yellow>Меньше"
+"gui.settings-particles-reduced" = "<yellow>Сниженные"
 "gui.settings-particles-reduced-hint" = "<gray>Показывать каждый второй кадр частиц."
 "gui.settings-particles-off" = "<red>Выключены"
 "gui.settings-particles-off-hint" = "<gray>Скрыть частицы спутников."
@@ -500,10 +503,10 @@
 "command.parameter.setting" = "Настройка"
 "command.parameter.value" = "Значение"
 
-"collection.reason.equip-first" = "Сначала выберите этого спутника."
+"collection.reason.equip-first" = "Сначала экипируйте этого спутника."
 "collection.reason.outfit-limit" = "Достигнут лимит наборов: {limit}."
 "collection.reason.outfit-unavailable" = "Этот набор недоступен."
-"collection.reason.formation-order" = "В строю могут быть только выбранные спутники."
+"collection.reason.formation-order" = "В построении могут быть только экипированные спутники."
 "collection.reason.model-limit" = "Набор превышает лимит для модели."
 "collection.reason.personalization-locked" = "Персонализация заблокирована."
 "collection.reason.particle-unavailable" = "Этот эффект частиц недоступен."
@@ -523,8 +526,8 @@
 "command.parameter.upload" = "Отправить отчёт, если публичная отправка включена"
 "command.feedback.inactive" = "{prefix} <gray>Среда выполнения перезапускается; повторите попытку чуть позже.</gray>"
 "command.status.header" = "Среда выполнения"
-"command.status.configuration" = "<gray>Компаньоны: {enabled} <dark_gray>|</dark_gray> Язык: <white>{language}</white> <dark_gray>|</dark_gray> Автоперезагрузка: {hot_reload}</gray>"
-"command.status.runtime" = "<gray>Определения: <white>{count}</white> <dark_gray>|</dark_gray> Загруженные игроки: <white>{players}</white> <dark_gray>|</dark_gray> Экипированные компаньоны: <white>{companions}</white></gray>"
+"command.status.configuration" = "<gray>Спутники: {enabled} <dark_gray>|</dark_gray> Язык: <white>{language}</white> <dark_gray>|</dark_gray> Горячая перезагрузка: {hot_reload}</gray>"
+"command.status.runtime" = "<gray>Определения: <white>{count}</white> <dark_gray>|</dark_gray> Загруженные игроки: <white>{players}</white> <dark_gray>|</dark_gray> Экипированные спутники: <white>{companions}</white></gray>"
 "command.status.features" = "<gray>Функции: <white>{features}</white> <dark_gray>|</dark_gray> Хранилище: <white>{value}</white></gray>"
 "command.status.integrations" = "<gray>Интеграции: <white>{integrations}</white></gray>"
 "command.status.compatibility" = "<gray>Java <white>{java}</white> / Bukkit <white>{range}</white> <dark_gray>|</dark_gray> Планировщик: <white>{scheduler}</white> <dark_gray>|</dark_gray> Адаптер: <white>{value}</white></gray>"
@@ -568,8 +571,8 @@
 "language.menu.remove_personal_description" = "Удалить ваш личный выбор языка."
 "language.menu.no_controls" = "У вас нет доступа к настройкам языка."
 "language.menu.command" = "Команда: {command}"
-"language.menu.selected" = "выбранный"
-"language.menu.all-volmit-plugins" = "Все плагины Volmit"
+"language.menu.selected" = "выбран"
+"language.menu.all-volmit-plugins" = "все плагины Volmit"
 "language.error.stopping" = "&cВыбор языка недоступен, пока плагин останавливается."
 "language.error.editor-player-only" = "&cОткройте редактор языка в игре."
 "language.error.no-providers" = "&cНет доступных языковых провайдеров Volmit."
@@ -581,14 +584,21 @@
 "language.error.server-locale-required" = "&cВыберите код языка, например en_US, для языка сервера по умолчанию."
 "language.error.unavailable-for-all" = "&cЯзык {locale} доступен не для всех выбранных плагинов."
 "language.usage.editor" = "&7Использование: /{command} language server edit [locale]"
-"language.usage.selection" = "&7Использование: /{command} language self [locale|reset] or server [locale]"
+"language.usage.selection" = "&7Использование: /{command} language self [locale|reset] или server [locale]"
 "language.usage.volmit-selection" = "&7Использование: /volmit plugins languages [locale]"
+"language.usage.update" = "&7Использование: /{command} language update"
 "language.selection.preparing" = "&7Подготовка языка {locale} для {target}..."
 "language.selection.save-failed" = "{plugin}: &cне удалось сохранить выбор языка; проверьте консоль сервера."
 "language.selection.english-fallback" = "{plugin}: &e{locale} недоступен; используется английский (en_US)."
 "language.selection.personal-selected" = "{plugin}: &7Ваш язык сейчас {locale}."
 "language.selection.server-selected" = "{plugin}: &7Язык сервера теперь {locale}."
 "language.selection.server-default-selected" = "{plugin}: &7теперь ваш язык соответствует языку сервера по умолчанию."
+"language.update.checking" = "{plugin}: &7Проверка изменений в репозитории языков..."
+"language.update.unchanged" = "{plugin}: &7Установленные языки уже соответствуют репозиторию."
+"language.update.applied" = "{plugin}: &7Язык {locale} обновлён (добавлено: {added}, изменено: {updated}, сохранено локальных правок: {kept})."
+"language.update.cooldown" = "{plugin}: &7Репозиторий языков проверялся недавно; повторите попытку через {remaining}."
+"language.update.locale-failed" = "{plugin}: &cЯзык {locale} не обновлён: {reason}"
+"language.update.failed" = "{plugin}: &cНе удалось обновить языки: {reason}"
 "language.editor.title" = "{plugin} › {section}"
 "language.editor.loading" = "&7Загрузка сообщений для {locale}..."
 "language.editor.section.languages" = "Языки"
@@ -616,7 +626,7 @@
 "language.editor.message.edit-lines" = "&7Нажмите, чтобы изменить отдельные строки.&r"
 "language.editor.message.edit-chat" = "&7Нажмите, чтобы изменить текст в чате.&r"
 "language.editor.locale.open" = "&8Нажмите, чтобы открыть этот язык.&r"
-"language.editor.category.message-count" = "&7{count} сообщения&r"
+"language.editor.category.message-count" = "&7Сообщений: {count}&r"
 "language.editor.category.open" = "&8Нажмите, чтобы открыть эту категорию.&r"
 "language.editor.error.no-permission" = "&cУ вас нет разрешения редактировать языки {plugin}."
 "language.editor.error.unable-to-edit" = "&cНе удалось отредактировать: {reason}"
@@ -673,58 +683,58 @@
 "config.editor.type.list" = "Используйте список TOML, например [\"stone\", \"deepslate\"]."
 "config.editor.adjust" = "Левая кнопка +{step}, правая -{step}, Shift x10, Q для ввода точного значения."
 
-"gui.config.title" = "Настройка"
-"gui.setting.collections" = "Личные коллекции, наборы одежды, пробные периоды и характер."
-"gui.setting.collections.idleReactions" = "Разрешить редкие реакции в простое, пока компаньон стоит на месте."
+"gui.config.title" = "Настройки"
+"gui.setting.collections" = "Личные коллекции, наборы, пробные просмотры и характер."
+"gui.setting.collections.idleReactions" = "Разрешить редкие реакции в простое, пока спутник стоит на месте."
 "gui.setting.collections.idleReactions.name" = "Реакции в простое"
-"gui.setting.collections.maximumOutfits" = "Максимум сохранённых нарядов на игрока, от 1 до 32."
-"gui.setting.collections.maximumOutfits.name" = "Максимум нарядов"
+"gui.setting.collections.maximumOutfits" = "Максимум сохранённых наборов на игрока, от 1 до 32."
+"gui.setting.collections.maximumOutfits.name" = "Максимум наборов"
 "gui.setting.collections.name" = "Коллекции"
-"gui.setting.collections.personalityEnabled" = "Разрешить взаимодействия: погладить, помахать, сесть, ждать и позвать."
+"gui.setting.collections.personalityEnabled" = "Разрешить взаимодействия: погладить, помахать, сидеть, стоять и позвать."
 "gui.setting.collections.personalityEnabled.name" = "Характер включён"
-"gui.setting.collections.trialSeconds" = "Длительность приватного предпросмотра закрытого компаньона, от 5 до 120 секунд."
-"gui.setting.collections.trialSeconds.name" = "Секунды пробы"
+"gui.setting.collections.trialSeconds" = "Длительность приватного предпросмотра закрытого спутника, от 5 до 120 секунд."
+"gui.setting.collections.trialSeconds.name" = "Секунды пробного просмотра"
 "gui.setting.debug" = "Отправка диагностических отчётов."
 "gui.setting.debug.name" = "Отладка"
 "gui.setting.debug.uploadEnabled" = "Разрешить команде /bytecompanions debug dump upload=true публиковать отчёты на mclo.gs после локального сохранения."
 "gui.setting.debug.uploadEnabled.name" = "Отправка включена"
 "gui.setting.features" = "Пакеты функций; отключённые пакеты скрывают свои команды и сохраняют своё состояние."
-"gui.setting.features.attributes" = "Включить модификаторы атрибутов компаньонов."
+"gui.setting.features.attributes" = "Включить модификаторы атрибутов спутников."
 "gui.setting.features.attributes.name" = "Атрибуты"
-"gui.setting.features.boosters" = "Включить личные и общесерверные усилители компаньонов."
+"gui.setting.features.boosters" = "Включить личные и общесерверные усилители спутников."
 "gui.setting.features.boosters.name" = "Усилители"
-"gui.setting.features.buffs" = "Включить баффы компаньонов, например бонусы к дропу и опыту."
-"gui.setting.features.buffs.name" = "Баффы"
-"gui.setting.features.decorations" = "Включить статичных декоративных компаньонов."
+"gui.setting.features.buffs" = "Включить игровые бонусы спутников, например бонусы к добыче и опыту."
+"gui.setting.features.buffs.name" = "Игровые бонусы"
+"gui.setting.features.decorations" = "Включить статичных декоративных спутников."
 "gui.setting.features.decorations.name" = "Декорации"
-"gui.setting.features.effects" = "Включить эффекты зелий от компаньонов."
+"gui.setting.features.effects" = "Включить эффекты зелий от спутников."
 "gui.setting.features.effects.name" = "Эффекты"
 "gui.setting.features.name" = "Функции"
-"gui.setting.features.particles" = "Включить эффекты частиц компаньонов."
+"gui.setting.features.particles" = "Включить эффекты частиц спутников."
 "gui.setting.features.particles.name" = "Частицы"
-"gui.setting.features.progression" = "Включить уровни компаньонов и необязательные улучшения бонусов."
-"gui.setting.features.progression.name" = "Прогресс"
-"gui.setting.general" = "Главный переключатель, язык сервера, уведомления об обновлениях и лимиты компаньонов."
-"gui.setting.general.autoLoadCompanions" = "Загружать определения компаньонов из папки companions при запуске."
-"gui.setting.general.autoLoadCompanions.name" = "Автозагрузка компаньонов"
-"gui.setting.general.companionLimits" = "Ограничения на число компаньонов, которые один игрок может надеть одновременно."
-"gui.setting.general.companionLimits.maxTotalPerPlayer" = "Максимум компаньонов, которые один игрок может надеть одновременно; -1 снимает ограничение."
+"gui.setting.features.progression" = "Включить уровни спутников и необязательные улучшения бонусов."
+"gui.setting.features.progression.name" = "Развитие"
+"gui.setting.general" = "Главный переключатель, язык сервера, уведомления об обновлениях и лимиты спутников."
+"gui.setting.general.autoLoadCompanions" = "Загружать определения спутников из папки companions при запуске."
+"gui.setting.general.autoLoadCompanions.name" = "Автозагрузка спутников"
+"gui.setting.general.companionLimits" = "Ограничения на число спутников, которых один игрок может экипировать одновременно."
+"gui.setting.general.companionLimits.maxTotalPerPlayer" = "Максимум спутников, которых один игрок может экипировать одновременно; -1 снимает ограничение."
 "gui.setting.general.companionLimits.maxTotalPerPlayer.name" = "Максимум всего на игрока"
-"gui.setting.general.companionLimits.name" = "Лимиты компаньонов"
-"gui.setting.general.companionLimits.perModel" = "Отдельные лимиты для каждой модели компаньона."
-"gui.setting.general.companionLimits.perModel.fullBody" = "Максимум компаньонов в полный рост, которые один игрок может надеть одновременно; -1 снимает ограничение."
-"gui.setting.general.companionLimits.perModel.fullBody.name" = "Полное тело"
-"gui.setting.general.companionLimits.perModel.headOnly" = "Максимум компаньонов-голов, которые один игрок может надеть одновременно; -1 снимает ограничение."
+"gui.setting.general.companionLimits.name" = "Лимиты спутников"
+"gui.setting.general.companionLimits.perModel" = "Отдельные лимиты для каждой модели спутника."
+"gui.setting.general.companionLimits.perModel.fullBody" = "Максимум спутников в полный рост, которых один игрок может экипировать одновременно; -1 снимает ограничение."
+"gui.setting.general.companionLimits.perModel.fullBody.name" = "В полный рост"
+"gui.setting.general.companionLimits.perModel.headOnly" = "Максимум спутников-голов, которых один игрок может экипировать одновременно; -1 снимает ограничение."
 "gui.setting.general.companionLimits.perModel.headOnly.name" = "Только голова"
 "gui.setting.general.companionLimits.perModel.name" = "На модель"
-"gui.setting.general.enabled" = "Главный переключатель визуальных эффектов и игровых бонусов компаньонов."
+"gui.setting.general.enabled" = "Главный переключатель визуальных эффектов и игровых бонусов спутников."
 "gui.setting.general.enabled.name" = "Включено"
 "gui.setting.general.language" = "Язык сервера по умолчанию, хранящийся в редактируемом напрямую файле languages/<locale>.toml."
 "gui.setting.general.language.name" = "Язык"
 "gui.setting.general.name" = "Общие"
 "gui.setting.general.updateNotifications" = "Уведомлять операторов и игроков с правом bytecompanions.update о новых релизах на GitHub при входе."
 "gui.setting.general.updateNotifications.name" = "Уведомления об обновлениях"
-"gui.setting.hotReload" = "Автоматическая перезагрузка файлов конфигурации, компаньонов, функций и языков."
+"gui.setting.hotReload" = "Автоматическая перезагрузка файлов конфигурации, спутников, функций и языков."
 "gui.setting.hotReload.cooldownMillis" = "Сколько миллисекунд изменённый файл должен оставаться без изменений перед применением, от 250 до 60000."
 "gui.setting.hotReload.cooldownMillis.name" = "Миллисекунды задержки"
 "gui.setting.hotReload.enabled" = "Автоматически применять устоявшиеся изменения файлов в папке данных."
@@ -738,21 +748,21 @@
 "gui.setting.languages.name" = "Языки"
 "gui.setting.menus" = "Быстрый доступ к панели."
 "gui.setting.menus.name" = "Меню"
-"gui.setting.menus.rightClickDashboard" = "Открывать панель компаньона, когда владелец кликает по нему правой кнопкой основной рукой."
+"gui.setting.menus.rightClickDashboard" = "Открывать панель спутника, когда владелец щёлкает по нему правой кнопкой основной рукой."
 "gui.setting.menus.rightClickDashboard.name" = "Панель по правому клику"
 "gui.setting.metrics" = "Анонимная статистика использования."
 "gui.setting.metrics.enabled" = "Отправлять анонимную статистику использования ByteCompanions в bStats."
 "gui.setting.metrics.enabled.name" = "Включено"
 "gui.setting.metrics.name" = "Метрики"
 "gui.setting.performance" = "Частота тиков, отслеживание зрителей и лимиты частиц."
-"gui.setting.performance.dispatchInteractEvent" = "Вызывать CompanionPlayerInteractEvent для других плагинов, когда игрок кликает по компаньону."
+"gui.setting.performance.dispatchInteractEvent" = "Вызывать CompanionPlayerInteractEvent для других плагинов, когда игрок щёлкает по спутнику."
 "gui.setting.performance.dispatchInteractEvent.name" = "Отправлять событие взаимодействия"
 "gui.setting.performance.maximumParticleIntensity" = "Максимальная интенсивность частиц, которую могут получать игроки: FULL, REDUCED или OFF."
 "gui.setting.performance.maximumParticleIntensity.name" = "Максимальная интенсивность частиц"
 "gui.setting.performance.name" = "Производительность"
-"gui.setting.performance.updateInterval" = "Тики между обновлениями анимации компаньонов, не менее 1."
+"gui.setting.performance.updateInterval" = "Тики между обновлениями анимации спутников, не менее 1."
 "gui.setting.performance.updateInterval.name" = "Интервал обновления"
-"gui.setting.performance.viewDistance" = "Расстояние в блоках, на котором другие игроки видят компаньона, 0 или больше."
+"gui.setting.performance.viewDistance" = "Расстояние в блоках, на котором другие игроки видят спутника, 0 или больше."
 "gui.setting.performance.viewDistance.name" = "Дальность видимости"
 "gui.setting.performance.viewerRefreshDelay" = "Тики между проверками расстояния до зрителей, не менее 1."
 "gui.setting.performance.viewerRefreshDelay.name" = "Задержка обновления зрителей"
@@ -762,20 +772,20 @@
 "gui.setting.presentation.commandSounds" = "Проигрывать короткий звук успеха или ошибки, когда команда сообщает игроку свой результат."
 "gui.setting.presentation.commandSounds.name" = "Звуки команд"
 "gui.setting.presentation.name" = "Оформление"
-"gui.setting.presentation.serializer" = "Формат текста для имён компаньонов, описаний и шаблонов предметов: MINI_MESSAGE, LEGACY_AMPERSAND или PLAIN."
+"gui.setting.presentation.serializer" = "Формат текста для имён спутников, описаний и шаблонов предметов: MINI_MESSAGE, LEGACY_AMPERSAND или PLAIN."
 "gui.setting.presentation.serializer.name" = "Сериализатор"
 "gui.setting.presentation.splashScreen" = "Выводить заставку запуска ByteCompanions после готовности служб."
 "gui.setting.presentation.splashScreen.name" = "Заставка"
 "gui.setting.serverRules" = "Ограничения по мирам и регионам."
-"gui.setting.serverRules.bonusDisabledWorlds" = "Названия миров, в которых приостановлены атрибуты, эффекты, бонусы к наградам и автоматический опыт компаньонов."
+"gui.setting.serverRules.bonusDisabledWorlds" = "Названия миров, в которых приостановлены атрибуты, эффекты, бонусы к наградам и автоматический опыт спутников."
 "gui.setting.serverRules.bonusDisabledWorlds.name" = "Миры без бонусов"
-"gui.setting.serverRules.hiddenWorlds" = "Названия миров, в которых скрыты визуальные эффекты компаньонов."
+"gui.setting.serverRules.hiddenWorlds" = "Названия миров, в которых скрыты визуальные эффекты спутников."
 "gui.setting.serverRules.hiddenWorlds.name" = "Скрытые миры"
 "gui.setting.serverRules.name" = "Правила сервера"
 "gui.setting.serverRules.worldguard" = "Учитывать флаги bytecompanions-visuals и bytecompanions-bonuses, когда установлен WorldGuard."
 "gui.setting.serverRules.worldguard.name" = "WorldGuard"
 "gui.setting.storage" = "Бэкенд хранения данных игроков и пул подключений."
-"gui.setting.storage.backend" = "Хранилище для компаньонов, коллекций, прогресса и выбранных частиц игроков: json, sqlite, h2 или mysql."
+"gui.setting.storage.backend" = "Хранилище для спутников, коллекций, развития и выбранных частиц игроков: json, sqlite, h2 или mysql."
 "gui.setting.storage.backend.name" = "Бэкенд"
 "gui.setting.storage.h2" = "Расположение встроенной базы данных H2."
 "gui.setting.storage.h2.directory" = "Каталог внутри plugins/ByteCompanions, в котором лежат файлы встроенной базы данных."
