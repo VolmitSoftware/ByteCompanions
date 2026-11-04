@@ -282,6 +282,7 @@
         "org.osgi:org.osgi.annotation.versioning:1.1.2|org.osgi.annotation.versioning-1.1.2.jar": "f51f235e80df8ffbc30ef1b557b6ea38a696632d675404ec117e952978b8b863",
         "org.osgi:org.osgi.resource:1.0.0|org.osgi.resource-1.0.0.jar": "81fc50f1f1d38a4af28e131907d4afe213249aab05060484edca0e60c4af9b4a",
         "org.osgi:org.osgi.service.serviceloader:1.0.0|org.osgi.service.serviceloader-1.0.0.jar": "8f876ce2a9aa4e95b1f1952950255103e2487425050a654f3285447ba601c154",
+        "org.ow2.asm:asm-analysis:9.10.1|asm-analysis-9.10.1.jar": "dede75a21306b65974ecd8f87114ff6970f09fb794157a4ca09ab25c888c2bfc",
         "org.ow2.asm:asm-commons:9.10.1|asm-commons-9.10.1.jar": "6d0abefb7cbf972ea16edb37ec14835372505063a45f976ab7ea889ed9497895",
         "org.ow2.asm:asm-commons:9.8|asm-commons-9.8.jar": "3301a1c1cb4c59fcc5292648dac1d7c5aed4c0f067dfbe88873b8cdfe77404f4",
         "org.ow2.asm:asm-commons:9.9.1|asm-commons-9.9.1.jar": "c2319e014ce7199f2b7f7d56d6bb991863168c3f4b6cd6c9f542a4937ef7ef88",
