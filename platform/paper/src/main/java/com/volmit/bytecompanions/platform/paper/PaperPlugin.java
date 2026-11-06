@@ -314,7 +314,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
         this.contentSnapshot = ContentSnapshot.capture(this);
         ContentPreflight.validate(this, prepared.configuration(), this.contentSnapshot);
         this.configService.installContent(this.contentSnapshot);
-        this.startRuntime(prepared.configuration()).whenComplete((ignored, failure) -> {
+        this.startRuntime(prepared.configuration(), this.openStorage(prepared.configuration())).whenComplete((ignored, failure) -> {
             if (failure != null) {
                 this.failStartup(failure);
                 return;
@@ -355,7 +355,9 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
         }
     }
 
-    private CompletableFuture<Void> startRuntime(Configuration configuration) {
+    private CompletableFuture<Void> startRuntime(Configuration configuration, PreparedStorage prepared) {
+        this.asyncExecutor = prepared.executor();
+        this.storage = prepared.storage();
         this.getLogger().info("Enabling plugin...");
         this.runtimeGeneration++;
         this.animationRegistry = BuiltinAnimationRegistry.createDefaults();
@@ -376,17 +378,13 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
         final String serializerType = this.configuration.presentation().serializer();
         this.componentSerializerAdapter = ComponentSerializerFactory.createAdapter(serializerType);
 
-        this.asyncExecutor = new VirtualThreadAsyncExecutor();
         this.messageDispatcher = new MessageDispatcher(this.languageService, () -> this.configService.current().presentation().commandSounds());
 
         final TextSerializer textSerializer = TextSerializerFactory.create(serializerType);
         this.itemBlueprintRegistry = ItemBlueprintRegistry.create(textSerializer);
 
-        this.initializeStorage();
-
         this.companionEventBus = new BukkitCompanionEventBus(this);
         this.companionEntityCache = new CompanionEntityCache();
-        this.storage.connect();
 
         CompletableFuture<Void> progressionReady = CompletableFuture.completedFuture(null);
         if (configuration.features().enabled("progression") || configuration.features().enabled("boosters")) {
@@ -1230,13 +1228,21 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
                     return;
                 }
                 try {
-                    this.stopRuntimeAsync().whenComplete((ignored, failure) -> {
+                    // The old runtime must release its database before the new one opens it (H2 and SQLite lock the file).
+                    this.stopRuntimeAsync().thenApplyAsync(ignored -> {
+                        if (this.closing) {
+                            throw new IllegalStateException("ByteCompanions is stopping");
+                        }
+                        return this.openStorage(candidate);
+                    }, this.configurationExecutor).whenComplete((prepared, failure) -> {
                         if (failure != null) {
-                            installation.completeExceptionally(failure);
+                            installation.completeExceptionally(failure instanceof CompletionException wrapped
+                                    && wrapped.getCause() != null ? wrapped.getCause() : failure);
                             return;
                         }
                         if (this.closing || !FoliaScheduler.runGlobal(this, () -> {
                             if (this.closing || installation.isDone()) {
+                                this.closePreparedStorage(prepared);
                                 installation.completeExceptionally(new IllegalStateException("ByteCompanions is stopping"));
                                 return;
                             }
@@ -1247,7 +1253,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
                                 } else {
                                     this.languageService.install(language);
                                 }
-                                this.startRuntime(candidate).whenComplete((started, startupFailure) -> {
+                                this.startRuntime(candidate, prepared).whenComplete((started, startupFailure) -> {
                                     if (startupFailure == null) {
                                         installation.complete(null);
                                     } else {
@@ -1255,9 +1261,13 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
                                     }
                                 });
                             } catch (Exception | LinkageError exception) {
+                                if (this.storage != prepared.storage()) {
+                                    this.closePreparedStorage(prepared);
+                                }
                                 installation.completeExceptionally(exception);
                             }
                         })) {
+                            this.closePreparedStorage(prepared);
                             installation.completeExceptionally(new IllegalStateException("Could not schedule runtime replacement"));
                         }
                     });
@@ -1338,8 +1348,36 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
         }
     }
 
-    private void initializeStorage() {
-        this.storage = RuntimeStorageFactory.create(this, this.configuration.storage(), this.asyncExecutor);
+    private record PreparedStorage(AsyncExecutor executor, RuntimeStorage storage) {
+    }
+
+    // Connecting can wait up to the pool's connection timeout, so reloads call this off the server thread.
+    private PreparedStorage openStorage(Configuration configuration) {
+        AsyncExecutor executor = new VirtualThreadAsyncExecutor();
+        RuntimeStorage opened = null;
+        try {
+            opened = RuntimeStorageFactory.create(this, configuration.storage(), executor);
+            opened.connect();
+            return new PreparedStorage(executor, opened);
+        } catch (RuntimeException | Error failure) {
+            this.cleanup("storage executor", executor::shutdown);
+            if (opened != null) {
+                this.cleanup("storage connection", opened::disconnect);
+            }
+            throw failure;
+        }
+    }
+
+    private void closePreparedStorage(PreparedStorage prepared) {
+        Runnable close = () -> {
+            this.cleanup("storage executor", prepared.executor()::shutdown);
+            this.cleanup("storage connection", prepared.storage()::disconnect);
+        };
+        try {
+            this.configurationExecutor.execute(close);
+        } catch (RejectedExecutionException stopped) {
+            close.run();
+        }
     }
 
     private @NotNull NmsCompanionEntityFactory createNmsCompanionEntityFactory() {
