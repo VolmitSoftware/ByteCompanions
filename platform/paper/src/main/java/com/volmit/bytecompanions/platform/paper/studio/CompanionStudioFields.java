@@ -273,9 +273,24 @@ public final class CompanionStudioFields {
         }
     }
 
-    private static String label(List<Object> path) {
-        return String.join(" › ", path.stream().map(part -> part instanceof Integer index
-                ? Integer.toString(index + 1) : part.toString().replace('-', ' ').replace('_', ' ')).toList());
+    static String label(List<Object> path) {
+        // The open Studio section already names the "equipment" or "animations" root, so the label starts below it.
+        List<Object> shown = path.size() > 1 && (path.getFirst().equals("equipment") || path.getFirst().equals("animations"))
+                ? path.subList(1, path.size()) : path;
+        return String.join(" › ", shown.stream().map(CompanionStudioFields::labelPart).toList());
+    }
+
+    private static String labelPart(Object part) {
+        if (part instanceof Integer index) {
+            return "#" + (index + 1);
+        }
+        String words = switch (part.toString()) {
+            case "HAND" -> "main hand";
+            case "OFF_HAND" -> "off hand";
+            case "rgb-color" -> "dye color";
+            default -> part.toString().replace('-', ' ').replace('_', ' ').toLowerCase(Locale.ROOT);
+        };
+        return Character.toUpperCase(words.charAt(0)) + words.substring(1);
     }
 
     private static boolean decimalField(CompanionDraft.Section section, List<Object> path) {

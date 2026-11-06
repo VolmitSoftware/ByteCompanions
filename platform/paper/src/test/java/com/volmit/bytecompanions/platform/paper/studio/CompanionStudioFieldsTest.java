@@ -27,6 +27,15 @@ final class CompanionStudioFieldsTest {
     }
 
     @Test
+    void labelsReadAsSettingNamesInsteadOfConfigPaths() {
+        assertEquals("Main hand › Material", CompanionStudioFields.label(List.of("equipment", "HAND", "material")));
+        assertEquals("Chest › Dye color", CompanionStudioFields.label(List.of("equipment", "CHEST", "rgb-color")));
+        assertEquals("Movement › #1 › Desired distance",
+                CompanionStudioFields.label(List.of("animations", "movement", 0, "desired-distance")));
+        assertEquals("Appearance › Custom name", CompanionStudioFields.label(List.of("appearance", "custom-name")));
+    }
+
+    @Test
     void animationTogglePreservesUnrelatedEntriesAndTheirOrder() throws Exception {
         CompanionDraft draft = draft().withValue(CompanionDraft.Section.COMPANION, List.of("animations", "movement"),
                 List.of(Map.of("id", "custom-animation", "speed", 0.9), Map.of("id", "follow_owner", "desired-distance", 2.0)));
