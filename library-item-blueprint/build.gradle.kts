@@ -4,7 +4,7 @@ repositories {
 
 dependencies {
     compileOnly(providers.gradleProperty("volmLibCoordinate")
-        .orElse("com.github.VolmitSoftware:VolmLib:master-SNAPSHOT").get()) { isTransitive = false }
+        .orElse("com.github.VolmitSoftware.VolmLib:volmlib-shared:master-SNAPSHOT").get()) { isTransitive = false }
     compileOnly("org.spigotmc:spigot-api:26.1.2-R0.1-SNAPSHOT")
     compileOnly("net.kyori:adventure-text-minimessage:4.26.1")
     compileOnly("net.kyori:adventure-text-serializer-legacy:4.26.1")

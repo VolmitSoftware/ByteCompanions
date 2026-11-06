@@ -195,7 +195,7 @@ dependencies {
     implementation(project(":particle-adapter"))
     implementation(project(":particle-adapter:v26_1"))
     implementation(providers.gradleProperty("volmLibCoordinate")
-        .orElse("com.github.VolmitSoftware:VolmLib:master-SNAPSHOT").get()) {
+        .orElse("com.github.VolmitSoftware.VolmLib:volmlib-shared:master-SNAPSHOT").get()) {
         isChanging = true
         isTransitive = false
     }
