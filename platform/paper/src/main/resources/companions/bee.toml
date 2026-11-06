@@ -22,6 +22,12 @@ scale = 0.85
 [equipment.HEAD]
 material = "BEE_NEST"
 
+[variants.hive]
+name = "Beehive"
+
+[variants.hive.equipment.HEAD]
+material = "BEEHIVE"
+
 [[animations.movement]]
 id = "follow_formation"
 base-interpolation = 0.12

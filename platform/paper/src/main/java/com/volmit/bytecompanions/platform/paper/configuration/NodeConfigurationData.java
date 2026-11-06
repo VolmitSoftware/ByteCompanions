@@ -16,6 +16,10 @@ public class NodeConfigurationData implements ConfigurationData {
         this.configurationNode = configurationNode;
     }
 
+    public @NotNull ConfigurationNode node() {
+        return this.configurationNode;
+    }
+
     @Override
     public boolean has(final @NotNull String path) {
         return !this.resolveNode(path).virtual();

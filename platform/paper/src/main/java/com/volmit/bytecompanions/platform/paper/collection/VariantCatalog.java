@@ -1,8 +1,15 @@
 package com.volmit.bytecompanions.platform.paper.collection;
 
+import com.volmit.bytecompanions.api.bukkit.ItemStackProvider;
 import com.volmit.bytecompanions.api.companion.Companion;
+import com.volmit.bytecompanions.api.companion.CompanionModel;
 import com.volmit.bytecompanions.api.companion.CompanionType;
 import com.volmit.bytecompanions.api.companion.CompanionTypeRegistry;
+import com.volmit.bytecompanions.api.companion.ConfigurationData;
+import com.volmit.bytecompanions.api.companion.animation.AnimationChannel;
+import com.volmit.bytecompanions.api.companion.animation.AnimationData;
+import com.volmit.bytecompanions.api.companion.data.AppearanceData;
+import com.volmit.bytecompanions.api.companion.data.OverlayData;
 import com.volmit.bytecompanions.api.user.CompanionPlayer;
 import com.volmit.bytecompanions.core.user.DefaultCompanionPlayer;
 import com.volmit.bytecompanions.platform.paper.PaperPlugin;
@@ -11,8 +18,15 @@ import com.volmit.bytecompanions.platform.paper.companion.animations.defaults.mo
 import com.volmit.bytecompanions.platform.paper.companion.animations.defaults.movement.formation.GridFormation;
 import com.volmit.bytecompanions.platform.paper.companion.animations.defaults.movement.formation.LineFormation;
 import com.volmit.bytecompanions.platform.paper.companion.animations.defaults.movement.formation.OrbitFormation;
+import com.volmit.bytecompanions.platform.paper.configuration.NodeConfigurationData;
+import com.volmit.bytecompanions.platform.paper.loader.CompanionConfigurationLoader;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.EquipmentSlot;
 
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -30,6 +44,11 @@ public final class VariantCatalog implements CollectionService.StyleAdapter {
             return List.of();
         }
         return variants.keySet().stream().map(Object::toString).sorted().toList();
+    }
+
+    public String name(String companionId, String variant) {
+        CompanionType type = plugin.typeRegistry().getOrNull(companionId);
+        return type == null ? null : type.definition().getString("variants." + variant + ".name");
     }
 
     public String category(CompanionType type) {
@@ -51,9 +70,12 @@ public final class VariantCatalog implements CollectionService.StyleAdapter {
             }
             for (Map.Entry<?, ?> entry : variants.entrySet()) {
                 if (!(entry.getKey() instanceof String id) || !id.matches("[a-z0-9_-]{1,32}")
-                        || !(entry.getValue() instanceof Map<?, ?> definition)
-                        || definition.size() != 1 || !(definition.get("template") instanceof String template)) {
-                    throw new IllegalArgumentException(type.id() + ": each variant requires a lowercase ID and one template field");
+                        || !(entry.getValue() instanceof Map<?, ?> definition) || !wellFormed(definition)) {
+                    throw new IllegalArgumentException(type.id() + ": each outfit needs a lowercase ID and either one template field"
+                            + " or an equipment table with an optional name");
+                }
+                if (!(definition.get("template") instanceof String template)) {
+                    continue;
                 }
                 CompanionType source = registry.getOrNull(template);
                 if (source == null || source.model() != type.model()) {
@@ -61,6 +83,25 @@ public final class VariantCatalog implements CollectionService.StyleAdapter {
                 }
             }
         }
+    }
+
+    private static boolean wellFormed(Map<?, ?> definition) {
+        if (definition.size() == 1 && definition.get("template") instanceof String) {
+            return true;
+        }
+        if (!(definition.get("equipment") instanceof Map<?, ?> equipment) || equipment.isEmpty()
+                || !Set.of("equipment", "name").containsAll(definition.keySet())) {
+            return false;
+        }
+        for (Map.Entry<?, ?> slot : equipment.entrySet()) {
+            if (Arrays.stream(EquipmentSlot.values()).noneMatch(value -> value.name().equals(slot.getKey()))
+                    || !(slot.getValue() instanceof Map<?, ?> item) || !(item.get("material") instanceof String)) {
+                return false;
+            }
+        }
+        Object name = definition.get("name");
+        return name == null || name instanceof String text && !text.isBlank()
+                && text.codePointCount(0, text.length()) <= 32 && text.codePoints().noneMatch(Character::isISOControl);
     }
 
     @Override
@@ -113,10 +154,40 @@ public final class VariantCatalog implements CollectionService.StyleAdapter {
         if (!variants(type.id()).contains(variant)) {
             throw new CollectionFailure(CollectionFailure.Reason.VARIANT_UNAVAILABLE, Map.of("variant", variant));
         }
-        CompanionType source = plugin.typeRegistry().getOrNull(type.definition().getString("variants." + variant + ".template"));
+        String template = type.definition().getString("variants." + variant + ".template");
+        if (template == null) {
+            return outfit(type, variant);
+        }
+        CompanionType source = plugin.typeRegistry().getOrNull(template);
         if (source == null || source.model() != type.model()) {
             throw new CollectionFailure(CollectionFailure.Reason.VARIANT_UNAVAILABLE, Map.of("variant", variant));
         }
         return source;
+    }
+
+    private static CompanionType outfit(CompanionType type, String variant) {
+        if (!(type.definition() instanceof NodeConfigurationData definition)) {
+            throw new CollectionFailure(CollectionFailure.Reason.VARIANT_UNAVAILABLE, Map.of("variant", variant));
+        }
+        Map<EquipmentSlot, ItemStackProvider> equipment = new EnumMap<>(EquipmentSlot.class);
+        equipment.putAll(type.equipment());
+        try {
+            equipment.putAll(CompanionConfigurationLoader.outfitEquipment(definition.node().node("variants", variant)));
+        } catch (IOException exception) {
+            throw new CollectionFailure(CollectionFailure.Reason.VARIANT_UNAVAILABLE, Map.of("variant", variant));
+        }
+        return new Outfit(type, Collections.unmodifiableMap(equipment));
+    }
+
+    private record Outfit(CompanionType base, Map<EquipmentSlot, ItemStackProvider> equipment) implements CompanionType {
+        @Override public String id() { return base.id(); }
+        @Override public boolean exclusive() { return base.exclusive(); }
+        @Override public ItemStackProvider displayItem() { return base.displayItem(); }
+        @Override public AppearanceData appearance() { return base.appearance(); }
+        @Override public CompanionModel model() { return base.model(); }
+        @Override public ConfigurationData data() { return base.data(); }
+        @Override public ConfigurationData definition() { return base.definition(); }
+        @Override public Map<AnimationChannel, Map<String, AnimationData>> animations() { return base.animations(); }
+        @Override public Map<String, OverlayData> overlays() { return base.overlays(); }
     }
 }

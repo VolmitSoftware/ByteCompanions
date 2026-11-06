@@ -37,6 +37,42 @@ material = "IRON_SWORD"
 [equipment.OFF_HAND]
 material = "SHIELD"
 
+[variants.gilded]
+name = "Gilded"
+
+[variants.gilded.equipment.HEAD]
+material = "GOLDEN_HELMET"
+
+[variants.gilded.equipment.CHEST]
+material = "GOLDEN_CHESTPLATE"
+
+[variants.gilded.equipment.LEGS]
+material = "GOLDEN_LEGGINGS"
+
+[variants.gilded.equipment.FEET]
+material = "GOLDEN_BOOTS"
+
+[variants.gilded.equipment.HAND]
+material = "GOLDEN_SWORD"
+
+[variants.shadow]
+name = "Shadow"
+
+[variants.shadow.equipment.HEAD]
+material = "NETHERITE_HELMET"
+
+[variants.shadow.equipment.CHEST]
+material = "NETHERITE_CHESTPLATE"
+
+[variants.shadow.equipment.LEGS]
+material = "NETHERITE_LEGGINGS"
+
+[variants.shadow.equipment.FEET]
+material = "NETHERITE_BOOTS"
+
+[variants.shadow.equipment.HAND]
+material = "NETHERITE_SWORD"
+
 [[animations.movement]]
 id = "follow_formation"
 base-interpolation = 0.15

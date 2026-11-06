@@ -40,6 +40,21 @@ rgb-color = "86,66,49"
 [equipment.HAND]
 material = "COMPASS"
 
+[variants.armored]
+name = "Armored"
+
+[variants.armored.equipment.CHEST]
+material = "IRON_CHESTPLATE"
+
+[variants.armored.equipment.LEGS]
+material = "IRON_LEGGINGS"
+
+[variants.armored.equipment.FEET]
+material = "IRON_BOOTS"
+
+[variants.armored.equipment.HAND]
+material = "IRON_SWORD"
+
 [[animations.movement]]
 id = "follow_formation"
 base-interpolation = 0.15

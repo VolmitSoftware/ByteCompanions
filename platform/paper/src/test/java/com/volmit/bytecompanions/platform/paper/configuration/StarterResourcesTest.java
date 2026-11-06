@@ -1,6 +1,10 @@
 package com.volmit.bytecompanions.platform.paper.configuration;
 
 import com.volmit.bytecompanions.api.companion.animation.AnimationChannel;
+import com.volmit.bytecompanions.core.registry.DefaultCompanionTypeRegistry;
+import com.volmit.bytecompanions.api.companion.CompanionModel;
+import com.volmit.bytecompanions.core.companion.DefaultCompanionType;
+import com.volmit.bytecompanions.platform.paper.collection.VariantCatalog;
 import com.volmit.bytecompanions.api.companion.animation.registry.AnimationFactory;
 import com.volmit.bytecompanions.api.companion.animation.registry.AnimationRegistry;
 import com.volmit.bytecompanions.features.animations.AnimationsFeature;
@@ -143,6 +147,29 @@ class StarterResourcesTest {
         ContentSnapshot content = new ContentSnapshot(sources);
         ProgressionDefinitions progression = ProgressionDefinitions.parse(sources.get("features/progression/config.toml").getBytes(StandardCharsets.UTF_8));
         assertDoesNotThrow(() -> ProgressionContentPreflight.validate(progression, content, true, true));
+    }
+
+    @Test
+    void starterOutfitsLoadAndOnlyChangeVanillaEquipment() throws Exception {
+        DefaultCompanionTypeRegistry registry = new DefaultCompanionTypeRegistry();
+        for (String id : StarterCollection.ids()) {
+            ConfigurationNode definition = node("companions/" + id + ".toml");
+            registry.register(id, new DefaultCompanionType(id, false, null, null,
+                    CompanionModel.valueOf(definition.node("model").getString()), new NodeConfigurationData(definition),
+                    Map.of(), Map.of(), Map.of()));
+        }
+        assertDoesNotThrow(() -> VariantCatalog.validateDefinitions(registry));
+        for (String id : StarterCollection.ids()) {
+            ConfigurationNode variants = node("companions/" + id + ".toml").node("variants");
+            assertEquals(id.equals("rainbow"), variants.virtual(), id);
+            for (ConfigurationNode variant : variants.childrenMap().values()) {
+                assertFalse(variant.node("name").getString("").isBlank(), id + " " + variant.key());
+                for (ConfigurationNode item : variant.node("equipment").childrenMap().values()) {
+                    assertNotNull(Material.getMaterial(item.node("material").getString()), id + " " + variant.key());
+                    assertTrue(item.node("custom-model-data").virtual(), id + " " + variant.key());
+                }
+            }
+        }
     }
 
     private static ConfigurationNode node(String path) throws Exception {

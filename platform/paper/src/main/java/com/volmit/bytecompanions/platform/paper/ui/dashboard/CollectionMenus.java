@@ -350,10 +350,15 @@ final class CollectionMenus implements Listener {
     private void styleLore(Player player, UIElement entry, String id, CompanionStyle style) {
         String fallback = menus.textPlain(player, "default-value");
         entry.addLore(menus.text(player, "style-name", "value", style.nickname() == null ? fallback : style.nickname()));
-        entry.addLore(menus.text(player, "style-outfit", "value", style.variantId() == null ? fallback : CompanionMenus.label(style.variantId())));
+        entry.addLore(menus.text(player, "style-outfit", "value", style.variantId() == null ? fallback : outfitName(id, style.variantId())));
         entry.addLore(menus.text(player, "style-effect", "value", style.particleId() == null ? menus.textPlain(player, "none")
                 : menus.particleName(player, id, style.particleId())));
         entry.addLore(menus.text(player, "style-formation", "value", formationName(player, style.formationId())));
+    }
+
+    private String outfitName(String id, String variant) {
+        String name = plugin.collectionVariants().name(id, variant);
+        return name == null ? CompanionMenus.label(variant) : name;
     }
 
     private String formationName(Player player, String formation) {
@@ -419,7 +424,7 @@ final class CollectionMenus implements Listener {
         if (outfits.isEmpty()) {
             outfit.addLore(menus.text(player, "variants-none"));
         } else {
-            outfit.addLore(menus.text(player, "current", "value", style.variantId() == null ? fallback : CompanionMenus.label(style.variantId())));
+            outfit.addLore(menus.text(player, "current", "value", style.variantId() == null ? fallback : outfitName(id, style.variantId())));
             outfit.addLore("");
             outfit.addLore(menus.text(player, "click-choose"));
             if (style.variantId() != null) outfit.addLore(menus.text(player, "click-reset"));
@@ -471,7 +476,7 @@ final class CollectionMenus implements Listener {
             String variant = choices.get(index);
             boolean entitled = player.hasPermission("bytecompanions.variant." + id + "." + variant);
             UIElement entry = new UIElement(variant).setBaseItemStack(MenuIcons.of(entitled ? Material.LEATHER_CHESTPLATE : Material.GRAY_DYE))
-                    .setName(menus.text(player, "choice-value", "value", CompanionMenus.label(variant)));
+                    .setName(menus.text(player, "choice-value", "value", outfitName(id, variant)));
             boolean selected = variant.equals(style.variantId());
             entry.setEnchanted(selected);
             if (selected) entry.addLore(menus.text(player, "selected"));

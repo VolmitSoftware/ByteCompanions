@@ -47,6 +47,21 @@ class CollectionConfigurationTest {
         }
     }
 
+    @Test
+    void equipmentOutfitsNeedNoTemplateAndRejectUnknownKeysOrSlots() throws IOException {
+        DefaultCompanionTypeRegistry registry = loadDefinitions("model = \"HEAD\"\n\n[display.item]\nmaterial = \"STONE\"\n\n"
+                + "[variants.hive]\nname = \"Beehive\"\n\n[variants.hive.equipment.HEAD]\nmaterial = \"BEEHIVE\"\n");
+        assertDoesNotThrow(() -> VariantCatalog.validateDefinitions(registry));
+        for (String invalid : List.of("[variants.hive]\nname = \"Beehive\"\n",
+                "[variants.hive.equipment.WINGS]\nmaterial = \"BEEHIVE\"\n",
+                "[variants.hive.equipment.HEAD]\namount = 1\n",
+                "[variants.hive]\nbuffs = true\n\n[variants.hive.equipment.HEAD]\nmaterial = \"BEEHIVE\"\n",
+                "[variants.hive]\nname = \"" + "x".repeat(33) + "\"\n\n[variants.hive.equipment.HEAD]\nmaterial = \"BEEHIVE\"\n")) {
+            DefaultCompanionTypeRegistry rejected = loadDefinitions("model = \"HEAD\"\n\n[display.item]\nmaterial = \"STONE\"\n\n" + invalid);
+            assertThrows(IllegalArgumentException.class, () -> VariantCatalog.validateDefinitions(rejected));
+        }
+    }
+
     private static DefaultCompanionTypeRegistry loadDefinitions(String bee) throws IOException {
         DefaultCompanionTypeRegistry registry = new DefaultCompanionTypeRegistry();
         ContentSnapshot content = new ContentSnapshot(Map.of("companions/bee.toml", bee,

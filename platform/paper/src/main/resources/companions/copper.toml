@@ -39,6 +39,30 @@ material = "IRON_PICKAXE"
 [equipment.OFF_HAND]
 material = "COPPER_INGOT"
 
+[variants.weathered]
+name = "Weathered"
+
+[variants.weathered.equipment.HEAD]
+material = "WEATHERED_CUT_COPPER"
+
+[variants.weathered.equipment.CHEST]
+material = "LEATHER_CHESTPLATE"
+rgb-color = "98,140,112"
+
+[variants.oxidized]
+name = "Oxidized"
+
+[variants.oxidized.equipment.HEAD]
+material = "OXIDIZED_CUT_COPPER"
+
+[variants.oxidized.equipment.CHEST]
+material = "LEATHER_CHESTPLATE"
+rgb-color = "79,160,140"
+
+[variants.oxidized.equipment.LEGS]
+material = "LEATHER_LEGGINGS"
+rgb-color = "58,110,98"
+
 [[animations.movement]]
 id = "follow_formation"
 base-interpolation = 0.15

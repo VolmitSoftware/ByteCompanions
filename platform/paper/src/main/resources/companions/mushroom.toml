@@ -40,6 +40,15 @@ material = "FERN"
 [equipment.OFF_HAND]
 material = "BROWN_MUSHROOM"
 
+[variants.brown_cap]
+name = "Brown Cap"
+
+[variants.brown_cap.equipment.HEAD]
+material = "BROWN_MUSHROOM_BLOCK"
+
+[variants.brown_cap.equipment.OFF_HAND]
+material = "RED_MUSHROOM"
+
 [[animations.movement]]
 id = "follow_formation"
 base-interpolation = 0.12

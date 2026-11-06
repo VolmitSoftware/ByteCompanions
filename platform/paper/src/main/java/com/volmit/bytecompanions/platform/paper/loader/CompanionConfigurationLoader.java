@@ -225,6 +225,25 @@ public final class CompanionConfigurationLoader implements Loader {
         animations.put(channel, Map.of(id, data));
     }
 
+    // Outfits list only the slots they change; the rest keep the companion's own equipment.
+    public static Map<EquipmentSlot, ItemStackProvider> outfitEquipment(ConfigurationNode variant) throws IOException {
+        final Map<EquipmentSlot, ItemStackProvider> equipment = new EnumMap<>(EquipmentSlot.class);
+        for (Map.Entry<Object, ? extends ConfigurationNode> slot : variant.node("equipment").childrenMap().entrySet()) {
+            final EquipmentSlot equipmentSlot;
+            try {
+                equipmentSlot = EquipmentSlot.valueOf(slot.getKey().toString());
+            } catch (IllegalArgumentException exception) {
+                throw new IOException("Unknown equipment slot in outfit " + variant.key() + ": " + slot.getKey(), exception);
+            }
+            final ItemStackProvider item = slot.getValue().get(ItemStackProvider.class);
+            if (item == null) {
+                throw new IOException("Outfit " + variant.key() + " has no item for " + equipmentSlot);
+            }
+            equipment.put(equipmentSlot, item);
+        }
+        return equipment;
+    }
+
     public static void validateDefinition(CompanionTypeConfig definition, String source) {
         double scale = definition.appearance().scale();
         if (definition.miniatureModel() == null || !Double.isFinite(scale) || scale != -1 && scale <= 0) {

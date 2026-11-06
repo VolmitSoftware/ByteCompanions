@@ -41,6 +41,44 @@ material = "SPYGLASS"
 [equipment.OFF_HAND]
 material = "MAP"
 
+[variants.snow]
+name = "Snow Trail"
+
+[variants.snow.equipment.HEAD]
+material = "LEATHER_HELMET"
+rgb-color = "233,236,239"
+
+[variants.snow.equipment.CHEST]
+material = "LEATHER_CHESTPLATE"
+rgb-color = "210,220,228"
+
+[variants.snow.equipment.LEGS]
+material = "LEATHER_LEGGINGS"
+rgb-color = "176,190,201"
+
+[variants.snow.equipment.FEET]
+material = "LEATHER_BOOTS"
+rgb-color = "96,106,116"
+
+[variants.desert]
+name = "Desert Trail"
+
+[variants.desert.equipment.HEAD]
+material = "LEATHER_HELMET"
+rgb-color = "214,186,140"
+
+[variants.desert.equipment.CHEST]
+material = "LEATHER_CHESTPLATE"
+rgb-color = "196,160,110"
+
+[variants.desert.equipment.LEGS]
+material = "LEATHER_LEGGINGS"
+rgb-color = "160,120,80"
+
+[variants.desert.equipment.FEET]
+material = "LEATHER_BOOTS"
+rgb-color = "110,80,55"
+
 [[animations.movement]]
 id = "follow_formation"
 base-interpolation = 0.16
