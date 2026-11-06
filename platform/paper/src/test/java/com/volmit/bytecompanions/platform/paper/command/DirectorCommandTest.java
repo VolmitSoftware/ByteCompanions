@@ -19,7 +19,7 @@ class DirectorCommandTest {
     void rootRegistersAllGameplayAndAdministrationRoutesWithLocalizedDescriptions() {
         DirectorRuntimeEngine engine = DirectorEngineFactory.create(new CompanionCommands(null), DirectorEngineOptions.builder().build());
         assertEquals("bytecompanions", engine.getRoot().getDescriptor().getName());
-        assertEquals(Set.of("menu", "collection", "outfits", "interact", "edit", "spawn", "despawn", "debug", "config", "setup", "language", "version",
+        assertEquals(Set.of("menu", "collection", "loadouts", "interact", "edit", "spawn", "despawn", "debug", "config", "setup", "language", "version",
                         "particles", "upgrades", "boosts",
                         "progression", "booster", "transactions", "settings", "status"),
                 engine.getRoot().getChildren().stream().map(node -> node.getDescriptor().getName()).collect(Collectors.toSet()));

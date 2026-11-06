@@ -52,6 +52,18 @@ final class ConfigServiceTest {
     Path directory;
 
     @Test
+    void earlierOutfitLimitIsRenamedOnLoad() throws Exception {
+        Files.writeString(directory.resolve("config.toml"), "[collections]\nmaximumOutfits = 5\ntrialSeconds = 20\n");
+        try (ConfigService service = new ConfigService(directory.toFile(), preparedInstaller(candidate -> {}))) {
+            ConfigService.PreparedConfig prepared = service.prepareFromDisk();
+            assertEquals(5, prepared.configuration().collections().maximumLoadouts());
+            assertEquals(20, prepared.configuration().collections().trialSeconds());
+            assertEquals("[collections]\nmaximumLoadouts = 5\ntrialSeconds = 20\n", Files.readString(directory.resolve("config.toml")));
+        }
+        assertEquals("[collections]\nmaximumLoadouts = 3\n", ConfigService.migrate("[collections]\nmaximumLoadouts = 3\n"));
+    }
+
+    @Test
     void generatedDefaultsMatchThePackagedRootResource() throws Exception {
         try (ConfigService service = new ConfigService(directory.toFile(), preparedInstaller(candidate -> {}));
              InputStream resource = getClass().getResourceAsStream("/config.toml")) {
@@ -131,7 +143,7 @@ final class ConfigServiceTest {
                 [menus]
                 rightClickDashboard = false
                 [collections]
-                maximumOutfits = 5
+                maximumLoadouts = 5
                 trialSeconds = 15
                 personalityEnabled = false
                 idleReactions = false

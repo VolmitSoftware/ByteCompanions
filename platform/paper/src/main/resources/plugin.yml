@@ -45,8 +45,8 @@ permissions:
   bytecompanions.command.settings:
     description: Allows choosing which companions and particles the player sees
     default: true
-  bytecompanions.command.outfits:
-    description: Allows saving and wearing personal companion outfits
+  bytecompanions.command.loadouts:
+    description: Allows saving and using personal companion loadouts
     default: true
   bytecompanions.command.personalize:
     description: Allows setting personal companion names and approved cosmetic options

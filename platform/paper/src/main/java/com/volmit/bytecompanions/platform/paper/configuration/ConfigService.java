@@ -87,7 +87,34 @@ public final class ConfigService implements AutoCloseable {
         if (!file.exists()) {
             AtomicFileIO.writeString(file.toPath(), DEFAULT_SOURCE);
         }
-        return prepare(read(file));
+        String source = read(file);
+        String migrated = migrate(source);
+        if (!migrated.equals(source)) {
+            AtomicFileIO.writeString(file.toPath(), migrated);
+        }
+        return prepare(migrated);
+    }
+
+    // Outfits became loadouts in 2.0.0. Renaming the old key keeps earlier config files loading
+    // instead of failing the unknown-setting check.
+    static String migrate(String source) {
+        JsonElement parsed;
+        try {
+            parsed = TomlCodec.toJsonElement(source);
+        } catch (IOException | RuntimeException invalid) {
+            return source;
+        }
+        if (!parsed.isJsonObject() || !(parsed.getAsJsonObject().get("collections") instanceof JsonObject collections)
+                || !collections.has("maximumOutfits") || collections.has("maximumLoadouts")) {
+            return source;
+        }
+        String renamed = source.replaceAll("(?m)^(\\s*(?:collections\\.)?)maximumOutfits(\\s*=)", "$1maximumLoadouts$2");
+        try {
+            JsonElement result = TomlCodec.toJsonElement(renamed);
+            return result.getAsJsonObject().getAsJsonObject("collections").has("maximumLoadouts") ? renamed : source;
+        } catch (IOException | RuntimeException invalid) {
+            return source;
+        }
     }
 
     public void install(PreparedConfig prepared) {
@@ -563,8 +590,8 @@ public final class ConfigService implements AutoCloseable {
         for (String world : configuration.serverRules().bonusDisabledWorlds()) {
             require(world != null && !world.isBlank(), "serverRules.bonusDisabledWorlds", "must contain nonblank world names");
         }
-        require(configuration.collections().maximumOutfits() >= 1 && configuration.collections().maximumOutfits() <= 32,
-                "collections.maximumOutfits", "must be between 1 and 32");
+        require(configuration.collections().maximumLoadouts() >= 1 && configuration.collections().maximumLoadouts() <= 32,
+                "collections.maximumLoadouts", "must be between 1 and 32");
         require(configuration.collections().trialSeconds() >= 5 && configuration.collections().trialSeconds() <= 120,
                 "collections.trialSeconds", "must be between 5 and 120");
     }

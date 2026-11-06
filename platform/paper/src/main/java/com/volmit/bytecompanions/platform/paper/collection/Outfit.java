@@ -21,10 +21,10 @@ public record Outfit(String name, List<String> companionIds, Map<String, Compani
     }
 
     public static String key(String name) {
-        if (name == null) throw CollectionFailure.of(CollectionFailure.Reason.OUTFIT_NAME_INVALID);
+        if (name == null) throw CollectionFailure.of(CollectionFailure.Reason.LOADOUT_NAME_INVALID);
         String key = name.strip().toLowerCase(Locale.ROOT);
         if (!key.matches("[a-z0-9_-]{1,32}")) {
-            throw CollectionFailure.of(CollectionFailure.Reason.OUTFIT_NAME_INVALID);
+            throw CollectionFailure.of(CollectionFailure.Reason.LOADOUT_NAME_INVALID);
         }
         return key;
     }

@@ -25,7 +25,7 @@ public final class FeaturePermission {
         public static final String SETTINGS = node("settings");
         public static final String SETUP = node("setup");
         public static final String EDIT = node("edit");
-        public static final String OUTFITS = node("outfits");
+        public static final String LOADOUTS = node("loadouts");
         public static final String PERSONALIZE = node("personalize");
         public static final String INTERACT = node("interact");
         public static final String TRIAL = node("trial");

@@ -452,7 +452,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
         this.collectionService = new CollectionService(this, this.storage.collections(),
                 this.asyncExecutor.executor(), this.storage.users(), this.companionManager,
                 this.configuration.general().companionLimits(), this.particlesFeature,
-                this.configuration.collections().maximumOutfits(), this.collectionVariants);
+                this.configuration.collections().maximumLoadouts(), this.collectionVariants);
         this.registerListeners(this.collectionService);
         CompletableFuture<Void> collectionsReady = this.collectionService.initialize();
         CollectionService collections = this.collectionService;

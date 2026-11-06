@@ -27,14 +27,16 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
@@ -185,8 +187,8 @@ final class CollectionMenus implements Listener {
             browsing.put(player.getUniqueId(), new Browse(browse.favorites, browse.access, next < categories.size() ? categories.get(next) : null));
             menus.openCollection(player, 0);
         });
-        if (player.hasPermission(FeaturePermission.Command.OUTFITS)) {
-            action(window, 7, button(player, "outfits", Material.LEATHER_CHESTPLATE), () -> outfits(player, 0));
+        if (player.hasPermission(FeaturePermission.Command.LOADOUTS)) {
+            action(window, 7, button(player, "loadouts", Material.ARMOR_STAND), () -> loadouts(player, 0));
         }
     }
 
@@ -195,8 +197,8 @@ final class CollectionMenus implements Listener {
         UIElement favorite = button(player, favorite(player, id) ? "favorite-on" : "favorite", Material.HONEYCOMB);
         favorite.setEnchanted(favorite(player, id));
         action(window, 37, favorite, () -> change(player, () -> plugin.collectionService().toggleFavorite(player, id), () -> menus.openDashboard(player, id)));
-        if (player.hasPermission(FeaturePermission.Command.OUTFITS)) {
-            action(window, 38, button(player, "outfits", Material.LEATHER_CHESTPLATE), () -> outfits(player, 0));
+        if (player.hasPermission(FeaturePermission.Command.LOADOUTS)) {
+            action(window, 38, button(player, "loadouts", Material.ARMOR_STAND), () -> loadouts(player, 0));
         }
         if (player.hasPermission(FeaturePermission.Command.PERSONALIZE)) {
             action(window, 42, button(player, "personalize", Material.NAME_TAG), () -> personalize(player, id));
@@ -236,70 +238,153 @@ final class CollectionMenus implements Listener {
         }
     }
 
-    void outfits(Player player, int requestedPage) {
-        if (!allowed(player, FeaturePermission.Command.OUTFITS)) return;
+    void loadouts(Player player, int requestedPage) {
+        if (!allowed(player, FeaturePermission.Command.LOADOUTS)) return;
         CollectionProfile profile = profile(player);
         if (profile == null) return;
-        List<Outfit> outfits = profile.outfits().values().stream().sorted(Comparator.comparing(Outfit::name)).toList();
-        int page = CompanionMenus.page(requestedPage, outfits.size());
-        UIWindow window = menus.window(player, "outfits");
-        CompanionMenus.put(window, 4, button(player, "outfits", Material.LEATHER_CHESTPLATE));
-        for (int index = page * 28; index < Math.min(outfits.size(), (page + 1) * 28); index++) {
-            Outfit outfit = outfits.get(index);
-            UIElement entry = new UIElement(outfit.name()).setBaseItemStack(new ItemStack(Material.LEATHER_CHESTPLATE))
-                    .setName(menus.text(player, "choice-value", "value", outfit.name()));
-            entry.addLore(menus.text(player, "outfit-count", "count", Integer.toString(outfit.companionIds().size())));
-            action(window, CompanionMenus.contentSlot(index % 28), entry, () -> outfit(player, outfit.name(), 0));
+        List<Outfit> loadouts = profile.outfits().values().stream().sorted(Comparator.comparing(Outfit::name)).toList();
+        int page = CompanionMenus.page(requestedPage, loadouts.size());
+        UIWindow window = menus.window(player, "loadouts");
+        UIElement heading = button(player, "loadouts", Material.ARMOR_STAND);
+        heading.addLore(menus.text(player, "loadouts-hint"));
+        CompanionMenus.put(window, 4, heading);
+        for (int index = page * 28; index < Math.min(loadouts.size(), (page + 1) * 28); index++) {
+            Outfit loadout = loadouts.get(index);
+            List<String> members = loadout.companionIds();
+            UIElement entry = companionItem(player, loadout.name(), members.isEmpty() ? null : members.getFirst())
+                    .setName(menus.text(player, "choice-value", "value", loadout.name()));
+            for (int member = 0; member < Math.min(members.size(), 6); member++) {
+                entry.addLore(memberLine(player, members.get(member), loadout.styles().getOrDefault(members.get(member), CompanionStyle.defaults())));
+            }
+            if (members.size() > 6) entry.addLore(menus.text(player, "loadout-more", "count", Integer.toString(members.size() - 6)));
+            entry.addLore("");
+            if (active(player, loadout)) {
+                entry.setEnchanted(true);
+                entry.addLore(menus.text(player, "loadout-active"));
+            }
+            entry.addLore(menus.text(player, "click-use"));
+            entry.addLore(menus.text(player, "click-details"));
+            clicks(window, CompanionMenus.contentSlot(index % 28), entry,
+                    () -> change(player, () -> plugin.collectionService().applyOutfit(player, loadout.name()), () -> loadouts(player, page)),
+                    () -> loadout(player, loadout.name(), 0));
         }
-        if (outfits.isEmpty()) CompanionMenus.put(window, 22, button(player, "empty", Material.BARRIER));
-        action(window, 48, button(player, "outfit-save", Material.WRITABLE_BOOK), () -> prompt(player, FeaturePermission.Command.OUTFITS,
-                "collection.outfit-prompt", name -> change(player, () -> plugin.collectionService().saveOutfit(player, name), () -> outfits(player, page)),
-                () -> outfits(player, page)));
+        if (loadouts.isEmpty()) CompanionMenus.put(window, 22, button(player, "loadouts-empty", Material.BARRIER));
+        int out = equippedCount(player);
+        UIElement save = button(player, "loadout-save", Material.WRITABLE_BOOK);
+        save.addLore(out == 0 ? menus.text(player, "loadout-save-empty") : menus.text(player, "loadout-save-hint", "count", Integer.toString(out)));
+        action(window, 48, save, () -> {
+            if (equippedCount(player) == 0) {
+                plugin.languageService().send(player, "gui.loadout-save-empty");
+                return;
+            }
+            prompt(player, FeaturePermission.Command.LOADOUTS, "collection.loadout-prompt",
+                    name -> change(player, () -> plugin.collectionService().saveOutfit(player, name), () -> loadouts(player, page)),
+                    () -> loadouts(player, page));
+        });
         action(window, 46, button(player, "collection", Material.CHEST), () -> menus.openCollection(player, 0));
-        menus.navigation(window, page, outfits.size(), next -> outfits(player, next));
+        menus.navigation(window, page, loadouts.size(), next -> loadouts(player, next));
         menus.show(window);
     }
 
-    private void outfit(Player player, String name, int requestedPage) {
-        if (!allowed(player, FeaturePermission.Command.OUTFITS)) return;
+    private void loadout(Player player, String name, int requestedPage) {
+        if (!allowed(player, FeaturePermission.Command.LOADOUTS)) return;
         CollectionProfile profile = profile(player);
         if (profile == null) return;
-        Outfit outfit = profile.outfits().get(name);
-        if (outfit == null) { outfits(player, 0); return; }
-        int page = CompanionMenus.page(requestedPage, outfit.companionIds().size());
-        UIWindow window = menus.window(player, "outfit");
-        UIElement heading = button(player, "outfits", Material.LEATHER_CHESTPLATE);
-        heading.addLore(menus.text(player, "choice-value", "value", name));
+        Outfit loadout = profile.outfits().get(name);
+        if (loadout == null) {
+            loadouts(player, 0);
+            return;
+        }
+        int page = CompanionMenus.page(requestedPage, loadout.companionIds().size());
+        UIWindow window = menus.window(player, "loadout");
+        UIElement heading = button(player, "loadouts", Material.ARMOR_STAND).setName(menus.text(player, "choice-value", "value", name));
+        heading.addLore(menus.text(player, "loadout-count", "count", Integer.toString(loadout.companionIds().size())));
+        if (active(player, loadout)) {
+            heading.setEnchanted(true);
+            heading.addLore(menus.text(player, "loadout-active"));
+        }
         CompanionMenus.put(window, 4, heading);
-        for (int index = page * 28; index < Math.min(outfit.companionIds().size(), (page + 1) * 28); index++) {
-            String id = outfit.companionIds().get(index);
+        for (int index = page * 28; index < Math.min(loadout.companionIds().size(), (page + 1) * 28); index++) {
+            String id = loadout.companionIds().get(index);
             CompanionType type = plugin.typeRegistry().getOrNull(id);
-            UIElement entry = type == null ? button(player, "locked", Material.BARRIER) : menus.icon(id, menus.companionIcon(player, type));
-            entry.addLore(menus.text(player, "choice-value", "value", id));
+            UIElement entry = type == null ? button(player, "locked", Material.BARRIER)
+                    : companionItem(player, id, id).setName(menus.text(player, "choice-value", "value", menus.companionName(player, type)));
+            styleLore(player, entry, id, loadout.styles().getOrDefault(id, CompanionStyle.defaults()));
             if (!player.hasPermission(FeaturePermission.Companions.resolve(id))) entry.addLore(menus.text(player, "locked"));
-            CompanionStyle style = outfit.styles().getOrDefault(id, CompanionStyle.defaults());
-            if (style.nickname() != null) entry.addLore(menus.text(player, "choice-value", "value", style.nickname()));
-            if (style.variantId() != null) entry.addLore(menus.text(player, "choice-value", "value", style.variantId()));
-            if (style.particleId() != null) entry.addLore(menus.text(player, "choice-value", "value", style.particleId()));
-            if (style.formationId() != null) entry.addLore(menus.text(player, "choice-value", "value", style.formationId()));
             CompanionMenus.put(window, CompanionMenus.contentSlot(index % 28), entry);
         }
-        action(window, 48, button(player, "outfit-apply", Material.LIME_DYE),
-                () -> change(player, () -> plugin.collectionService().applyOutfit(player, name), () -> outfit(player, name, page)));
-        action(window, 51, button(player, "outfit-delete", Material.RED_DYE), () -> deleteOutfit(player, name));
-        action(window, 46, button(player, "studio-back", Material.ARROW), () -> outfits(player, 0));
-        menus.navigation(window, page, outfit.companionIds().size(), next -> outfit(player, name, next));
+        action(window, 47, button(player, "loadout-apply", Material.LIME_DYE),
+                () -> change(player, () -> plugin.collectionService().applyOutfit(player, name), () -> loadout(player, name, page)));
+        UIElement update = button(player, "loadout-update", Material.WRITABLE_BOOK);
+        update.addLore(menus.text(player, equippedCount(player) == 0 ? "loadout-save-empty" : "loadout-update-hint"));
+        action(window, 48, update, () -> {
+            if (equippedCount(player) == 0) {
+                plugin.languageService().send(player, "gui.loadout-save-empty");
+                return;
+            }
+            change(player, () -> plugin.collectionService().saveOutfit(player, name), () -> loadout(player, name, 0));
+        });
+        action(window, 51, button(player, "loadout-delete", Material.RED_DYE), () -> deleteLoadout(player, name));
+        action(window, 46, button(player, "studio-back", Material.ARROW), () -> loadouts(player, 0));
+        menus.navigation(window, page, loadout.companionIds().size(), next -> loadout(player, name, next));
         menus.show(window);
     }
 
-    private void deleteOutfit(Player player, String name) {
-        if (!allowed(player, FeaturePermission.Command.OUTFITS)) return;
-        UIWindow window = menus.window(player, "outfit-delete");
-        UIElement confirm = button(player, "outfit-delete-confirm", Material.RED_CONCRETE);
+    private void deleteLoadout(Player player, String name) {
+        if (!allowed(player, FeaturePermission.Command.LOADOUTS)) return;
+        UIWindow window = menus.window(player, "loadout-delete");
+        UIElement confirm = button(player, "loadout-delete-confirm", Material.RED_CONCRETE);
         confirm.addLore(menus.text(player, "choice-value", "value", name));
-        action(window, 22, confirm, () -> change(player, () -> plugin.collectionService().deleteOutfit(player, name), () -> outfits(player, 0)));
-        action(window, 46, button(player, "studio-back", Material.ARROW), () -> outfit(player, name, 0));
+        action(window, 22, confirm, () -> change(player, () -> plugin.collectionService().deleteOutfit(player, name), () -> loadouts(player, 0)));
+        action(window, 46, button(player, "studio-back", Material.ARROW), () -> loadout(player, name, 0));
         menus.show(window);
+    }
+
+    private String memberLine(Player player, String id, CompanionStyle style) {
+        CompanionType type = plugin.typeRegistry().getOrNull(id);
+        String companion = type == null ? CompanionMenus.label(id) : menus.companionName(player, type);
+        return style.nickname() == null ? menus.text(player, "loadout-member", "companion", companion)
+                : menus.text(player, "loadout-member-named", "companion", companion, "name", style.nickname());
+    }
+
+    private void styleLore(Player player, UIElement entry, String id, CompanionStyle style) {
+        String fallback = menus.textPlain(player, "default-value");
+        entry.addLore(menus.text(player, "style-name", "value", style.nickname() == null ? fallback : style.nickname()));
+        entry.addLore(menus.text(player, "style-outfit", "value", style.variantId() == null ? fallback : CompanionMenus.label(style.variantId())));
+        entry.addLore(menus.text(player, "style-effect", "value", style.particleId() == null ? menus.textPlain(player, "none")
+                : menus.particleName(player, id, style.particleId())));
+        entry.addLore(menus.text(player, "style-formation", "value", formationName(player, style.formationId())));
+    }
+
+    private String formationName(Player player, String formation) {
+        return formation == null ? menus.textPlain(player, "default-value") : menus.textPlain(player, "formation-" + formation);
+    }
+
+    private boolean active(Player player, Outfit loadout) {
+        CompanionPlayer state = plugin.getCompanionPlayerOrNull(player);
+        if (state == null || !state.companions().keySet().equals(Set.copyOf(loadout.companionIds()))) return false;
+        for (String id : loadout.companionIds()) {
+            if (!loadout.styles().getOrDefault(id, CompanionStyle.defaults()).equals(plugin.collectionService().style(player, id))) return false;
+        }
+        return true;
+    }
+
+    private int equippedCount(Player player) {
+        CompanionPlayer state = plugin.getCompanionPlayerOrNull(player);
+        return state == null ? 0 : state.companions().size();
+    }
+
+    // Reuses the companion's own menu item as the icon, without its description lore.
+    private UIElement companionItem(Player player, String elementId, String companionId) {
+        CompanionType type = companionId == null ? null : plugin.typeRegistry().getOrNull(companionId);
+        ItemStack item = type == null ? null : menus.companionIcon(player, type);
+        item = item == null || item.getType().isAir() ? new ItemStack(Material.ARMOR_STAND) : item.clone();
+        ItemMeta meta = item.getItemMeta();
+        if (meta != null) {
+            meta.setLore(List.of());
+            item.setItemMeta(meta);
+        }
+        return new UIElement(elementId).setBaseItemStack(MenuIcons.withoutStats(item));
     }
 
     private void personalize(Player player, String id) {
@@ -308,16 +393,68 @@ final class CollectionMenus implements Listener {
         if (profile == null) return;
         CompanionStyle style = plugin.collectionService().style(player, id);
         UIWindow window = menus.window(player, "personalize");
+        CompanionType type = plugin.typeRegistry().getOrNull(id);
+        if (type != null) {
+            CompanionMenus.put(window, 4, companionItem(player, id, id)
+                    .setName(menus.text(player, "choice-value", "value", menus.companionName(player, type))));
+        }
+        String fallback = menus.textPlain(player, "default-value");
+
         UIElement name = button(player, "nickname", Material.NAME_TAG);
-        name.addLore(style.nickname() == null ? menus.text(player, "default-choice") : menus.text(player, "choice-value", "value", style.nickname()));
-        action(window, 20, name, () -> prompt(player, FeaturePermission.Command.PERSONALIZE, "collection.name-prompt",
-                value -> updateStyle(player, id, current -> new CompanionStyle(value, current.variantId(), current.particleId(), current.formationId())), () -> personalize(player, id)));
-        action(window, 29, button(player, "name-reset", Material.MILK_BUCKET),
-                () -> updateStyle(player, id, current -> new CompanionStyle(null, current.variantId(), current.particleId(), current.formationId())));
-        action(window, 22, button(player, "variants", Material.LEATHER_CHESTPLATE), () -> variants(player, id, 0));
-        action(window, 24, button(player, "formation", Material.COMPASS), () -> formation(player, id));
-        action(window, 32, button(player, "formation-earlier", Material.ARROW), () -> moveFormation(player, id, -1));
-        action(window, 33, button(player, "formation-later", Material.SPECTRAL_ARROW), () -> moveFormation(player, id, 1));
+        name.addLore(menus.text(player, "current", "value", style.nickname() == null ? fallback : style.nickname()));
+        name.addLore("");
+        name.addLore(menus.text(player, "click-rename"));
+        if (style.nickname() != null) name.addLore(menus.text(player, "click-reset"));
+        clicks(window, 19, name,
+                () -> prompt(player, FeaturePermission.Command.PERSONALIZE, "collection.name-prompt",
+                        value -> updateStyle(player, id, current -> new CompanionStyle(value, current.variantId(), current.particleId(), current.formationId())),
+                        () -> personalize(player, id)),
+                () -> {
+                    if (plugin.collectionService().style(player, id).nickname() == null) return;
+                    updateStyle(player, id, current -> new CompanionStyle(null, current.variantId(), current.particleId(), current.formationId()));
+                });
+
+        List<String> outfits = plugin.collectionVariants().variants(id);
+        UIElement outfit = button(player, "variants", Material.LEATHER_CHESTPLATE);
+        if (outfits.isEmpty()) {
+            outfit.addLore(menus.text(player, "variants-none"));
+        } else {
+            outfit.addLore(menus.text(player, "current", "value", style.variantId() == null ? fallback : CompanionMenus.label(style.variantId())));
+            outfit.addLore("");
+            outfit.addLore(menus.text(player, "click-choose"));
+            if (style.variantId() != null) outfit.addLore(menus.text(player, "click-reset"));
+        }
+        clicks(window, 21, outfit,
+                () -> {
+                    if (!outfits.isEmpty()) variants(player, id, 0);
+                },
+                () -> {
+                    if (plugin.collectionService().style(player, id).variantId() == null) return;
+                    updateStyle(player, id, current -> new CompanionStyle(current.nickname(), null, current.particleId(), current.formationId()));
+                });
+
+        UIElement formation = button(player, "formation", Material.COMPASS);
+        formation.addLore(menus.text(player, "current", "value", formationName(player, style.formationId())));
+        formation.addLore("");
+        formation.addLore(menus.text(player, "click-next"));
+        formation.addLore(menus.text(player, "click-previous"));
+        clicks(window, 23, formation, () -> cycleFormation(player, id, 1), () -> cycleFormation(player, id, -1));
+
+        List<String> order = lineOrder(player, profile);
+        UIElement place = button(player, "formation-position", Material.SPECTRAL_ARROW);
+        int index = order.indexOf(id);
+        if (index < 0) {
+            place.addLore(menus.text(player, "equip-first"));
+        } else {
+            place.addLore(menus.text(player, "position-value", "index", Integer.toString(index + 1), "count", Integer.toString(order.size())));
+            if (order.size() > 1) {
+                place.addLore("");
+                place.addLore(menus.text(player, "click-earlier"));
+                place.addLore(menus.text(player, "click-later"));
+            }
+        }
+        clicks(window, 25, place, () -> moveFormation(player, id, -1), () -> moveFormation(player, id, 1));
+
         action(window, 46, button(player, "studio-back", Material.ARROW), () -> menus.openDashboard(player, id));
         menus.show(window);
     }
@@ -333,41 +470,32 @@ final class CollectionMenus implements Listener {
         for (int index = page * 28; index < Math.min(choices.size(), (page + 1) * 28); index++) {
             String variant = choices.get(index);
             boolean entitled = player.hasPermission("bytecompanions.variant." + id + "." + variant);
-            UIElement entry = new UIElement(variant).setBaseItemStack(new ItemStack(entitled ? Material.LEATHER_CHESTPLATE : Material.GRAY_DYE))
-                    .setName(menus.text(player, "choice-value", "value", variant));
-            entry.setEnchanted(variant.equals(style.variantId()));
-            if (!entitled) entry.addLore(menus.text(player, "locked"));
+            UIElement entry = new UIElement(variant).setBaseItemStack(MenuIcons.of(entitled ? Material.LEATHER_CHESTPLATE : Material.GRAY_DYE))
+                    .setName(menus.text(player, "choice-value", "value", CompanionMenus.label(variant)));
+            boolean selected = variant.equals(style.variantId());
+            entry.setEnchanted(selected);
+            if (selected) entry.addLore(menus.text(player, "selected"));
+            else if (!entitled) entry.addLore(menus.text(player, "locked"));
             action(window, CompanionMenus.contentSlot(index % 28), entry, () -> {
                 if (!allowed(player, "bytecompanions.variant." + id + "." + variant)) return;
                 updateStyle(player, id, current -> new CompanionStyle(current.nickname(), variant, current.particleId(), current.formationId()));
             });
         }
-        if (choices.isEmpty()) CompanionMenus.put(window, 22, button(player, "empty", Material.BARRIER));
-        action(window, 48, button(player, "default-choice", Material.MILK_BUCKET),
+        UIElement standard = button(player, "default-choice", Material.MILK_BUCKET);
+        standard.setEnchanted(style.variantId() == null);
+        action(window, 48, standard,
                 () -> updateStyle(player, id, current -> new CompanionStyle(current.nickname(), null, current.particleId(), current.formationId())));
         action(window, 46, button(player, "studio-back", Material.ARROW), () -> personalize(player, id));
         menus.navigation(window, page, choices.size(), next -> variants(player, id, next));
         menus.show(window);
     }
 
-    private void formation(Player player, String id) {
+    private void cycleFormation(Player player, String id, int direction) {
         if (!owned(player, id)) return;
-        CollectionProfile profile = profile(player);
-        if (profile == null) return;
-        CompanionStyle style = plugin.collectionService().style(player, id);
-        UIWindow window = menus.window(player, "formation");
-        List<String> formations = List.of("default", "line", "grid", "orbit");
-        Material[] icons = {Material.MILK_BUCKET, Material.STRING, Material.IRON_BARS, Material.ENDER_PEARL};
-        for (int index = 0; index < formations.size(); index++) {
-            String choice = formations.get(index);
-            String value = choice.equals("default") ? null : choice;
-            UIElement entry = button(player, choice.equals("default") ? "default-choice" : "formation-" + choice, icons[index]);
-            entry.setEnchanted(Objects.equals(value, style.formationId()));
-            action(window, 19 + index * 2, entry,
-                    () -> updateStyle(player, id, current -> new CompanionStyle(current.nickname(), current.variantId(), current.particleId(), value)));
-        }
-        action(window, 46, button(player, "studio-back", Material.ARROW), () -> personalize(player, id));
-        menus.show(window);
+        List<String> formations = Arrays.asList(null, "line", "grid", "orbit");
+        int index = formations.indexOf(plugin.collectionService().style(player, id).formationId());
+        String next = formations.get(Math.floorMod(index + direction, formations.size()));
+        updateStyle(player, id, current -> new CompanionStyle(current.nickname(), current.variantId(), current.particleId(), next));
     }
 
     private void updateStyle(Player player, String id, UnaryOperator<CompanionStyle> mutation) {
@@ -376,16 +504,23 @@ final class CollectionMenus implements Listener {
                 mutation.apply(plugin.collectionService().style(player, id))), () -> personalize(player, id));
     }
 
+    private List<String> lineOrder(Player player, CollectionProfile profile) {
+        CompanionPlayer state = plugin.getCompanionPlayerOrNull(player);
+        if (state == null) return List.of();
+        ArrayList<String> order = new ArrayList<>(profile.formationOrder().stream().filter(state::hasCompanion).toList());
+        state.companions().keySet().stream().sorted().filter(selected -> !order.contains(selected)).forEach(order::add);
+        return order;
+    }
+
     private void moveFormation(Player player, String id, int direction) {
         if (!owned(player, id)) return;
         CollectionProfile profile = profile(player);
         if (profile == null) return;
-        CompanionPlayer state = plugin.getCompanionPlayerOrNull(player);
-        ArrayList<String> order = new ArrayList<>(profile.formationOrder().stream().filter(state::hasCompanion).toList());
-        state.companions().keySet().stream().sorted().filter(selected -> !order.contains(selected)).forEach(order::add);
+        ArrayList<String> order = new ArrayList<>(lineOrder(player, profile));
         int index = order.indexOf(id);
         if (index < 0) { plugin.languageService().send(player, "gui.equip-first"); return; }
         int destination = Math.max(0, Math.min(order.size() - 1, index + direction));
+        if (destination == index) return;
         order.remove(index);
         order.add(destination, id);
         change(player, () -> plugin.collectionService().updateFormationOrder(player, order), () -> personalize(player, id));
@@ -521,11 +656,16 @@ final class CollectionMenus implements Listener {
     }
 
     private UIElement button(Player player, String key, Material material) {
-        return new UIElement(key).setBaseItemStack(new ItemStack(material)).setName(menus.text(player, key));
+        return new UIElement(key).setBaseItemStack(MenuIcons.of(material)).setName(menus.text(player, key));
     }
 
     private void action(UIWindow window, int slot, UIElement element, Runnable action) {
         menus.action(window, element, action);
+        CompanionMenus.put(window, slot, element);
+    }
+
+    private void clicks(UIWindow window, int slot, UIElement element, Runnable left, Runnable right) {
+        menus.clicks(window, element, left, right);
         CompanionMenus.put(window, slot, element);
     }
 

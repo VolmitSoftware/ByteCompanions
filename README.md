@@ -1,6 +1,6 @@
 # ByteCompanions
 
-Cosmetic companions that follow players, built from vanilla blocks and heads with no resource pack, with outfits, particles, buffs, decorations, and progression.
+Cosmetic companions that follow players, built from vanilla blocks and heads with no resource pack, with loadouts, outfits, particles, buffs, decorations, and progression.
 
 ## Requirements
 

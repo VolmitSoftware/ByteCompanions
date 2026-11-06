@@ -46,7 +46,7 @@ public final class ConfigEditorLayout {
             Map.entry("performance.updateInterval", new BukkitConfigEditor.NumericControl(1, 1, 200)),
             Map.entry("performance.viewerRefreshDelay", new BukkitConfigEditor.NumericControl(1, 1, 200)),
             Map.entry("performance.viewDistance", new BukkitConfigEditor.NumericControl(1, 0, 128)),
-            Map.entry("collections.maximumOutfits", new BukkitConfigEditor.NumericControl(1, 1, 32)),
+            Map.entry("collections.maximumLoadouts", new BukkitConfigEditor.NumericControl(1, 1, 32)),
             Map.entry("collections.trialSeconds", new BukkitConfigEditor.NumericControl(5, 5, 120)));
     private static final Map<String, Entry> ENTRIES = scan();
 

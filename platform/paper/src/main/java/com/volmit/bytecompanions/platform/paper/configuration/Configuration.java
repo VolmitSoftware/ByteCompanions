@@ -158,7 +158,7 @@ public final class Configuration implements ConfigurationSettings {
     @ConfigSerializable
     @ConfigDescription("Companion count limits per player.")
     public static final class CompanionLimits {
-        @ConfigDoc(value = "Maximum companions one player may equip at once; -1 removes the limit.", impact = "Checked on every equip action, outfit application, and starter restoration.")
+        @ConfigDoc(value = "Maximum companions one player may equip at once; -1 removes the limit.", impact = "Checked on every equip action, loadout use, and starter restoration.")
         private int maxTotalPerPlayer = 2;
 
         @ConfigDoc(value = "Separate limits per companion model.", impact = "Each model limit applies on top of maxTotalPerPlayer.")
@@ -474,10 +474,10 @@ public final class Configuration implements ConfigurationSettings {
     }
 
     @ConfigSerializable
-    @ConfigDescription("Personal collections, outfits, trials, and personality.")
+    @ConfigDescription("Personal collections, loadouts, trials, and personality.")
     public static final class CollectionsConfig {
-        @ConfigDoc(value = "Maximum saved outfits per player, from 1 to 32.", impact = "Lowering it keeps existing outfits but blocks new saves above the limit.")
-        private int maximumOutfits = 8;
+        @ConfigDoc(value = "Maximum saved loadouts per player, from 1 to 32.", impact = "Lowering it keeps existing loadouts but blocks new saves above the limit.")
+        private int maximumLoadouts = 8;
 
         @ConfigDoc(value = "Private locked-companion preview duration, from 5 to 120 seconds.", impact = "Applies to trials started after the change.")
         private int trialSeconds = 30;
@@ -488,8 +488,8 @@ public final class Configuration implements ConfigurationSettings {
         @ConfigDoc(value = "Allow occasional idle reactions while a companion is stationary.", impact = "Applies on the next runtime replacement.")
         private boolean idleReactions = true;
 
-        public int maximumOutfits() {
-            return this.maximumOutfits;
+        public int maximumLoadouts() {
+            return this.maximumLoadouts;
         }
 
         public int trialSeconds() {

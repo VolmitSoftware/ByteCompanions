@@ -55,7 +55,7 @@ public final class CollectionService implements Listener {
     private final Configuration.CompanionLimits limits;
     private final ParticlesFeature particles;
     private final StyleAdapter adapter;
-    private final int maximumOutfits;
+    private final int maximumLoadouts;
     private final BooleanSupplier runtime;
     private final Map<UUID, Session> sessions = new ConcurrentHashMap<>();
     private final Set<CompletableFuture<?>> pending = ConcurrentHashMap.newKeySet();
@@ -65,7 +65,7 @@ public final class CollectionService implements Listener {
     public CollectionService(PaperPlugin plugin, CollectionStore store, Executor executor,
                              UserStorage selections, DefaultCompanionManager manager,
                              Configuration.CompanionLimits limits, ParticlesFeature particles,
-                             int maximumOutfits, StyleAdapter adapter) {
+                             int maximumLoadouts, StyleAdapter adapter) {
         this.plugin = plugin;
         this.store = store;
         this.selections = selections;
@@ -73,8 +73,8 @@ public final class CollectionService implements Listener {
         this.limits = limits;
         this.particles = particles;
         this.adapter = adapter;
-        if (maximumOutfits < 1 || maximumOutfits > 100) throw new IllegalArgumentException("Outfit limit must be 1–100");
-        this.maximumOutfits = maximumOutfits;
+        if (maximumLoadouts < 1 || maximumLoadouts > 100) throw new IllegalArgumentException("Outfit limit must be 1–100");
+        this.maximumLoadouts = maximumLoadouts;
         this.runtime = plugin.captureRuntimeGuard();
         this.ready = track(CompletableFuture.runAsync(() -> {
             try { store.initialize(); } catch (StorageException failure) { throw new CompletionException(failure); }
@@ -183,11 +183,11 @@ public final class CollectionService implements Listener {
     }
 
     public CompletableFuture<Result> saveOutfit(Player player, String name) {
-        return edit(player, "bytecompanions.command.outfits", previous -> {
+        return edit(player, "bytecompanions.command.loadouts", previous -> {
             requireParticlesReady(player);
             String key = Outfit.key(name);
-            if (!previous.outfits().containsKey(key) && previous.outfits().size() >= maximumOutfits) {
-                throw new CollectionFailure(CollectionFailure.Reason.OUTFIT_LIMIT, Map.of("limit", Integer.toString(maximumOutfits)));
+            if (!previous.outfits().containsKey(key) && previous.outfits().size() >= maximumLoadouts) {
+                throw new CollectionFailure(CollectionFailure.Reason.LOADOUT_LIMIT, Map.of("limit", Integer.toString(maximumLoadouts)));
             }
             CompanionPlayer state = requirePlayer(player);
             List<String> ids = ordered(state.companions().keySet(), previous.formationOrder());
@@ -200,9 +200,9 @@ public final class CollectionService implements Listener {
     }
 
     public CompletableFuture<Result> deleteOutfit(Player player, String name) {
-        return edit(player, "bytecompanions.command.outfits", previous -> {
+        return edit(player, "bytecompanions.command.loadouts", previous -> {
             Map<String, Outfit> outfits = new HashMap<>(previous.outfits());
-            if (outfits.remove(Outfit.key(name)) == null) throw CollectionFailure.of(CollectionFailure.Reason.OUTFIT_UNAVAILABLE);
+            if (outfits.remove(Outfit.key(name)) == null) throw CollectionFailure.of(CollectionFailure.Reason.LOADOUT_UNAVAILABLE);
             return previous.next(previous.favorites(), outfits, previous.styles(), previous.formationOrder());
         }, false, null);
     }
@@ -249,8 +249,8 @@ public final class CollectionService implements Listener {
         try { key = Outfit.key(name); } catch (CollectionFailure failure) { return result(Status.INVALID, failure); }
         CollectionProfile current = profile(player.getUniqueId()).orElse(null);
         Outfit outfit = current == null ? null : current.outfits().get(key);
-        if (outfit == null) return result(current == null ? Status.NOT_READY : Status.INVALID, CollectionFailure.of(CollectionFailure.Reason.OUTFIT_UNAVAILABLE));
-        return edit(player, "bytecompanions.command.outfits", previous -> {
+        if (outfit == null) return result(current == null ? Status.NOT_READY : Status.INVALID, CollectionFailure.of(CollectionFailure.Reason.LOADOUT_UNAVAILABLE));
+        return edit(player, "bytecompanions.command.loadouts", previous -> {
             validateOutfit(player, outfit);
             Map<String, CompanionStyle> styles = new HashMap<>(previous.styles());
             for (String id : outfit.companionIds()) styles.put(id, outfit.styles().getOrDefault(id, CompanionStyle.defaults()));

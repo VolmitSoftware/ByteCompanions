@@ -63,8 +63,8 @@ class LanguageServiceTest {
             languages.install(languages.prepare("de_DE"));
             languages.refreshSelections();
             assertEquals("Eigener Text", languages.render(null, CompanionMessages.key("errors.no-permission")).plain());
-            assertEquals("Outfit names use 1–32 letters, numbers, underscores or hyphens.",
-                    CollectionFailure.of(CollectionFailure.Reason.OUTFIT_NAME_INVALID).render(languages, null));
+            assertEquals("Loadout names use 1–32 letters, numbers, underscores or hyphens.",
+                    CollectionFailure.of(CollectionFailure.Reason.LOADOUT_NAME_INVALID).render(languages, null));
             assertEquals(custom, Files.readString(german));
         }
     }
@@ -78,18 +78,18 @@ class LanguageServiceTest {
             when(player.getUniqueId()).thenReturn(playerId);
             languages.selections().selectPlayer(playerId, "de_DE").get(10, TimeUnit.SECONDS);
             CollectionFailure invalidName = assertThrows(CollectionFailure.class, () -> Outfit.key("!"));
-            assertEquals(CollectionFailure.Reason.OUTFIT_NAME_INVALID, invalidName.reason());
-            assertEquals("Outfit-Namen benötigen 1–32 Buchstaben, Zahlen, Unterstriche oder Bindestriche.", invalidName.render(languages, player));
+            assertEquals(CollectionFailure.Reason.LOADOUT_NAME_INVALID, invalidName.reason());
+            assertEquals("Team-Namen benötigen 1–32 Buchstaben, Zahlen, Unterstriche oder Bindestriche.", invalidName.render(languages, player));
             CollectionFailure invalidFormation = assertThrows(CollectionFailure.class,
                     () -> new CompanionStyle(null, null, null, "missing"));
             assertEquals("Unbekannte Formation: missing.", invalidFormation.render(languages, player));
-            CollectionFailure limit = new CollectionFailure(CollectionFailure.Reason.OUTFIT_LIMIT, Map.of("limit", "3"));
-            assertEquals("Du hast das Outfit-Limit von 3 erreicht.", limit.render(languages, player));
+            CollectionFailure limit = new CollectionFailure(CollectionFailure.Reason.LOADOUT_LIMIT, Map.of("limit", "3"));
+            assertEquals("Du hast das Team-Limit von 3 erreicht.", limit.render(languages, player));
             CollectionFailure variant = new CollectionFailure(CollectionFailure.Reason.VARIANT_UNAVAILABLE,
                     Map.of("variant", "<red>unsafe</red>"));
-            assertEquals("Nicht verfügbare Variante: <red>unsafe</red>.", variant.render(languages, player));
+            assertEquals("Nicht verfügbares Outfit: <red>unsafe</red>.", variant.render(languages, player));
             languages.selections().selectPlayer(playerId, "en_US").get(10, TimeUnit.SECONDS);
-            assertEquals("Outfit names use 1–32 letters, numbers, underscores or hyphens.", invalidName.render(languages, player));
+            assertEquals("Loadout names use 1–32 letters, numbers, underscores or hyphens.", invalidName.render(languages, player));
         }
     }
 

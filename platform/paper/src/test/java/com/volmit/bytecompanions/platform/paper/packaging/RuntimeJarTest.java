@@ -481,7 +481,7 @@ final class RuntimeJarTest {
         assertEquals(".toml", manifest.getProperty("extension"));
         assertFalse(manifest.stringPropertyNames().stream().anyMatch(key -> key.equals("revision") || key.equals("mode") || key.startsWith("sha256.")));
         Map<?, ?> english = parseLanguage(resource("languages/en_US.toml"));
-        assertEquals(562, english.size());
+        assertEquals(586, english.size());
     }
 
     private static Map<?, ?> parseLanguage(String source) throws Exception {

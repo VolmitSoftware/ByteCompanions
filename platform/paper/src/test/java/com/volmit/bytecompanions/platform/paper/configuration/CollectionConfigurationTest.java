@@ -57,10 +57,10 @@ class CollectionConfigurationTest {
     }
     @Test
     void rejectsUnboundedOutfitAndPreviewLimitsBeforeRuntimeReplacement() {
-        for (String source : new String[]{"maximumOutfits = 0", "maximumOutfits = 33", "trialSeconds = 4", "trialSeconds = 121"}) {
+        for (String source : new String[]{"maximumLoadouts = 0", "maximumLoadouts = 33", "trialSeconds = 4", "trialSeconds = 121"}) {
             assertThrows(IOException.class, () -> ConfigService.prepare("[collections]\n" + source));
         }
-        assertDoesNotThrow(() -> ConfigService.prepare("[collections]\nmaximumOutfits = 32\ntrialSeconds = 120"));
+        assertDoesNotThrow(() -> ConfigService.prepare("[collections]\nmaximumLoadouts = 32\ntrialSeconds = 120"));
     }
 
     @Test

@@ -110,7 +110,7 @@ public final class CompanionMenus {
         show(window);
     }
 
-    public void openOutfits(Player player, int page) { collections.outfits(player, page); }
+    public void openLoadouts(Player player, int page) { collections.loadouts(player, page); }
 
     public void settings(Player player, String setting, String value) { collections.settings(player, setting, value); }
 
@@ -252,6 +252,24 @@ public final class CompanionMenus {
         show(window);
     }
 
+    String companionName(Player player, CompanionType type) {
+        ItemStack icon = companionIcon(player, type);
+        return icon != null && icon.hasItemMeta() && icon.getItemMeta().hasDisplayName()
+                ? ComponentText.section(icon.getItemMeta().getDisplayName()).plain() : label(type.id());
+    }
+
+    String particleName(Player player, String companionId, String effectId) {
+        ParticleEffectEntry entry = particles == null ? null : particles.particleEffectRegistry().entries().stream()
+                .filter(candidate -> candidate.id().equals(effectId)).findFirst().orElse(null);
+        if (entry != null && entry.itemBlueprint() != null) {
+            ItemStack icon = entry.itemBlueprint().build(context(player, companionId));
+            if (icon.hasItemMeta() && icon.getItemMeta().hasDisplayName()) {
+                return ComponentText.section(icon.getItemMeta().getDisplayName()).plain();
+            }
+        }
+        return label(effectId.endsWith("_effect") ? effectId.substring(0, effectId.length() - 7) : effectId);
+    }
+
     private ParticleEffectEntry selectedParticle(Player player, String companionId) {
         return particles.particleEffectRegistry().entries().stream()
                 .filter(entry -> particles.playerEffectManager().hasEquipped(player, companionId, entry.id()))
@@ -365,7 +383,7 @@ public final class CompanionMenus {
         return java.math.BigDecimal.valueOf(number).stripTrailingZeros().toPlainString();
     }
 
-    private static String label(String identifier) {
+    static String label(String identifier) {
         String[] words = identifier.toLowerCase(Locale.ROOT).replace('.', '_').split("_");
         List<String> labels = new ArrayList<>();
         for (String word : words) {
@@ -420,14 +438,23 @@ public final class CompanionMenus {
     }
 
     void action(UIWindow window, UIElement element, Runnable action, String permission) {
-        Runnable guarded = () -> {
-            if (active() && windows.get(window.getViewer().getUniqueId()) == window && window.isVisible()
-                    && accessible(window.getViewer(), permission)) {
-                action.run();
-            }
-        };
-        element.onLeftClick(ignored -> guarded.run());
-        element.onRightClick(ignored -> guarded.run());
+        clicks(window, element, action, action, permission);
+    }
+
+    void clicks(UIWindow window, UIElement element, Runnable left, Runnable right) {
+        clicks(window, element, left, right, FeaturePermission.Command.MENU);
+    }
+
+    private void clicks(UIWindow window, UIElement element, Runnable left, Runnable right, String permission) {
+        element.onLeftClick(ignored -> guarded(window, permission, left));
+        element.onRightClick(ignored -> guarded(window, permission, right));
+    }
+
+    private void guarded(UIWindow window, String permission, Runnable action) {
+        if (active() && windows.get(window.getViewer().getUniqueId()) == window && window.isVisible()
+                && accessible(window.getViewer(), permission)) {
+            action.run();
+        }
     }
 
     void navigation(UIWindow window, int page, int count, IntConsumer navigate) {
@@ -547,7 +574,7 @@ public final class CompanionMenus {
         return plugin.languageService().render(player, CompanionMessages.key("gui." + key), args.build()).legacy();
     }
 
-    private String textPlain(Player player, String key) {
+    String textPlain(Player player, String key) {
         return plugin.languageService().render(player, CompanionMessages.key("gui." + key)).plain();
     }
 

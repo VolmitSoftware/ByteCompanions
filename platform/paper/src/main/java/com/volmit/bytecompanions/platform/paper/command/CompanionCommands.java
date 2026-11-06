@@ -48,9 +48,9 @@ public final class CompanionCommands {
         command.route(sender, "collection");
     }
 
-    @Director(name = "outfits", sync = true, description = "Manage saved companion outfits", descriptionKey = "command.description.outfits")
-    public void outfits(@Param(name = "sender", contextual = true) CommandSender sender) {
-        command.route(sender, "outfits");
+    @Director(name = "loadouts", sync = true, description = "Manage saved companion loadouts", descriptionKey = "command.description.loadouts")
+    public void loadouts(@Param(name = "sender", contextual = true) CommandSender sender) {
+        command.route(sender, "loadouts");
     }
 
     @Director(name = "interact", sync = true, description = "Interact with an equipped companion", descriptionKey = "command.description.interact")

@@ -25,7 +25,7 @@ class CommandAccessTest {
     @Test
     void companionOwnershipPermissionDoesNotGrantCommandAccess() {
         CommandSender sender = sender(Set.of("bytecompanions.companion.bee"));
-        for (String command : List.of("menu", "collection", "outfits", "interact", "edit", "spawn", "despawn", "debug", "config", "setup", "language")) {
+        for (String command : List.of("menu", "collection", "loadouts", "interact", "edit", "spawn", "despawn", "debug", "config", "setup", "language")) {
             assertFalse(CompanionBukkitCommand.hasCommandPermission(sender, command), command);
         }
         assertEquals(List.of("help", "status"), CompanionBukkitCommand.visibleCommands(sender, Set.of("particles", "effects")));
@@ -77,7 +77,7 @@ class CommandAccessTest {
     void collectionFeaturesRequireMenuAccessAndTheirOwnPermission() {
         CommandSender menu = sender(Set.of("bytecompanions.command.menu"));
         assertTrue(CompanionBukkitCommand.hasCommandPermission(menu, "collection"));
-        for (String command : List.of("outfits", "interact")) {
+        for (String command : List.of("loadouts", "interact")) {
             assertFalse(CompanionBukkitCommand.hasCommandPermission(menu, command));
             assertFalse(CompanionBukkitCommand.hasCommandPermission(sender(Set.of("bytecompanions.command." + command)), command));
             assertTrue(CompanionBukkitCommand.hasCommandPermission(sender(Set.of("bytecompanions.command.menu", "bytecompanions.command." + command)), command));

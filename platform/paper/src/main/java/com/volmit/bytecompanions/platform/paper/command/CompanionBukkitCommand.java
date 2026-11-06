@@ -176,7 +176,7 @@ public final class CompanionBukkitCommand implements CommandExecutor, TabComplet
             case "settings" -> this.paperPlugin.companionMenus().settings(player,
                     arguments.length > 1 ? arguments[1] : "", arguments.length > 2 ? arguments[2] : "");
             case "collection" -> this.paperPlugin.companionMenus().openCollection(player, 0);
-            case "outfits" -> this.paperPlugin.companionMenus().openOutfits(player, 0);
+            case "loadouts" -> this.paperPlugin.companionMenus().openLoadouts(player, 0);
             case "interact" -> this.paperPlugin.companionMenus().interact(player,
                     arguments.length > 1 ? arguments[1] : "", arguments.length > 2 ? arguments[2] : "");
             case "edit" -> this.paperPlugin.companionStudio().open(player, arguments.length > 1 ? arguments[1] : "");
@@ -274,7 +274,7 @@ public final class CompanionBukkitCommand implements CommandExecutor, TabComplet
     }
 
     static List<String> visibleCommands(CommandSender sender, Set<String> enabledFeatures) {
-        return Stream.concat(Stream.of("help", "menu", "collection", "outfits", "interact", "edit", "spawn", "despawn", "debug",
+        return Stream.concat(Stream.of("help", "menu", "collection", "loadouts", "interact", "edit", "spawn", "despawn", "debug",
                         "config", "setup", "language", "status", "settings"), enabledFeatures.stream())
                 .filter(command -> hasCommandPermission(sender, command))
                 .sorted()
@@ -286,7 +286,7 @@ public final class CompanionBukkitCommand implements CommandExecutor, TabComplet
             case "upgrades", "boosts", "progression", "booster", "transactions" -> ProgressionCommands.hasPermission(sender, command);
             case "menu", "collection" -> sender.hasPermission(FeaturePermission.Command.MENU);
             case "settings" -> sender.hasPermission(FeaturePermission.Command.SETTINGS);
-            case "outfits" -> sender.hasPermission(FeaturePermission.Command.MENU) && sender.hasPermission(FeaturePermission.Command.OUTFITS);
+            case "loadouts" -> sender.hasPermission(FeaturePermission.Command.MENU) && sender.hasPermission(FeaturePermission.Command.LOADOUTS);
             case "interact" -> sender.hasPermission(FeaturePermission.Command.MENU) && sender.hasPermission(FeaturePermission.Command.INTERACT);
             case "setup" -> sender.hasPermission(FeaturePermission.Command.SETUP);
             case "edit" -> sender.hasPermission(FeaturePermission.Command.EDIT);

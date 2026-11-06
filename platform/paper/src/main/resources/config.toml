@@ -65,7 +65,7 @@ worldguard = true
 rightClickDashboard = true
 
 [collections]
-maximumOutfits = 8
+maximumLoadouts = 8
 trialSeconds = 30
 personalityEnabled = true
 idleReactions = true
