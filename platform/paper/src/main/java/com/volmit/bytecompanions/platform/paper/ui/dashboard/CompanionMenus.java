@@ -345,7 +345,7 @@ public final class CompanionMenus {
     }
 
     private UIElement bonus(Player player, String category, String name, Material material, CompanionBonusService.Status status) {
-        UIElement element = new UIElement(category + ":" + name).setBaseItemStack(new ItemStack(material))
+        UIElement element = new UIElement(category + ":" + name).setBaseItemStack(MenuIcons.of(material))
                 .setName(text(player, "bonus-name", "category", textPlain(player, category), "name", label(name)));
         element.addLore(text(player, "status." + status.name().toLowerCase(Locale.ROOT)));
         return element;
@@ -390,7 +390,7 @@ public final class CompanionMenus {
         for (int slot = 0; slot < 54; slot++) {
             if (slot < 9 || slot >= 45 || slot % 9 == 0 || slot % 9 == 8) {
                 Material material = slot < 9 ? Material.ORANGE_STAINED_GLASS_PANE : Material.GRAY_STAINED_GLASS_PANE;
-                put(window, slot, new UIElement("border-" + slot).setBaseItemStack(new ItemStack(material)).setName(" "));
+                put(window, slot, new UIElement("border-" + slot).setBaseItemStack(MenuIcons.of(material)).setName(" "));
             }
         }
         UIElement close = button(player, "close", Material.BARRIER, "close-hint");
@@ -461,7 +461,7 @@ public final class CompanionMenus {
     }
 
     UIElement button(Player player, String id, Material material, String hint, String... replacements) {
-        UIElement element = new UIElement(id).setBaseItemStack(new ItemStack(material)).setName(text(player, id));
+        UIElement element = new UIElement(id).setBaseItemStack(MenuIcons.of(material)).setName(text(player, id));
         element.addLore(text(player, hint, replacements));
         return element;
     }
@@ -472,7 +472,7 @@ public final class CompanionMenus {
         List<String> description = meta.hasLore() ? meta.getLore() : List.of();
         meta.setLore(List.of());
         item.setItemMeta(meta);
-        UIElement element = new UIElement(id).setBaseItemStack(item);
+        UIElement element = new UIElement(id).setBaseItemStack(MenuIcons.withoutStats(item));
         for (String line : description) {
             element.addLore(line);
         }

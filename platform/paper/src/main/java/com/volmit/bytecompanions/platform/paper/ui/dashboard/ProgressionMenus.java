@@ -73,7 +73,7 @@ final class ProgressionMenus {
     private UIElement track(Player player, ProgressionService.Snapshot snapshot, String id,
                             ProgressionDefinitions.TrackDefinition track) {
         int tier = snapshot.tracks().getOrDefault(id, 0);
-        UIElement element = new UIElement(id).setBaseItemStack(new ItemStack(Material.ANVIL)).setName(styled(track.name()));
+        UIElement element = new UIElement(id).setBaseItemStack(MenuIcons.of(Material.ANVIL)).setName(styled(track.name()));
         element.addLore(text(player, "upgrade-tier", "tier", tier, "maximum", track.tiers().size()));
         element.addLore("");
         if (tier >= track.tiers().size()) {
@@ -200,7 +200,7 @@ final class ProgressionMenus {
 
     private UIElement booster(Player player, String id, ProgressionDefinitions.BoosterDefinition definition,
                               ProgressionService.Snapshot snapshot) {
-        UIElement element = new UIElement(id).setBaseItemStack(new ItemStack(Material.HONEY_BOTTLE)).setName(styled(definition.name()));
+        UIElement element = new UIElement(id).setBaseItemStack(MenuIcons.of(Material.HONEY_BOTTLE)).setName(styled(definition.name()));
         element.addLore(text(player, "booster-scope." + definition.scope().name().toLowerCase(Locale.ROOT)));
         for (Map.Entry<String, Double> channel : definition.percentages().entrySet().stream().sorted(Map.Entry.comparingByKey()).toList()) {
             element.addLore(text(player, "booster-channel", "channel", label(channel.getKey()), "percent", number(channel.getValue())));
@@ -256,7 +256,7 @@ final class ProgressionMenus {
         for (int index = page * PAGE_SIZE; index < Math.min(active.size(), (page + 1) * PAGE_SIZE); index++) {
             ProgressionService.ActiveBooster boost = active.get(index);
             ProgressionDefinitions.BoosterDefinition definition = service.definitions().boosters().get(boost.boosterId());
-            UIElement element = new UIElement(boost.activationId()).setBaseItemStack(new ItemStack(boost.queued() ? Material.CLOCK : Material.HONEY_BOTTLE))
+            UIElement element = new UIElement(boost.activationId()).setBaseItemStack(MenuIcons.of(boost.queued() ? Material.CLOCK : Material.HONEY_BOTTLE))
                     .setName(styled(definition == null ? boost.boosterId() : definition.name()));
             element.addLore(text(player, "booster-scope." + boost.scope().name().toLowerCase(Locale.ROOT)));
             element.addLore(text(player, boost.queued() ? "booster-queued" : "booster-running"));

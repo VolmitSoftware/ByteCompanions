@@ -277,14 +277,14 @@ public final class CompanionStudio implements Listener {
     }
 
     private UIElement choiceIcon(Session session, String choice, Material material, String hint) {
-        UIElement element = new UIElement("studio-choice").setBaseItemStack(new ItemStack(material))
+        UIElement element = new UIElement("studio-choice").setBaseItemStack(MenuIcons.of(material))
                 .setName(menus.text(session.player, "studio-choice", "choice", choice.replace('_', ' ').replace('-', ' ')));
         element.addLore(menus.text(session.player, hint));
         return element;
     }
 
     private UIElement fieldIcon(Session session, Field field, Material material) {
-        UIElement element = new UIElement("studio-field").setBaseItemStack(new ItemStack(material))
+        UIElement element = new UIElement("studio-field").setBaseItemStack(MenuIcons.of(material))
                 .setName(menus.text(session.player, "studio-field", "field", field.label()));
         element.addLore(menus.text(session.player, "studio-value", "value", String.valueOf(field.value())));
         return element;
@@ -292,7 +292,7 @@ public final class CompanionStudio implements Listener {
 
     private UIWindow window(Session session, String title) {
         UIWindow window = menus.window(session.player, title);
-        UIElement heading = new UIElement("studio-heading").setBaseItemStack(new ItemStack(Material.ARMOR_STAND))
+        UIElement heading = new UIElement("studio-heading").setBaseItemStack(MenuIcons.of(Material.ARMOR_STAND))
                 .setName(menus.text(session.player, "studio-heading", "companion", session.draft.id()));
         heading.addLore(menus.text(session.player, session.busy ? "studio-working"
                 : session.draft.changed() ? "studio-draft" : "studio-unchanged"));
@@ -316,7 +316,7 @@ public final class CompanionStudio implements Listener {
         int pages = Math.max(1, (changes.size() + REVIEW_SLOTS.length - 1) / REVIEW_SLOTS.length);
         int page = Math.max(0, Math.min(requestedPage, pages - 1));
         for (int index = page * REVIEW_SLOTS.length; index < Math.min(changes.size(), (page + 1) * REVIEW_SLOTS.length); index++) {
-            UIElement change = new UIElement("studio-review-change").setBaseItemStack(new ItemStack(Material.PAPER))
+            UIElement change = new UIElement("studio-review-change").setBaseItemStack(MenuIcons.of(Material.PAPER))
                     .setName(menus.text(session.player, "studio-review-change", "index", Integer.toString(index + 1)));
             change.addLore(menus.text(session.player, "studio-change", "change", changes.get(index)));
             CompanionMenus.put(window, REVIEW_SLOTS[index % REVIEW_SLOTS.length], change);
