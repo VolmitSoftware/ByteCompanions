@@ -34,8 +34,8 @@ public final class LineFormation implements Formation {
         final int slot = ctx.formatIndex();
         final double yawRad = this.facing.angleRad();
 
-        final double backX = -Math.sin(yawRad);
-        final double backZ = Math.cos(yawRad);
+        final double backX = Math.sin(yawRad);
+        final double backZ = -Math.cos(yawRad);
 
         final double offset = this.spacing * (slot + 1);
 

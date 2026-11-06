@@ -43,7 +43,8 @@ public final class MovementFacing {
             return; // standing still — keep last direction, no snapping
         }
 
-        final double targetAngleRad = Math.atan2(dx, dz);
+        // Same convention as the anchor's yaw above: yaw 0 faces +Z and yaw 90 faces -X.
+        final double targetAngleRad = Math.atan2(-dx, dz);
 
         // ── Smoothly rotate toward the new direction instead of jumping to it ──
         final double smoothingFactor = 1.0 - Math.exp(-ctx.deltaTime() / TURN_SMOOTHING_TAU);

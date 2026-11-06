@@ -53,8 +53,8 @@ public final class GridFormation implements Formation {
         final double yawRad = this.facing.angleRad();
 
         // ── Local grid axes: "back" follows movement direction, "side" is perpendicular ──
-        final double backX = -Math.sin(yawRad);
-        final double backZ = Math.cos(yawRad);
+        final double backX = Math.sin(yawRad);
+        final double backZ = -Math.cos(yawRad);
         final double sideX = Math.cos(yawRad);
         final double sideZ = Math.sin(yawRad);
 
