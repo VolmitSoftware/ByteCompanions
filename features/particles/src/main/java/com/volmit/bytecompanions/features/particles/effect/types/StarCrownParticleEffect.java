@@ -7,8 +7,8 @@ import com.volmit.bytecompanions.features.particles.effect.ParticleEffect;
 
 public final class StarCrownParticleEffect implements ParticleEffect {
     private static final int TIPS = 5;
-    private static final int POINTS_PER_EDGE = 4;
-    private static final int POINTS = TIPS * POINTS_PER_EDGE;
+    private static final int POINTS_PER_EDGE = 3;
+    private static final int POINTS = TIPS * 2 * POINTS_PER_EDGE;
     private static final double OUTER = 0.38;
     private static final double INNER = 0.15;
     private static final double HEIGHT = 1.75;
@@ -18,18 +18,20 @@ public final class StarCrownParticleEffect implements ParticleEffect {
     private static final double[] LOCAL_Z = new double[POINTS];
 
     static {
-        double tipStep = 2 * Math.PI / TIPS;
-        for (int tip = 0; tip < TIPS; tip++) {
-            double outerAngle = tip * tipStep;
-            double innerAngle = outerAngle + tipStep / 2;
-            double startX = OUTER * Math.cos(outerAngle);
-            double startZ = OUTER * Math.sin(outerAngle);
-            double endX = INNER * Math.cos(innerAngle);
-            double endZ = INNER * Math.sin(innerAngle);
+        // The outline alternates outer tip and inner corner, so each tip owns two edges: in to its corner, out to the next tip.
+        int corners = TIPS * 2;
+        double cornerStep = 2 * Math.PI / corners;
+        for (int corner = 0; corner < corners; corner++) {
+            double startRadius = corner % 2 == 0 ? OUTER : INNER;
+            double endRadius = corner % 2 == 0 ? INNER : OUTER;
+            double startX = startRadius * Math.cos(corner * cornerStep);
+            double startZ = startRadius * Math.sin(corner * cornerStep);
+            double endX = endRadius * Math.cos((corner + 1) * cornerStep);
+            double endZ = endRadius * Math.sin((corner + 1) * cornerStep);
             for (int sample = 0; sample < POINTS_PER_EDGE; sample++) {
                 double progress = sample / (double) POINTS_PER_EDGE;
-                LOCAL_X[tip * POINTS_PER_EDGE + sample] = startX + (endX - startX) * progress;
-                LOCAL_Z[tip * POINTS_PER_EDGE + sample] = startZ + (endZ - startZ) * progress;
+                LOCAL_X[corner * POINTS_PER_EDGE + sample] = startX + (endX - startX) * progress;
+                LOCAL_Z[corner * POINTS_PER_EDGE + sample] = startZ + (endZ - startZ) * progress;
             }
         }
     }

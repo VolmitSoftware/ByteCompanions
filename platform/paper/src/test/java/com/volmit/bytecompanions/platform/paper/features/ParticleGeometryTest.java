@@ -52,8 +52,7 @@ class ParticleGeometryTest {
                 Arguments.of("dragon-wing", (Supplier<ParticleEffect>) DragonWingParticleEffect::new),
                 Arguments.of("umbrella", (Supplier<ParticleEffect>) UmbrellaParticleEffect::new),
                 Arguments.of("rainbow-umbrella", (Supplier<ParticleEffect>) RainbowUmbrellaParticleEffect::new),
-                Arguments.of("angel-ring", (Supplier<ParticleEffect>) AngelRingParticleEffect::new),
-                Arguments.of("pendulum", (Supplier<ParticleEffect>) PendulumParticleEffect::new)
+                Arguments.of("angel-ring", (Supplier<ParticleEffect>) AngelRingParticleEffect::new)
         );
     }
 
@@ -79,6 +78,35 @@ class ParticleGeometryTest {
             second.reset();
             assertFrames(name, expected, renderAll(first), "reset first instance");
             assertFrames(name, expected, renderAll(second), "reset second instance");
+        } finally {
+            adapter.set(null, previous);
+        }
+    }
+
+    @Test
+    void pendulumSwingsToBothSidesAndRepeatsAfterReset() throws Exception {
+        Field adapter = ParticlesFeature.class.getDeclaredField("nmsAdapter");
+        adapter.setAccessible(true);
+        Object previous = adapter.get(null);
+        adapter.set(null, (NMSAdapter) RecordingBatch::new);
+        try {
+            ParticleEffect effect = new PendulumParticleEffect();
+            Pose pose = new Pose(0.0, 64.0, 0.0, 0.0f, 0.0f, 0.0f);
+            List<String> swing = new ArrayList<>();
+            double lowest = Double.MAX_VALUE;
+            double highest = -Double.MAX_VALUE;
+            for (int frame = 0; frame < 40; frame++) {
+                String rendered = render(effect, pose);
+                swing.add(rendered);
+                // Row 7 is the gem's top peak: three header rows, then four string points.
+                double peakX = coordinate(rendered.split("\n")[7].split(" ")[5]);
+                assertTrue(Double.isFinite(peakX), "Pendulum peak must stay finite");
+                lowest = Math.min(lowest, peakX);
+                highest = Math.max(highest, peakX);
+            }
+            assertTrue(lowest < -0.3 && highest > 0.3, "Pendulum must swing visibly to both sides");
+            effect.reset();
+            assertEquals(swing.get(0), render(effect, pose), "Reset must restart the swing");
         } finally {
             adapter.set(null, previous);
         }

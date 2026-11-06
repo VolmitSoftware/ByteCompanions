@@ -31,7 +31,8 @@ public final class MidnightConfettiParticleEffect implements ParticleEffect {
 
     @Override
     public ParticleBatch particles(double x, double y, double z, float yaw, float pitch, float bodyYaw) {
-        boolean midnight = this.frame % COUNTDOWN == 0;
+        // Two frames, because viewers on reduced particles only receive every other frame.
+        boolean midnight = this.frame % COUNTDOWN < 2;
         int size = CONFETTI + STREAMERS + (midnight ? SPARKS : 0);
         ParticleBatch batch = ParticlesFeature.getNMSAdapter().createBatch(size);
         for (int piece = 0; piece < CONFETTI; piece++) {

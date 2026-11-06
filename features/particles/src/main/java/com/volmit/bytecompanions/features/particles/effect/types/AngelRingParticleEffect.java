@@ -5,7 +5,6 @@ import com.volmit.bytecompanions.features.particles.adapternms.DustStyle;
 import org.joml.Math;
 import com.volmit.bytecompanions.features.particles.ParticlesFeature;
 import com.volmit.bytecompanions.features.particles.effect.ParticleEffect;
-import com.volmit.bytecompanions.features.particles.util.ColorUtil;
 
 public final class AngelRingParticleEffect implements ParticleEffect {
 
@@ -14,10 +13,10 @@ public final class AngelRingParticleEffect implements ParticleEffect {
         return true;
     }
 
-    private static final float RADIUS = 0.16f;
+    private static final float RADIUS = 0.24f;
     private static final int POINTS = 25;
 
-    private static final DustStyle PARTICLE = new DustStyle(ColorUtil.WHITE, 0.3f);
+    private static final DustStyle PARTICLE = new DustStyle(1.0f, 0.95f, 0.65f, 0.55f);
     private static final double[] LOCAL_X = new double[POINTS];
     private static final double[] LOCAL_Z = new double[POINTS];
 

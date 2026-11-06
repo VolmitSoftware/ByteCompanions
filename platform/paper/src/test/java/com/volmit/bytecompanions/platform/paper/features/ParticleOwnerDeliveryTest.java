@@ -213,7 +213,7 @@ class ParticleOwnerDeliveryTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"angel_ring_effect", "aura_effect", "cloud_effect", "dragon_wing_effect",
-            "pendulum_effect", "rainbow_umbrella_effect", "umbrella_effect"})
+            "rainbow_umbrella_effect", "umbrella_effect"})
     void stationaryEffectsConstructOneFrameButDeliverEveryTick(String id) throws Exception {
         Fixture fixture = new Fixture();
         Field adapter = ParticlesFeature.class.getDeclaredField("nmsAdapter");

@@ -7,46 +7,47 @@ import com.volmit.bytecompanions.features.particles.effect.ParticleEffect;
 
 public final class MusicParticleEffect implements ParticleEffect {
 
-    private byte countdown = -1;
-    private byte frame;
+    private static final int CYCLE = 20;
+    private static final int NOTE_EVERY = 2;
+    private static final int RING_NOTES = 8;
+    private static final double SPIRAL_RADIUS = 0.35;
+    private static final double SPIRAL_BOTTOM = 1.3;
+    private static final double SPIRAL_RISE = 0.6;
+    private static final double RING_RADIUS = 0.5;
+    private static final double RING_HEIGHT = 1.9;
+
+    private int frame = -1;
 
     @Override
     public boolean advance(double x, double y, double z, float yaw, float pitch, float bodyYaw) {
-        this.frame = ++this.countdown;
-        if (this.frame == 9) {
-            this.countdown = -1;
-        }
-        return this.frame == 4 || this.frame == 9;
+        this.frame = (this.frame + 1) % CYCLE;
+        return this.frame % NOTE_EVERY == 0;
     }
 
     @Override
     public ParticleBatch particles(double x, double y, double z, float yaw, float pitch, float bodyYaw) {
-        return switch (this.frame) {
-            case 4 -> {
-                ParticleBatch result = ParticlesFeature.getNMSAdapter().createBatch(1);
-                result.set(0, ParticleKind.NOTE, x, y + 1.5, z, 0, 0, 0, 0, 1);
-                yield result;
+        // Single notes climb a spiral through the cycle, then a ring of notes closes it at the top.
+        if (this.frame == CYCLE - NOTE_EVERY) {
+            final ParticleBatch packets = ParticlesFeature.getNMSAdapter().createBatch(RING_NOTES);
+            for (int i = 0; i < RING_NOTES; i++) {
+                final double angle = 2 * Math.PI * i / RING_NOTES;
+                packets.set(i, ParticleKind.NOTE, x + Math.cos(angle) * RING_RADIUS, y + RING_HEIGHT,
+                        z + Math.sin(angle) * RING_RADIUS, 0, 0, 0, 0, 1);
             }
+            return packets;
+        }
 
-            case 9 -> {
-                y += 1.5;
-                final double radius = 0.5;
-                final int points = 6;
-                final ParticleBatch packets = ParticlesFeature.getNMSAdapter().createBatch(points);
+        final double progress = this.frame / (double) CYCLE;
+        final double angle = 2 * Math.PI * progress * 1.5;
+        final ParticleBatch result = ParticlesFeature.getNMSAdapter().createBatch(1);
+        result.set(0, ParticleKind.NOTE, x + Math.cos(angle) * SPIRAL_RADIUS, y + SPIRAL_BOTTOM + SPIRAL_RISE * progress,
+                z + Math.sin(angle) * SPIRAL_RADIUS, 0, 0, 0, 0, 1);
+        return result;
+    }
 
-                for (int i = 0; i < points; i++) {
-                    double angle = org.joml.Math.toRadians((360.0 / points) * i);
-                    double offsetX = org.joml.Math.cos(angle) * radius;
-                    double offsetZ = org.joml.Math.sin(angle) * radius;
-
-                    packets.set(i, ParticleKind.NOTE, x + offsetX, y, z + offsetZ, 0, 0, 0, 0, 1);
-                }
-
-                yield packets;
-            }
-
-            default -> ParticlesFeature.getNMSAdapter().createBatch(0);
-        };
+    @Override
+    public void reset() {
+        this.frame = -1;
     }
 
     @Override
