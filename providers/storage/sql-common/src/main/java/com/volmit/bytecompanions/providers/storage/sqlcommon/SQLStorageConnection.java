@@ -63,7 +63,7 @@ public class SQLStorageConnection implements StorageConnection {
                 this.createTable(connection, this.createPlayersIndexQuery());
             }
 
-            this.logger.info("Connection to the database established successfully. Tables created. ^^");
+            this.logger.info("Connected to the database.");
         } catch (final SQLException e) {
             throw new RuntimeException(e);
         }

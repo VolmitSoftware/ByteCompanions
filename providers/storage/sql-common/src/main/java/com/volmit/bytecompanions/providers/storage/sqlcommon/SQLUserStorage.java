@@ -72,7 +72,7 @@ public class SQLUserStorage implements UserStorage {
     @Override
     public @Nullable UserView fetch(final @NotNull UUID playerId) {
 
-        this.logger.info("[SQLUserStorage] Fetching user: " + playerId);
+        this.logger.fine("[SQLUserStorage] Fetching user: " + playerId);
 
         try (
                 final Connection connection = this.sqlStorageConnection.getConnection();
