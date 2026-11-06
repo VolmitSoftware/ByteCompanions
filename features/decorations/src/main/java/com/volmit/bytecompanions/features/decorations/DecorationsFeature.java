@@ -100,7 +100,7 @@ public final class DecorationsFeature {
     }
 
     private @NotNull ConfigurationData createConfigurationData() {
-        MemoryConfiguration configuration = ((PaperPlugin) this.plugin).contentSnapshot().bukkit("features/decorations/config.toml");
+        MemoryConfiguration configuration = ((PaperPlugin) this.plugin).contentSnapshot().bukkit("features/decorations.toml");
         final Map<String, CompanionData> companionDataMap = new HashMap<>();
 
         final int updateIntervalTicks = configuration.getInt("settings.update-interval", 3);

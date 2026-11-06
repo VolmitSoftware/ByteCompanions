@@ -209,7 +209,7 @@ public final class AttributesFeature {
 
     @Contract(" -> new")
     private @NotNull ConfigurationData createConfigurationData() {
-        MemoryConfiguration configuration = ((PaperPlugin) this.plugin).contentSnapshot().bukkit("features/attributes/config.toml");
+        MemoryConfiguration configuration = ((PaperPlugin) this.plugin).contentSnapshot().bukkit("features/attributes.toml");
         ContentPreflight.validateAttributes(configuration);
         final Map<String, List<AttributeModifierData>> companionEffects = new HashMap<>();
 

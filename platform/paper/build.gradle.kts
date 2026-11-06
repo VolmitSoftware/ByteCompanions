@@ -253,7 +253,9 @@ tasks.processResources {
     filesMatching(listOf("plugin.yml", "bytecompanions-build.properties")) { expand(pluginProperties) }
     features.forEach { feature ->
         from(rootProject.file("features/$feature/src/main/resources")) {
-            into("features/$feature")
+            include("config.toml")
+            rename { "$feature.toml" }
+            into("features")
         }
     }
     duplicatesStrategy = DuplicatesStrategy.FAIL
@@ -466,8 +468,7 @@ val verifyJava25Artifact = tasks.register("verifyJava25Artifact") {
             val entries = jar.entries().asSequence().map { it.name }.toSet()
             val required = listOf(
                 "plugin.yml", "bytecompanions-build.properties", "slimjar.dat", "slimjar-resolutions.dat", "slimjar-checksums.txt",
-                "features/particles/icons.toml",
-                "features/progression/config.toml",
+                "features/progression.toml",
                 "com/volmit/bytecompanions/platform/paper/ui/dashboard/CompanionMenus.class",
                 "com/volmit/bytecompanions/platform/paper/PaperPlugin.class",
                 "com/volmit/bytecompanions/features/animations/AnimationsFeature.class",
@@ -479,7 +480,7 @@ val verifyJava25Artifact = tasks.register("verifyJava25Artifact") {
                 "com/volmit/bytecompanions/platform/paper/metrics/Metrics.class",
                 "META-INF/LICENSE-bStats.txt",
                 "META-INF/licenses/item-blueprint-MIT.txt"
-            ) + features.filter { it != "animations" }.map { "features/$it/config.toml" } + languageResources
+            ) + features.filter { it != "animations" }.map { "features/$it.toml" } + languageResources
             check(entries.containsAll(required)) { "Merged artifact is missing: ${required - entries}" }
             check(entries.count { it == "plugin.yml" || it.endsWith("/plugin.yml") || it.endsWith("paper-plugin.yml") } == 1) {
                 "Distribution must contain exactly one plugin descriptor"

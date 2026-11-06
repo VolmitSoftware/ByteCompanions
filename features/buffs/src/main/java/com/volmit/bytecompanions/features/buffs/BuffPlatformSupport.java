@@ -30,7 +30,7 @@ public final class BuffPlatformSupport {
         }
         for (Map.Entry<String, Companions> entry : configuration.companions().entrySet()) {
             if (entry.getValue().vanilla().experience().enabled()) {
-                throw new IllegalArgumentException("features/buffs/config.toml: companions."
+                throw new IllegalArgumentException("features/buffs.toml: companions."
                         + entry.getKey() + ".vanilla.experience.enabled requires Paper's experience pickup and origin API. "
                         + "Set it to false on Spigot; experience-block, experience-mob, experience-fishing and "
                         + "experience-furnace remain available.");

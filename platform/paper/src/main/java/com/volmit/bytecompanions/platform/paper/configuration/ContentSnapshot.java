@@ -1,6 +1,7 @@
 package com.volmit.bytecompanions.platform.paper.configuration;
 
 import art.arcane.volmlib.util.config.TomlCodec;
+import art.arcane.volmlib.util.io.AtomicFileIO;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonPrimitive;
 import org.bukkit.configuration.ConfigurationSection;
@@ -24,9 +25,9 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 public final class ContentSnapshot {
-    private static final List<String> CONFIGURATIONS = List.of("features/attributes/config.toml",
-            "features/effects/config.toml", "features/buffs/config.toml", "features/decorations/config.toml",
-            "features/particles/config.toml", "features/particles/icons.toml", "features/progression/config.toml");
+    private static final List<String> CONFIGURATIONS = List.of("features/attributes.toml",
+            "features/effects.toml", "features/buffs.toml", "features/decorations.toml",
+            "features/particles.toml", "features/progression.toml");
     private final Map<String, String> sources;
 
     public ContentSnapshot(Map<String, String> sources) throws IOException {
@@ -43,6 +44,7 @@ public final class ContentSnapshot {
     public static ContentSnapshot capture(JavaPlugin plugin) throws IOException {
         Path root = plugin.getDataFolder().toPath();
         Files.createDirectories(root);
+        migrateFeatureFolders(root);
         for (String path : CONFIGURATIONS) {
             if (!Files.exists(root.resolve(path))) {
                 plugin.saveResource(path, false);
@@ -61,6 +63,41 @@ public final class ContentSnapshot {
             sources.put(path, readSource(root, path));
         }
         return new ContentSnapshot(sources);
+    }
+
+    // Before 2.0.0 each feature had its own folder, and particles split settings and icons into two files.
+    // Folding them into one file per feature keeps existing edits instead of reinstalling the defaults.
+    static void migrateFeatureFolders(Path root) throws IOException {
+        for (String feature : List.of("attributes", "buffs", "decorations", "effects", "particles", "progression")) {
+            Path folder = checkedPath(root, "features/" + feature);
+            Path target = checkedPath(root, "features/" + feature + ".toml");
+            if (!Files.isDirectory(folder, LinkOption.NOFOLLOW_LINKS) || Files.exists(target, LinkOption.NOFOLLOW_LINKS)) {
+                continue;
+            }
+            List<String> parts = new ArrayList<>();
+            List<Path> merged = new ArrayList<>();
+            for (String name : feature.equals("particles") ? List.of("config.toml", "icons.toml") : List.of("config.toml")) {
+                String relative = "features/" + feature + "/" + name;
+                if (Files.isRegularFile(checkedPath(root, relative), LinkOption.NOFOLLOW_LINKS)) {
+                    parts.add(readSource(root, relative).stripTrailing());
+                    merged.add(checkedPath(root, relative));
+                }
+            }
+            if (parts.isEmpty()) {
+                continue;
+            }
+            String source = String.join("\n\n", parts) + "\n";
+            new ContentSnapshot(Map.of("features/" + feature + ".toml", source));
+            AtomicFileIO.writeString(target, source);
+            for (Path file : merged) {
+                Files.delete(file);
+            }
+            try (Stream<Path> remaining = Files.list(folder)) {
+                if (remaining.findAny().isEmpty()) {
+                    Files.delete(folder);
+                }
+            }
+        }
     }
 
     static List<String> watchedPaths(Path root) throws IOException {

@@ -508,25 +508,25 @@ public final class Configuration implements ConfigurationSettings {
     @ConfigSerializable
     @ConfigDescription("Feature packs; disabled packs hide their commands and keep their saved state.")
     public static final class FeaturesConfig {
-        @ConfigDoc(value = "Enable companion attribute modifiers.", impact = "Definitions live in features/attributes/config.toml; applies on the next runtime replacement.")
+        @ConfigDoc(value = "Enable companion attribute modifiers.", impact = "Definitions live in features/attributes.toml; applies on the next runtime replacement.")
         private boolean attributes = false;
 
-        @ConfigDoc(value = "Enable companion buffs such as drop and experience bonuses.", impact = "Definitions live in features/buffs/config.toml; applies on the next runtime replacement.")
+        @ConfigDoc(value = "Enable companion buffs such as drop and experience bonuses.", impact = "Definitions live in features/buffs.toml; applies on the next runtime replacement.")
         private boolean buffs = false;
 
-        @ConfigDoc(value = "Enable static decoration companions.", impact = "Definitions live in features/decorations/config.toml; applies on the next runtime replacement.")
+        @ConfigDoc(value = "Enable static decoration companions.", impact = "Definitions live in features/decorations.toml; applies on the next runtime replacement.")
         private boolean decorations = true;
 
-        @ConfigDoc(value = "Enable companion potion effects.", impact = "Definitions live in features/effects/config.toml; applies on the next runtime replacement.")
+        @ConfigDoc(value = "Enable companion potion effects.", impact = "Definitions live in features/effects.toml; applies on the next runtime replacement.")
         private boolean effects = false;
 
-        @ConfigDoc(value = "Enable companion particle effects.", impact = "Icons live in features/particles/icons.toml and settings in features/particles/config.toml; applies on the next runtime replacement.")
+        @ConfigDoc(value = "Enable companion particle effects.", impact = "Settings and icons live in features/particles.toml; applies on the next runtime replacement.")
         private boolean particles = true;
 
-        @ConfigDoc(value = "Enable companion levels and optional bonus upgrades.", impact = "Progression rules and upgrade costs are configured in features/progression/config.toml.")
+        @ConfigDoc(value = "Enable companion levels and optional bonus upgrades.", impact = "Progression rules and upgrade costs are configured in features/progression.toml.")
         private boolean progression = false;
 
-        @ConfigDoc(value = "Enable personal and server-wide companion boosters.", impact = "Booster definitions are configured in features/progression/config.toml.")
+        @ConfigDoc(value = "Enable personal and server-wide companion boosters.", impact = "Booster definitions are configured in features/progression.toml.")
         private boolean boosters = false;
 
         public boolean enabled(String feature) {

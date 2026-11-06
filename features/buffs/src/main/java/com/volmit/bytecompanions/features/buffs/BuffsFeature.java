@@ -191,7 +191,7 @@ public final class BuffsFeature {
     private Configuration loadConfiguration() {
         try {
             final ConfigurationNode configurationNode = ((PaperPlugin) this.plugin).contentSnapshot()
-                    .node("features/buffs/config.toml", ConfigurationOptions.defaults());
+                    .node("features/buffs.toml", ConfigurationOptions.defaults());
             Configuration loaded = Objects.requireNonNull(configurationNode.get(Configuration.class), "Buffs configuration is empty");
             BuffPlatformSupport.validate(loaded, BuffPlatformSupport.supportsPickupExperience());
             return loaded;

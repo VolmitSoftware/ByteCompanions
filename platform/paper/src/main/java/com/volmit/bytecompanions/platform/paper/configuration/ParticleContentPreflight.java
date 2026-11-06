@@ -19,12 +19,12 @@ final class ParticleContentPreflight {
     private ParticleContentPreflight() {
     }
     static void validate(ContentSnapshot content) throws IOException {
-        ConfigurationNode config = content.node("features/particles/config.toml", ConfigurationOptions.defaults());
+        ConfigurationNode config = content.node("features/particles.toml", ConfigurationOptions.defaults());
         ParticlesConfiguration typed = config.get(ParticlesConfiguration.class);
         if (typed == null) {
             throw new IllegalArgumentException("Particle configuration is empty");
         }
-        ConfigurationNode icons = content.node("features/particles/icons.toml", ConfigurationOptions.defaults());
+        ConfigurationNode icons = content.node("features/particles.toml", ConfigurationOptions.defaults());
         validateIcons(icons);
         ItemBlueprintRegistry items = ItemBlueprintRegistry.create(TextSerializerFactory.create(typed.settings().serializer()));
         try {

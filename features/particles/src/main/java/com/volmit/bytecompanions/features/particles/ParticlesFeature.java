@@ -84,11 +84,11 @@ public final class ParticlesFeature {
 
         this.playerEffectManager = new PlayerEffectManager(this, this.plugin, this.companions);
 
-        this.particlesConfiguration = this.loadConfiguration("config", ParticlesConfiguration.class);
+        this.particlesConfiguration = this.loadConfiguration(ParticlesConfiguration.class);
 
         this.itemBlueprintRegistry = ItemBlueprintRegistry.create(TextSerializerFactory.create(this.particlesConfiguration.settings().serializer()));
 
-        this.iconsConfiguration = this.loadConfiguration("icons", ParticleIconsConfiguration.class);
+        this.iconsConfiguration = this.loadConfiguration(ParticleIconsConfiguration.class);
 
         this.serializerAdapter = ComponentSerializerFactory.create(this.particlesConfiguration.settings().serializer());
         this.messageSender = new MessageSender(((com.volmit.bytecompanions.platform.paper.PaperPlugin) plugin).languageService());
@@ -179,14 +179,11 @@ public final class ParticlesFeature {
         return new ParticleEffectEntry(id, itemBlueprint, factory);
     }
 
-    <T> T loadConfiguration(
-            final @NotNull String fileName,
-            final @NotNull Class<T> tClass
-    ) {
+    <T> T loadConfiguration(final @NotNull Class<T> tClass) {
         try {
             final ConfigurationNode configurationNode = ((PaperPlugin) this.plugin).contentSnapshot()
-                    .node("features/particles/" + fileName + ".toml", ConfigurationOptions.defaults());
-            return Objects.requireNonNull(configurationNode.get(tClass), "Failed to deserialize " + fileName + ".toml");
+                    .node("features/particles.toml", ConfigurationOptions.defaults());
+            return Objects.requireNonNull(configurationNode.get(tClass), "Failed to deserialize features/particles.toml");
         } catch (IOException e) {
             throw new RuntimeException(new ConfigurateException("Failed to load configuration file.", e));
         }

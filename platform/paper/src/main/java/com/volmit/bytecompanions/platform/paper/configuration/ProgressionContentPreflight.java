@@ -35,9 +35,9 @@ public final class ProgressionContentPreflight {
     }
 
     private static void validateTargets(ProgressionDefinitions definitions, ContentSnapshot content) throws IOException {
-        ConfigurationNode attributes = content.node("features/attributes/config.toml", ConfigurationOptions.defaults());
-        ConfigurationNode effects = content.node("features/effects/config.toml", ConfigurationOptions.defaults());
-        ConfigurationNode buffs = content.node("features/buffs/config.toml", ConfigurationOptions.defaults());
+        ConfigurationNode attributes = content.node("features/attributes.toml", ConfigurationOptions.defaults());
+        ConfigurationNode effects = content.node("features/effects.toml", ConfigurationOptions.defaults());
+        ConfigurationNode buffs = content.node("features/buffs.toml", ConfigurationOptions.defaults());
         for (Map.Entry<String, ProgressionDefinitions.CompanionDefinition> companion : definitions.companions().entrySet()) {
             Map<String, List<Double>> bases = new LinkedHashMap<>();
             collect(bases, attributes.node("companions", companion.getKey()), "attribute", "attribute", "amount");

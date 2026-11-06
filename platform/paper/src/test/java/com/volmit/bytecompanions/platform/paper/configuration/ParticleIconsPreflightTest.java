@@ -40,7 +40,7 @@ class ParticleIconsPreflightTest {
     }
 
     private static ConfigurationNode defaults() throws Exception {
-        URL resource = ParticleIconsPreflightTest.class.getClassLoader().getResource("features/particles/icons.toml");
+        URL resource = ParticleIconsPreflightTest.class.getClassLoader().getResource("features/particles.toml");
         assertNotNull(resource);
         try (var input = resource.openStream()) {
             return ContentSnapshot.parse(new String(input.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8), ConfigurationOptions.defaults());

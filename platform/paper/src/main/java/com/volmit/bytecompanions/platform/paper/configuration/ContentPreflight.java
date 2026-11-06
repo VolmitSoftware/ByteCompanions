@@ -46,16 +46,16 @@ public final class ContentPreflight {
         } finally {
             items.clear();
         }
-        validateAttributes(content.bukkit("features/attributes/config.toml"));
-        validateEffects(content.bukkit("features/effects/config.toml"));
-        validateDecorations(content.node("features/decorations/config.toml", options));
-        ConfigurationNode buffs = content.node("features/buffs/config.toml", options);
+        validateAttributes(content.bukkit("features/attributes.toml"));
+        validateEffects(content.bukkit("features/effects.toml"));
+        validateDecorations(content.node("features/decorations.toml", options));
+        ConfigurationNode buffs = content.node("features/buffs.toml", options);
         BuffPlatformSupport.validateNode(buffs,
                 !root.features().enabled("buffs") || BuffPlatformSupport.supportsPickupExperience());
         validateCooldowns(buffs);
         ParticleContentPreflight.validate(content);
         ProgressionDefinitions progression = ProgressionDefinitions.parse(
-                content.source("features/progression/config.toml").getBytes(StandardCharsets.UTF_8));
+                content.source("features/progression.toml").getBytes(StandardCharsets.UTF_8));
         if (root.features().enabled("progression")) {
             progression.validateCompanions(registry.all().stream().map(CompanionType::id).collect(Collectors.toSet()));
         }

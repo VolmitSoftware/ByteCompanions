@@ -23,9 +23,9 @@ class MergedResourcesTest {
     void coreAndFeatureDefaultsRemainIndependentlyAddressable() throws IOException {
         List<String> paths = List.of(
                 "config.toml", "languages/en_US.toml",
-                "features/attributes/config.toml", "features/buffs/config.toml",
-                "features/decorations/config.toml", "features/effects/config.toml",
-                "features/particles/config.toml", "features/particles/icons.toml");
+                "features/attributes.toml", "features/buffs.toml",
+                "features/decorations.toml", "features/effects.toml",
+                "features/particles.toml", "features/progression.toml");
         Set<String> contents = new HashSet<>();
 
         for (String path : paths) {

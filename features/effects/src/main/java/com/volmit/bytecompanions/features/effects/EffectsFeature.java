@@ -109,7 +109,7 @@ public final class EffectsFeature {
 
     @Contract(" -> new")
     private @NotNull ConfigurationData createConfigurationData() {
-        MemoryConfiguration configuration = ((PaperPlugin) this.plugin).contentSnapshot().bukkit("features/effects/config.toml");
+        MemoryConfiguration configuration = ((PaperPlugin) this.plugin).contentSnapshot().bukkit("features/effects.toml");
         ContentPreflight.validateEffects(configuration);
         final Map<String, List<PotionEffectData>> companionEffects = new HashMap<>();
 

@@ -65,11 +65,11 @@ final class CompanionDraftTest {
         CompanionDraft draft = CompanionDraft.open(content(), "scout", "config")
                 .withValue(CompanionDraft.Section.BUFFS, List.of("default-priority"), 25);
         Map<String, String> latest = sources();
-        latest.put("features/buffs/config.toml", "[companions.scout]\ndefault-priority = 10\n\n[companions.bee]\ndefault-priority = 99\n");
+        latest.put("features/buffs.toml", "[companions.scout]\ndefault-priority = 10\n\n[companions.bee]\ndefault-priority = 99\n");
         CompanionDraft.PreparedEdit edit = draft.prepare(new ContentSnapshot(latest));
         assertEquals(1, edit.writes().size());
-        assertEquals(99, edit.snapshot().bukkit("features/buffs/config.toml").getInt("companions.bee.default-priority"));
-        assertEquals(25, edit.snapshot().bukkit("features/buffs/config.toml").getInt("companions.scout.default-priority"));
+        assertEquals(99, edit.snapshot().bukkit("features/buffs.toml").getInt("companions.bee.default-priority"));
+        assertEquals(25, edit.snapshot().bukkit("features/buffs.toml").getInt("companions.scout.default-priority"));
     }
 
     @Test
@@ -77,7 +77,7 @@ final class CompanionDraftTest {
         CompanionDraft draft = CompanionDraft.open(content(), "scout", "config")
                 .withValue(CompanionDraft.Section.BUFFS, List.of("default-priority"), 25);
         Map<String, String> latest = sources();
-        latest.put("features/buffs/config.toml", "[companions.scout]\ndefault-priority = 30\n");
+        latest.put("features/buffs.toml", "[companions.scout]\ndefault-priority = 30\n");
         ContentSnapshot changedBuffs = new ContentSnapshot(latest);
         assertThrows(IOException.class, () -> draft.prepare(changedBuffs));
         CompanionDraft visual = CompanionDraft.open(content(), "scout", "config")
@@ -125,7 +125,7 @@ final class CompanionDraftTest {
     @Test
     void duplicationCopiesEditedContentWithoutChangingSourceOrProgression() throws Exception {
         Map<String, String> sources = sources();
-        sources.put("features/progression/config.toml", "[companions.scout.level-rewards.2]\n\"buff:experience_block\" = 1\n");
+        sources.put("features/progression.toml", "[companions.scout.level-rewards.2]\n\"buff:experience_block\" = 1\n");
         ContentSnapshot original = new ContentSnapshot(sources);
         CompanionDraft duplicate = CompanionDraft.open(original, "scout", "config")
                 .withValue(CompanionDraft.Section.COMPANION, List.of("appearance", "scale"), 1.5)
@@ -136,9 +136,9 @@ final class CompanionDraftTest {
         assertFalse(duplicate.changes().isEmpty());
         assertEquals(1.5, duplicate.node(CompanionDraft.Section.COMPANION).node("appearance", "scale").getDouble());
         assertEquals(original.source("companions/scout.toml"), duplicate.snapshot().source("companions/scout.toml"));
-        assertEquals(10, duplicate.snapshot().bukkit("features/buffs/config.toml").getInt("companions.scout.default-priority"));
-        assertEquals(45, duplicate.snapshot().bukkit("features/buffs/config.toml").getInt("companions.scout_copy.default-priority"));
-        assertEquals(original.source("features/progression/config.toml"), duplicate.snapshot().source("features/progression/config.toml"));
+        assertEquals(10, duplicate.snapshot().bukkit("features/buffs.toml").getInt("companions.scout.default-priority"));
+        assertEquals(45, duplicate.snapshot().bukkit("features/buffs.toml").getInt("companions.scout_copy.default-priority"));
+        assertEquals(original.source("features/progression.toml"), duplicate.snapshot().source("features/progression.toml"));
         assertFalse(duplicate.prepare(original).writes().containsKey("companions/scout.toml"));
         CompanionDraft reset = duplicate.withValue(CompanionDraft.Section.COMPANION, List.of("appearance", "scale"), 2.0).reset();
         assertTrue(reset.creation());
@@ -155,7 +155,7 @@ final class CompanionDraftTest {
         assertThrows(IOException.class, () -> draft.duplicate("scout"));
         assertThrows(IOException.class, () -> draft.duplicate("bee"));
         Map<String, String> sources = sources();
-        sources.put("features/progression/config.toml", "[companions.newid.level-rewards]\n");
+        sources.put("features/progression.toml", "[companions.newid.level-rewards]\n");
         CompanionDraft progression = CompanionDraft.open(new ContentSnapshot(sources), "scout", "config");
         assertThrows(IOException.class, () -> progression.duplicate("newid"));
         CompanionDraft duplicate = draft.duplicate("newid");
@@ -172,9 +172,9 @@ final class CompanionDraftTest {
     static Map<String, String> sources() {
         Map<String, String> sources = new LinkedHashMap<>();
         sources.put("companions/scout.toml", "model = \"FULL_BODY\"\n\n[appearance]\nscale = 0.8\n");
-        sources.put("features/attributes/config.toml", "[companions]\n");
-        sources.put("features/buffs/config.toml", "[companions.scout]\ndefault-priority = 10\n\n[companions.bee]\ndefault-priority = 20\n");
-        sources.put("features/effects/config.toml", "[companions]\n");
+        sources.put("features/attributes.toml", "[companions]\n");
+        sources.put("features/buffs.toml", "[companions.scout]\ndefault-priority = 10\n\n[companions.bee]\ndefault-priority = 20\n");
+        sources.put("features/effects.toml", "[companions]\n");
         return sources;
     }
 }

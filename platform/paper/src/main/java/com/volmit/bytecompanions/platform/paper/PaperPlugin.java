@@ -390,7 +390,7 @@ public final class PaperPlugin extends JavaPlugin implements ByteCompanions, Rel
         if (configuration.features().enabled("progression") || configuration.features().enabled("boosters")) {
             try {
                 ProgressionDefinitions definitions = ProgressionDefinitions.parse(
-                        this.contentSnapshot.source("features/progression/config.toml").getBytes(StandardCharsets.UTF_8));
+                        this.contentSnapshot.source("features/progression.toml").getBytes(StandardCharsets.UTF_8));
                 this.progressionService = new ProgressionService(
                         this, this.storage::progression, this.asyncExecutor.executor(), definitions,
                         configuration.features().enabled("progression"), configuration.features().enabled("boosters"),

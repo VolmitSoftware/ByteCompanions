@@ -96,7 +96,7 @@ class StarterResourcesTest {
 
     @Test
     void survivalBuffsEnableOnlyThreeModestSourceBonusesAndAcceptSpigot() throws Exception {
-        ConfigurationNode root = node("features/buffs/config.toml");
+        ConfigurationNode root = node("features/buffs.toml");
         assertDoesNotThrow(() -> BuffPlatformSupport.validateNode(root, false));
         Configuration configuration = root.get(Configuration.class);
         assertNotNull(configuration);
@@ -124,7 +124,7 @@ class StarterResourcesTest {
 
     @Test
     void starterEffectsStayAtTierOneWithoutStackingAndPreserveProgressionTargets() throws Exception {
-        ConfigurationNode effects = node("features/effects/config.toml");
+        ConfigurationNode effects = node("features/effects.toml");
         assertEquals(Set.of("bee", "myself", "rainbow", "mushroom"), effects.node("companions").childrenMap().keySet());
         Set<Integer> speedPriorities = new HashSet<>();
         for (Map.Entry<Object, ? extends ConfigurationNode> companion : effects.node("companions").childrenMap().entrySet()) {
@@ -140,12 +140,12 @@ class StarterResourcesTest {
             }
         }
         Map<String, String> sources = new LinkedHashMap<>();
-        for (String path : List.of("features/attributes/config.toml", "features/effects/config.toml",
-                "features/buffs/config.toml", "features/progression/config.toml")) {
+        for (String path : List.of("features/attributes.toml", "features/effects.toml",
+                "features/buffs.toml", "features/progression.toml")) {
             sources.put(path, resource(path));
         }
         ContentSnapshot content = new ContentSnapshot(sources);
-        ProgressionDefinitions progression = ProgressionDefinitions.parse(sources.get("features/progression/config.toml").getBytes(StandardCharsets.UTF_8));
+        ProgressionDefinitions progression = ProgressionDefinitions.parse(sources.get("features/progression.toml").getBytes(StandardCharsets.UTF_8));
         assertDoesNotThrow(() -> ProgressionContentPreflight.validate(progression, content, true, true));
     }
 

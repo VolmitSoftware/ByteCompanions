@@ -174,7 +174,7 @@ public final class CompanionDraft {
                 throw new IOException("Bonus configuration already uses companion ID: " + id);
             }
         }
-        String progression = "features/progression/config.toml";
+        String progression = "features/progression.toml";
         if (content.paths().contains(progression) && content.node(progression, ConfigurationOptions.defaults())
                 .node("companions", id).raw() != null) {
             throw new IOException("Progression configuration already uses companion ID: " + id);
@@ -302,7 +302,7 @@ public final class CompanionDraft {
         }
 
         public String path(String id) {
-            return feature == null ? CompanionDraft.path(id) : "features/" + feature + "/config.toml";
+            return feature == null ? CompanionDraft.path(id) : "features/" + feature + ".toml";
         }
     }
 

@@ -414,7 +414,7 @@ final class RuntimeJarTest {
             assertEquals("mojang", jar.getManifest().getMainAttributes().getValue("paperweight-mappings-namespace"));
             assertNotNull(jar.getEntry("plugin.yml"));
             assertNotNull(jar.getEntry("config.toml"));
-            assertNotNull(jar.getEntry("features/progression/config.toml"));
+            assertNotNull(jar.getEntry("features/progression.toml"));
             assertFalse(jar.stream().anyMatch(entry -> (entry.getName().endsWith(".yml")
                     || entry.getName().endsWith(".yaml")) && !entry.getName().equals("plugin.yml")));
             assertFalse(jar.stream().anyMatch(entry -> entry.getName().startsWith("com/volmit/bytecompanions/platform/paper/extension/")

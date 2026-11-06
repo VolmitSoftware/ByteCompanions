@@ -80,7 +80,7 @@ final class CompanionStudioTransactionTest {
         try (ConfigService service = service()) {
             AtomicInteger captures = new AtomicInteger();
             AtomicInteger rollbacks = new AtomicInteger();
-            String originalBuffs = Files.readString(directory.resolve("features/buffs/config.toml"));
+            String originalBuffs = Files.readString(directory.resolve("features/buffs.toml"));
             String external = "model = \"HEAD_ONLY\"\n";
             CompanionDraft draft = draft(service).withValue(CompanionDraft.Section.BUFFS,
                     List.of("default-priority"), 45);
@@ -92,7 +92,7 @@ final class CompanionStudioTransactionTest {
             }, (configuration, candidate) -> installation(() -> {}, rollbacks::incrementAndGet)));
             assertEquals(1, rollbacks.get());
             assertEquals(external, Files.readString(directory.resolve("companions/scout.toml")));
-            assertEquals(originalBuffs, Files.readString(directory.resolve("features/buffs/config.toml")));
+            assertEquals(originalBuffs, Files.readString(directory.resolve("features/buffs.toml")));
         }
     }
 
@@ -120,7 +120,7 @@ final class CompanionStudioTransactionTest {
             assertEquals(original, Files.readString(directory.resolve("companions/scout.toml")));
             assertEquals(saved.source("companions/scout_copy.toml"), Files.readString(directory.resolve("companions/scout_copy.toml")));
             assertEquals(1.5, saved.bukkit("companions/scout_copy.toml").getDouble("appearance.scale"));
-            assertEquals(10, saved.bukkit("features/buffs/config.toml").getInt("companions.scout_copy.default-priority"));
+            assertEquals(10, saved.bukkit("features/buffs.toml").getInt("companions.scout_copy.default-priority"));
         }
     }
 
@@ -129,18 +129,18 @@ final class CompanionStudioTransactionTest {
         try (ConfigService service = service()) {
             AtomicInteger captures = new AtomicInteger();
             AtomicInteger rollbacks = new AtomicInteger();
-            String originalBuffs = Files.readString(directory.resolve("features/buffs/config.toml"));
+            String originalBuffs = Files.readString(directory.resolve("features/buffs.toml"));
             CompanionDraft duplicate = draft(service).duplicate("scout_copy");
             assertThrows(IOException.class, () -> service.saveCompanion(duplicate, () -> {
                 if (captures.incrementAndGet() == 4) {
-                    Files.writeString(directory.resolve("features/effects/config.toml"), "[companions]\n# external\n");
+                    Files.writeString(directory.resolve("features/effects.toml"), "[companions]\n# external\n");
                 }
                 return capture();
             }, (configuration, content) -> installation(() -> {}, rollbacks::incrementAndGet)));
             assertEquals(1, rollbacks.get());
             assertFalse(Files.exists(directory.resolve("companions/scout_copy.toml")));
-            assertEquals(originalBuffs, Files.readString(directory.resolve("features/buffs/config.toml")));
-            assertTrue(Files.readString(directory.resolve("features/effects/config.toml")).contains("# external"));
+            assertEquals(originalBuffs, Files.readString(directory.resolve("features/buffs.toml")));
+            assertTrue(Files.readString(directory.resolve("features/effects.toml")).contains("# external"));
         }
     }
 

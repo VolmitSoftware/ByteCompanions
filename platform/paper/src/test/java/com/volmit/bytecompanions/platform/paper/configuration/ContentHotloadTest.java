@@ -35,7 +35,7 @@ final class ContentHotloadTest {
             write("companions/scout.toml", "[appearance]\nscale = 1.5\n");
             tick(service);
             assertEquals(0, installs.get());
-            write("features/effects/config.toml", "[companions.scout]\n");
+            write("features/effects.toml", "[companions.scout]\n");
             write("config.toml", service.source() + "\n# same transaction\n");
             tick(service);
             assertEquals(0, installs.get());
@@ -68,13 +68,13 @@ final class ContentHotloadTest {
     void invalidTomlIsRejectedOnceWithoutTeardownAndCorrectingItRecovers() throws Exception {
         try (ConfigService service = ready()) {
             ContentSnapshot previous = runtime.get();
-            write("features/particles/config.toml", "companions = [unterminated\n");
+            write("features/particles.toml", "companions = [unterminated\n");
             assertThrows(IllegalStateException.class, () -> poll(service));
             assertSame(previous, runtime.get());
             assertEquals(0, installs.get());
             assertEquals(0, rollbacks.get());
             assertDoesNotThrow(() -> poll(service));
-            write("features/particles/config.toml", "[companions]\n# corrected\n");
+            write("features/particles.toml", "[companions]\n# corrected\n");
             poll(service);
             assertEquals(1, installs.get());
         }
@@ -83,13 +83,13 @@ final class ContentHotloadTest {
     @Test
     void missingFeatureIsNotRegeneratedAndRestoringItRecovers() throws Exception {
         try (ConfigService service = ready()) {
-            Path deleted = directory.resolve("features/buffs/config.toml");
+            Path deleted = directory.resolve("features/buffs.toml");
             Files.delete(deleted);
             assertThrows(IllegalStateException.class, () -> poll(service));
             assertEquals(0, installs.get());
             assertFalse(Files.exists(deleted));
             assertDoesNotThrow(() -> poll(service));
-            write("features/buffs/config.toml", "[companions]\n# restored\n");
+            write("features/buffs.toml", "[companions]\n# restored\n");
             poll(service);
             assertEquals(1, installs.get());
         }

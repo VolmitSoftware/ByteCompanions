@@ -46,9 +46,9 @@ class ProgressionContentPreflightTest {
 
     @Test
     void duplicateBaseEntriesCannotMakeOneUpgradeTargetAmbiguous() throws Exception {
-        ContentSnapshot content = new ContentSnapshot(Map.of("features/attributes/config.toml", "[companions]\n",
-                "features/effects/config.toml", "[[companions.bee]]\neffect = \"SPEED\"\namplifier = 1\n\n[[companions.bee]]\neffect = \"SPEED\"\namplifier = 2\n",
-                "features/buffs/config.toml", "[companions]\n"));
+        ContentSnapshot content = new ContentSnapshot(Map.of("features/attributes.toml", "[companions]\n",
+                "features/effects.toml", "[[companions.bee]]\neffect = \"SPEED\"\namplifier = 1\n\n[[companions.bee]]\neffect = \"SPEED\"\namplifier = 2\n",
+                "features/buffs.toml", "[companions]\n"));
         ProgressionDefinitions definitions = definitions("effect:minecraft:speed", 1);
         assertThrows(IllegalArgumentException.class, () -> ProgressionContentPreflight.validate(definitions, content, true, false));
     }
@@ -58,8 +58,8 @@ class ProgressionContentPreflightTest {
     }
 
     private static ContentSnapshot content(String buffs, int amplifier) throws Exception {
-        return new ContentSnapshot(Map.of("features/attributes/config.toml", "[companions]\n",
-                "features/effects/config.toml", "[[companions.bee]]\neffect = \"SPEED\"\namplifier = " + amplifier,
-                "features/buffs/config.toml", buffs));
+        return new ContentSnapshot(Map.of("features/attributes.toml", "[companions]\n",
+                "features/effects.toml", "[[companions.bee]]\neffect = \"SPEED\"\namplifier = " + amplifier,
+                "features/buffs.toml", buffs));
     }
 }

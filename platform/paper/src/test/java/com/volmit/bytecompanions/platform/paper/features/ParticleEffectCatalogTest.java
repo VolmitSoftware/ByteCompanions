@@ -23,7 +23,7 @@ class ParticleEffectCatalogTest {
 
     @Test
     void everyBuiltInEffectHasExactlyOneDefaultIcon() throws IOException {
-        URL resource = getClass().getClassLoader().getResource("features/particles/icons.toml");
+        URL resource = getClass().getClassLoader().getResource("features/particles.toml");
         assertNotNull(resource);
         ConfigurationNode icons;
         try (var input = resource.openStream()) {
